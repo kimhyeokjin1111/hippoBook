@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>히포북</title>
+    <link rel="stylesheet" href="../css/mainpage.css" />
+    <script defer src="../js/mainpage.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="header_layout">
+        <h1 class="header_logo">
+          <div class="header_logo_layout">
+             <!--홈페이지 버튼 -->
+            <a href="">
+              <img
+                src="../images/HippoBook_logo.png"
+                alt=""
+                class="header_logo_images"
+              />
+            </a>
+          </div>
+        </h1>
+        <div class="header_right_layout">
+          <a href="">
+            <!-- 알람 페이지 이동  -->
+            <img src="../images/alarm.png" alt="" class="header_right_alarm" />
+          </a>
+          <!-- 로그인 박스 -->
+          <ul class="header_right_login">
+            <button type="button" class="header_right_login_btn">
+              <a href="" class="header_right_login_box">로그인</a>
+            </button>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+
+
+    <main>
+      <!-- 메인 상단 -->
+      <div class="main_top">
+        <div class="main_top_layout">
+          <button type="button" class="category_openBtn" id="OpenBtn">
+            <!-- 모달창 띄우는 버튼  -->
+            <img
+              src="../images/category.png"
+              alt=""
+              class="main_top_category"
+            />
+          </button>
+          <div class="main_top_category_tap">
+            <ul class="main_top_category_list">
+              <li class="main_top_category_list2">
+                <a href="" class="main_top_category_list_title">내 서재</a>
+                <!-- 내 서재 이동 -->
+              </li>
+              <li class="main_top_category_list2">
+                <a href="" class="main_top_category_list_title">쪽지</a>
+                <!-- 쪽지 이동 -->
+              </li>
+              <li class="main_top_category_list2">
+                <a href="" class="main_top_category_list_title">검색</a>
+
+              <li class="main_top_category_list2">
+                <a href="" class="main_top_category_list_title">이벤트</a>
+                <!-- 이벤트 이동 -->
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 메인 슬라이더 배너 부분 부터 -->
+      <div class="main_content">
+        <section class="slides_wrap">
+          <div class="btn_wrap">
+            <button class="btn_wrap_left">
+              <div class="prev">&lt;</div>
+            </button>
+            <button class="btn_wrap_right">
+              <div class="next">&gt;</div>
+            </button>
+          </div>
+          <ul class="slides_banner">
+            <li>
+              <div class="slides_content">
+                <a href="">
+                  <img
+                    src="https://active.ridibooks.com/ridibooks_banner/1713168703620_MjMwNDE4.jpg"
+                    alt=""
+                    class="slide_img"/>
+                </a>
+              </div>
+            </li>
+
+            <!-- 슬라이딩배너 클릭시 이동 -->
+            <li>
+              <div class="slides_content">
+                <a href="">
+                  <img
+                    src="https://active.ridibooks.com/ridibooks_banner/1713155126477_MjQwMzI3.jpeg"
+                    alt=""
+                    class="slide_img"
+                  />
+                </a>
+                <!-- 슬라이딩배너 클릭시 이동 -->
+              </div>
+            </li>
+
+            <li>
+              <div class="slides_content">
+                <a href="">
+                  <img
+                    src="https://active.ridibooks.com/ridibooks_banner/1713330539998_MjQwNDAx.jpeg"
+                    alt=""
+                    class="slide_img"
+                  />
+                </a>
+                <!-- 슬라이딩배너 클릭시 이동 -->
+              </div>
+            </li>
+
+            <li>
+              <div class="slides_content">
+                <a href="">
+                  <img
+                    src="https://active.ridibooks.com/ridibooks_banner/1713168703620_MjMwNDE4.jpg"
+                    alt=""
+                    class="slide_img"
+                  />
+                </a>
+              </div>
+            </li>
+          </ul>
+        </section>
+      
+      <div class="main_layout">
+        <!-- 배너 밑 부분 -->
+        <div class="main_content_layout">
+          <section class="hipppo_ranking">
+            <div class="hipppo_ranking_layout">
+              <h3 class="hipppo_ranking_title">히포 랭킹</h3>
+              <div class="hipppo_ranking_content">
+                        <div class="ranking_content1">
+                          <div class="rank_num1">
+                            <span class="ir">1위</span>
+                          </div>
+                          <div class="thumbnail">
+                            <div class="book_picture">
+                              <picture>
+                                <img src="https://cover.millie.co.kr/service/cover/179607657/bb08a032fa764561918fffc0aadaff06.jpg?w=80&f=webp&q=80" alt=""> 
+                              </picture>
+                            </div>
+                          </div>
+                          <div class="thumbnail_title">
+                            <a href="" class="book_data">
+                              <div class="book_content">
+                                <p class="rank_book_title">제목제목</p>
+                                <p class="rank_book_author">지은이지은이</p>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+
+                        <div class="ranking_content1">
+                          <div class="rank_num2">
+                            <span class="ir">2위</span>
+                          </div>
+                          <div class="thumbnail">
+                            <div class="book_picture">
+                              <picture>
+                                <img src="https://cover.millie.co.kr/service/cover/179607657/bb08a032fa764561918fffc0aadaff06.jpg?w=80&f=webp&q=80" alt=""> 
+                              </picture>
+                            </div>
+                          </div>
+                          <div class="thumbnail_title">
+                            <a href="" class="book_data">
+                              <div class="book_content">
+                                <p class="rank_book_title">제목제목</p>
+                                <p class="rank_book_author">지은이지은이</p>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                        <div class="ranking_content1">
+                          <div class="rank_num3">
+                            <span class="ir">3위</span>
+                          </div>
+                          <div class="thumbnail">
+                            <div class="book_picture">
+                              <picture>
+                                <img src="https://cover.millie.co.kr/service/cover/179607657/bb08a032fa764561918fffc0aadaff06.jpg?w=80&f=webp&q=80" alt=""> 
+                              </picture>
+                            </div>
+                          </div>
+                          <div class="thumbnail_title">
+                            <a href="" class="book_data">
+                              <div class="book_content">
+                                <p class="rank_book_title">제목제목</p>
+                                <p class="rank_book_author">지은이지은이</p>
+                              </div>
+                            </a>
+                          </div>
+                        </div> 
+                        <div class="ranking_content2">
+                          <div class="rank_num4">
+                            <span class="ir">4위</span>
+                          </div>
+                          <div class="thumbnail">
+                            <div class="book_picture">
+                              <picture>
+                                <img src="https://cover.millie.co.kr/service/cover/179607657/bb08a032fa764561918fffc0aadaff06.jpg?w=80&f=webp&q=80" alt=""> 
+                              </picture>
+                            </div>
+                          </div>
+                          <div class="thumbnail_title">
+                            <a href="" class="book_data">
+                              <div class="book_content">
+                                <p class="rank_book_title">제목제목</p>
+                                <p class="rank_book_author">지은이지은이</p>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                        <div class="ranking_content2">
+                          <div class="rank_num5">
+                            <span class="ir">5위</span>
+                          </div>
+                          <div class="thumbnail">
+                            <div class="book_picture">
+                              <picture>
+                                <img src="https://cover.millie.co.kr/service/cover/179607657/bb08a032fa764561918fffc0aadaff06.jpg?w=80&f=webp&q=80" alt=""> 
+                              </picture>
+                            </div>
+                          </div>
+                          <div class="thumbnail_title">
+                            <a href="" class="book_data">
+                              <div class="book_content">
+                                <p class="rank_book_title">제목제목</p>
+                                <p class="rank_book_author">지은이지은이</p>
+                              </div>
+                            </a>
+                          </div>
+                        </div> 
+                        <div class="ranking_content2">
+                          <div class="rank_num6">
+                            <span class="ir">6위</span>
+                          </div>
+                          <div class="thumbnail">
+                            <div class="book_picture">
+                              <picture>
+                                <img src="https://cover.millie.co.kr/service/cover/179607657/bb08a032fa764561918fffc0aadaff06.jpg?w=80&f=webp&q=80" alt=""> 
+                              </picture>
+                            </div>
+                          </div>
+                          <div class="thumbnail_title">
+                            <a href="" class="book_data">
+                              <div class="book_content">
+                                <p class="rank_book_title">제목제목</p>
+                                <p class="rank_book_author">지은이지은이</p>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                        <div class="ranking_content3">
+                          <div class="rank_num7">
+                            <span class="ir">7위</span>
+                          </div>
+                          <div class="thumbnail">
+                            <div class="book_picture">
+                              <picture>
+                                <img src="https://cover.millie.co.kr/service/cover/179607657/bb08a032fa764561918fffc0aadaff06.jpg?w=80&f=webp&q=80" alt=""> 
+                              </picture>
+                            </div>
+                          </div>
+                          <div class="thumbnail_title">
+                            <a href="" class="book_data">
+                              <div class="book_content">
+                                <p class="rank_book_title">제목제목</p>
+                                <p class="rank_book_author">지은이지은이</p>
+                              </div>
+                            </a>
+                          </div>
+                        </div> 
+                        <div class="ranking_content3">
+                          <div class="rank_num8">
+                            <span class="ir">8위</span>
+                          </div>
+                          <div class="thumbnail">
+                            <div class="book_picture">
+                              <picture>
+                                <img src="https://cover.millie.co.kr/service/cover/179607657/bb08a032fa764561918fffc0aadaff06.jpg?w=80&f=webp&q=80" alt=""> 
+                              </picture>
+                            </div>
+                          </div>
+                          <div class="thumbnail_title">
+                            <a href="" class="book_data">
+                              <div class="book_content">
+                                <p class="rank_book_title">제목제목</p>
+                                <p class="rank_book_author">지은이지은이</p>
+                              </div>
+                            </a>
+                          </div>
+                        </div> 
+                        <div class="ranking_content3">
+                          <div class="rank_num9">
+                            <span class="ir">9위</span>
+                          </div>
+                          <div class="thumbnail">
+                            <div class="book_picture">
+                              <picture>
+                                <img src="https://cover.millie.co.kr/service/cover/179607657/bb08a032fa764561918fffc0aadaff06.jpg?w=80&f=webp&q=80" alt=""> 
+                              </picture>
+                            </div>
+                          </div>
+                          <div class="thumbnail_title">
+                            <a href="" class="book_data">
+                              <div class="book_content">
+                                <p class="rank_book_title">제목제목</p>
+                                <p class="rank_book_author">지은이지은이</p>
+                              </div>
+                            </a>
+                          </div>
+                        </div>                  
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="novel_preview">
+          <div class="novel_inner">
+            <h3 class="novel_preview_title">소설 미리보기</h3>
+            <div class="novel_content">
+              <div class="novel_content_wrapper">
+                <div class="novel_box">
+                  <div class="novel_box_border">
+                    <div class="novel_thumbnail_wrap">
+                        <div class="novel_data">
+                          <div class="novel_box_inner">
+                            <a href="" class="novel_url">
+                              <div class="thumbnail2">
+                                <div class="novel_thumbnail_inner">
+                                  <div class="novel_thumbnail_inner2">
+                                    <div class="novel_thumbnail_inner_picture">
+                                      <img src="https://cover.millie.co.kr/service/cover/179575076/95529891470d497ca856f58732b217f6.jpg?w=145&f=webp&q=80" alt="" 
+                                      class="novel_thumbnail_inner_picture2">
+                                    </div>
+                                  </div>
+                                </div>        
+                              </div>
+                            </a>
+                            <a href="" class="book_data2">  <!--책 url이동-->
+                              <div class="novel_box_content">
+                                <p class="novel_box_content_title">제목제목제목</p>
+                                <p class="novel_box_content_content">쓴 사람 닉네임</p>
+                              </div>
+                            </a>
+
+                          </div>
+                        </div>
+
+                        <div class="novel_box_bottom">
+                          <p class="novel_box_bottom_content">내용내용</p>
+                          <p class="novel_box_bottom_content">내용내용</p>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                  <div class="novel_box_border2">
+                    <div class="novel_thumbnail_wrap">
+                      <div class="novel_data">
+                        <div class="novel_box_inner">
+                          <a href="" class="novel_url">
+                            <div class="thumbnail2">
+                              <div class="novel_thumbnail_inner">
+                                <div class="novel_thumbnail_inner2">
+                                  <div class="novel_thumbnail_inner_picture">
+                                    <img src="https://cover.millie.co.kr/service/cover/179575076/95529891470d497ca856f58732b217f6.jpg?w=145&f=webp&q=80" alt="" 
+                                    class="novel_thumbnail_inner_picture2">
+                                  </div>
+                                </div>
+                              </div>     
+                            </div>
+                          </a>
+                          <a href="" class="book_data2">  <!--책 url이동-->
+                            <div class="novel_box_content">
+                              <p class="novel_box_content_title">제목제목제목</p>
+                              <p class="novel_box_content_content">쓴 사람 닉네임</p>
+                            </div>
+                          </a>
+
+                        </div>
+                      </div>
+
+                      <div class="novel_box_bottom">
+                        <p class="novel_box_bottom_content">내용내용</p>
+                        <p class="novel_box_bottom_content">내용내용</p>
+                      </div>
+                  </div>   
+              </div>
+                <div class="novel_box2">
+                  <div class="novel_box_border3">
+                    <div class="novel_thumbnail_wrap">
+                      <div class="novel_data">
+                        <div class="novel_box_inner">
+                          <a href="" class="novel_url">
+                            <div class="thumbnail2">
+                              <div class="novel_thumbnail_inner">
+                                <div class="novel_thumbnail_inner2">
+                                  <div class="novel_thumbnail_inner_picture">
+                                    <img src="https://cover.millie.co.kr/service/cover/179575076/95529891470d497ca856f58732b217f6.jpg?w=145&f=webp&q=80" alt="" 
+                                    class="novel_thumbnail_inner_picture2">
+                                  </div>
+                                </div>
+                              </div>        
+                            </div>
+                          </a>
+                          <a href="" class="book_data2">  <!--책 url이동-->
+                            <div class="novel_box_content">
+                              <p class="novel_box_content_title">제목제목제목</p>
+                              <p class="novel_box_content_content">쓴 사람 닉네임</p>
+                            </div>
+                          </a>
+
+                        </div>
+                      </div>
+
+                      <div class="novel_box_bottom">
+                        <p class="novel_box_bottom_content">내용내용</p>
+                        <p class="novel_box_bottom_content">내용내용</p>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main_book_report">
+        <div class="main_book_report_layout">
+          <h3 class="main_report_title">독후감 미리보기
+            <a href="" class="main_report_title_url"></a>
+          </h3>
+          <div class="main_report_section">
+            <div class="main_report_container">
+              <ul class="main_report_content">
+                <li class="main_report_item">
+                  <div class="main_report_section_box">
+                    <a href="" class="main_report_detail_box">
+                      <div class="main_book_report_thumbnail">
+                        <img src="https://cover.millie.co.kr/service/post/910367/661f81d5d2c48.jpg?f=webp&w=750&q=80" alt="" class="main_book_report_thumbnail_img">
+                      </div>
+                      <div class="main_book_report_content">
+                        <div class="main_book_report_content_title">제목제목제목제목제목제목제목제목제목제목제목제목</div>
+                        <p class="main_book_report_content_substance">내용내용내용내용내용내용내용내용내용내용내용내용내용</p>
+                      </div>
+                    </a>
+                    <a href="" class="main_book_report_writer_content">
+                      <div class="main_book_report_writer_content_icon"></div>
+                      <div class="main_book_report_writer_content_username">닉네임닉네임</div>
+                    </a>
+                  </div>
+                </li>
+                <li class="main_report_item">
+                  <div class="main_report_section_box">
+                    <a href="" class="main_report_detail_box">
+                      <div class="main_book_report_thumbnail">
+                        <img src="https://cover.millie.co.kr/service/post/910367/661f81d5d2c48.jpg?f=webp&w=750&q=80" alt="" class="main_book_report_thumbnail_img">
+                      </div>
+                      <div class="main_book_report_content">
+                        <div class="main_book_report_content_title">제목제목제목제목제목제목제목제목제목제목제목제목</div>
+                        <p class="main_book_report_content_substance">내용내용내용내용내용내용내용내용내용내용내용내용내용</p>
+                      </div>
+                    </a>
+                    <a href="" class="main_book_report_writer_content">
+                      <div class="main_book_report_writer_content_icon"></div>
+                      <div class="main_book_report_writer_content_username">닉네임닉네임</div>
+                    </a>
+                  </div>
+                </li>
+                <li class="main_report_item">
+                  <div class="main_report_section_box">
+                    <a href="" class="main_report_detail_box">
+                      <div class="main_book_report_thumbnail">
+                        <img src="https://cover.millie.co.kr/service/post/910367/661f81d5d2c48.jpg?f=webp&w=750&q=80" alt="" class="main_book_report_thumbnail_img">
+                      </div>
+                      <div class="main_book_report_content">
+                        <div class="main_book_report_content_title">제목제목제목제목제목제목제목제목제목제목제목제목</div>
+                        <p class="main_book_report_content_substance">내용내용내용내용내용내용내용내용내용내용내용내용내용</p>
+                      </div>
+                    </a>
+                    <a href="" class="main_book_report_writer_content">
+                      <div class="main_book_report_writer_content_icon"></div>
+                      <div class="main_book_report_writer_content_username">닉네임닉네임</div>
+                    </a>
+                  </div>
+                </li>
+                <li class="main_report_item">
+                  <div class="main_report_section_box">
+                    <a href="" class="main_report_detail_box">
+                      <div class="main_book_report_thumbnail">
+                        <img src="https://cover.millie.co.kr/service/post/910367/661f81d5d2c48.jpg?f=webp&w=750&q=80" alt="" class="main_book_report_thumbnail_img">
+                      </div>
+                      <div class="main_book_report_content">
+                        <div class="main_book_report_content_title">제목제목제목제목제목제목제목제목제목제목제목제목</div>
+                        <p class="main_book_report_content_substance">내용내용내용내용내용내용내용내용내용내용내용내용내용</p>
+                      </div>
+                    </a>
+                    <a href="" class="main_book_report_writer_content">
+                      <div class="main_book_report_writer_content_icon"></div>
+                      <div class="main_book_report_writer_content_username">닉네임닉네임</div>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main_deal">
+        <div class="main_deal_inner">
+          <h3 class="main_deal_title">방금 올라온 중고장터</h3>
+          <div class="main_deal_layout">
+            <ul class="main_deal_wrap">
+              <li class="main_deal_item">
+                <div class="main_deal_box">
+                  <a href="main_deal_book_imgbox"> <!--중고거래 게시글로 이동-->
+                    <div class="main_deal_book_thumbnail">
+                      <div class="main_deal_book_thumbnail_inner">
+                        <img src="https://cover.millie.co.kr/service/cover/179649369/3907cddd7d1f4d98b0a45b29dfad64be.jpg?w=145&q=80" alt="" class="main_deal_book_thumbnail_img">
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="main_deal_boox_content">
+                    <div class="main_deal_boox_content_box">
+                      <p class="title">제목제목</p>
+                      <p class="author">지은이</p>
+                      <p class="price">가격가격</p>
+                    </div>
+                  </a>
+                </div>
+              </li>
+              <li class="main_deal_item">
+                <div class="main_deal_box">
+                  <a href="main_deal_book_imgbox"> <!--중고거래 게시글로 이동-->
+                    <div class="main_deal_book_thumbnail">
+                      <div class="main_deal_book_thumbnail_inner">
+                        <img src="https://cover.millie.co.kr/service/cover/179649369/3907cddd7d1f4d98b0a45b29dfad64be.jpg?w=145&q=80" alt="" class="main_deal_book_thumbnail_img">
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="main_deal_boox_content">
+                    <div class="main_deal_boox_content_box">
+                      <p class="title">제목제목</p>
+                      <p class="author">지은이</p>
+                      <p class="price">가격가격</p>
+                    </div>
+                  </a>
+                </div>
+              </li>
+              <li class="main_deal_item">
+                <div class="main_deal_box">
+                  <a href="main_deal_book_imgbox"> <!--중고거래 게시글로 이동-->
+                    <div class="main_deal_book_thumbnail">
+                      <div class="main_deal_book_thumbnail_inner">
+                        <img src="https://cover.millie.co.kr/service/cover/179649369/3907cddd7d1f4d98b0a45b29dfad64be.jpg?w=145&q=80" alt="" class="main_deal_book_thumbnail_img">
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="main_deal_boox_content">
+                    <div class="main_deal_boox_content_box">
+                      <p class="title">제목제목</p>
+                      <p class="author">지은이</p>
+                      <p class="price">가격가격</p>
+                    </div>
+                  </a>
+                </div>
+              </li>
+                            <li class="main_deal_item">
+                <div class="main_deal_box">
+                  <a href="main_deal_book_imgbox"> <!--중고거래 게시글로 이동-->
+                    <div class="main_deal_book_thumbnail">
+                      <div class="main_deal_book_thumbnail_inner">
+                        <img src="https://cover.millie.co.kr/service/cover/179649369/3907cddd7d1f4d98b0a45b29dfad64be.jpg?w=145&q=80" alt="" class="main_deal_book_thumbnail_img">
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="main_deal_boox_content">
+                    <div class="main_deal_boox_content_box">
+                      <p class="title">제목제목</p>
+                      <p class="author">지은이</p>
+                      <p class="price">가격가격</p>
+                    </div>
+                  </a>
+                </div>
+              </li>
+              <li class="main_deal_item">
+                <div class="main_deal_box">
+                  <a href="main_deal_book_imgbox"> <!--중고거래 게시글로 이동-->
+                    <div class="main_deal_book_thumbnail">
+                      <div class="main_deal_book_thumbnail_inner">
+                        <img src="https://cover.millie.co.kr/service/cover/179649369/3907cddd7d1f4d98b0a45b29dfad64be.jpg?w=145&q=80" alt="" class="main_deal_book_thumbnail_img">
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="main_deal_boox_content">
+                    <div class="main_deal_boox_content_box">
+                      <p class="title">제목제목</p>
+                      <p class="author">지은이</p>
+                      <p class="price">가격가격</p>
+                    </div>
+                  </a>
+                </div>
+              </li> 
+              <li class="main_deal_item">
+                <div class="main_deal_box">
+                  <a href="main_deal_book_imgbox"> <!--중고거래 게시글로 이동-->
+                    <div class="main_deal_book_thumbnail">
+                      <div class="main_deal_book_thumbnail_inner">
+                        <img src="https://cover.millie.co.kr/service/cover/179649369/3907cddd7d1f4d98b0a45b29dfad64be.jpg?w=145&q=80" alt="" class="main_deal_book_thumbnail_img">
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="main_deal_boox_content">
+                    <div class="main_deal_boox_content_box">
+                      <p class="title">제목제목</p>
+                      <p class="author">지은이</p>
+                      <p class="price">가격가격</p>
+                    </div>
+                  </a>
+                </div>
+              </li> 
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 이벤트 바로가기 -->
+      <div class="main_event">
+        <div class="main_event_inner">
+          <div class="main_event_title">이벤트 바로가기</div>
+          <div class="main_event_content">
+            <ul class="main_event_content_layout">
+              <li class="main_event_content_box">
+                <a href="">
+                  <img src="https://active.ridibooks.com/ridibooks_banner/1714008524223_MjQwMzE0.png" alt="">
+                </a> <!--이벤트 페이지 이동-->
+              </li>
+              <li class="main_event_content_box">
+                <a href="">
+                  <img src="https://active.ridibooks.com/ridibooks_banner/1714008524223_MjQwMzE0.png" alt="">
+                </a> <!--이벤트 페이지 이동-->
+              </li>
+              <li class="main_event_content_box">
+                <a href="">
+                  <img src="https://active.ridibooks.com/ridibooks_banner/1714008524223_MjQwMzE0.png" alt="">
+                </a> <!--이벤트 페이지 이동-->
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="category_popup" id="category_wrap">
+        <!-- <div class="category_popup_inner"> -->
+          <section class="category_popup_inner_layout">
+            <section class="category_popup_content_layout">
+              <span class="category_popup_title">게시판</span>
+
+              <span class="category_popup_content">소설 쓰기</span>
+              <span class="category_popup_content">중고거래</span>
+              <span class="category_popup_content">독후감</span>
+              <span class="category_popup_content">자유</span>
+
+              <span class="category_popup_title2">쪽지</span>
+              <span class="category_popup_content">받은 쪽지함</span>
+              <span class="category_popup_content" style="margin-bottom: 40px">쪽지 보내기</span>
+
+              <span class="category_popup_title3">내 서재</span>
+              <span class="category_popup_title3">이벤트</span>
+              <span class="category_popup_title3">검색</span>
+              
+            </section>
+          </section>
+        <!-- </div>   -->
+      </div>
+    </div>  
+    </main>
+    <footer>
+      <div class="footer_inner">
+        <div class="footer_head">
+          <h1 class="footer_header_title">히포북</h1>
+          <ul class="footer_link">
+            <li class="footer_link_img">
+              <a href="" class="footer_link_insta"></a>
+             </li>  <!--인스타 바로가기 링크)-->
+            <li class="footer_link_img">
+              <a href="" class="footer_link_kakao"></a>
+            </li>  <!--인스타 바로가기 링크)-->
+          </ul>
+        </div>
+        <ul class="footer_services">
+          <li class="footer_services_content">
+            <a href="" class="footer_services_link">이용약관 ></a>
+          </li>
+          <li class="footer_services_content">
+            <a href="" class="footer_services_link">개인정보처리방침 ></a>
+          </li>
+          <li class="footer_services_content">
+            <a href="" class="footer_services_link">청소년보호정책 ></a>
+          </li>
+          <li class="footer_services_content">
+            <a href="" class="footer_services_link">고객센터 ></a>
+          </li>
+          <li class="footer_services_content">
+            <a href="" class="footer_services_link">환불신청 ></a>
+          </li>
+          <li class="footer_services_content">
+            <a href="" class="footer_services_link">내용내용 ></a>
+          </li>
+          <li class="footer_services_content">
+            <a href="" class="footer_services_link">내용내용 ></a>
+          </li>
+          <li class="footer_services_content">
+            <a href="" class="footer_services_link">내용내용 ></a>
+          </li>
+        </ul>
+        <p class="footer_copyright">Copyright © 2024 히포북 All Rights Reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
