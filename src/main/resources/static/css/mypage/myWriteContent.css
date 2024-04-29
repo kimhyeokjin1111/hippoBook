@@ -1,0 +1,326 @@
+@font-face {
+    font-family: "neon";
+    src: url("../font/SpoqaHanSansNeo_all/SpoqaHanSansNeo_TTF_original/SpoqaHanSansNeo-Bold.ttf");
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: neon;
+  }
+  header {
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+  }
+  .header_layout {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    margin: 0 225px;
+    width: 1440px;
+  }
+  
+  .header_logo {
+    width: 100px;
+    margin: 0;
+    z-index: 1;
+  }
+  
+  .header_logo_layout {
+    overflow: hidden;
+    display: block;
+    height: 50px;
+    width: 100%;
+    margin: 1px;
+  }
+  
+  .header_logo_images {
+    width: 100px;
+    height: 40px;
+  }
+  
+  .header_right_layout {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 10px;
+  }
+  
+  .header_right_alarm {
+    justify-content: center;
+    position: relative;
+    width: 24px;
+    height: 24px;
+  }
+  .header_right_login {
+    margin-left: 16px;
+  }
+  .header_right_login_box {
+    color: black;
+    background-color: #2bc1bf;
+    width: 80px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    font-size: 12px;
+    text-decoration: none;
+  }
+  
+  main {
+    max-width: unset;
+    padding: 0;
+  }
+  
+  .main_top {
+    position: sticky;
+    top: 65px;
+    z-index: 50;
+    width: 100%;
+    height: 44px;
+    border-bottom: 1px solid gray;
+  }
+  
+  .main_top_layout {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 24px;
+    margin: 0 200px;
+  }
+  
+  .main_top_category {
+    display: block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin-top: -1px;
+    margin-right: 12px;
+  }
+  .main_top_category_tap {
+    position: "relative";
+    left: 0;
+    top: 0;
+  }
+  
+  .main_top_category_list {
+    display: flex;
+  }
+  
+  li {
+    list-style: none;
+    padding: 11px 12px;
+    line-height: 22px;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  .profile {
+    display: flex;
+    padding: 0 160px 0 230px;
+    flex-direction: column;
+    background-color: rgba(42, 193, 188, 0.8);
+  }
+  
+  .profile-all {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 1440px;
+  }
+  
+  #profile-photo {
+    width: 64px;
+    height: 64px;
+    display: block;
+    border: solid grey;
+    border-width: 1px;
+    border-radius: 50px;
+    background-color: whitesmoke;
+  }
+  
+  #hippo {
+    width: 48px;
+    height: 48px;
+    margin-top: 8px;
+    margin-left: 7px;
+  }
+  
+  input[type="file"] {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  #profile-name {
+    display: flex;
+  }
+  
+  #follow {
+    display: flex;
+  }
+  
+  #follow span {
+    padding: 3px 3px;
+  }
+  
+  .mypage-cate {
+    display: flex;
+    padding: -1px 160px 0 160px;
+    margin: 0 230px;
+    width: 1440px;
+    border-bottom: 1px solid #2bc1bf;
+  }
+  
+  .mypage-cate a {
+    color: black;
+  }
+  
+  .mypage-cate > div {
+    padding: 10px;
+  }
+
+  .wirte-content-cate{
+    margin: auto;
+    padding-top: 10px;
+    display: flex;
+    width: 1440px;
+    height: 50px;
+  }
+
+  .wirte-content-cate > div{
+    margin: 10px;
+  }
+
+  
+
+  .review-content-btn{
+    background-color: #2bc1bf;
+    border: 1px solid #2bc1bf;
+    color: white;
+    border-radius: 20px;
+    height: 30px;
+    width: 80px;
+    cursor: pointer;
+  }
+
+  .post-content-btn{
+    background-color: white;
+    border: 1px solid #2bc1bf;
+    color: gray;
+    border-radius: 20px;
+    height: 30px;
+    width: 80px;
+    cursor: pointer;
+  }
+
+  .write-content-total-setting {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 1440px;
+    height: 50px;
+    margin: 8px auto;
+  }
+  
+  .write-content-setting-list {
+    display: flex;
+    align-items: center;
+  }
+  
+  .write-content-setting-list img {
+    width: 25px;
+    height: 25px;
+    opacity: 0.5;
+  }
+  
+  .write-content-setting-list-icon{
+    margin-top: 5px;
+    cursor: pointer;
+  }
+
+  .review-content-box-wrap{
+    width: 1440px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .review-content-box{
+    margin: 20px 84px;
+    border: 1px solid lightgray;
+    width: 550px;
+    height: 250px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .review-content-box-book-info{
+    width: 96.5%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 10px;
+    height: 100px;
+    background-color: rgb(248, 247, 247);
+    display: flex;
+  }
+
+  .review-content-box-title{
+    margin-left:20px;
+    margin-top: 20px;
+  }
+
+  .review-content-box-date{
+    margin-left:20px;
+    margin-top: 10px;
+    font-size: 11px;
+    color: gray;
+  }
+
+  .review-content-box-book-info-image{
+    display: flex;
+  }
+
+  .review-content-box-book-info-detail{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  .review-content-box-book-info-detail-writer{
+    font-size: 13px;
+    color: grey;
+  }
+
+  .review-content-box-book-info-image img{
+    margin-left: 10px;
+    width: 80px;
+    height: 100px;
+  }
+
+
+
+
+  .review-content-box-hart-count{
+    margin-top: 20px;
+    margin-left: 450px;
+    color: #2bc1bf;
+  }
+
+
+  footer{
+    height: 100px;
+  }
