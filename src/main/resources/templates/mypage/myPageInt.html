@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../myPageCss/myPageInt.css" />
+    <script defer src="../myPageJs/readingBook.js"></script>
+    <script defer src="../myPageJs/readingBookDeleteButton.js"></script>
+  </head>
+  <body>
+    <form action="">
+      <div>
+        <div>
+          <header>
+            <div class="header_layout">
+              <h1 class="header_logo">
+                <div class="header_logo_layout">
+                  <a href="">
+                    <!--홈페이지 버튼 -->
+                    <img
+                      src="../myPageImg/HippoBook_logo.png"
+                      alt=""
+                      class="header_logo_images"
+                    />
+                  </a>
+                </div>
+              </h1>
+              <div class="header_right_layout">
+                <a href="">
+                  <!-- 알람 페이지 이동  -->
+                  <img
+                    src="../myPageImg/alarm.png"
+                    alt=""
+                    class="header_right_alarm"
+                  />
+                </a>
+                <ul class="header_right_login">
+                  <a href="" class="header_right_login_box">로그인</a>
+                </ul>
+              </div>
+            </div>
+          </header>
+
+          <main>
+            <div class="main_top">
+              <div class="main_top_layout">
+                <a href="">
+                  <!-- 카테고리  -->
+                  <img
+                    src="../myPageImg/Category.png"
+                    alt=""
+                    class="main_top_category"
+                  />
+                </a>
+                <div class="main_top_category_tap">
+                  <ul class="main_top_category_list">
+                    <li>
+                      <a href="">내 서재</a>
+                      <!-- 내 서재 이동 -->
+                    </li>
+                    <li>
+                      <a href="">쪽지</a>
+                      <!-- 쪽지 이동 -->
+                    </li>
+                    <li>
+                      <a href="">검색</a>
+                      <!-- 검색 이동 -->
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </main>
+          <section class="profile">
+            <div class="profile-all">
+              <div id="profile-photo">
+                <input
+                  type="file"
+                  id="profile-image"
+                  name="profile-photo-file"
+                  accept="image/*"
+                />
+                <img
+                  id="hippo"
+                  src="../myPageImg/free-icon-hippo-3250992.png"
+                  alt=""
+                />
+              </div>
+              <div id="profile-name">
+                <h3>책먹는 하마</h3>
+                <span>님의 서재</span>
+              </div>
+              <div id="follow">
+                <span>팔로워 <span>0</span></span>
+                <span>팔로잉 <span>0</span></span>
+              </div>
+            </div>
+            <div id="my-favorite-book">
+              <img src="../myPageImg/인생책 이미지.png" alt="" />
+            </div>
+          </section>
+        </div>
+        <div>
+          <div class="mypage-cate">
+            <div><a href="">소개</a></div>
+            <div><a href="">책장</a></div>
+            <div><a href="">내 게시물</a></div>
+            <div><a href="">스티커 신청</a></div>
+            <div><a href="">관리</a></div>
+          </div>
+          <div id="introduce-content">
+            
+            <div class="introduce-pencil">
+              <h3>소개글</h3>
+              <img src="../myPageImg/free-icon-pencil-1828920.png" alt="" class="introduce-content-write">
+            </div>
+            <div>
+              <textarea name="" id="" cols="30" rows="10" placeholder="소개글을 작성해주세요(최대100자)" maxlength="100"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="mypage-book-cate">
+          <div id="mypage-book-cate-title">
+            <h5>내책장</h5>
+          </div>
+          <div id="mypage-book-cate-img">
+            <img
+              src="../myPageImg/free-icon-add-225156.png"
+              alt=""
+              class="reading-book-plus"
+            />
+
+            <img
+              src="../myPageImg/free-icon-recycle-bin-11081257.png"
+              alt=""
+              class="reading-book-delete-icon"
+            />
+          </div>
+        </div>
+        <div class="mybook-collection">
+          <div id="mybook-first">
+            <h5>읽고 있는 책</h5>
+
+            <div>
+              <span>지금 읽는 책을 담아주세요</span>
+            </div>
+          </div>
+
+          <div class="mybook-second">
+            <input
+              type="hidden"
+              name="readingBookDeleteCheck"
+              id="reading-book-delete-check"
+            />
+            <h5>읽고 있는 책</h5>
+            <div class="mybook-reading-select">
+              <div class="reading-book-img">
+                <img src="../myPageImg/책표지 예제.jpg" alt="" />
+              </div>
+              <div class="reading-book-infor">
+                <div id="reading-book-title">
+                  <span>제목</span>
+                </div>
+                <div id="reading-book-date">
+                  <span>읽기 시작한 날짜</span>
+                  <span>마지막으로 읽은 날짜</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+
+        </div>
+      </div>
+      <footer>
+        <div>
+          <button id="reading-book-delete-button">삭제하기</button>
+        </div>
+      </footer>
+    </form>
+    <section class="reading-book-plus-modal-bg">
+      <div class="reading-book-plus-box">
+        <div class="x-box"></div>
+        <h1>전체 도서</h1>
+        <form action="" class="reading-book-plus-form">
+          <div class="reading-book-plus-modal-book-img">
+            <div class="reading-book-img-check">
+              <input type="hidden" id="book-plus-check" />
+              <img src="../myPageImg/책표지 예제.jpg" alt="" />
+            </div>
+            <div class="reading-book-img-check">
+              <input type="hidden" id="book-plus-check" />
+              <img src="../myPageImg/책표지 예제.jpg" alt="" />
+            </div>
+            <div></div>
+          </div>
+          <div></div>
+
+          <div class="reading-book-plus-button">
+            <button type="submit">추가하기</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>
