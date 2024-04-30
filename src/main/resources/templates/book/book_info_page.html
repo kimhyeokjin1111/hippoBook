@@ -1,10 +1,10 @@
-`<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/book_info_page.css" />
-    <script defer src="../js/book_info_page.js"></script>
+    <link rel="stylesheet" th:href="@{/css/book/book_info_page.css}" />
+    <script defer th:href="@{/js/book/book_info_page.js}"></script>
     <title>Document</title>
   </head>
   <body>
@@ -13,7 +13,7 @@
       <main class="main__inner_container">
         <section class="main__book-preview-info-box">
           <div class="main__book-cover-box">
-            <img src="../img/test_book_cover.webp" alt="" />
+            <img th:src="@{/imgs/administrator/fragment/test_book_cover.webp}" alt="" />
           </div>
           <div class="main__book-related-info-box">
             <div class="book-simple-info">
@@ -112,20 +112,20 @@
         <section class="main__book-comment-content-box">
           <h3>
             <a href="">한 줄 리뷰<span>1</span></a>
-            <img src="../img/right-shi.png" alt="" />
+            <img th:src="@{/imgs/administrator/fragment/right-shi.png}" alt="" />
           </h3>
           <ul>
             <li>
               <div class="book__decl-box">
                 <p>test comment reviewer</p>
-                <img src="../img/decl.png" alt="" />
+                <img th:src="@{/imgs/administrator/fragment/decl.png}" alt="" />
               </div>
               <span>2024.04.24</span>
               <p class="book-comment-content">test comment content</p>
               <div class="book-comment-like-box">
                 <span>리뷰가 마음에 드시나요?</span
                 ><button>
-                  <img src="../img/heart_empty.png" alt="" /><span>0</span>
+                  <img src="/imgs/administrator/fragment/heart_empty.png" alt="" /><span>0</span>
                 </button>
               </div>
             </li>
