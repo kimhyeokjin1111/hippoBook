@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/admin_chart.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="../js/admin_chart.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <h1>히포북</h1>
+      <div>
+        <div><img src="../img/notice.png" alt="" /></div>
+        <div><img src="../img/menu_user.png" alt="" /></div>
+      </div>
+    </header>
+    <div>
+      <main>
+        <div class="main__sidebar">
+          <section class="main__sidebar-show">
+            <div>
+              <img
+                src="../img/left_arrow.png"
+                alt=""
+                class="main__sidebar--close-btn"
+              />
+            </div>
+          </section>
+          <section class="main__sidebar-content">
+            <div class="main__sidebar-content-icon">
+              <!-- a태그 경로 지정 -->
+              <ul>
+                <li>
+                  <a href=""><img src="../img/user.png" alt="" /></a>
+                </li>
+                <li class="active">
+                  <a href=""><img src="../img/chart.png" alt="" /></a>
+                </li>
+                <li>
+                  <a href=""><img src="../img/declaration.png" alt="" /></a>
+                </li>
+                <li>
+                  <a href=""><img src="../img/hippo.png" alt="" /></a>
+                </li>
+              </ul>
+            </div>
+            <div class="main__sidebar-conten-detail">
+              <!-- a태그 경로 지정 -->
+              <ul>
+                <li>
+                  <a href=""><span>회원 정보 조회</span></a>
+                </li>
+                <li class="active">
+                  <a href=""><span>방문수 통계 조회</span></a>
+                </li>
+                <li>
+                  <a href=""><span>신고글 관리</span></a>
+                </li>
+                <li>
+                  <a href=""><span>팔로우 스티커 승인</span></a>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </div>
+        <div class="main__center-container">
+          <div class="main__center-container-box">
+            <form action="">
+              <section class="main__center-container-box-search">
+                <div class="main__declaration-title-div">
+                  <h1>신고글 관리</h1>
+                </div>
+                <div>
+                  <table class="main__search-option">
+                    <colgroup>
+                      <col class="col1" />
+                      <col class="col2" />
+                    </colgroup>
+                    <tbody>
+                      <tr>
+                        <th>방문수 통계 조회</th>
+                        <td class="main__chart-search-date">
+                          <div>
+                            <label
+                              ><input
+                                type="radio"
+                                name="term"
+                                value="today"
+                              />오늘
+                            </label>
+                          </div>
+                          <div>
+                            <label
+                              ><input
+                                type="radio"
+                                name="term"
+                                value="today"
+                              />어제 
+                            </label>
+                          </div>
+                          <div>
+                            <label
+                              ><input
+                                type="radio"
+                                name="term"
+                                value="today"
+                              />3일
+                            </label>
+                          </div>
+                          <div>
+                            <label
+                              ><input
+                                type="radio"
+                                name="term"
+                                value="today"
+                              />7일
+                            </label>
+                          </div>
+                          <div>
+                            <label
+                              ><input
+                                type="radio"
+                                name="term"
+                                value="today"
+                              />1개월
+                            </label>
+                          </div>
+                          <div>
+                            <label
+                              ><input
+                                type="radio"
+                                name="term"
+                                value="today"
+                              />3개월
+                            </label>
+                          </div>
+                          <div>
+                            <label
+                              ><input
+                                type="radio"
+                                name="term"
+                                value="today"
+                              />6개월
+                          </div>
+                          <input
+                            type="date"
+                            name="startvisitDate"
+                            class="startDate"
+                          /><span>~</span
+                          ><input
+                            type="date"
+                            name="endvisitDate"
+                            class="endDate"
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="main__user-search-btn-div">
+                    <a href=""
+                      ><span class="main__user-search-btn">검색</span></a
+                    >
+                  </div>
+                </div>
+              </section>
+              <div class="main__chart-view-box">
+                <canvas id="visitChart" width="1000px" height="600px"></canvas>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
