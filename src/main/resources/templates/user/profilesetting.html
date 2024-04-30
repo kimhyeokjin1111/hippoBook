@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>프로필 설정 | 히포북</title>
-    <link rel="stylesheet" href="/css/user/login.css">
-    <link rel="stylesheet" href="/css/user/hepobook.css">
+    <link rel="stylesheet" th:href="@{/css/user/login.css}">
+    <link rel="stylesheet" th:href="@{/css/user/hippobook.css}">
 </head>
 <body data-theme="light">
     <div data-a-1120 id="wrap" class="web-mount">
@@ -19,12 +19,12 @@
 <!--                    </div>-->
 <!--                </div>-->
                 <div class="login-content">
-                    <img data-b-1130 class="logo-picture" src="../img/Logo.png" width="79px">
+                    <img data-b-1130 class="logo-picture" th:src="@{/images/user/Logo.png}" width="79px">
                     <h3 class="title">프로필 설정</h3>
                     <p class="sub-title">프로필을 설정한 회원이 독서 성공률이 높아요</p>
                     <div class="picture-box">
                         <div class="inner">
-                            <div class="image-box" style="background-image: url("Logo.png");"></div>
+                            <div class="image-box"></div>
                         <label class="picture-change-button">
                             <input type="file" id="file-input" accept=".jpg, .jpeg, .png, .gif, .heic">
                             변경
@@ -39,8 +39,7 @@
                                     <span id="input-245-label" class="label">
                                         필명
                                     </span>
-                                    <input autocomplete="off" id="input-245" aria-labelledby="input-245-label" aria-errormessage="input-245-message" type="text"
-                                    placeholder="필명 입력" class="mds-input-field">
+                                    <input autocomplete="off" id="input-245" aria-labelledby="input-245-label" type="text" placeholder="필명 입력" class="mds-input-field">
                                 </div>
                                 <button type="button" aria-label="내용 삭제" class="mds-icon--input-delete clear-button" style></button>
                             </div>

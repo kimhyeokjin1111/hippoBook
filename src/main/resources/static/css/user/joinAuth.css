@@ -79,3 +79,22 @@
 .mds-input[data-g-1180] {
   margin-bottom: 8px;
 }
+
+.login-container .agency-popup .contents {
+  margin-top: 8px;
+  flex: 1;
+}
+
+.login-container .agency-popup .contents li {
+  height: 48px;
+  font-size: 16px;
+  line-height: 48px;
+}
+
+.login-container .agency-popup .contents li button {
+  color: #555;
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-align: left;
+}
