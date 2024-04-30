@@ -84,7 +84,7 @@ main {
 
 .main_top {
   position: sticky;
-  top: 65px;
+  top: 63px;
   z-index: 5;
   width: 100%;
   height: 44px;
@@ -153,13 +153,10 @@ a {
   z-index: 10;
   background: rgba(0, 0, 0, 0.3);
 }
-/* .category_popup_inner {
-  max-width: 1440px;
-  height: 95%;
-  min-height: 500px;
-  max-height: 800px;
-  margin: 0 auto;
-} */
+/*.category_popup_inner {*/
+/*  max-width: 1440px;*/
+/*  margin: 0 auto;*/
+/*}*/
 
 .category_popup_inner_layout {
   overflow: hidden;
@@ -273,7 +270,6 @@ a {
   font-size: 16px;
   position: absolute;
   top: 50%;
-  pointer-events: auto;
   left: 0;
 }
 
@@ -293,7 +289,6 @@ a {
   font-size: 16px;
   position: absolute;
   top: 50%;
-  pointer-events: auto;
   right: 0;
 }
 
@@ -532,7 +527,6 @@ a {
 
 .rank_book_author {
   margin-bottom: 0;
-  color: var(--text-03);
   font-size: 14px;
   line-height: 18px;
 }
@@ -648,9 +642,7 @@ a {
 
 .novel_url {
   max-width: 100px;
-
   display: flex;
-  -ms-flex-align: end;
   align-items: flex-end;
 }
 
@@ -658,12 +650,6 @@ a {
   overflow: hidden;
   position: relative;
   width: inherit;
-  background: linear-gradient(
-    90deg,
-    var(--ui-05) 25%,
-    var(--ui-05) 37%,
-    var(--ui-05) 63%
-  );
   border-radius: 0 4px 4px 0;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1), 0 0 2px rgba(0, 0, 0, 0.2);
 }
@@ -714,7 +700,6 @@ a {
   word-wrap: break-word;
   margin-bottom: 3px;
   white-space: normal;
-  color: var(--text-01);
   font-weight: 700;
   font-size: 16px;
   max-height: 3em;
@@ -723,7 +708,6 @@ a {
 .novel_box_content_content {
   -webkit-line-clamp: 1;
   max-height: 1.35em;
-  color: var(--text-03);
   font-size: 14px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -741,15 +725,14 @@ a {
   bottom: 8px;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: column;
   flex-direction: column;
   min-height: 72px;
   padding: 16px;
   backdrop-filter: blur(40px);
   background: rgba(176, 179, 188, 0.1)
-    url(https://d3udu241ivsax2.cloudfront.net/v3/images/common/millie-logo-white.02b2313….svg)
-    no-repeat calc(100% - 16px) 16px;
+    url(https://d3udu241ivsax2.cloudfront.net/v3/images/common/millie-logo-white.02b2313….svg);
   border-radius: 12px;
+  cursor: pointer;
 }
 
 .novel_box_bottom_content {
@@ -758,8 +741,6 @@ a {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
   word-wrap: break-word;
   max-height: 1.35em;
 }
@@ -769,7 +750,6 @@ a {
   width: 100%;
   height: 212px;
   position: relative;
-  background-color: var(--ui-up-01);
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.06), 2px 2px 10px rgba(0, 0, 0, 0.04);
   border-radius: 12px;
   bottom: 210px;
@@ -786,7 +766,6 @@ a {
   width: 100%;
   height: 212px;
   position: relative;
-  background-color: var(--ui-up-01);
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.06), 2px 2px 10px rgba(0, 0, 0, 0.04);
   border-radius: 12px;
   left: 1000px;
@@ -804,7 +783,6 @@ a {
 
 .main_book_report_layout {
   overflow: hidden;
-  max-width: var(--today-width);
   margin: 0 auto;
   padding: 0 24px;
   position: relative;
@@ -829,7 +807,6 @@ a {
   word-break: keep-all;
   position: relative;
   font-size: 20px;
-  color: var(--text-01);
   font-weight: 700;
   width: 100%;
 }
@@ -865,7 +842,6 @@ a {
 .main_report_section_box {
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.06), 2px 2px 10px rgba(0, 0, 0, 0.04);
   overflow: hidden;
-  background-color: var(--ui-up-01);
   border-radius: 12px;
 }
 
@@ -951,7 +927,6 @@ a {
 
 .main_deal_layout {
   overflow: hidden;
-  cursor: grab;
   scrollbar-width: none;
   /* margin-top: -16px; */
 }
@@ -976,13 +951,13 @@ a {
   min-width: 125px;
 }
 
-.main_deal_book_imgbox {
-  display: flex;
-  align-items: flex-end;
-  min-height: auto;
-  padding-top: 0;
-  height: 100%;
-}
+/*.main_deal_book_imgbox {*/
+/*  display: flex;*/
+/*  align-items: flex-end;*/
+/*  min-height: auto;*/
+/*  padding-top: 0;*/
+/*  height: 100%;*/
+/*}*/
 
 .main_deal_book_thumbnail {
   position: relative;
@@ -995,12 +970,6 @@ a {
   overflow: hidden;
   position: relative;
   width: inherit;
-  background: linear-gradient(
-    90deg,
-    var(--ui-05) 25%,
-    var(--ui-05) 37%,
-    var(--ui-05) 63%
-  );
   border-radius: 0 4px 4px 0;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1), 0 0 2px rgba(0, 0, 0, 0.2);
 }
