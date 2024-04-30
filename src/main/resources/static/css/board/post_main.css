@@ -63,7 +63,7 @@ ul {
 }
 
 .option-span > span::after {
-  content: url('../img/search_down_bg.jpg');
+  content: url('/imgs/administrator/fragment/search_down_bg.jpg');
   position: relative;
   left: 50px;
   bottom: 2px;
@@ -230,21 +230,21 @@ ul {
 }
 
 .main__post-detail-info-box > ul > li:nth-child(1):before {
-  content: url('../img/like.png');
+  content: url('/imgs/administrator/fragment/like.png');
   position: relative;
   right: 8px;
   top: 1px;
 }
 
 .main__post-detail-info-box > ul > li:nth-child(2):before {
-  content: url('../img/write_date.png');
+  content: url('/imgs/administrator/fragment/write_date.png');
   position: relative;
   right: 8px;
   top: 1px;
 }
 
 .main__post-detail-info-box > ul > li:nth-child(3):before {
-  content: url('../img/view.png');
+  content: url('/imgs/administrator/fragment/view.png');
   position: relative;
   right: 8px;
   top: 1px;

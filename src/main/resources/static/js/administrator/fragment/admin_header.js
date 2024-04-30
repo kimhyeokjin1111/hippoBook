@@ -3,6 +3,9 @@
   let $adminInfo = document.querySelector(".header__admin-info");
   let $noticeInfo = document.querySelector(".header__notice-info");
 
+  console.log($adminInfo)
+  console.log($noticeInfo)
+
   $headerIcon.forEach((ele) => {
     ele.addEventListener("click", function () {
       console.log(this.dataset.name);

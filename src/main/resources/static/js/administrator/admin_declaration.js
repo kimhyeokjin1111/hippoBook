@@ -35,10 +35,10 @@
   $sidebarCloseBtn.addEventListener("click", function () {
     if ($sidebarDetail.classList.contains("sidebar-none")) {
       $sidebarDetail.classList.remove("sidebar-none");
-      this.src = "../img/left_arrow.png";
+      this.src = "/imgs/administrator/fragment/left_arrow.png";
     } else {
       $sidebarDetail.classList.add("sidebar-none");
-      this.src = "../img/right_arrow.png";
+      this.src = "/imgs/administrator/fragment/right_arrow.png";
     }
   });
 }

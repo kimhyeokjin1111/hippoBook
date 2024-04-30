@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../css/myPageInt_manage.css" />
-    <script defer src="../js/readingBook.js"></script>
-    <script defer src="../js/readingBookDeleteButton.js"></script>
-    <script defer src="../js/myPageInt_manage.js"></script>
+    <link rel="stylesheet" th:href="@{/css/mypage/myPageInt_manage.css}" />
+    <script defer th:src="@{js/mypage/readingBook.js}"></script>
+    <script defer th:src="@{js/mypage/readingBookDeleteButton.js}"></script>
+    <script defer th:src="@{js/mypage/myPageInt_manage.js}"></script>
   </head>
   <body>
     <form action="">
@@ -20,7 +20,7 @@
                   <a href="">
                     <!--홈페이지 버튼 -->
                     <img
-                      src="../myPageImg/HippoBook_logo.png"
+                      th:src="@{/images/mypage/HippoBook_logo.png}"
                       alt=""
                       class="header_logo_images"
                     />
@@ -30,8 +30,7 @@
               <div class="header_right_layout">
                 <a href="">
                   <!-- 알람 페이지 이동  -->
-                  <img
-                    src="../myPageImg/alarm.png"
+                  <img th:src="@{/images/mypage/alarm.png}"
                     alt=""
                     class="header_right_alarm"
                   />
@@ -48,8 +47,7 @@
               <div class="main_top_layout">
                 <a href="">
                   <!-- 카테고리  -->
-                  <img
-                    src="../myPageImg/Category.png"
+                  <img th:src="@{/images/mypage/Category.png}"
                     alt=""
                     class="main_top_category"
                   />
@@ -84,7 +82,7 @@
                 />
                 <img
                   id="hippo"
-                  src="../myPageImg/free-icon-hippo-3250992.png"
+                  th:src="@{/images/mypage/free-icon-hippo-3250992.png}"
                   alt=""
                 />
               </div>
@@ -98,7 +96,7 @@
               </div>
             </div>
             <div id="my-favorite-book">
-              <img src="../myPageImg/인생책 이미지.png" alt="" />
+              <img th:src="@{/images/mypage/인생책 이미지.png}" alt="" />
             </div>
           </section>
         </div>
@@ -115,7 +113,7 @@
       <div class="main__manage-content-container">
         <div class="main__manage-center-content-box">
           <div class="main__my-etc-info">
-            <img src="../img/menu_user.png" alt="">
+            <img th:src="@{/imgs/board/menu_user.png}" alt="">
             <h2>test nickname</h2>
             <p>test1234@naver.com</p>
             <button type="button">로그아웃</button>
