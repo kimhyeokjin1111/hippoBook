@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../myPageCss/myPageInt.css" />
-    <script defer src="../myPageJs/readingBook.js"></script>
-    <script defer src="../myPageJs/readingBookDeleteButton.js"></script>
+    <link rel="stylesheet" th:href="@{/css/mypage/myPageInt.css}" />
+    <script defer th:src="@{/js/mypage/readingBook.js}"></script>
+    <script defer th:src="@{/js/mypage/readingBookDeleteButton.js}"></script>
   </head>
   <body>
     <form action="">
@@ -83,7 +83,7 @@
                 />
                 <img
                   id="hippo"
-                  src="../myPageImg/free-icon-hippo-3250992.png"
+                  src="/images/mypage/free-icon-hippo-3250992.png"
                   alt=""
                 />
               </div>
@@ -97,7 +97,7 @@
               </div>
             </div>
             <div id="my-favorite-book">
-              <img src="../myPageImg/인생책 이미지.png" alt="" />
+              <img src="/images/mypage/인생책 이미지.png" alt="" />
             </div>
           </section>
         </div>
@@ -113,7 +113,7 @@
             
             <div class="introduce-pencil">
               <h3>소개글</h3>
-              <img src="../myPageImg/free-icon-pencil-1828920.png" alt="" class="introduce-content-write">
+              <img src="/images/mypage/free-icon-pencil-1828920.png" alt="" class="introduce-content-write">
             </div>
             <div>
               <textarea name="" id="" cols="30" rows="10" placeholder="소개글을 작성해주세요(최대100자)" maxlength="100"></textarea>
@@ -126,13 +126,13 @@
           </div>
           <div id="mypage-book-cate-img">
             <img
-              src="../myPageImg/free-icon-add-225156.png"
+              src="/images/mypage/free-icon-add-225156.png"
               alt=""
               class="reading-book-plus"
             />
 
             <img
-              src="../myPageImg/free-icon-recycle-bin-11081257.png"
+              src="/images/mypage/free-icon-recycle-bin-11081257.png"
               alt=""
               class="reading-book-delete-icon"
             />
@@ -156,7 +156,7 @@
             <h5>읽고 있는 책</h5>
             <div class="mybook-reading-select">
               <div class="reading-book-img">
-                <img src="../myPageImg/책표지 예제.jpg" alt="" />
+                <img src="/images/mypage/책표지 예제.jpg" alt="" />
               </div>
               <div class="reading-book-infor">
                 <div id="reading-book-title">
@@ -187,12 +187,12 @@
         <form action="" class="reading-book-plus-form">
           <div class="reading-book-plus-modal-book-img">
             <div class="reading-book-img-check">
-              <input type="hidden" id="book-plus-check" />
-              <img src="../myPageImg/책표지 예제.jpg" alt="" />
+              <input type="hidden" class="book-plus-check" />
+              <img src="/images/mypage/책표지 예제.jpg" alt="" />
             </div>
             <div class="reading-book-img-check">
-              <input type="hidden" id="book-plus-check" />
-              <img src="../myPageImg/책표지 예제.jpg" alt="" />
+              <input type="hidden" class="book-plus-check" />
+              <img src="/images/mypage/책표지 예제.jpg" alt="" />
             </div>
             <div></div>
           </div>
