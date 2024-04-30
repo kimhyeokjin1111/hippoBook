@@ -679,7 +679,7 @@ i {
 }
 
 .mds-icon--down-filled:before {
-  content: url("../../images/user/down.png");
+  /*content: url("../../images/user/down.png");*/
 }
 
 [class*=" mds-icon"]:before, [class^=mds-icon]:before {
@@ -901,4 +901,60 @@ sup {
   padding-top: 2px;
   font-size: 12px;
    color: #000000;
+}
+
+.mds-dialog.mds-dialog--bottom {
+  align-items: flex-end;
+}
+
+.mds-dialog.mds-dialog--bottom.mds-dialog--mobile .mds-dialog--wrap {
+  max-width: 460px;
+}
+
+.mds-dialog {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, .8);
+}
+
+.mds-dialog .mds-dialog--wrap {
+  overflow: hidden;
+  background-color: #5e5a5a;
+}
+
+.mds-dialog .mds-dialog--inner {
+  padding: 32px 24px;
+}
+
+.mds-dialog .mds-dialog--header {
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.mds-dialog .mds-dialog--header strong {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  color: #242424;
+}
+
+.mds-dialog .mds-dialog--header em{
+  display: block;
+  padding-bottom: 8px;
+  font-style: normal;
+  color: #6f6f6f;
+}
+
+[type=button], [type=reset], [type=submit], button {
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+  -webkit-appearance: button;
+  outline: 0;
 }

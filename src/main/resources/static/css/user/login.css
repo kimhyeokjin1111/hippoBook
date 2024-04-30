@@ -8,7 +8,7 @@
 .login-container:before {
   flex: 1;
   content: "";
-  background: url("../../images/user/BigLogo.png") no-repeat 50% / cover;
+  background: url("/images/user/BigLogo.png") no-repeat 50% / cover;
 }
 
 .light {
