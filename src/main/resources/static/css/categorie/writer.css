@@ -33,7 +33,7 @@
 
 .back {
   position: relative;
-  height: 43px;
+  height: 44px;
   max-width: var(--header-width);
   margin: 0 auto;
 }
@@ -50,8 +50,6 @@
 }
 
 .dropdown {
-  background: url(https://d3udu241ivsax2.cloudfront.net/v3/images/common/filter-arr.ed1470d047bb572e9725ee6be56f2618.png)
-    right 3px no-repeat;
   font-weight: 700;
   background-size: 16px;
   padding-right: 18px;
@@ -211,7 +209,7 @@
 .line {
   color: rgb(99, 97, 97);
 }
-.new-docentbooks {
-  top: 26px !important;
+.new-docentbooks{
+  top: 26px!important;
   text-indent: -9999em;
 }

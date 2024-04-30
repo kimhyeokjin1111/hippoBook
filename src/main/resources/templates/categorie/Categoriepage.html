@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>히포북</title>
-    <link rel="stylesheet" href="../css/page.css" />
+    <link rel="stylesheet" th:href="@{/css/categorie/Categoriepage.css}"/>
   </head>
   <body>
     <header>
@@ -14,7 +14,7 @@
              <!--홈페이지 버튼 -->
             <a href="">
               <img
-                src="../../static/images/book/HippoBook_logo.png"
+                th:src="@{/images/book/HippoBook_logo.png}"
                 alt=""
                 class="header_logo_images"
               />
@@ -24,7 +24,7 @@
         <div class="header_right_layout">
           <a href="">
             <!-- 알람 페이지 이동  -->
-            <img src="../../static/images/book/alarm.png" alt="" class="header_right_alarm" />
+            <img th:src="@{/images/book/alarm.png}" alt="" class="header_right_alarm" />
           </a>
           <!-- 로그인 박스 -->
           <ul class="header_right_login">
@@ -41,7 +41,7 @@
           <a href="">
             <!-- 카테고리  -->
             <img
-              src="/20240419dd/images/Category.png"
+              th:src="@{/images/book/Category.png}"
               alt=""
               class="main_top_category"
             />
@@ -57,7 +57,7 @@
                 <!-- 쪽지 이동 -->
               </li>
               <li>
-                <a href="">검색</a>
+                <a href="http://localhost:10000/categorie/Categoriepage">검색</a>
                 <!-- 검색 이동 -->
               </li>
             </ul>
@@ -70,26 +70,6 @@
               <input class="rrrr" type="text" placeholder="검색어 입력" />
             </div>
       </div>
-      <!-- <section class="content">
-      <section class="search-container">
-      <div class="search">
-        <input class="rrrr" type="text" placeholder="검색어 입력" />
-      </div> -->
-      <!-- <div class="search">
-        <div class="index">
-          <article class="inner">
-            <div class="area">
-              <input
-                type="button"
-                class="img-button"
-                onclick="alert(`클릭!`)"
-              />
-              <div class="mds-input"></div>
-            </div>
-            <hr />
-          </article>
-        </div>
-      </div> --> 
       <div>&ensp;</div>
       <div>&ensp;</div>
       <div>&ensp;</div>   
@@ -107,7 +87,7 @@
           <h2 class="title">카테고리</h2>
           <ul class="category-list">
             <li class="category-box" onclick="">
-              <a href="http://127.0.0.1:5500/20240419dd/html/project02.html">
+              <a href="http://localhost:10000/categorie/content">
                 <div class="metadata">
                   <strong>도슨트북</strong>
                   <p>스토리 요약부터 해설까지, 도슨트와 함께 하는 편한 독서</p>
@@ -331,7 +311,7 @@
           <h2>작가의 책 모아보기</h2>
           <ul class="category-list">
             <li class="listt">
-              <a href="" class="aaaa">
+              <a href="http://localhost:10000/categorie/writer" class="aaaa">
                 <p class="jj">#박상영</p>
               </a>
             </li>
@@ -437,7 +417,7 @@
           <p class="sub-title">밀리가 만드는 다양한 아티클을 확인해보세요!</p>
           <ul class="category-list">
             <li class="listt">
-              <a href="http://127.0.0.1:5500/20240419dd/html/project03.html">
+              <a href="http://localhost:10000/categorie/collection">
                 <img
                   src="https://d2j6uvfek9vas1.cloudfront.net/common_banner/63fca3561028f.jpg"
                   alt="책-잇"
