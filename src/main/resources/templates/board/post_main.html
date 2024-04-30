@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/post_main.css" />
-    <script defer src="../js/post_main.js"></script>
+    <link rel="stylesheet" th:href="@{/css/board/post_main.css}" />
+    <script defer th:href="@{/js/board/post_main.js}"></script>
     <title>Document</title>
   </head>
   <body>
@@ -226,10 +226,10 @@
           </div>
           <div class="main__post-page-btn-box">
             <span
-              ><a href=""><img src="../img/double_left-sh.png" alt="" /></a
+              ><a href=""><img th:src="@{/imgs/administrator/fragment/double_left-sh.png}" alt="" /></a
             ></span>
             <span
-              ><a href=""><img src="../img/left_sh.png" alt="" /></a
+              ><a href=""><img th:src="@{/imgs/administrator/fragment/left_sh.png}" alt="" /></a
             ></span>
             <a href="">1</a>
             <a href="">2</a>
@@ -242,10 +242,10 @@
             <a href="">9</a>
             <a href="">10</a>
             <span
-              ><a href=""><img src="../img/right-sh.png" alt="" /></a
+              ><a href=""><img th:src="@{/imgs/administrator/fragment/right-sh.png}" alt="" /></a
             ></span>
             <span
-              ><a href=""><img src="../img/double-right-sh.png" alt="" /></a
+              ><a href=""><img th:src="@{/imgs/administrator/fragment/double-right-sh.png}" alt="" /></a
             ></span>
           </div>
         </main>

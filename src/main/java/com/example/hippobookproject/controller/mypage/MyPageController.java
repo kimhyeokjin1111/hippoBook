@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Slf4j
 @Controller
-@RequestMapping("/my-page")
+@RequestMapping("/mypage")
 @RequiredArgsConstructor
 public class MyPageController {
     @GetMapping("/int")
@@ -22,7 +22,27 @@ public class MyPageController {
     }
 
     @GetMapping("/book/write-content")
-    public String bookWriteContent(){
+    public String bookWriteContent() {
         return "/mypage/myWriteContent";
+    }
+
+    @GetMapping("/sticker")
+    public String myPageSticker(){
+        return "mypage/myPageInt_stiker";
+    }
+
+    @GetMapping("/manage")
+    public String myPageManage(){
+        return "mypage/myPageInt_manage";
+    }
+
+    @GetMapping("/modify")
+    public String myPageModify(){
+        return "mypage/myPageInt_modify";
+    }
+
+    @GetMapping("/secession")
+    public String myPageSecession(){
+        return "mypage/myPageInt_secession";
     }
 }

@@ -1,27 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/admin_user.css" />
-    <script defer src="../js/admin_user.js"></script>
+    <link rel="stylesheet" th:href="@{/css/administrator/admin_user.css}" />
+    <script defer th:src="@{/js/administrator/admin_user.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/administrator/fragment/admin_header.css}" />
+    <script defer th:src="@{/js/administrator/fragment/admin_header.js}"></script>
     <title>Document</title>
   </head>
   <body>
-    <header>
-      <h1>히포북</h1>
-      <div>
-        <div><img src="../img/notice.png" alt="" /></div>
-        <div><img src="../img/menu_user.png" alt="" /></div>
-      </div>
-    </header>
+  <header th:replace="~{/administrator/fragment/admin_header :: header}">
+
+  </header>
     <div>
       <main>
         <div class="main__sidebar">
           <section class="main__sidebar-show">
             <div>
               <img
-                src="../img/left_arrow.png"
+                th:src="@{/imgs/administrator/fragment/left_arrow.png}"
                 alt=""
                 class="main__sidebar--close-btn"
               />
@@ -32,16 +30,16 @@
               <!-- a태그 경로 지정 -->
               <ul>
                 <li class="active">
-                  <a href=""><img src="../img/user.png" alt="" /></a>
+                  <a href=""><img th:src="@{/imgs/administrator/fragment/user.png}" alt="" /></a>
                 </li>
                 <li>
-                  <a href=""><img src="../img/chart.png" alt="" /></a>
+                  <a href=""><img th:src="@{/imgs/administrator/fragment/chart.png}" alt="" /></a>
                 </li>
                 <li>
-                  <a href=""><img src="../img/declaration.png" alt="" /></a>
+                  <a href=""><img th:src="@{/imgs/administrator/fragment/declaration.png}" alt="" /></a>
                 </li>
                 <li>
-                  <a href=""><img src="../img/hippo.png" alt="" /></a>
+                  <a href=""><img th:src="@{/imgs/administrator/fragment/hippo.png}" alt="" /></a>
                 </li>
               </ul>
             </div>
@@ -182,7 +180,7 @@
                   </div>
                   <div class="main__user-out-btn-box">
                     <button type="button" class="main__user-delete-btn">
-                      <span><img src="../img/delete.png" alt="" /></span
+                      <span><img th:src="@{/imgs/administrator/fragment/delete.png}" alt="" /></span
                       >탈퇴/삭제
                     </button>
                   </div>

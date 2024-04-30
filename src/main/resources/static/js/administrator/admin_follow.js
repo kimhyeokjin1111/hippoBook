@@ -21,3 +21,21 @@
     }
   });
 }
+
+{
+  // 사이드바 열고 닫기 이벤트
+  let $sidebarCloseBtn = document.querySelector(".main__sidebar--close-btn");
+  let $sidebarDetail = document.querySelector(".main__sidebar-conten-detail");
+
+  // console.log($sidebarCloseBtn);
+  // console.log($sidebarDetail);
+  $sidebarCloseBtn.addEventListener("click", function () {
+    if ($sidebarDetail.classList.contains("sidebar-none")) {
+      $sidebarDetail.classList.remove("sidebar-none");
+      this.src = "/imgs/administrator/fragment/left_arrow.png";
+    } else {
+      $sidebarDetail.classList.add("sidebar-none");
+      this.src = "/imgs/administrator/fragment/right_arrow.png";
+    }
+  });
+}

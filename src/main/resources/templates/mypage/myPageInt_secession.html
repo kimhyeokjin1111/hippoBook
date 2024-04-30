@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../css/myPageInt_modify.css" />
-    <script defer src="../js/readingBook.js"></script>
-    <script defer src="../js/readingBookDeleteButton.js"></script>
-    <script defer src="../js/myPageInt_manage.js"></script>
+    <link rel="stylesheet" th:href="@{/css/mypage/myPageInt_secession.css}"/>
+    <script defer th:src="@{js/mypage/readingBook.js}"></script>
+    <script defer th:src="@{js/mypage/readingBookDeleteButton.js}"></script>
   </head>
   <body>
     <form action="">
@@ -19,8 +18,7 @@
                 <div class="header_logo_layout">
                   <a href="">
                     <!--홈페이지 버튼 -->
-                    <img
-                      src="../myPageImg/HippoBook_logo.png"
+                    <img th:src="@{/images/mypage/HippoBook_logo.png}"
                       alt=""
                       class="header_logo_images"
                     />
@@ -30,8 +28,7 @@
               <div class="header_right_layout">
                 <a href="">
                   <!-- 알람 페이지 이동  -->
-                  <img
-                    src="../myPageImg/alarm.png"
+                  <img th:src="@{/images/mypage/alarm.png}"
                     alt=""
                     class="header_right_alarm"
                   />
@@ -48,8 +45,7 @@
               <div class="main_top_layout">
                 <a href="">
                   <!-- 카테고리  -->
-                  <img
-                    src="../myPageImg/Category.png"
+                  <img th:src="@{/images/mypage/Category.png}"
                     alt=""
                     class="main_top_category"
                   />
@@ -84,7 +80,7 @@
                 />
                 <img
                   id="hippo"
-                  src="../myPageImg/free-icon-hippo-3250992.png"
+                  th:src="@{/images/mypage/free-icon-hippo-3250992.png}"
                   alt=""
                 />
               </div>
@@ -98,7 +94,7 @@
               </div>
             </div>
             <div id="my-favorite-book">
-              <img src="../myPageImg/인생책 이미지.png" alt="" />
+              <img th:src="@{/images/mypage/인생책 이미지.png}" alt="" />
             </div>
           </section>
         </div>
@@ -112,42 +108,26 @@
           </div>
         </div>
       </div>
-      <div class="main__myInfo-modi-out-container">
-        <div class="main__myInfo-modi-in-container">
-          <div class="main__myInfo-title-box">
-            <h3>개인정보 수정</h3>
-          </div>
-          <div class="main__myInfo-modify-boxs">
-            <label class="main__myInfo-modify-label">
-              <div class="modify-input-box myInfo-modify-id">
-              <span>아이디*</span>
-              <input type="text" name="loginId">
+      <div class="main__secession-content-container">
+        <div class="main__secession-center-content-box">
+          <div class="main__my-reading-info-box">
+            <h3>회원 탈퇴</h3>
+            <div class="main__my-reading-info-div">
+              <h2 class="my-reading-info-nickname"><span >test nickname</span>의 서재</h2>
+              <hr>
+              <p><span>서재에 기록된 도서</span><span><strong>0</strong>권</span></p>
+              <p><span>서재에 기록된 리뷰</span><span><strong>0</strong>개</span></p>
             </div>
-             </label>
-             <p>사용할 수 없는 아이디입니다.</p>
           </div>
-          <div class="main__myInfo-modify-boxs">
-            <label class="main__myInfo-modify-label">
-              <div class="modify-input-box myInfo-modify-nn">
-              <span>닉네임*</span>
-              <input type="text" name="nickname">
-            </div>
-            </label>
-            <p>사용할 수 없는 닉네임입니다.</p>
-          </div>
-          <div class="main__myInfo-modify-boxs">
-            <label class="main__myInfo-modify-label">
-              <div class="modify-input-box myInfo-modify-pw">
-              <span>비밀번호*</span>
-              <input type="password" name="password">
-            </div>
-            </label>
-            <ul class="modify-password-warm">
-              <li><span>영문 대/소문자</span></li>
-              <li><span>숫자</span></li>
-              <li><span>특수문자</span></li>
-              <li><span>8-20자</span></li>
-          </ul>
+          <div class="main__secession-description-content-box">
+            <p>탈퇴 시 유의사항</p>
+            <ul>
+              <li>탈퇴를 하실 경우 기존 서재에 대한 복구는 불가능하며, 로그인이 필요한 모든 서비스를 이용하실 수 없습니다.</li>
+              <li>탈퇴를 하실 경우 계정과 함께 마일리지가 소멸됩니다. 원치 않으실 경우 마일리지 이용 후 탈퇴해 주시기 바랍니다.</li>
+              <li>탈퇴 시에도 회원님이 작성하신 포스트, 댓글을 포함한 모든 게시물은 자동 삭제되지 않습니다. 노출을 원치 않으시면 반드시 미리 삭제하신 후 탈퇴해주세요.</li>
+            </ul>
+            <p><input type="checkbox" id="secession-agree-check"><label for="secession-agree-check">회원 탈퇴에 관한 모든 내용을 숙지하였고, 회원 탈퇴를 신청합니다.</label></p>
+            <div><button>돌아가기</button><button>탈퇴하기</button></div>
           </div>
         </div>
       </div>
