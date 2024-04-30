@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../letterCss/letterView.css" />
-    <script defer src="../letterJs/letterView.js"></script>
+    <link rel="stylesheet" th:href="@{/css/message/letterWrite.css}" />
   </head>
   <body>
     <form action="">
@@ -16,7 +15,7 @@
               <a href="">
                 <!--홈페이지 버튼 -->
                 <img
-                  src="../myPageImg/HippoBook_logo.png"
+                  src="/images/message/HippoBook_logo.png"
                   alt=""
                   class="header_logo_images"
                 />
@@ -70,31 +69,54 @@
         </div>
       </main>
     </form>
-
+    <section>
+      <div>
+        <h1>쪽지 보내기</h1>
+      </div>
+    </section>
     <div class="letter-middle-line"></div>
     <form action="">
       <div class="letter-cate">
         <div class="letter-cate-box">
+          
       
         </div>
       </div>
     </form>
-    <div class="letter-wrap-all">
-      <div class="letter-wrap">
-        <div class="letter-header">
-          <h2 class="letter-title">제목</h2>
-          <p class="letter-info">
-            작성자: <span>홍길동</span> | 보낸날짜: <span>2014.03.26</span>
-          </p>
+    <form action="">
+      <div>
+        <div id="letter-warning">
+          <span>*표시는 필수적으로 입력해야 하는 항목입니다.</span>
+        </div>
+        <div class="letter-box-outline">
+          <div class="letter-id-box">
+            <div class="letter-id-box-title">
+              <h3>아이디 *</h3>
+            </div>
+            <div class="letter-id-box-input">
+              <input type="text" id="letter-id-text" />
+              <input type="button" value="닉네임검색" id="letter-id-button" />
+            </div>
+          </div>
+          <div class="letter-content-box-all">
+            <div class="letter-content-box-title">
+              <h3>내용 *</h3>
+            </div>
+            <div class="letter-content-box-content">
+              <textarea
+                name="letter-content"
+                id=""
+                cols="100"
+                rows="20"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="send-btn">
+          <button type="submit" class="submit-btn">전송하기</button>
         </div>
       </div>
-      <div class="letter-content"><span>내용</span></div>
-    </div>
-
-    <div class="letter-reply-box">
-      <button type="button" class="letter-reply">답장하기</button>
-      <button type="button" class="letter-back">뒤로가기</button>
-    </div>
+    </form>
     <footer>
       <div></div>
     </footer>

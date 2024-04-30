@@ -1,195 +1,195 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../myPageCss/myWriteContent.css">
-    <script defer src="../myPageJs/myWriteContent.js"></script>
+    <link rel="stylesheet" th:href="@{/css/mypage/myWriteContent.css}">
+    <script defer th:src="@{/js/mypage/myWriteContent.js}"></script>
 </head>
 <body>
-    <form action="">
-        <div>
-          <div>
-            <header>
-              <div class="header_layout">
-                <h1 class="header_logo">
-                  <div class="header_logo_layout">
+
+
+<div>
+    <header>
+        <div class="header_layout">
+            <h1 class="header_logo">
+                <div class="header_logo_layout">
                     <a href="">
-                      <!--홈페이지 버튼 -->
-                      <img
-                        src="../myPageImg/HippoBook_logo.png"
-                        alt=""
-                        class="header_logo_images"
-                      />
+                        <!--홈페이지 버튼 -->
+                        <img
+                                src="../myPageImg/HippoBook_logo.png"
+                                alt=""
+                                class="header_logo_images"
+                        />
                     </a>
-                  </div>
-                </h1>
-                <div class="header_right_layout">
-                  <a href="">
+                </div>
+            </h1>
+            <div class="header_right_layout">
+                <a href="">
                     <!-- 알람 페이지 이동  -->
                     <img
-                      src="../myPageImg/alarm.png"
-                      alt=""
-                      class="header_right_alarm"
+                            src="../myPageImg/alarm.png"
+                            alt=""
+                            class="header_right_alarm"
                     />
-                  </a>
-                  <ul class="header_right_login">
+                </a>
+                <ul class="header_right_login">
                     <a href="" class="header_right_login_box">로그인</a>
-                  </ul>
-                </div>
-              </div>
-            </header>
-  
-            <main>
-              <div class="main_top">
-                <div class="main_top_layout">
-                  <a href="">
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="main_top">
+            <div class="main_top_layout">
+                <a href="">
                     <!-- 카테고리  -->
                     <img
-                      src="../myPageImg/Category.png"
-                      alt=""
-                      class="main_top_category"
+                            src="../myPageImg/Category.png"
+                            alt=""
+                            class="main_top_category"
                     />
-                  </a>
-                  <div class="main_top_category_tap">
+                </a>
+                <div class="main_top_category_tap">
                     <ul class="main_top_category_list">
-                      <li>
-                        <a href="">내 서재</a>
-                        <!-- 내 서재 이동 -->
-                      </li>
-                      <li>
-                        <a href="">쪽지</a>
-                        <!-- 쪽지 이동 -->
-                      </li>
-                      <li>
-                        <a href="">검색</a>
-                        <!-- 검색 이동 -->
-                      </li>
+                        <li>
+                            <a href="">내 서재</a>
+                            <!-- 내 서재 이동 -->
+                        </li>
+                        <li>
+                            <a href="">쪽지</a>
+                            <!-- 쪽지 이동 -->
+                        </li>
+                        <li>
+                            <a href="">검색</a>
+                            <!-- 검색 이동 -->
+                        </li>
                     </ul>
-                  </div>
                 </div>
-              </div>
-            </main>
-            <section class="profile">
-              <div class="profile-all">
-                <div id="profile-photo">
-                  <input
-                    type="file"
-                    id="profile-image"
-                    name="profile-photo-file"
-                    accept="image/*"
-                  />
-                  <img
-                    id="hippo"
-                    src="../myPageImg/free-icon-hippo-3250992.png"
-                    alt=""
-                  />
-                </div>
-                <div id="profile-name">
-                  <h3>책먹는 하마</h3>
-                  <span>님의 서재</span>
-                </div>
-                <div id="follow">
-                  <span>팔로워 <span>0</span></span>
-                  <span>팔로잉 <span>0</span></span>
-                </div>
-              </div>
-              <div id="my-favorite-book">
-                <img src="../myPageImg/인생책 이미지.png" alt="" />
-              </div>
-            </section>
-          </div>
-          <div>
-            <div class="mypage-cate">
-              <div><a href="">소개</a></div>
-              <div><a href="">책장</a></div>
-              <div><a href="">내 게시물</a></div>
-              <div><a href="">스티커 신청</a></div>
-              <div><a href="">관리</a></div>
             </div>
-
-            <section class="wirte-content-cate-line">
-              <form action="">
-                <div class="wirte-content-cate">
-                  <div>
+        </div>
+    </main>
+    <section class="profile">
+        <div class="profile-all">
+            <div id="profile-photo">
+                <input
+                        type="file"
+                        id="profile-image"
+                        name="profile-photo-file"
+                        accept="image/*"
+                />
+                <img
+                        id="hippo"
+                        src="/images/mypage/free-icon-hippo-3250992.png"
+                        alt=""
+                />
+            </div>
+            <div id="profile-name">
+                <h3>책먹는 하마</h3>
+                <span>님의 서재</span>
+            </div>
+            <div id="follow">
+                <span>팔로워 <span>0</span></span>
+                <span>팔로잉 <span>0</span></span>
+            </div>
+        </div>
+        <div id="my-favorite-book">
+            <img src="/images/mypage/인생책 이미지.png" alt=""/>
+        </div>
+    </section>
+</div>
+<div>
+    <div class="mypage-cate">
+        <div><a href="">소개</a></div>
+        <div><a href="">책장</a></div>
+        <div><a href="">내 게시물</a></div>
+        <div><a href="">스티커 신청</a></div>
+        <div><a href="">관리</a></div>
+    </div>
+</div>
+    <section class="wirte-content-cate-line">
+        <form action="">
+            <div class="wirte-content-cate">
+                <div>
                     <button type="button" class="review-content-btn"><p>한 줄 리뷰</p></button>
-                  </div>
-                  <div>
+                </div>
+                <div>
                     <button type="button" class="post-content-btn">포스트</button>
-                  </div>
                 </div>
-              </form>
-            </section>
-            <form action="">
-              <section>
-                  <div class="write-content-total-setting">
-                      <div>
-                          <span>총 2개</span>
-                      </div>
-                      <div class="write-content-setting-list">
-                           
-                          <div class="write-content-setting-list-icon">
-                              
-                          </div>
-                      </div>
-                  </div>
-              </section>
-          </form>
+            </div>
+        </form>
+    </section>
+    <form action="">
+        <section>
+            <div class="write-content-total-setting">
+                <div>
+                    <span>총 2개</span>
+                </div>
+                <div class="write-content-setting-list">
 
-          <section>
-            <form action="">
-              <div class="review-content-box-wrap">
-                <div class="review-content-box">
-                  <div class="review-content-box-title"><span>내용 입니다</span></div>
-                  <div class="review-content-box-date"><span>날짜 입니다</span></div>
-                  <div class="review-content-box-book-info">
-                    <div class="review-content-box-book-info-image">
-                      <img src="../myPageImg/책표지 예제2.jpg" alt="">
-                      <div class="review-content-box-book-info-detail">
-                        <div><span>책제목 입니다</span></div>
-                        <div class="review-content-box-book-info-detail-writer"><span>글쓴이 입니다</span></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="review-content-box-hart-count"><span>좋아요 개수</span></div>
-                </div>
-              
+                    <div class="write-content-setting-list-icon">
 
-                <div class="review-content-box">
-                  <div class="review-content-box-title"><span>내용 입니다</span></div>
-                  <div class="review-content-box-date"><span>날짜 입니다</span></div>
-                  <div class="review-content-box-book-info">
-                    <div class="review-content-box-book-info-image">
-                      <img src="../myPageImg/책표지 예제3.jpg" alt="">
-                      <div class="review-content-box-book-info-detail">
-                        <div><span>책제목 입니다</span></div>
-                        <div class="review-content-box-book-info-detail-writer"><span>글쓴이 입니다</span></div>
-                      </div>
                     </div>
-                  </div>
-                  <div class="review-content-box-hart-count"><span>좋아요 개수</span></div>
                 </div>
+            </div>
+        </section>
+    </form>
+
+    <section>
+        <form action="">
+            <div class="review-content-box-wrap">
+                <div class="review-content-box">
+                    <div class="review-content-box-title"><span>내용 입니다</span></div>
+                    <div class="review-content-box-date"><span>날짜 입니다</span></div>
+                    <div class="review-content-box-book-info">
+                        <div class="review-content-box-book-info-image">
+                            <img src="/images/mypage/책표지 예제2.jpg" alt="">
+                            <div class="review-content-box-book-info-detail">
+                                <div><span>책제목 입니다</span></div>
+                                <div class="review-content-box-book-info-detail-writer"><span>글쓴이 입니다</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-content-box-hart-count"><span>좋아요 개수</span></div>
+                </div>
+
 
                 <div class="review-content-box">
-                  <div class="review-content-box-title"><span>내용 입니다</span></div>
-                  <div class="review-content-box-date"><span>날짜 입니다</span></div>
-                  <div class="review-content-box-book-info">
-                    <div class="review-content-box-book-info-image">
-                      <img src="../myPageImg/책표지 예제3.jpg" alt="">
-                      <div class="review-content-box-book-info-detail">
-                        <div><span>책제목 입니다</span></div>
-                        <div class="review-content-box-book-info-detail-writer"><span>글쓴이 입니다</span></div>
-                      </div>
+                    <div class="review-content-box-title"><span>내용 입니다</span></div>
+                    <div class="review-content-box-date"><span>날짜 입니다</span></div>
+                    <div class="review-content-box-book-info">
+                        <div class="review-content-box-book-info-image">
+                            <img src="/images/mypage/책표지 예제3.jpg" alt="">
+                            <div class="review-content-box-book-info-detail">
+                                <div><span>책제목 입니다</span></div>
+                                <div class="review-content-box-book-info-detail-writer"><span>글쓴이 입니다</span></div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                  <div class="review-content-box-hart-count"><span>좋아요 개수</span></div>
+                    <div class="review-content-box-hart-count"><span>좋아요 개수</span></div>
                 </div>
 
-              </div>
-                </form>
-                
-          </section>
-          <footer></footer>
+                <div class="review-content-box">
+                    <div class="review-content-box-title"><span>내용 입니다</span></div>
+                    <div class="review-content-box-date"><span>날짜 입니다</span></div>
+                    <div class="review-content-box-book-info">
+                        <div class="review-content-box-book-info-image">
+                            <img src="/images/mypage/책표지 예제3.jpg" alt="">
+                            <div class="review-content-box-book-info-detail">
+                                <div><span>책제목 입니다</span></div>
+                                <div class="review-content-box-book-info-detail-writer"><span>글쓴이 입니다</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-content-box-hart-count"><span>좋아요 개수</span></div>
+                </div>
+
+            </div>
+        </form>
+
+    </section>
+    <footer></footer>
 </body>
 </html>
