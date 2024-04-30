@@ -204,6 +204,15 @@ input[type="file"] {
   overflow: hidden;
 }
 
+.introduce-save-btn{
+  color: white;
+  width: 80px;
+  opacity: 0.8;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .introduce-pencil{
   display: flex;
