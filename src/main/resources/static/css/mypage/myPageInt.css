@@ -1,6 +1,6 @@
 @font-face {
   font-family: "neon";
-  src: url("../font/SpoqaHanSansNeo_all/SpoqaHanSansNeo_TTF_original/SpoqaHanSansNeo-Bold.ttf");
+  src: url("");
 }
 
 * {
@@ -125,6 +125,7 @@ a {
   padding: 0 160px 0 230px;
   flex-direction: column;
   background-color: rgba(42, 193, 188, 0.8);
+  box-shadow: 0 5px 5px -2px gray;
 }
 
 .profile-all {
