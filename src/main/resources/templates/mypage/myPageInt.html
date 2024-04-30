@@ -7,6 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/mypage/myPageInt.css}" />
     <script defer th:src="@{/js/mypage/readingBook.js}"></script>
     <script defer th:src="@{/js/mypage/readingBookDeleteButton.js}"></script>
+    <script defer th:src="@{/js/mypage/myPageInt.js}"></script>
   </head>
   <body>
     <form action="">
@@ -116,7 +117,8 @@
               <img src="/images/mypage/free-icon-pencil-1828920.png" alt="" class="introduce-content-write">
             </div>
             <div>
-              <textarea name="" id="" cols="30" rows="10" placeholder="소개글을 작성해주세요(최대100자)" maxlength="100"></textarea>
+              <textarea name="" class="introduce-text-content" cols="30" rows="10" placeholder="소개글을 작성해주세요(최대100자)" maxlength="100"></textarea>
+              <button type="button" class="introduce-save-btn">저장</button>
             </div>
           </div>
         </div>
