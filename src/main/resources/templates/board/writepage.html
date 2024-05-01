@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>히포북</title>
-    <link rel="stylesheet" href="/css/writepage.css" />
-    <script defer src="/js/category_modal.js"></script>
+    <link rel="stylesheet" th:href="@{/css/board/writepage.css}" />
+    <script defer th:src="@{/js/board/writepage.js}"></script>
   </head>
   <body>
     <header>
@@ -15,7 +15,7 @@
             <a href="">
               <!--홈페이지 버튼 -->
               <img
-                src="/images/HippoBook_logo.png"
+                th:src="@{/images/main/HippoBook_logo.png}"
                 alt=""
                 class="header_logo_images"
               />
@@ -25,7 +25,7 @@
         <div class="header_right_layout">
           <a href="">
             <!-- 알람 페이지 이동  -->
-            <img src="/images/alarm.png" alt="" class="header_right_alarm" />
+            <img th:src="@{/images/main/alarm.png}" alt="" class="header_right_alarm" />
           </a>
           <ul class="header_right_login">
             <a href="" class="header_right_login_box">로그인</a>
@@ -37,7 +37,7 @@
         <div class="main_top_layout">
           <a href="#" onclick="return false"> 
             <!-- 카테고리  -->
-                <img src="/images/Category.png" alt="" class="main_top_category">
+                <img th:src="@{/images/main/Category.png}" alt="" class="main_top_category">
         </a>
           <div class="main_top_category_tap">
             <ul class="main_top_category_list">
