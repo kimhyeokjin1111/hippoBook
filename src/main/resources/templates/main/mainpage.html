@@ -13,7 +13,7 @@
         <h1 class="header_logo">
           <div class="header_logo_layout">
              <!--홈페이지 버튼 -->
-            <a href="">
+            <a th:href="@{/}">
               <img
                 th:src="@{/images/book/HippoBook_logo.png}"
                 alt=""
@@ -30,7 +30,7 @@
           <!-- 로그인 박스 -->
           <ul class="header_right_login">
             <button type="button" class="header_right_login_btn">
-              <a href="" class="header_right_login_box">로그인</a>
+              <a th:href="@{/user/login}" class="header_right_login_box">로그인</a>
             </button>
           </ul>
         </div>
@@ -321,7 +321,6 @@
         </div>
 
         <div class="novel_preview">
-          <div class="novel_inner">
             <h3 class="novel_preview_title">소설 미리보기</h3>
             <div class="novel_content">
               <div class="novel_content_wrapper">
@@ -424,7 +423,7 @@
                 </div>
               </div>
             </div>
-          </div>
+
         </div>
       </div>
       <div class="main_book_report">
@@ -652,7 +651,6 @@
         </div>
       </div>
       <div class="category_popup" id="category_wrap">
-<!--       <div class="category_popup_inner"> 고정하던 것-->
           <section class="category_popup_inner_layout">
             <section class="category_popup_content_layout">
               <span class="category_popup_title">게시판</span>
@@ -672,8 +670,7 @@
               
             </section>
           </section>
-       </div>
-<!--      </div>-->
+      </div>
     </div>  
     </main>
     <footer>
