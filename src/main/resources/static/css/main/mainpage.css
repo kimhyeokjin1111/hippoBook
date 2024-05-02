@@ -606,12 +606,14 @@ a {
   height: 350px;
 }
 
-.novel_box {
-  margin-right: 16px;
-  min-width: 306px;
-  max-width: 400px;
-}
 
+.novel_box {
+  display: flex;
+  min-width: 306px;
+  max-width: 100%;
+
+
+}
 .novel_box_border {
   padding: 16px;
   width: 100%;
@@ -619,6 +621,7 @@ a {
   position: relative;
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.06), 2px 2px 10px rgba(0, 0, 0, 0.04);
   border-radius: 12px;
+  margin-right: 50px;
 }
 
 .novel_data {
@@ -677,6 +680,7 @@ a {
   width: 100%;
   position: relative;
   display: block;
+  overflow: hidden;
 }
 
 .novel_box_content {
@@ -689,12 +693,10 @@ a {
 .novel_box_content_title {
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
   word-wrap: break-word;
   margin-bottom: 3px;
-  white-space: normal;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 18px;
   max-height: 3em;
 }
 
@@ -704,19 +706,16 @@ a {
   font-size: 14px;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
   word-wrap: break-word;
   margin-bottom: 3px;
-  white-space: normal;
 }
 
 .novel_box_bottom {
+  justify-content: center;
   position: absolute;
   left: 8px;
   right: 8px;
   bottom: 8px;
-  display: -ms-flexbox;
   display: flex;
   flex-direction: column;
   min-height: 72px;
@@ -733,7 +732,6 @@ a {
   color: #6f6f6f;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
   word-wrap: break-word;
   max-height: 1.35em;
 }
@@ -819,7 +817,6 @@ a {
   align-items: baseline;
   display: inline-flex;
   flex-wrap: nowrap;
-  white-space: nowrap;
   padding-right: 24px;
   margin-bottom: 20px;
   list-style: none;
@@ -1006,14 +1003,9 @@ a {
   -webkit-box-orient: vertical;
   word-wrap: break-word;
   margin-bottom: 3px;
-  white-space: normal;
 }
 
-.price {
-  font-size: 11px;
-  line-height: 18px;
-  color: #1e1919;
-}
+
 
 .main_event {
   padding: 32px 0;
