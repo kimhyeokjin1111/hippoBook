@@ -117,16 +117,17 @@
 
     <section class="feed_contentbox">
         <div class="feed_contentlayer">
-            <div class="feed_cardbox">
+
+            <div class="feed_cardbox" th:each="card : ${feedList}">
                 <div class="feed_infobox">
                     <div class="feed_metadata">
                         <div class="feed_user">
                             <a href="">
-                                <span class="nickname">aaa</span>
+                                <span class="nickname" th:text="${card.userNickname}"></span>
                             </a>
                         </div>
                         <div class="feed_timebox">
-                            <span>1시간전</span>
+                            <span th:text="${card.feedDate}"></span>
                         </div>
                     </div>
                     <button class="feed_follow_btn">팔로우</button>
@@ -137,208 +138,10 @@
                 <div class="feed_likebox">
                     <button class="feed_like_btn">
                         <span class="like_icon">♡ 좋아요</span>
-                        <span class="like_sheep">0</span>
+                        <span class="like_sheep" th:text="${card.likeCnt}"></span>
                     </button>
                 </div>
             </div>
-
-            <div class="feed_cardbox">
-                <div class="feed_infobox">
-                    <div class="feed_metadata">
-                        <div class="feed_user">
-                            <a href="">
-                                <span class="nickname"></span>
-                            </a>
-                        </div>
-                        <div class="feed_timebox">
-                            <span></span>
-                        </div>
-                    </div>
-                    <button class="feed_follow_btn">팔로우</button>
-                </div>
-                <div class="feed_cardimg">
-                    <img src="" alt="">
-                </div>
-                <div class="feed_likebox">
-                    <button class="feed_like_btn">
-                        <span class="like_icon">♡ 좋아요</span>
-                        <span class="like_sheep">0</span>
-                    </button>
-                </div>
-            </div>
-            <div class="feed_cardbox">
-                <div class="feed_infobox">
-                    <div class="feed_metadata">
-                        <div class="feed_user">
-                            <a href="">
-                                <span class="nickname"></span>
-                            </a>
-                        </div>
-                        <div class="feed_timebox">
-                            <span></span>
-                        </div>
-                    </div>
-                    <button class="feed_follow_btn">팔로우</button>
-                </div>
-                <div class="feed_cardimg">
-                    <img src="" alt="">
-                </div>
-                <div class="feed_likebox">
-                    <button class="feed_like_btn">
-                        <span class="like_icon">♡ 좋아요</span>
-                        <span class="like_sheep">0</span>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="feed_cardbox">
-                <div class="feed_infobox">
-                    <div class="feed_metadata">
-                        <div class="feed_user">
-                            <a href="">
-                                <span class="nickname"></span>
-                            </a>
-                        </div>
-                        <div class="feed_timebox">
-                            <span></span>
-                        </div>
-                    </div>
-                    <button class="feed_follow_btn">팔로우</button>
-                </div>
-                <div class="feed_cardimg">
-                    <img src="" alt="">
-                </div>
-                <div class="feed_likebox">
-                    <button class="feed_like_btn">
-                        <span class="like_icon">♡ 좋아요</span>
-                        <span class="like_sheep">0</span>
-                    </button>
-                </div>
-            </div>
-            <div class="feed_cardbox">
-                <div class="feed_infobox">
-                    <div class="feed_metadata">
-                        <div class="feed_user">
-                            <a href="">
-                                <span class="nickname"></span>
-                            </a>
-                        </div>
-                        <div class="feed_timebox">
-                            <span></span>
-                        </div>
-                    </div>
-                    <button class="feed_follow_btn">팔로우</button>
-                </div>
-                <div class="feed_cardimg">
-                    <img src="" alt="">
-                </div>
-                <div class="feed_likebox">
-                    <button class="feed_like_btn">
-                        <span class="like_icon">♡ 좋아요</span>
-                        <span class="like_sheep">0</span>
-                    </button>
-                </div>
-            </div>
-            <div class="feed_cardbox">
-                <div class="feed_infobox">
-                    <div class="feed_metadata">
-                        <div class="feed_user">
-                            <a href="">
-                                <span class="nickname"></span>
-                            </a>
-                        </div>
-                        <div class="feed_timebox">
-                            <span></span>
-                        </div>
-                    </div>
-                    <button class="feed_follow_btn">팔로우</button>
-                </div>
-                <div class="feed_cardimg">
-                    <img src="" alt="">
-                </div>
-                <div class="feed_likebox">
-                    <button class="feed_like_btn">
-                        <span class="like_icon">♡ 좋아요</span>
-                        <span class="like_sheep">0</span>
-                    </button>
-                </div>
-            </div>
-
-            <div class="feed_cardbox">
-                <div class="feed_infobox">
-                    <div class="feed_metadata">
-                        <div class="feed_user">
-                            <a href="">
-                                <span class="nickname"></span>
-                            </a>
-                        </div>
-                        <div class="feed_timebox">
-                            <span></span>
-                        </div>
-                    </div>
-                    <button class="feed_follow_btn">팔로우</button>
-                </div>
-                <div class="feed_cardimg">
-                    <img src="" alt="">
-                </div>
-                <div class="feed_likebox">
-                    <button class="feed_like_btn">
-                        <span class="like_icon">♡ 좋아요</span>
-                        <span class="like_sheep">0</span>
-                    </button>
-                </div>
-            </div>
-            <div class="feed_cardbox">
-                <div class="feed_infobox">
-                    <div class="feed_metadata">
-                        <div class="feed_user">
-                            <a href="">
-                                <span class="nickname"></span>
-                            </a>
-                        </div>
-                        <div class="feed_timebox">
-                            <span></span>
-                        </div>
-                    </div>
-                    <button class="feed_follow_btn">팔로우</button>
-                </div>
-                <div class="feed_cardimg">
-                    <img src="" alt="">
-                </div>
-                <div class="feed_likebox">
-                    <button class="feed_like_btn">
-                        <span class="like_icon">♡ 좋아요</span>
-                        <span class="like_sheep">0</span>
-                    </button>
-                </div>
-            </div>
-            <div class="feed_cardbox">
-                <div class="feed_infobox">
-                    <div class="feed_metadata">
-                        <div class="feed_user">
-                            <a href="">
-                                <span class="nickname"></span>
-                            </a>
-                        </div>
-                        <div class="feed_timebox">
-                            <span></span>
-                        </div>
-                    </div>
-                    <button class="feed_follow_btn">팔로우</button>
-                </div>
-                <div class="feed_cardimg">
-                    <img src="" alt="">
-                </div>
-                <div class="feed_likebox">
-                    <button class="feed_like_btn">
-                        <span class="like_icon">♡ 좋아요</span>
-                        <span class="like_sheep">0</span>
-                    </button>
-                </div>
-            </div>
-            
-
-         
         </div>
     </section>
 
