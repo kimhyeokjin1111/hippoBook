@@ -50,8 +50,18 @@ class AdiministratorMapperTest {
 
     @Test
     void selectUserAdminTotel(){
-        int i = adiministratorMapper.selectAdminUserTotal(selectUserAdminDto);
-        assertThat(i).isEqualTo(2);
+        SelectUserAdminDto selectDto = new SelectUserAdminDto();
+        int i = adiministratorMapper.selectAdminUserTotal(selectDto);
+        assertThat(i).isEqualTo(38);
+    }
+
+    @Test
+    void deleteUserAdminById(){
+        List<Integer> list = List.of(55,56);
+        adiministratorMapper.deleteUserAdminById(list);
+        SelectUserAdminDto selectDto = new SelectUserAdminDto();
+        int i = adiministratorMapper.selectAdminUserTotal(selectDto);
+        assertThat(i).isEqualTo(36);
     }
 
 }
