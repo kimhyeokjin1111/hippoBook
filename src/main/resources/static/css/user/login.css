@@ -509,5 +509,186 @@ h3 {
   color: #8b8b8b;
 }
 
+/*a란 계정 정보 찾기 인증번호 화면*/
+.mds-input .time{
+  font-size: 12px;
+  color: #a451f7;
+}
+.login-container .text{
+  color: #8b8b8b;
+  font-size: 14px;
+  margin: 24px 0;
+  text-align: center;
+}
+.login-container .text .text-button{
+  font-weight: 700;
+  text-decoration: underline;
+  color: #8b8b8b;
+}
+
+
+/*b란*/
+.account-inner .item:first-child{
+  padding-top: 0;
+}
+.account-inner .item{
+  padding: 24px 0;
+  border-bottom: 1px solid #e7e8eb;
+}
+li{
+  list-style: none;
+}
+.account-inner .item .header{
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+}
+.account-inner .item .header .image.phone{
+  background: url(https://d3udu241ivsax2.cloudfront.net/v3/images/login/phone-icon.0ffc938a77aeb60e0e6926028bece5b6.svg);
+}
+img{
+  user-select: none;
+  -webkit-user-drag: none;
+  max-width: 100%;
+  vertical-align: top;
+  border-style: none;
+  pointer-events: none;
+}
+.account-inner .item .header .box{
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+.account-inner .item .header .box .id{
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  color: #242424;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+}
+.account-inner .item .header .box .info{
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  color: #6f6f6f;
+}
+.account-inner .item .metadata{
+  margin: 16px 0;
+  background-color: rgba(176, 179, 188, .1);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-radius: 8px;
+}
+.account-inner .item .metadata p{
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #6f6f6f;
+  display: flex;
+  justify-content: space-between;
+}
+.account-inner .item .metadata p span{
+  color: #242424;
+}
+.account-inner .item .metadata p{
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #6f6f6f;
+  display: flex;
+  justify-content: space-between;
+}
+.mds-button.mds-button--quaternary.mds-button--line{
+  border-color: #dfdfdf;
+  color: #555;
+}
+.mds-button.mds-button--r4{
+  border-radius: 4px;
+}
+.mds-button.mds-button--h40{
+  height: 40px;
+  font-size: 14px;
+  padding: 0 16px;
+}
+.mds-button.mds-button--line{
+  position: relative;
+  background-color: transparent;
+  border: 1px solid;
+}
+.mds-button{
+  overflow: hidden;
+  width: 100%;
+  transition: background-color .2s linear, border-color .2s linear, color .2s linear;
+}
+.mds-button span{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mds-button>*{
+  position: relative;
+  z-index: 1;
+}
+.account-inner .item .controller{
+  display: flex;
+  gap: 8px;
+}
+
+/*c란*/
+
+.mds-input .label sup{
+  font-size: 10px;
+  color: #a451f7;
+}
+.login-content .mds-input{
+  margin-bottom: 8px;
+}
+.mds-input{
+  overflow: hidden;
+}
+
+.mds-input>label{
+  display: block;
+  height: 56px;
+  padding: 8px 12px;
+  border: 1px solid;
+}
+.mbs-input.inner{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 8px;
+  flex: 1;
+}
+.mds-input .label{
+  display: block;
+  margin-bottom: 1px;
+  font-size: 10px;
+  color: #8b8b8b;
+}
+.mds-input .message-wrap{
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  padding: 0 8px;
+}
+.mds-input .message-wrap .message{
+  flex: 1;
+  margin-right: 10px;
+  word-break: keep-all;
+  padding-top: 2px;
+  font-size: 12px;
+  color: #8b8b8b;
+}
+
+
+
 
 
