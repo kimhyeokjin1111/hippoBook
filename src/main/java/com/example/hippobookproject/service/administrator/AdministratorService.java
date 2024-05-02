@@ -24,4 +24,8 @@ public class AdministratorService {
         return adiministratorMapper.selectAdminUserTotal(selectUserAdminDto);
     }
 
+    public void removeUserAdminById(){
+
+    }
+
 }

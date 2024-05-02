@@ -16,4 +16,6 @@ public interface AdiministratorMapper {
 
     int selectAdminUserTotal(@Param("selectUser") SelectUserAdminDto selectUserAdminDto);
 
+    void deleteUserAdminById(List<Integer> userIdList);
+
 }
