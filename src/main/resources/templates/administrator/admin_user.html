@@ -10,7 +10,7 @@
     <title>Document</title>
   </head>
   <body>
-  <header th:replace="~{/administrator/fragment/admin_header :: header}">
+  <header th:replace="~{/administrator/fragment/admin_header :: admin-header}">
 
   </header>
     <div>
@@ -64,7 +64,7 @@
         </div>
         <div class="main__center-container">
           <div class="main__center-container-box">
-            <form action="">
+            <form th:action="@{/admin/user}" method="get" class="admin-user-form">
               <section class="main__center-container-box-search">
                 <div><h1>회원 정보 조회</h1></div>
                 <div>
@@ -80,11 +80,11 @@
                         <th>개인정보</th>
                         <td colspan="3">
                           <select name="userInfo" class="main__userInfo-select">
-                            <option value="name">이름</option>
-                            <option value="loginId" selected>아이디</option>
-                            <option value="email">이메일</option>
+                            <option value="name" th:selected="${selectUserAdminDto.userInfo == 'name'}">이름</option>
+                            <option value="loginId" th:selected="${selectUserAdminDto.userInfo == 'loginId' or selectUserAdminDto.userInfo == null}">아이디</option>
+                            <option value="email" th:selected="${selectUserAdminDto.userInfo == 'email'}">이메일</option>
                           </select>
-                          <input
+                          <input th:field="${selectUserAdminDto.userInfoDate}"
                             type="text"
                             name="userInfoDate"
                             class="main__userInfo-input"
@@ -94,32 +94,32 @@
                       <tr>
                         <th>가입일</th>
                         <td colspan="3">
-                          <input
+                          <input th:value="${selectUserAdminDto.startJoinDateValue}"
                             type="date"
                             name="startJoinDate"
-                            class="startDate"
+                            class="startJDate pair-options"
                           /><span>~</span
-                          ><input
+                          ><input th:value="${selectUserAdminDto.endJoinDateValue}"
                             type="date"
                             name="endJoinDate"
-                            class="endDate"
+                            class="endJDate pair-options"
                           />
                         </td>
                       </tr>
                       <tr>
                         <th>나이</th>
                         <td>
-                          <input
+                          <input th:field="${selectUserAdminDto.startUserAge}"
                             type="text"
                             name="startUserAge"
-                            class="main__user-age"
+                            class="startUserAge pair-options"
                           />
                           세
                           <span>~</span>
-                          <input
+                          <input th:field="${selectUserAdminDto.endUserAge}"
                             type="text"
                             name="endUserAge"
-                            class="main__user-age"
+                            class="endUserAge pair-options"
                           />
                           세
                         </td>
@@ -129,39 +129,39 @@
                             <input
                               type="radio"
                               name="gender"
-                              value="A"
-                              checked
+                              value=""
+                              th:checked="${selectUserAdminDto.gender == '' or selectUserAdminDto.gender == null}"
                             />
                             전체
                           </label>
                           <label>
-                            <input type="radio" name="gender" value="M" /> 남
+                            <input type="radio" name="gender" value="M" th:checked="${selectUserAdminDto.gender == 'M'}"/> 남
                           </label>
                           <label>
-                            <input type="radio" name="gender" value="F" /> 여
+                            <input type="radio" name="gender" value="F" th:checked="${selectUserAdminDto.gender == 'F'}"/> 여
                           </label>
                         </td>
                       </tr>
                       <tr>
                         <th>접속일</th>
                         <td colspan="3">
-                          <input
+                          <input th:field="${selectUserAdminDto.startVisitDate}"
                             type="date"
                             name="startVisitDate"
-                            class="startDate"
+                            class="startJDate pair-options"
                           /><span>~</span
-                          ><input
+                          ><input th:field="${selectUserAdminDto.endVisitDate}"
                             type="date"
                             name="endVisitDate"
-                            class="endDate"
+                            class="endJDate pair-options"
                           />
                         </td>
                       </tr>
                     </tbody>
                   </table>
                   <div class="main__user-search-btn-div">
-                    <a href=""
-                      ><span class="main__user-search-btn">검색</span></a
+                    <button
+                      ><span class="main__user-search-btn">검색</span></button
                     >
                   </div>
                 </div>
@@ -171,11 +171,12 @@
                 <div class="main__result-box-container">
                   <div class="main__list-rownum-box">
                     <p>[검색결과 0건]</p>
-                    <select name="rownum" class="main__rownum-select">
-                      <option value="10">10개씩 보기</option>
-                      <option value="20">20개씩 보기</option>
-                      <option value="30">30개씩 보기</option>
-                      <option value="50">50개씩 보기</option>
+                    <input class="select-input" type="hidden" th:value="${selectUserAdminDto}">
+                    <select name="amount" class="main__rownum-select" th:data-rownum="${page.criteria.amount}">
+                      <option value=10 th:selected="${page.criteria.amount == 10}">10개씩 보기</option>
+                      <option value=20 th:selected="${page.criteria.amount == 20}">20개씩 보기</option>
+                      <option value=30 th:selected="${page.criteria.amount == 30}">30개씩 보기</option>
+                      <option value=50 th:selected="${page.criteria.amount == 50}">50개씩 보기</option>
                     </select>
                   </div>
                   <div class="main__user-out-btn-box">
@@ -216,8 +217,8 @@
                       <th>우편번호</th>
                     </tr>
                   </table>
-                  <div class="main__result-list-container">
-                    <ul>
+                  <div class="main__result-list-container" th:if="${userList.size() != 0}">
+                    <ul th:each="user : ${userList}">
                       <li>
                         <label>
                           <input
@@ -227,28 +228,37 @@
                           />
                         </label>
                       </li>
-                      <li>test name</li>
-                      <li>test loginId</li>
-                      <li>010-1111-2222</li>
-                      <li>남</li>
-                      <li>22</li>
-                      <li>test address</li>
-                      <li>test addressDetail</li>
-                      <li>test zipcode</li>
+                      <li th:text="${user.userName}"></li>
+                      <li th:text="${user.userLoginId}"></li>
+                      <li th:text="${user.userPhonenumber}"></li>
+                      <li th:text="${user.userGender}"></li>
+                      <li th:text="${user.userAge}"></li>
+                      <li th:text="${user.userAddress}"></li>
+                      <li th:text="${user.userAddressDetail}"></li>
+                      <li th:text="${user.userZipcode}"></li>
                     </ul>
                   </div>
-                  <div class="main__no-searched-user-result">
+                  <div class="main__no-searched-user-result" th:unless="${userList.size() != 0} ">
                     검색된 회원 내역이 없습니다.
                   </div>
                   <div class="main__searched-result-page-btn">
                     <ul>
-                      <span class="lf-arrow">&lt;</span>
-                      <li><strong>1</strong></li>
-                      <li><strong>2</strong></li>
-                      <li><strong>3</strong></li>
-                      <li><strong>4</strong></li>
-                      <li><strong>5</strong></li>
-                      <span class="rt-arrow">&gt;</span>
+                      <span class="lf-arrow"><a th:href="@{/admin/user(userInfo=${selectUserAdminDto.getUserInfo()},userInfoDate=${selectUserAdminDto.getEndJoinDate()},
+                      endJoinDate=${selectUserAdminDto.getEndJoinDate()},endUserAge=${selectUserAdminDto.getEndUserAge()},startUserAge=${selectUserAdminDto.startUserAge},
+                      startJoinDate=${selectUserAdminDto.startJoinDate},gender=${selectUserAdminDto.gender},startVisitDate=${selectUserAdminDto.startVisitDate},
+                      endVisitDate=${selectUserAdminDto.endVisitDate},amount=${page.criteria.getAmount()},page=${page.getStartPage() - 1})}" th:if="${page.prev}">&lt;</a></span>
+
+                      <th:block th:each="i : ${#numbers.sequence(page.startPage, page.endPage)}">
+                      <li><a th:href="@{/admin/user(userInfo=${selectUserAdminDto.getUserInfo()},userInfoDate=${selectUserAdminDto.getEndJoinDate()},
+                      endJoinDate=${selectUserAdminDto.getEndJoinDate()},endUserAge=${selectUserAdminDto.getEndUserAge()},startUserAge=${selectUserAdminDto.startUserAge},
+                      startJoinDate=${selectUserAdminDto.startJoinDate},gender=${selectUserAdminDto.gender},startVisitDate=${selectUserAdminDto.startVisitDate},
+                      endVisitDate=${selectUserAdminDto.endVisitDate},amount=${page.criteria.getAmount()},page=${i})}"><strong th:classappend="${i == page.criteria.page ? 'active' : ''}" th:text="${i}">1</strong></a></li>
+                      </th:block>
+
+                      <span class="rt-arrow"><a th:href="@{/admin/user(userInfo=${selectUserAdminDto.getUserInfo()},userInfoDate=${selectUserAdminDto.getEndJoinDate()},
+                      endJoinDate=${selectUserAdminDto.getEndJoinDate()},endUserAge=${selectUserAdminDto.getEndUserAge()},startUserAge=${selectUserAdminDto.startUserAge},
+                      startJoinDate=${selectUserAdminDto.startJoinDate},gender=${selectUserAdminDto.gender},startVisitDate=${selectUserAdminDto.startVisitDate},
+                      endVisitDate=${selectUserAdminDto.endVisitDate},amount=${page.criteria.getAmount()},page=${page.getEndPage() + 1})}" th:if="${page.next}">&gt;</a></span>
                     </ul>
                   </div>
                 </div>

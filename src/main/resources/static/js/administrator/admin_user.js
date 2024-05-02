@@ -38,4 +38,78 @@
       });
     }
   });
+
+  //회원 탈퇴 버튼 이벤트
+
+  let $userDeleteBtn = document.querySelector('.main__user-delete-btn');
+
+  $userDeleteBtn.addEventListener('click', function (){
+
+  })
 }
+
+{
+  //셀렉트 수동 체크
+  let $rownumSelect = document.querySelector('.main__rownum-select');
+  let $adminUserform = document.querySelector(".admin-user-form");
+  console.log($adminUserform);
+
+  $rownumSelect.addEventListener('change', function (){
+    console.log('hi~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+    $adminUserform.submit();
+  })
+
+}
+
+{
+  //검색 쌍 안맞는 문제 조건
+
+  let $startJDate = document.querySelector('.startJDate');
+  let $endJDate = document.querySelector('.endJDate');
+
+  let $startUserAge = document.querySelector('.startUserAge');
+  let $endUserAge = document.querySelector('.endUserAge');
+
+  let $startVDate = document.querySelector('.startVDate');
+  let $endVDate = document.querySelector('.endVDate');
+
+  let $submitBtn = document.querySelector('.main__user-search-btn-div > button');
+
+  let $pairOptions = document.querySelectorAll('.pair-options');
+
+  $pairOptions.forEach(ele => ele.addEventListener('change', function (){
+    console.log('hi222222222222222222222222222222')
+    console.log($startJDate.value + "------------" + $endJDate.value);
+    if(($startJDate.value == '' && $endJDate.value == '') || ($startJDate.value != '' && $endJDate.value != '')) {
+      $submitBtn.setAttribute("type", "submit");
+    }else{
+      $submitBtn.setAttribute("type", "button");
+    }
+
+    if(($startUserAge.value == '' && $endUserAge.value == '') || ($startUserAge.value != '' && $endUserAge.value != '')) {
+      if(!$submitBtn.getAttribute("type") == 'button') {
+        $submitBtn.setAttribute("type", "submit");
+      }
+    }else{
+      $submitBtn.setAttribute("type", "button");
+    }
+
+    if(($startVDate.value == '' && $endVDate.value == '') || ($startVDate.value != '' && $endVDate.value != '')) {
+      if(!$submitBtn.getAttribute("type") == 'button'){
+        $submitBtn.setAttribute("type", "submit");
+      }
+    }else{
+      $submitBtn.setAttribute("type", "button");
+    }
+  }))
+
+  $submitBtn.addEventListener('click', function (){
+    if($submitBtn.getAttribute("type") == 'button'){
+      alert($submitBtn.dataset.unpair + "의 검색 조건이 부정확합니다.")
+    }
+  })
+
+}
+
+
+
