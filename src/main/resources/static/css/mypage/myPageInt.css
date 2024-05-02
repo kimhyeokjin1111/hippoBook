@@ -164,6 +164,10 @@ input[type="file"] {
   display: flex;
 }
 
+.profile-name-option{
+  margin-top: 2px;
+}
+
 #follow {
   display: flex;
 }
@@ -377,7 +381,7 @@ input[type="file"] {
 }
 
 .x-box {
-  background-image: url("../myPageImg/cancel.png");
+  background-image: url("/images/mypage/cancel.png");
   width: 15px;
   height: 15px;
   background-size: contain;
