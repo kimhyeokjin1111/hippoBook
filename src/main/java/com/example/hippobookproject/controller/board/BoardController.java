@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BoardController {
     private final BoardService boardService;
 
+    @GetMapping("/write")
+    public String writepage() {
+        return "board/writepage";
+    }
+
     @GetMapping("/post/main")
     public String postMain(){
         return "board/post_main";

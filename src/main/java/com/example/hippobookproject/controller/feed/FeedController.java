@@ -22,4 +22,14 @@ public class FeedController {
     public String feedPage(){
         return "feed/feedpage";
     }
+
+    @GetMapping("/postwrite")
+    public String postwrite(){
+        return "feed/postwrite";
+    }
+
+    @GetMapping("/readwrite")
+    public String readwrite(){
+        return "feed/readwrite";
+    }
 }
