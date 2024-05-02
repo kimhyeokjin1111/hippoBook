@@ -97,7 +97,6 @@ main {
   margin-right: 12px;
 }
 .main_top_category_tap {
-  position: "relative";
   left: 0;
   top: 0;
 }
@@ -242,7 +241,7 @@ li {
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
-  color: var(--text-01);
+  color: #242424;
   margin: 12px 12px 0;
   padding-bottom: 12px;
   cursor: pointer;
@@ -252,7 +251,7 @@ h2 {
   font-weight: 700;
   font-size: 20px;
   line-height: 28px;
-  color: var(--text-01);
+  color: #242424;
   margin: 0;
   padding: 0;
 }
@@ -282,7 +281,7 @@ h2 {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: var(--text-03);
+  color: #6f6f6f;
   margin-top: 2px;
 }
 
@@ -290,7 +289,7 @@ h2 {
   font-weight: 700;
   font-size: 16px;
   line-height: 40px;
-  color: var(--text-01);
+  color: #242424;
 }
 
 img {
@@ -315,7 +314,7 @@ a {
 .search-container.search-body.tab-wrap {
   margin: 0 -24px;
   padding: 6px 12px 0;
-  background: var(--ui-background);
+  background: #fff;
   position: sticky;
   z-index: 1;
   top: 151px;
@@ -324,7 +323,7 @@ a {
 }
 
 .toto .search-container {
-  background: var(--ui-02);
+  background: #f7f7f7;
   padding: 6px;
   margin: 0 -24px;
 }

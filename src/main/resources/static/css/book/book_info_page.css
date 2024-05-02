@@ -249,15 +249,15 @@ ul {
   width: 100%;
 }
 
-.main__book-comment-content-box > h3 > img {
-  content: url('../img/right-shi.png');
-  position: absolute;
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  right: 7px;
-  bottom: 2px;
-}
+/*.main__book-comment-content-box > h3 > img {*/
+/*  content: url('/imgs/administrator/fragment/right-shi.png');*/
+/*  position: absolute;*/
+/*  display: inline-block;*/
+/*  width: 15px;*/
+/*  height: 15px;*/
+/*  right: 7px;*/
+/*  bottom: 2px;*/
+/*}*/
 
 .main__book-comment-content-box > h3 > a > span {
   color: black;
@@ -298,7 +298,7 @@ ul {
 .book-comment-content {
   color: rgb(94, 91, 91);
   margin: 4px 0;
-  font-size: 16;
+  font-size: 16px;
 }
 
 .book-comment-like-box {

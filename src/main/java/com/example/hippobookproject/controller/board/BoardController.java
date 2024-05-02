@@ -18,4 +18,14 @@ public class BoardController {
     public String writepage() {
         return "board/writepage";
     }
+
+    @GetMapping("/post/main")
+    public String postMain(){
+        return "board/post_main";
+    }
+
+    @GetMapping("/post/view")
+    public String postView(){
+        return "board/post_view";
+    }
 }

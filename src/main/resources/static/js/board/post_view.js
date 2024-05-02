@@ -6,6 +6,8 @@ let $declRadios = document.querySelectorAll(
   '.modal-decl-opt-content-box > label > input'
 );
 
+console.log("연결완료!!")
+
 let $declOther = document.querySelector('.decl-reason-other-box-outer');
 
 let $otherReason = document.querySelector('.decl-other-content-box > input');
@@ -32,19 +34,21 @@ let $otherReason = document.querySelector('.decl-other-content-box > input');
     });
   });
 
-  let $declIcons2 = document.querySelectorAll(
-    '.main__post-comment-result-box > li > div > p > img'
+  let $declIcons2 = document.querySelector(
+    '.main__post-comment-result-box'
   );
 
-  $declIcons2.forEach((declI) => {
-    declI.addEventListener('click', function () {
+  $declIcons2.addEventListener('click', function (e) {
       console.log('hi');
-      console.log($declModal.style.display);
-      if ($declModal.style.display == '') {
-        $declModal.style.display = 'flex';
+      console.log(e.target.style.display);
+
+      if(e.target.classList.contains('comment-decl-btn')){
+        if ($declModal.style.display == '') {
+          $declModal.style.display = 'flex';
+        }
       }
-    });
   });
+
 
   let $declReason = document.querySelector(
     '.modal-decl-opt-content-box > input'

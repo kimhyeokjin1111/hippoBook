@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>히포북</title>
-    <link rel="stylesheet" href="../css/mainpage.css" />
-    <script defer src="../js/mainpage.js"></script>
+    <link rel="stylesheet" th:href="@{/css/main/mainpage.css}" />
+    <script defer th:src="@{/js/main/mainpage.js}"></script>
   </head>
   <body>
     <header>
@@ -13,9 +13,9 @@
         <h1 class="header_logo">
           <div class="header_logo_layout">
              <!--홈페이지 버튼 -->
-            <a href="">
+            <a th:href="@{/}">
               <img
-                src="../images/HippoBook_logo.png"
+                th:src="@{/images/book/HippoBook_logo.png}"
                 alt=""
                 class="header_logo_images"
               />
@@ -25,12 +25,12 @@
         <div class="header_right_layout">
           <a href="">
             <!-- 알람 페이지 이동  -->
-            <img src="../images/alarm.png" alt="" class="header_right_alarm" />
+            <img th:src="@{/images/book/alarm.png}" alt="" class="header_right_alarm" />
           </a>
           <!-- 로그인 박스 -->
           <ul class="header_right_login">
             <button type="button" class="header_right_login_btn">
-              <a href="" class="header_right_login_box">로그인</a>
+              <a th:href="@{/user/login}" class="header_right_login_box">로그인</a>
             </button>
           </ul>
         </div>
@@ -46,7 +46,7 @@
           <button type="button" class="category_openBtn" id="OpenBtn">
             <!-- 모달창 띄우는 버튼  -->
             <img
-              src="../images/category.png"
+              th:src="@{/images/book/category.png}"
               alt=""
               class="main_top_category"
             />
@@ -87,56 +87,54 @@
           <ul class="slides_banner">
             <li>
               <div class="slides_content">
+                <!-- 슬라이딩배너 클릭시 이동 -->
                 <a href="">
                   <img
-                    src="https://active.ridibooks.com/ridibooks_banner/1713168703620_MjMwNDE4.jpg"
+                    th:src="@{/images/main/banner1.png}"
                     alt=""
                     class="slide_img"/>
                 </a>
               </div>
             </li>
-
-            <!-- 슬라이딩배너 클릭시 이동 -->
             <li>
               <div class="slides_content">
+                <!-- 슬라이딩배너 클릭시 이동 -->
                 <a href="">
                   <img
-                    src="https://active.ridibooks.com/ridibooks_banner/1713155126477_MjQwMzI3.jpeg"
+                    th:src="@{/images/main/banner2.png}"
                     alt=""
                     class="slide_img"
                   />
                 </a>
-                <!-- 슬라이딩배너 클릭시 이동 -->
               </div>
             </li>
 
             <li>
               <div class="slides_content">
+                <!-- 슬라이딩배너 클릭시 이동 -->
                 <a href="">
                   <img
-                    src="https://active.ridibooks.com/ridibooks_banner/1713330539998_MjQwNDAx.jpeg"
+                    th:src="@{/images/main/banner3.png}"
                     alt=""
                     class="slide_img"
                   />
                 </a>
-                <!-- 슬라이딩배너 클릭시 이동 -->
               </div>
             </li>
-
             <li>
               <div class="slides_content">
+                <!-- 슬라이딩배너 클릭시 이동 -->
                 <a href="">
                   <img
-                    src="https://active.ridibooks.com/ridibooks_banner/1713168703620_MjMwNDE4.jpg"
-                    alt=""
-                    class="slide_img"
+                       th:src="@{/images/main/banner1.png}"
+                       alt=""
+                       class="slide_img"
                   />
                 </a>
               </div>
             </li>
           </ul>
         </section>
-      
       <div class="main_layout">
         <!-- 배너 밑 부분 -->
         <div class="main_content_layout">
@@ -146,12 +144,11 @@
               <div class="hipppo_ranking_content">
                         <div class="ranking_content1">
                           <div class="rank_num1">
-                            <span class="ir">1위</span>
                           </div>
                           <div class="thumbnail">
                             <div class="book_picture">
                               <picture>
-                                <img src="https://cover.millie.co.kr/service/cover/179607657/bb08a032fa764561918fffc0aadaff06.jpg?w=80&f=webp&q=80" alt=""> 
+                                <img th:src="@{/images/main/ranking_thumbnail.png}" alt="">
                               </picture>
                             </div>
                           </div>
@@ -167,12 +164,11 @@
 
                         <div class="ranking_content1">
                           <div class="rank_num2">
-                            <span class="ir">2위</span>
                           </div>
                           <div class="thumbnail">
                             <div class="book_picture">
                               <picture>
-                                <img src="https://cover.millie.co.kr/service/cover/179607657/bb08a032fa764561918fffc0aadaff06.jpg?w=80&f=webp&q=80" alt=""> 
+                                <img th:src="@{/images/main/ranking_thumbnail.png}" alt="">
                               </picture>
                             </div>
                           </div>
@@ -185,14 +181,14 @@
                             </a>
                           </div>
                         </div>
+
                         <div class="ranking_content1">
                           <div class="rank_num3">
-                            <span class="ir">3위</span>
                           </div>
                           <div class="thumbnail">
                             <div class="book_picture">
                               <picture>
-                                <img src="https://cover.millie.co.kr/service/cover/179607657/bb08a032fa764561918fffc0aadaff06.jpg?w=80&f=webp&q=80" alt=""> 
+                                <img th:src="@{/images/main/ranking_thumbnail.png}" alt="">
                               </picture>
                             </div>
                           </div>
@@ -204,15 +200,14 @@
                               </div>
                             </a>
                           </div>
-                        </div> 
+                        </div>
                         <div class="ranking_content2">
                           <div class="rank_num4">
-                            <span class="ir">4위</span>
                           </div>
                           <div class="thumbnail">
                             <div class="book_picture">
                               <picture>
-                                <img src="https://cover.millie.co.kr/service/cover/179607657/bb08a032fa764561918fffc0aadaff06.jpg?w=80&f=webp&q=80" alt=""> 
+                                <img th:src="@{/images/main/ranking_thumbnail.png}" alt="">
                               </picture>
                             </div>
                           </div>
@@ -227,12 +222,11 @@
                         </div>
                         <div class="ranking_content2">
                           <div class="rank_num5">
-                            <span class="ir">5위</span>
                           </div>
                           <div class="thumbnail">
                             <div class="book_picture">
                               <picture>
-                                <img src="https://cover.millie.co.kr/service/cover/179607657/bb08a032fa764561918fffc0aadaff06.jpg?w=80&f=webp&q=80" alt=""> 
+                                <img th:src="@{/images/main/ranking_thumbnail.png}" alt="">
                               </picture>
                             </div>
                           </div>
@@ -244,15 +238,14 @@
                               </div>
                             </a>
                           </div>
-                        </div> 
+                        </div>
                         <div class="ranking_content2">
                           <div class="rank_num6">
-                            <span class="ir">6위</span>
                           </div>
                           <div class="thumbnail">
                             <div class="book_picture">
                               <picture>
-                                <img src="https://cover.millie.co.kr/service/cover/179607657/bb08a032fa764561918fffc0aadaff06.jpg?w=80&f=webp&q=80" alt=""> 
+                                <img th:src="@{/images/main/ranking_thumbnail.png}" alt="">
                               </picture>
                             </div>
                           </div>
@@ -267,12 +260,11 @@
                         </div>
                         <div class="ranking_content3">
                           <div class="rank_num7">
-                            <span class="ir">7위</span>
                           </div>
                           <div class="thumbnail">
                             <div class="book_picture">
                               <picture>
-                                <img src="https://cover.millie.co.kr/service/cover/179607657/bb08a032fa764561918fffc0aadaff06.jpg?w=80&f=webp&q=80" alt=""> 
+                                <img th:src="@{/images/main/ranking_thumbnail.png}" alt="">
                               </picture>
                             </div>
                           </div>
@@ -284,15 +276,14 @@
                               </div>
                             </a>
                           </div>
-                        </div> 
+                        </div>
                         <div class="ranking_content3">
                           <div class="rank_num8">
-                            <span class="ir">8위</span>
                           </div>
                           <div class="thumbnail">
                             <div class="book_picture">
                               <picture>
-                                <img src="https://cover.millie.co.kr/service/cover/179607657/bb08a032fa764561918fffc0aadaff06.jpg?w=80&f=webp&q=80" alt=""> 
+                                <img th:src="@{/images/main/ranking_thumbnail.png}" alt="">
                               </picture>
                             </div>
                           </div>
@@ -307,12 +298,11 @@
                         </div> 
                         <div class="ranking_content3">
                           <div class="rank_num9">
-                            <span class="ir">9위</span>
                           </div>
                           <div class="thumbnail">
                             <div class="book_picture">
                               <picture>
-                                <img src="https://cover.millie.co.kr/service/cover/179607657/bb08a032fa764561918fffc0aadaff06.jpg?w=80&f=webp&q=80" alt=""> 
+                                <img th:src="@{/images/main/ranking_thumbnail.png}" alt=""> 
                               </picture>
                             </div>
                           </div>
@@ -331,7 +321,6 @@
         </div>
 
         <div class="novel_preview">
-          <div class="novel_inner">
             <h3 class="novel_preview_title">소설 미리보기</h3>
             <div class="novel_content">
               <div class="novel_content_wrapper">
@@ -345,23 +334,21 @@
                                 <div class="novel_thumbnail_inner">
                                   <div class="novel_thumbnail_inner2">
                                     <div class="novel_thumbnail_inner_picture">
-                                      <img src="https://cover.millie.co.kr/service/cover/179575076/95529891470d497ca856f58732b217f6.jpg?w=145&f=webp&q=80" alt="" 
+                                      <img th:src="@{/images/main/novel_thumbnail.png}" alt=""
                                       class="novel_thumbnail_inner_picture2">
                                     </div>
                                   </div>
                                 </div>        
                               </div>
                             </a>
-                            <a href="" class="book_data2">  <!--책 url이동-->
+                            <a href="" class="book_data2">  <!--책 정보 url이동-->
                               <div class="novel_box_content">
                                 <p class="novel_box_content_title">제목제목제목</p>
                                 <p class="novel_box_content_content">쓴 사람 닉네임</p>
                               </div>
                             </a>
-
                           </div>
                         </div>
-
                         <div class="novel_box_bottom">
                           <p class="novel_box_bottom_content">내용내용</p>
                           <p class="novel_box_bottom_content">내용내용</p>
@@ -378,11 +365,11 @@
                               <div class="novel_thumbnail_inner">
                                 <div class="novel_thumbnail_inner2">
                                   <div class="novel_thumbnail_inner_picture">
-                                    <img src="https://cover.millie.co.kr/service/cover/179575076/95529891470d497ca856f58732b217f6.jpg?w=145&f=webp&q=80" alt="" 
+                                    <img th:src="@{/images/main/novel_thumbnail.png}" alt=""
                                     class="novel_thumbnail_inner_picture2">
                                   </div>
                                 </div>
-                              </div>     
+                              </div>
                             </div>
                           </a>
                           <a href="" class="book_data2">  <!--책 url이동-->
@@ -399,7 +386,7 @@
                         <p class="novel_box_bottom_content">내용내용</p>
                         <p class="novel_box_bottom_content">내용내용</p>
                       </div>
-                  </div>   
+                  </div>
               </div>
                 <div class="novel_box2">
                   <div class="novel_box_border3">
@@ -411,7 +398,7 @@
                               <div class="novel_thumbnail_inner">
                                 <div class="novel_thumbnail_inner2">
                                   <div class="novel_thumbnail_inner_picture">
-                                    <img src="https://cover.millie.co.kr/service/cover/179575076/95529891470d497ca856f58732b217f6.jpg?w=145&f=webp&q=80" alt="" 
+                                    <img th:src="@{/images/main/novel_thumbnail.png}" alt=""
                                     class="novel_thumbnail_inner_picture2">
                                   </div>
                                 </div>
@@ -436,7 +423,7 @@
                 </div>
               </div>
             </div>
-          </div>
+
         </div>
       </div>
       <div class="main_book_report">
@@ -451,67 +438,67 @@
                   <div class="main_report_section_box">
                     <a href="" class="main_report_detail_box">
                       <div class="main_book_report_thumbnail">
-                        <img src="https://cover.millie.co.kr/service/post/910367/661f81d5d2c48.jpg?f=webp&w=750&q=80" alt="" class="main_book_report_thumbnail_img">
+                        <img th:src="@{/images/main/report_thumbnail.png}" alt="" class="main_book_report_thumbnail_img">
                       </div>
                       <div class="main_book_report_content">
                         <div class="main_book_report_content_title">제목제목제목제목제목제목제목제목제목제목제목제목</div>
                         <p class="main_book_report_content_substance">내용내용내용내용내용내용내용내용내용내용내용내용내용</p>
                       </div>
-                    </a>
-                    <a href="" class="main_book_report_writer_content">
-                      <div class="main_book_report_writer_content_icon"></div>
-                      <div class="main_book_report_writer_content_username">닉네임닉네임</div>
+                      <div class="main_book_report_writer_content">
+                        <div class="main_book_report_writer_content_icon"></div>
+                        <div class="main_book_report_writer_content_username">닉네임닉네임</div>
+                      </div>
                     </a>
                   </div>
                 </li>
                 <li class="main_report_item">
                   <div class="main_report_section_box">
-                    <a href="" class="main_report_detail_box">
+                    <a href="" class="main_report_detail_box"> <!-- 독후감 페이지 이동-->
                       <div class="main_book_report_thumbnail">
-                        <img src="https://cover.millie.co.kr/service/post/910367/661f81d5d2c48.jpg?f=webp&w=750&q=80" alt="" class="main_book_report_thumbnail_img">
+                        <img th:src="@{/images/main/report_thumbnail.png}" alt="" class="main_book_report_thumbnail_img">
                       </div>
                       <div class="main_book_report_content">
                         <div class="main_book_report_content_title">제목제목제목제목제목제목제목제목제목제목제목제목</div>
                         <p class="main_book_report_content_substance">내용내용내용내용내용내용내용내용내용내용내용내용내용</p>
                       </div>
-                    </a>
-                    <a href="" class="main_book_report_writer_content">
-                      <div class="main_book_report_writer_content_icon"></div>
-                      <div class="main_book_report_writer_content_username">닉네임닉네임</div>
+                      <div class="main_book_report_writer_content">
+                        <div class="main_book_report_writer_content_icon"></div>
+                        <div class="main_book_report_writer_content_username">닉네임닉네임</div>
+                      </div>
                     </a>
                   </div>
                 </li>
                 <li class="main_report_item">
                   <div class="main_report_section_box">
-                    <a href="" class="main_report_detail_box">
+                    <a href="" class="main_report_detail_box"> <!-- 독후감 페이지 이동-->
                       <div class="main_book_report_thumbnail">
-                        <img src="https://cover.millie.co.kr/service/post/910367/661f81d5d2c48.jpg?f=webp&w=750&q=80" alt="" class="main_book_report_thumbnail_img">
+                        <img th:src="@{/images/main/report_thumbnail.png}" alt="" class="main_book_report_thumbnail_img">
                       </div>
                       <div class="main_book_report_content">
                         <div class="main_book_report_content_title">제목제목제목제목제목제목제목제목제목제목제목제목</div>
                         <p class="main_book_report_content_substance">내용내용내용내용내용내용내용내용내용내용내용내용내용</p>
                       </div>
-                    </a>
-                    <a href="" class="main_book_report_writer_content">
-                      <div class="main_book_report_writer_content_icon"></div>
-                      <div class="main_book_report_writer_content_username">닉네임닉네임</div>
+                      <div class="main_book_report_writer_content">
+                        <div class="main_book_report_writer_content_icon"></div>
+                        <div class="main_book_report_writer_content_username">닉네임닉네임</div>
+                      </div>
                     </a>
                   </div>
                 </li>
                 <li class="main_report_item">
                   <div class="main_report_section_box">
-                    <a href="" class="main_report_detail_box">
+                    <a href="" class="main_report_detail_box"> <!-- 독후감 페이지 이동-->
                       <div class="main_book_report_thumbnail">
-                        <img src="https://cover.millie.co.kr/service/post/910367/661f81d5d2c48.jpg?f=webp&w=750&q=80" alt="" class="main_book_report_thumbnail_img">
+                        <img th:src="@{/images/main/report_thumbnail.png}" alt="" class="main_book_report_thumbnail_img">
                       </div>
                       <div class="main_book_report_content">
                         <div class="main_book_report_content_title">제목제목제목제목제목제목제목제목제목제목제목제목</div>
                         <p class="main_book_report_content_substance">내용내용내용내용내용내용내용내용내용내용내용내용내용</p>
                       </div>
-                    </a>
-                    <a href="" class="main_book_report_writer_content">
-                      <div class="main_book_report_writer_content_icon"></div>
-                      <div class="main_book_report_writer_content_username">닉네임닉네임</div>
+                      <div class="main_book_report_writer_content">
+                        <div class="main_book_report_writer_content_icon"></div>
+                        <div class="main_book_report_writer_content_username">닉네임닉네임</div>
+                      </div>
                     </a>
                   </div>
                 </li>
@@ -527,10 +514,10 @@
             <ul class="main_deal_wrap">
               <li class="main_deal_item">
                 <div class="main_deal_box">
-                  <a href="main_deal_book_imgbox"> <!--중고거래 게시글로 이동-->
+                  <a href=""> <!--중고거래 게시글로 이동-->
                     <div class="main_deal_book_thumbnail">
                       <div class="main_deal_book_thumbnail_inner">
-                        <img src="https://cover.millie.co.kr/service/cover/179649369/3907cddd7d1f4d98b0a45b29dfad64be.jpg?w=145&q=80" alt="" class="main_deal_book_thumbnail_img">
+                        <img th:src="@{/images/main/deal_thumbnail.png}" alt="" class="main_deal_book_thumbnail_img">
                       </div>
                     </div>
                   </a>
@@ -545,10 +532,10 @@
               </li>
               <li class="main_deal_item">
                 <div class="main_deal_box">
-                  <a href="main_deal_book_imgbox"> <!--중고거래 게시글로 이동-->
+                  <a href=""> <!--중고거래 게시글로 이동-->
                     <div class="main_deal_book_thumbnail">
                       <div class="main_deal_book_thumbnail_inner">
-                        <img src="https://cover.millie.co.kr/service/cover/179649369/3907cddd7d1f4d98b0a45b29dfad64be.jpg?w=145&q=80" alt="" class="main_deal_book_thumbnail_img">
+                        <img th:src="@{/images/main/deal_thumbnail.png}" alt="" class="main_deal_book_thumbnail_img">
                       </div>
                     </div>
                   </a>
@@ -563,28 +550,10 @@
               </li>
               <li class="main_deal_item">
                 <div class="main_deal_box">
-                  <a href="main_deal_book_imgbox"> <!--중고거래 게시글로 이동-->
+                  <a href=""> <!--중고거래 게시글로 이동-->
                     <div class="main_deal_book_thumbnail">
                       <div class="main_deal_book_thumbnail_inner">
-                        <img src="https://cover.millie.co.kr/service/cover/179649369/3907cddd7d1f4d98b0a45b29dfad64be.jpg?w=145&q=80" alt="" class="main_deal_book_thumbnail_img">
-                      </div>
-                    </div>
-                  </a>
-                  <a href="" class="main_deal_boox_content">
-                    <div class="main_deal_boox_content_box">
-                      <p class="title">제목제목</p>
-                      <p class="author">지은이</p>
-                      <p class="price">가격가격</p>
-                    </div>
-                  </a>
-                </div>
-              </li>
-                            <li class="main_deal_item">
-                <div class="main_deal_box">
-                  <a href="main_deal_book_imgbox"> <!--중고거래 게시글로 이동-->
-                    <div class="main_deal_book_thumbnail">
-                      <div class="main_deal_book_thumbnail_inner">
-                        <img src="https://cover.millie.co.kr/service/cover/179649369/3907cddd7d1f4d98b0a45b29dfad64be.jpg?w=145&q=80" alt="" class="main_deal_book_thumbnail_img">
+                        <img th:src="@{/images/main/deal_thumbnail.png}" alt="" class="main_deal_book_thumbnail_img">
                       </div>
                     </div>
                   </a>
@@ -599,10 +568,28 @@
               </li>
               <li class="main_deal_item">
                 <div class="main_deal_box">
-                  <a href="main_deal_book_imgbox"> <!--중고거래 게시글로 이동-->
+                  <a href=""> <!--중고거래 게시글로 이동-->
                     <div class="main_deal_book_thumbnail">
                       <div class="main_deal_book_thumbnail_inner">
-                        <img src="https://cover.millie.co.kr/service/cover/179649369/3907cddd7d1f4d98b0a45b29dfad64be.jpg?w=145&q=80" alt="" class="main_deal_book_thumbnail_img">
+                        <img th:src="@{/images/main/deal_thumbnail.png}" alt="" class="main_deal_book_thumbnail_img">
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" class="main_deal_boox_content">
+                    <div class="main_deal_boox_content_box">
+                      <p class="title">제목제목</p>
+                      <p class="author">지은이</p>
+                      <p class="price">가격가격</p>
+                    </div>
+                  </a>
+                </div>
+              </li>
+              <li class="main_deal_item">
+                <div class="main_deal_box">
+                  <a href=""> <!--중고거래 게시글로 이동-->
+                    <div class="main_deal_book_thumbnail">
+                      <div class="main_deal_book_thumbnail_inner">
+                        <img th:src="@{/images/main/deal_thumbnail.png}" alt="" class="main_deal_book_thumbnail_img">
                       </div>
                     </div>
                   </a>
@@ -617,10 +604,10 @@
               </li> 
               <li class="main_deal_item">
                 <div class="main_deal_box">
-                  <a href="main_deal_book_imgbox"> <!--중고거래 게시글로 이동-->
+                  <a href=""> <!--중고거래 게시글로 이동-->
                     <div class="main_deal_book_thumbnail">
                       <div class="main_deal_book_thumbnail_inner">
-                        <img src="https://cover.millie.co.kr/service/cover/179649369/3907cddd7d1f4d98b0a45b29dfad64be.jpg?w=145&q=80" alt="" class="main_deal_book_thumbnail_img">
+                        <img th:src="@{/images/main/deal_thumbnail.png}" alt="" class="main_deal_book_thumbnail_img">
                       </div>
                     </div>
                   </a>
@@ -646,17 +633,17 @@
             <ul class="main_event_content_layout">
               <li class="main_event_content_box">
                 <a href="">
-                  <img src="https://active.ridibooks.com/ridibooks_banner/1714008524223_MjQwMzE0.png" alt="">
+                  <img th:src="@{/images/main/event_thumbnail.png}" alt="">
                 </a> <!--이벤트 페이지 이동-->
               </li>
               <li class="main_event_content_box">
                 <a href="">
-                  <img src="https://active.ridibooks.com/ridibooks_banner/1714008524223_MjQwMzE0.png" alt="">
+                  <img th:src="@{/images/main/event_thumbnail.png}" alt="">
                 </a> <!--이벤트 페이지 이동-->
               </li>
               <li class="main_event_content_box">
                 <a href="">
-                  <img src="https://active.ridibooks.com/ridibooks_banner/1714008524223_MjQwMzE0.png" alt="">
+                  <img th:src="@{/images/main/event_thumbnail.png}" alt="">
                 </a> <!--이벤트 페이지 이동-->
               </li>
             </ul>
@@ -664,7 +651,6 @@
         </div>
       </div>
       <div class="category_popup" id="category_wrap">
-        <!-- <div class="category_popup_inner"> -->
           <section class="category_popup_inner_layout">
             <section class="category_popup_content_layout">
               <span class="category_popup_title">게시판</span>
@@ -684,7 +670,6 @@
               
             </section>
           </section>
-        <!-- </div>   -->
       </div>
     </div>  
     </main>
@@ -695,10 +680,10 @@
           <ul class="footer_link">
             <li class="footer_link_img">
               <a href="" class="footer_link_insta"></a>
-             </li>  <!--인스타 바로가기 링크)-->
+             </li>  <!--인스타 바로가기 링크-->
             <li class="footer_link_img">
               <a href="" class="footer_link_kakao"></a>
-            </li>  <!--인스타 바로가기 링크)-->
+            </li>  <!-- 카카오 바로가기 링크-->
           </ul>
         </div>
         <ul class="footer_services">

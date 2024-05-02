@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/project02.css">
+    <link rel="stylesheet" th:href="@{/css/categorie/content.css}">
 </head>
 <body>
     <div class="web">
@@ -24,7 +24,7 @@
                      <div class="sub-inner">
                         <div class="item">
                             <button type="button" class="dropdown">
-                                책-잇
+                                도슨트북 모아보기
                             </button>
                         </div>
                      </div>   
@@ -32,7 +32,8 @@
                     <div class="subbb">
                         <div class="subb-inner">
                             <div class="into">
-                                <p class="count">총 5개</p>
+                                <p class="count">총 5권</p>
+                                <button type="button" class="tton">완독할 확률 높은 순</button>
                             </div>
                             <div class="gridd">
                                 <ul class="gridd-wrapper">
