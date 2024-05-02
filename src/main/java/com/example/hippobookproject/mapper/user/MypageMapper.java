@@ -12,4 +12,6 @@ public interface MypageMapper {
 
     void insertIntBoardText(IntBoardDto intBoardDto);
 
+    IntBoardDto selectIntBoardText(Long userId);
+
 }

@@ -116,10 +116,12 @@
               <h3>소개글</h3>
               <img src="/images/mypage/free-icon-pencil-1828920.png" alt="" class="introduce-content-write">
             </div>
+            <form th:action="@{/mypage/int}" method="post" enctype="text/plain">
             <div>
               <textarea name="" class="introduce-text-content" cols="30" rows="10" placeholder="소개글을 작성해주세요(최대100자)" maxlength="100"></textarea>
               <button type="button" class="introduce-save-btn">저장</button>
             </div>
+            </form>
           </div>
         </div>
         <div class="mypage-book-cate">

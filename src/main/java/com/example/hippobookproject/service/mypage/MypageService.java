@@ -1,5 +1,6 @@
 package com.example.hippobookproject.service.mypage;
 
+import com.example.hippobookproject.dto.mypage.IntBoardDto;
 import com.example.hippobookproject.dto.mypage.IntProfileDto;
 import com.example.hippobookproject.mapper.user.MypageMapper;
 import lombok.RequiredArgsConstructor;
@@ -19,4 +20,13 @@ public class MypageService {
                .orElseThrow(() -> new IllegalStateException("존재하지 않는 회원 번호"));
 
    }
+
+   public void registerIntBoardText(IntBoardDto intBoardDto){
+       mypageMapper.insertIntBoardText(intBoardDto);
+
+   }
+
+    public IntBoardDto findIntBoardText(Long userId){
+       return mypageMapper.selectIntBoardText(userId);
+    }
 }
