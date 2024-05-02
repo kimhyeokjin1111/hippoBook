@@ -1,10 +1,11 @@
 package com.example.hippobookproject.mapper.user;
 
+import com.example.hippobookproject.dto.UserPhoneInfoDto;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface UserMapper {
-    String mainlogin();
+    void insertUser(UserPhoneInfoDto userPhoneInfoDto);
 
-    String register();
+
 }
