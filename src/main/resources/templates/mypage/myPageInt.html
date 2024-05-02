@@ -89,12 +89,12 @@
                 />
               </div>
               <div id="profile-name">
-                <h3>책먹는 하마</h3>
-                <span>님의 서재</span>
+                <h3 th:text="${profileDto.userNickName}"></h3>
+                <span class="profile-name-option">님의 서재</span>
               </div>
               <div id="follow">
-                <span>팔로워 <span>0</span></span>
-                <span>팔로잉 <span>0</span></span>
+                <span>팔로워 <span th:text="${profileDto.followerCnt}"></span></span>
+                <span>팔로잉 <span th:text="${profileDto.followingCnt}"></span></span>
               </div>
             </div>
             <div id="my-favorite-book">
@@ -184,7 +184,9 @@
     </form>
     <section class="reading-book-plus-modal-bg">
       <div class="reading-book-plus-box">
-        <div class="x-box"></div>
+        <div class="x-box">
+          <img src="" alt="">
+        </div>
         <h1>전체 도서</h1>
         <form action="" class="reading-book-plus-form">
           <div class="reading-book-plus-modal-book-img">
