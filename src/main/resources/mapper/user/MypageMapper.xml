@@ -14,6 +14,12 @@
         VALUES (SEQ_INT_BOARD.nextval, #{intBoardContent})
     </insert>
 
+    <select id="selectIntBoardText" resultType="IntBoardDto">
+        SELECT INT_BOARD_CONTENT
+            FROM TBL_INT_BOARD
+        WHERE USER_ID = #{userId}
+    </select>
+
 
 
 </mapper>

@@ -1,5 +1,6 @@
 package com.example.hippobookproject.controller.mypage;
 
+import com.example.hippobookproject.dto.mypage.IntBoardDto;
 import com.example.hippobookproject.dto.mypage.IntProfileDto;
 import com.example.hippobookproject.service.mypage.MypageService;
 import com.example.hippobookproject.service.user.UserService;
@@ -28,6 +29,14 @@ public class MyPageController {
         IntProfileDto profileDto = mypageService.findProfile(userId);
         model.addAttribute("profileDto", profileDto);
         log.info("profileDto={}",profileDto);
+        return "/mypage/myPageInt";
+    }
+
+    @PostMapping("/int")
+    public String myPageInt(IntBoardDto intBoardDto){
+        log.info("IntBoardDto = {}", intBoardDto);
+
+        mypageService.registerIntBoardText(intBoardDto);
         return "/mypage/myPageInt";
     }
 
