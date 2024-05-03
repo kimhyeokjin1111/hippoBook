@@ -65,7 +65,7 @@
         </div>
         <div class="main__center-container">
           <div class="main__center-container-box">
-            <form action="">
+            <form action="/admin/chart" method="post">
               <section class="main__center-container-box-search">
                 <div class="main__declaration-title-div">
                   <h1>신고글 관리</h1>
@@ -83,63 +83,77 @@
                           <div>
                             <label
                               ><input
+                                    class="chart-day-ranges"
                                 type="radio"
                                 name="term"
-                                value="today"
-                              />오늘
+                                value="0"
+                                    th:checked="${term} == 0"/>
+                            오늘
                             </label>
                           </div>
                           <div>
                             <label
                               ><input
+                                    class="chart-day-ranges"
                                 type="radio"
                                 name="term"
-                                value="today"
+                                value="1"
+                                    th:checked="${term} == 1"
                               />어제 
                             </label>
                           </div>
                           <div>
                             <label
                               ><input
+                                    class="chart-day-ranges"
                                 type="radio"
                                 name="term"
-                                value="today"
+                                value="3"
+                                    th:checked="${term} == 3"
                               />3일
                             </label>
                           </div>
                           <div>
                             <label
                               ><input
+                                    class="chart-day-ranges"
                                 type="radio"
                                 name="term"
-                                value="today"
+                                value="7"
+                                    th:checked="${term} == 7"
                               />7일
                             </label>
                           </div>
                           <div>
                             <label
                               ><input
+                                    class="chart-day-ranges"
                                 type="radio"
                                 name="term"
-                                value="today"
+                                value="30"
+                                    th:checked="${term} == 30"
                               />1개월
                             </label>
                           </div>
                           <div>
                             <label
                               ><input
+                                    class="chart-day-ranges"
                                 type="radio"
                                 name="term"
-                                value="today"
+                                value="90"
+                                    th:checked="${term} == 90"
                               />3개월
                             </label>
                           </div>
                           <div>
                             <label
                               ><input
+                                    class="chart-day-ranges"
                                 type="radio"
                                 name="term"
-                                value="today"
+                                value="180"
+                                    th:checked="${term} == 180"
                               />6개월</label
                             >
                           </div>
@@ -158,9 +172,9 @@
                     </tbody>
                   </table>
                   <div class="main__user-search-btn-div">
-                    <a href=""
-                      ><span class="main__user-search-btn">검색</span></a
-                    >
+                    <button
+                    ><span class="main__user-search-btn">검색</span></button>
+
                   </div>
                 </div>
               </section>
@@ -172,5 +186,6 @@
         </div>
       </main>
     </div>
+    <input type="hidden" class="chart-info-input" th:data-chart="${visistList}" th:data-term="${term}">
   </body>
 </html>

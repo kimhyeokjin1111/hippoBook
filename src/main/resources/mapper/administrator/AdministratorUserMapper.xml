@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.hippobookproject.mapper.administrator.AdiministratorMapper">
+<mapper namespace="com.example.hippobookproject.mapper.administrator.AdiministratorUserMapper">
     <select id="selectUserAdmin" resultType="resultUserAdminDto">
         SELECT USER_ID, USER_NAME, USER_LOGIN_ID, USER_PHONENUMBER, USER_GENDER,
         USER_AGE, USER_EMAIL, USER_ADDRESS, USER_ADDRESS_DETAIL, USER_ZIPCODE
@@ -83,6 +83,5 @@
         #{list}
         </foreach>
     </delete>
-
 
 </mapper>

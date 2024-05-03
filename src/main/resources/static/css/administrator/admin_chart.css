@@ -255,3 +255,7 @@ main {
   line-height: 28px;
   outline: 0 none;
 }
+
+.main__user-search-btn-div > button {
+  border: none;
+}

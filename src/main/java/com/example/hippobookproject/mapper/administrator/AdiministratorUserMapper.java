@@ -10,12 +10,13 @@ import java.util.List;
 
 
 @Mapper
-public interface AdiministratorMapper {
+public interface AdiministratorUserMapper {
     List<ResultUserAdminDto> selectUserAdmin(@Param("selectUser") SelectUserAdminDto selectUserAdminDto,
                                              @Param("criteria") AdminUserCriteria adminUserCriteria);
 
     int selectAdminUserTotal(@Param("selectUser") SelectUserAdminDto selectUserAdminDto);
 
     void deleteUserAdminById(List<Integer> userIdList);
+
 
 }
