@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>히포북</title>
-    <link rel="stylesheet" href="/css/followingpage.css">
-    <script defer src="/js/feed_modal.js"></script>
+    <link rel="stylesheet" th:href="@{/css/follow/followingpage.css}">
+    <script defer th:src="@{/js/feed/feed_modal.js}"></script>
 </head>
 <body>
     <section class="modal_section">
@@ -29,8 +29,8 @@
         <div class="header_layout">
             <h1 class="header_logo">
                 <div class="header_logo_layout">
-                    <a href="">  <!--홈페이지 버튼 -->
-                    <img src="/images/HippoBook_logo.png" alt="" class="header_logo_images">
+                    <a th:href="@{/}">  <!--홈페이지 버튼 -->
+                    <img th:src="@{/images/main/HippoBook_logo.png}" alt="" class="header_logo_images">
                     </a>
                 </div>
             </h1>

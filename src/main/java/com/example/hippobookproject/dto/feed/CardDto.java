@@ -19,9 +19,8 @@ public class CardDto {
     private LocalDate feedDate;
     private Long likeCnt;
     private Long feedFileId;
-    String feedFileName;
-    String feedUploadPath;
-    String feedUuId;
-
-
+    private String feedFileName;
+    private String feedUploadPath;
+    private String feedUuId;
+    private boolean isFollow;
 }

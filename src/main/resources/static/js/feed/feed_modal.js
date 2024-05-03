@@ -1,5 +1,5 @@
 
-
+// 글쓰기 모달
 {
   let $open = document.querySelector(".feed_writer");
   let $modal = document.querySelector(".modal");
@@ -19,7 +19,7 @@
 
 
 
-       // 모달 띄우는
+       // 카테고리 모달 띄우는
   let $categoryOpenBtn = document.querySelector(".main_top_category");
   let $getmodal = document.querySelector(".category_popup");
 
@@ -32,6 +32,27 @@
     $getmodal.addEventListener("click", function(){
       $getmodal.style.display = "none";
     })
+
+
+//   팔로우 btn 처리
+  let followList = document.querySelectorAll(".feed_follow_btn");
+  followList.forEach(ele => {
+    ele.addEventListener("click", function () {
+
+      let userId = this.dataset.id;
+
+      fetch('/v1/follows',
+          {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({"followTo": userId}),
+          }).then(resp => resp);
+
+      location.reload();
+    });
+  });
+
+
  
 
 }

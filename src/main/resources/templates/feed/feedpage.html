@@ -29,7 +29,7 @@
         <div class="header_layout">
             <h1 class="header_logo">
                 <div class="header_logo_layout">
-                    <a href="">  <!--홈페이지 버튼 -->
+                    <a th:href="@{/}">  <!--홈페이지 버튼 -->
                     <img th:src="@{/images/main/HippoBook_logo.png}" alt="" class="header_logo_images">
                     </a>
                 </div>
@@ -39,7 +39,7 @@
                 <img th:src="@{/images/main/alarm.png}" alt="" class="header_right_alarm">
                 </a>
                 <ul class="header_right_login">
-                    <a href="" class="header_right_login_box">로그인</a>
+                    <a th:href="@{/user/login}" class="header_right_login_box">로그인</a>
                 </ul>
             </div>
         </div>
@@ -58,7 +58,7 @@
                             <a href="">내 서재</a> <!-- 내 서재 이동 -->
                         </li>
                         <li>
-                            <a href="">피드</a> <!-- 피드 이동-->
+                            <a th:href="@{/feed}">피드</a> <!-- 피드 이동-->
                         </li>    
                         <li>
                             <a href="">쪽지</a> <!-- 쪽지 이동 -->
@@ -67,7 +67,7 @@
                             <a href="">내서재</a> <!-- 내 서재 이동 -->
                         </li>
                         <li>
-                            <a href="">검색</a> <!-- 검색 이동 -->
+                            <a th:href="@{/search}">검색</a> <!-- 검색 이동 -->
                         </li>
                     </ul>
                 </div>
@@ -79,12 +79,12 @@
             <div class="feed_menu_container">
                 <ul class="feed_menu_list">
                     <li>
-                        <a href="feedpage.html" class="feed_random">
+                        <a th:href="@{/feed}" class="feed_random">
                             <span>추천</span>
                         </a>
                     </li>
                     <li>
-                        <a href="followingpage.html" class="feed_following">
+                        <a th:href="@{/feed/follow}" class="feed_following">
                             <span>팔로잉</span>
                         </a>
                     </li>
@@ -102,13 +102,13 @@
             <div class="sub_container">
                 <ul class="sub_list">
                     <li>
-                        <button>포스트</button>
+                        <a href="" class="">포스트</a>
                     </li>
                     <li>
-                        <button>한 줄 리뷰</button>
+                        <a href="" class="">한 줄 리뷰</a>
                     </li>
                     <li>
-                        <button>독후감</button>
+                        <a href="" class="">독후감</a>
                     </li>
                 </ul>
             </div>
@@ -130,10 +130,13 @@
                             <span th:text="${card.feedDate}"></span>
                         </div>
                     </div>
-                    <button class="feed_follow_btn">팔로우</button>
+                    <th:block th:if="${session.userId != card.userId}">
+                        <button class="feed_follow_btn" th:if="${!card.isFollow}" th:data-id="${card.userId}">팔로우</button>
+                        <button class="feed_unfollow_btn" th:if="${card.isFollow}" th:data-id="${card.userId}">언팔로우</button>
+                    </th:block>
                 </div>
                 <div class="feed_cardimg">
-                    <img th:src="@{/images/feed/book.png}" alt="">
+                    <img th:src="@{'/upload/' + ${card.feedUploadPath + '/' + card.feedUuId + '_' + card.feedFileName}}" alt="">
                 </div>
                 <div class="feed_likebox">
                     <button class="feed_like_btn">
