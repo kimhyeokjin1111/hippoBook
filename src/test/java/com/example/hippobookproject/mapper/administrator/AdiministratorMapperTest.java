@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Transactional
 class AdiministratorMapperTest {
     @Autowired
-    AdiministratorMapper adiministratorMapper;
+    AdiministratorUserMapper adiministratorMapper;
 
     SelectUserAdminDto selectUserAdminDto;
     AdminUserCriteria criteria;
