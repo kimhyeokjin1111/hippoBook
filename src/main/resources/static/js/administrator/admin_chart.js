@@ -3,13 +3,12 @@
   let term = document.querySelector('.chart-info-input').dataset.term;
 
   console.log(chartInfoList)
-  console.log(term)
   const ctx = document.getElementById("visitChart");
 
   let labelArr;
   let datasetAr;
 
-  // $chartInfoInput.for
+  // $chartInfoList[0].forEach()
 
   new Chart(ctx, {
     type: "line",
