@@ -10,7 +10,6 @@
     <script defer th:src="@{/js/mypage/myPageInt.js}"></script>
   </head>
   <body>
-    <form action="">
       <div>
         <div>
           <header>
@@ -116,10 +115,10 @@
               <h3>소개글</h3>
               <img src="/images/mypage/free-icon-pencil-1828920.png" alt="" class="introduce-content-write">
             </div>
-            <form th:action="@{/mypage/int}" method="post" enctype="text/plain">
-            <div>
-              <textarea name="" class="introduce-text-content" cols="30" rows="10" placeholder="소개글을 작성해주세요(최대100자)" maxlength="100"></textarea>
-              <button type="button" class="introduce-save-btn">저장</button>
+            <form th:action="@{/mypage/int}" method="post">
+            <div class="int-Text-Box-All">
+              <textarea th:text="${intBoardDto.intBoardContent}" name="intBoardContent" class="introduce-text-content" cols="30" rows="10" placeholder="소개글을 작성해주세요(최대100자)" maxlength="100"></textarea>
+              <button type="submit" class="introduce-save-btn">저장</button>
             </div>
             </form>
           </div>
@@ -183,13 +182,12 @@
           <button id="reading-book-delete-button">삭제하기</button>
         </div>
       </footer>
-    </form>
     <section class="reading-book-plus-modal-bg">
       <div class="reading-book-plus-box">
         <div class="x-box">
           <img src="" alt="">
         </div>
-        <h1>전체 도서</h1>
+        <h1>책장 전체 도서</h1>
         <form action="" class="reading-book-plus-form">
           <div class="reading-book-plus-modal-book-img">
             <div class="reading-book-img-check">

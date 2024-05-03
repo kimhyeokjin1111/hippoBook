@@ -1,7 +1,9 @@
 package com.example.hippobookproject.service.mypage;
 
+import com.example.hippobookproject.dto.mypage.BookContainerDto;
 import com.example.hippobookproject.dto.mypage.IntBoardDto;
 import com.example.hippobookproject.dto.mypage.IntProfileDto;
+import com.example.hippobookproject.mapper.user.MypageBookContainerMapper;
 import com.example.hippobookproject.mapper.user.MypageMapper;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -11,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,6 +26,9 @@ class MypageServiceTest {
 
     @Mock
     MypageMapper mypageMapper;
+
+    @Mock
+    MypageBookContainerMapper mypageBookContainerMapper;
 
     @InjectMocks
     MypageService mypageService;
@@ -48,15 +54,26 @@ class MypageServiceTest {
         Mockito.verify(mypageMapper, Mockito.times(1)).insertIntBoardText(any());
     }
 
-    //@Test
-    //void findIntBoardText(){
+    @Test
+    void findIntBoardText(){
         // given
-        //doReturn("안녕하세요!!").when(mypageMapper).selectIntBoardText(any());
+        IntBoardDto boardDto = new IntBoardDto();
+        boardDto.setIntBoardContent("안녕하세요");
+        doReturn(Optional.of(boardDto)).when(mypageMapper).selectIntBoardText(any());
         // when
-        //IntBoardDto intBoardDto = mypageService.findIntBoardText(1L);
+        IntBoardDto intBoardDto = mypageService.findIntBoardText(1L);
         // then
-       // assertThat(intBoardDto).extracting("intBoardContent").isEqualTo("안녕하세요!!");
+        assertThat(intBoardDto).extracting("intBoardContent").isEqualTo("안녕하세요");
 
-    //}
+    }
 
+    @Test
+    void findBookContainer(){
+        // give
+        doReturn(List.of(new BookContainerDto())).when(mypageBookContainerMapper).selectBookContainer(any());
+       // when
+        List<BookContainerDto> bookContainerList = mypageService.findBookContainer(1L);
+       // then
+        assertThat(bookContainerList).hasSize(1);
+    }
 }
