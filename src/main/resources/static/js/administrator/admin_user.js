@@ -44,6 +44,21 @@
   let $userDeleteBtn = document.querySelector('.main__user-delete-btn');
 
   $userDeleteBtn.addEventListener('click', function (){
+    let userIdList = '';
+
+    $checkonebtnList.forEach(ele => {
+      if(ele.checked === true){
+        userIdList += `userIdList=${ele.dataset.id}&`
+      }
+    })
+    console.log(userIdList.length)
+
+    userIdList = userIdList.substring(0, userIdList.length - 1)
+    console.log(userIdList)
+
+
+
+    window.location = '/admin/user/remove?'+userIdList;
 
   })
 }

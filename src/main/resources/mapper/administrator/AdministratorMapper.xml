@@ -74,5 +74,15 @@
         ORDER BY USER_ID)
     </select>
 
+    <delete id="deleteUserAdminById" parameterType="List">
+        DELETE
+        FROM TBL_USER
+        WHERE USER_ID IN
+        <foreach collection="userIdList" item="list" index="index"
+                                  separator="," open="(" close=")">
+        #{list}
+        </foreach>
+    </delete>
+
 
 </mapper>
