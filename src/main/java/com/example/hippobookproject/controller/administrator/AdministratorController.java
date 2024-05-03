@@ -1,10 +1,12 @@
 package com.example.hippobookproject.controller.administrator;
 
+import com.example.hippobookproject.dto.administrator.ResultChartAdminDto;
 import com.example.hippobookproject.dto.administrator.ResultUserAdminDto;
 import com.example.hippobookproject.dto.administrator.SelectUserAdminDto;
 import com.example.hippobookproject.dto.page.AdminUserCriteria;
 import com.example.hippobookproject.dto.page.AdminUserPage;
-import com.example.hippobookproject.service.administrator.AdministratorService;
+import com.example.hippobookproject.service.administrator.AdministratorChartService;
+import com.example.hippobookproject.service.administrator.AdministratorUserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -18,16 +20,17 @@ import java.util.List;
 @RequestMapping("/admin")
 @RequiredArgsConstructor
 public class AdministratorController {
-    private final AdministratorService administratorService;
+    private final AdministratorUserService administratorUserService;
+    private final AdministratorChartService administratorChartService;
 
     @GetMapping("/user")
     public String adminUser(@ModelAttribute("selectUserAdminDto") SelectUserAdminDto selectUserAdminDto, Model model,
                             AdminUserCriteria criteria){
         log.info("selectUserAdminDto = " + selectUserAdminDto + ", criteria = " + criteria);
 
-        List<ResultUserAdminDto> userList = administratorService.findUserAdmin(selectUserAdminDto,
+        List<ResultUserAdminDto> userList = administratorUserService.findUserAdmin(selectUserAdminDto,
                 criteria);
-        int total = administratorService.findUserAdminTotal(selectUserAdminDto);
+        int total = administratorUserService.findUserAdminTotal(selectUserAdminDto);
         AdminUserPage page = new AdminUserPage(criteria, total);
         log.info("page = " + page, "total = " + total);
 
@@ -38,15 +41,24 @@ public class AdministratorController {
         return "administrator/admin_user";
     }
 
-    @GetMapping("/user/remove")
-    public String userRemove(@RequestParam(value="userIdList" , required = false) List<Integer> userIdList ){
-        log.info("userIdList = " + userIdList);
+    @GetMapping("/chart")
+    public String adminChart(Model model){
 
-        return null;
+        List<ResultChartAdminDto> visitList = administratorChartService.findVisitByRange(0);
+        log.info("visitList = {}", visitList.size());
+        model.addAttribute("term", 0);
+        model.addAttribute("visistList", visitList);
+
+        return "administrator/admin_chart";
     }
 
-    @GetMapping("/chart")
-    public String adminChart(){
+    @PostMapping("/chart")
+    public String adminChart(@ModelAttribute("term") int term, Model model){
+        log.info("term = " + term);
+
+        List<ResultChartAdminDto> visitList= administratorChartService.findVisitByRange(term);
+        model.addAttribute("visistList", visitList);
+
         return "administrator/admin_chart";
     }
 

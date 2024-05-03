@@ -1,5 +1,15 @@
 {
+  let chartInfoList = document.querySelector('.chart-info-input').dataset.chart;
+  let term = document.querySelector('.chart-info-input').dataset.term;
+
+  console.log(chartInfoList)
+  console.log(term)
   const ctx = document.getElementById("visitChart");
+
+  let labelArr;
+  let datasetAr;
+
+  // $chartInfoInput.for
 
   new Chart(ctx, {
     type: "line",
@@ -74,4 +84,46 @@
         "1px solid #2bc1bf";
     });
   });
+  //
+  // $chartTermRadio[0].checked = 'true';
+  // $chartTermRadio[0].closest(".main__chart-search-date > div").style.border =
+  //   "1px solid #2bc1bf";
+
+  let $startDate = document.querySelector('.startDate');
+  $chartTermRadio.forEach(d => {
+    if(d.getAttribute("checked") === 'checked'){
+      console.log(d)
+      d.closest(".main__chart-search-date > div").style.border =
+          "1px solid #2bc1bf";
+
+      let today = new Date();
+      today.setDate(today.getDate() - d.value);
+
+      $startDate.value = today.toISOString().substring(0, 10)
+    }
+  })
 }
+
+{
+  let $dayRanges = document.querySelectorAll('.chart-day-ranges');
+  let $startDate = document.querySelector('.startDate');
+  let $endDate = document.querySelector('.endDate');
+
+  console.log(new Date().toISOString())
+  $endDate.value = new Date().toISOString().substring(0, 10);
+
+  $dayRanges.forEach(day => {
+
+    day.addEventListener('click' , function (){
+
+      let today = new Date();
+      today.setDate(today.getDate() - day.value);
+
+      $startDate.value = today.toISOString().substring(0, 10)
+
+    })
+  })
+}
+
+
+

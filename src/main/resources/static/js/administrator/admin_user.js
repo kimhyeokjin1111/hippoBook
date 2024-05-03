@@ -56,10 +56,13 @@
     userIdList = userIdList.substring(0, userIdList.length - 1)
     console.log(userIdList)
 
+    // window.location = '/admin/user/remove?'+userIdList;
 
-
-    window.location = '/admin/user/remove?'+userIdList;
-
+    let $adminUserform = document.querySelector(".admin-user-form");
+    fetch(`/v1/users?${userIdList}` , {method : "DELETE"})
+        .then(ele => {
+          $adminUserform.submit();
+        })
   })
 }
 
