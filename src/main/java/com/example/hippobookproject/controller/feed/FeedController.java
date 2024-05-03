@@ -4,6 +4,7 @@ import com.example.hippobookproject.dto.feed.CardDto;
 import com.example.hippobookproject.service.feed.FeedService;
 import com.example.hippobookproject.service.follow.FollowService;
 import com.example.hippobookproject.service.recommend.RecommendService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -23,8 +24,10 @@ public class FeedController {
     private final FollowService followService;
 
     @GetMapping()
-    public String feedPage(Model model){
-        List<CardDto> feedList = feedService.selectAll();
+    public String feedPage(Model model, HttpSession session){
+//        Long userId = (Long) session.getAttribute("userId");
+        Long userId = 1L;
+        List<CardDto> feedList = feedService.selectAll(userId);
         model.addAttribute("feedList", feedList);
         return "feed/feedpage";
     }
@@ -37,5 +40,10 @@ public class FeedController {
     @GetMapping("/readwrite")
     public String readwrite(){
         return "feed/readwrite";
+    }
+
+    @GetMapping("/follow")
+    public String followpage(){
+        return "follow/followingpage";
     }
 }
