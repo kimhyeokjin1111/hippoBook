@@ -112,7 +112,7 @@
             <section>
                 <div class="book-Container-cate">
                     <div>
-                        <span>전체 5권</span>
+                        <span>총 </span><span th:text="${#lists.size(bookContainerList)}"></span><span>권</span>
                     </div>
                     <div class="book-Container-cate-list">
                         <span>정렬</span>
@@ -125,90 +125,23 @@
 
         </form>
     </div>
-    <form action="">
+
         <section class="my-book-get-list-section">
-            <div class="my-book-get-list">
-                <div>
-                    <div class="my-book-get-list-image">
+            <div class="my-book-get-list" >
+                <div th:each="bookContainerList : ${bookContainerList}">
+                    <div class="my-book-get-list-image" >
                         <img src="/images/mypage/책표지 예제.jpg" alt="">
                     </div>
                     <div class="my-book-get-list-detail">
-                        <span>책제목</span>
-                        <span class="writer">저자</span>
-                        <span class="writer">진행도</span>
+                        <span th:text="${bookContainerList.bookCaseName}"></span>
+                        <span class="writer" th:text="${bookContainerList.bookCaseCreate}"></span>
+                        <span class="writer" th:text="${bookContainerList.bookHasPercent}"></span>
                     </div>
                 </div>
-
-                <div>
-                    <div class="my-book-get-list-image">
-                        <img src="/images/mypage/책표지 예제2.jpg" alt="">
-                    </div>
-                    <div class="my-book-get-list-detail">
-                        <span>책제목</span>
-                        <span class="writer">저자</span>
-                        <span class="writer">진행도</span>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="my-book-get-list-image">
-                        <img src="/images/mypage/책표지 예제3.jpg" alt="">
-                    </div>
-                    <div class="my-book-get-list-detail">
-                        <span>책제목</span>
-                        <span class="writer">저자</span>
-                        <span class="writer">진행도</span>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="my-book-get-list-image">
-                        <img src="/images/mypage/책표지 예제4.jpg" alt="">
-                    </div>
-                    <div class="my-book-get-list-detail">
-                        <span>책제목</span>
-                        <span class="writer">저자</span>
-                        <span class="writer">진행도</span>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="my-book-get-list-image">
-                        <img src="/images/mypage/책표지 예제5.jpg" alt="">
-                    </div>
-                    <div class="my-book-get-list-detail">
-                        <span>책제목</span>
-                        <span class="writer">저자</span>
-                        <span class="writer">진행도</span>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="my-book-get-list-image">
-                        <img src="/images/mypage/책표지 예제5.jpg" alt="">
-                    </div>
-                    <div class="my-book-get-list-detail">
-                        <span>책제목</span>
-                        <span class="writer">저자</span>
-                        <span class="writer">진행도</span>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="my-book-get-list-image">
-                        <img src="/images/mypage/책표지 예제5.jpg" alt="">
-                    </div>
-                    <div class="my-book-get-list-detail">
-                        <span>책제목</span>
-                        <span class="writer">저자</span>
-                        <span class="writer">진행도</span>
-                    </div>
-                </div>
-
 
             </div>
         </section>
-    </form>
+
     <footer>
 
     </footer>
@@ -216,7 +149,9 @@
         <div>
 
             <form action="" class="book-container-modal-list">
-                <div class="x-box"></div>
+                <div class="x-box">
+                    <img src="" alt="">
+                </div>
                 <div class="book-container-modal-list-btn">
                     <input type="button" value="인생책 설정" class="best-book">
                 </div>
@@ -225,6 +160,9 @@
                 </div>
                 <div class="book-container-modal-list-btn">
                     <input type="button" value="목록에서 삭제" class="book-list-delete">
+                </div>
+                <div class="book-container-modal-list-btn">
+                    <input type="button" value="책 상태 설정" class="best-book">
                 </div>
             </form>
         </div>

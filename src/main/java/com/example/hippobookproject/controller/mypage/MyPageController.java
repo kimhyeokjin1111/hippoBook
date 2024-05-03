@@ -1,5 +1,6 @@
 package com.example.hippobookproject.controller.mypage;
 
+import com.example.hippobookproject.dto.mypage.BookContainerDto;
 import com.example.hippobookproject.dto.mypage.IntBoardDto;
 import com.example.hippobookproject.dto.mypage.IntProfileDto;
 import com.example.hippobookproject.service.mypage.MypageService;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -29,27 +31,34 @@ public class MyPageController {
         IntProfileDto profileDto = mypageService.findProfile(userId);
         model.addAttribute("profileDto", profileDto);
         log.info("profileDto={}",profileDto);
-        return "/mypage/myPageInt";
+
+        IntBoardDto intBoardDto = mypageService.findIntBoardText(userId);
+        model.addAttribute("intBoardDto", intBoardDto);
+        return "mypage/myPageInt";
     }
 
     @PostMapping("/int")
     public String myPageInt(IntBoardDto intBoardDto){
+        intBoardDto.setUserId(1L);
         log.info("IntBoardDto = {}", intBoardDto);
-
         mypageService.registerIntBoardText(intBoardDto);
-        return "/mypage/myPageInt";
+        return "redirect:/mypage/int";
     }
 
 
 
     @GetMapping("/book/container")
-    public String bookContainer(){
-        return "/mypage/myPageBookContainer";
+    public String bookContainer(Model model){
+        Long userId = 1L;
+        List<BookContainerDto> bookContainerList  = mypageService.findBookContainer(userId);
+        model.addAttribute("bookContainerList", bookContainerList);
+        log.info("bookContainerList={}",bookContainerList);
+        return "mypage/myPageBookContainer";
     }
 
     @GetMapping("/book/write-content")
     public String bookWriteContent() {
-        return "/mypage/myWriteContent";
+        return "mypage/myWriteContent";
     }
 
     @GetMapping("/sticker")

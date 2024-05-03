@@ -285,7 +285,7 @@ footer {
 }
 
 .x-box {
-  background-image: url("../myPageImg/cancel.png");
+  background-image: url("/images/mypage/cancel.png");
   width: 15px;
   height: 15px;
   background-size: contain;
@@ -304,7 +304,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 6px;
 }
 
 .book-container-modal-list-btn input {

@@ -10,8 +10,8 @@
     </select>
 
     <insert id="insertIntBoardText" parameterType="IntBoardDto">
-        INSERT INTO TBL_INT_BOARD (INT_BOARD_ID, INT_BOARD_CONTENT)
-        VALUES (SEQ_INT_BOARD.nextval, #{intBoardContent})
+        INSERT INTO TBL_INT_BOARD (INT_BOARD_ID, INT_BOARD_CONTENT, USER_ID)
+        VALUES (SEQ_INT_BOARD.nextval, #{intBoardContent}, #{userId})
     </insert>
 
     <select id="selectIntBoardText" resultType="IntBoardDto">
@@ -19,6 +19,12 @@
             FROM TBL_INT_BOARD
         WHERE USER_ID = #{userId}
     </select>
+
+    <update id="updateIntBoardText" parameterType="IntBoardDto">
+        UPDATE TBL_INT_BOARD
+        SET INT_BOARD_CONTENT = #{intBoardContent}
+        WHERE USER_ID =#{userId}
+    </update>
 
 
 
