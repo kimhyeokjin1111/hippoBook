@@ -3,7 +3,7 @@
 {
   let $open = document.querySelector(".feed_writer");
   let $modal = document.querySelector(".modal");
-  let $close = document.querySelector(".modal_sheet");
+  let $close = document.querySelector(".feed_contentbox ");
   
   console.log($open);
   console.log($modal);

@@ -185,6 +185,7 @@ a{
 }
 
 .following_listbox{
+    position: relative;
     width: 100%;
     height: 120px;
     border-bottom: 1px solid gray;
@@ -214,22 +215,19 @@ a{
     width: 80px;
     padding: 15px;
 }
+/* 글쓰기 모달 */
 
-.modal_sheet{
-    align-items: flex-end;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+.modal_section{
     display: flex;
-    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 400px;
 }
 
 .modal{
-    max-width: 460px;
     width: 100%;
-    border-radius: 40px 40px 0 0;
+    border-radius:  0 0 40px 40px;
     position: relative;
     background: #f7f7f7;
     padding: 49px 0 0;

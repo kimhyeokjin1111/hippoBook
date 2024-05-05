@@ -16,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MainPageController {
 
+
     @RequestMapping("/search")
     public String searchPage(){
         return "/main/searchpage";
