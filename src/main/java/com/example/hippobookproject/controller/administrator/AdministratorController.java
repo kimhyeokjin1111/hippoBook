@@ -11,7 +11,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -47,16 +49,6 @@ public class AdministratorController {
         List<ResultChartAdminDto> visitList = administratorChartService.findVisitByRange(0);
         log.info("visitList = {}", visitList.size());
         model.addAttribute("term", 0);
-        model.addAttribute("visistList", visitList);
-
-        return "administrator/admin_chart";
-    }
-
-    @PostMapping("/chart")
-    public String adminChart(@ModelAttribute("term") int term, Model model){
-        log.info("term = " + term);
-
-        List<ResultChartAdminDto> visitList= administratorChartService.findVisitByRange(term);
         model.addAttribute("visistList", visitList);
 
         return "administrator/admin_chart";

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.hippobookproject.mapper.book.BookMapper">
-  <select id="CategoriePage" resultType="categorie">
+<!--  <select id="CategoriePage">
       SELECT * FROM TBL_CATE
   </select>
-    <insert id="insertCategoriePage" parameterType="categorie">
+    <insert id="insertCategoriePage">
         INSERT INTO TBL_CATE (CATE_ID, CATE_DATA) VALUES (#{id}, #{data})
     </insert>
-    <update id="updateCategoriePage" parameterType="categorie">
+    <update id="updateCategoriePage">
         UPDATE TBL_CATE SET CATE_ID = #{id} WHERE CATE_ID = #{id}
     </update>
-    <delete id="deleteCategoriePage" parameterType="categorie">
+    <delete id="deleteCategoriePage">
         DELETE FROM TBL_CATE WHERE CATE_ID = #{id}
-    </delete>
+    </delete>-->
 </mapper>

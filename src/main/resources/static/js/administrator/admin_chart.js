@@ -1,51 +1,88 @@
 {
-  let chartInfoList = document.querySelector('.chart-info-input').dataset.chart;
-  let term = document.querySelector('.chart-info-input').dataset.term;
+  let $attendanceBtn = document.querySelector('.main__user-search-btn-div > button');
+  let $termNow = document.querySelector('.main__chart-search-date');
 
-  console.log(chartInfoList)
+  let visitDate = ["2023.11",
+    "2023.12",
+    "2024.01",
+    "2024.02"];
+  let visitCnt = [100, 78, 90, 120];
+
+  $attendanceBtn.addEventListener('click', function (){
+    let nowTerm = $termNow.dataset.nowterm;
+    console.log(nowTerm)
+
+    fetch(`/v1/chart/attendances/${nowTerm}`, {method : "GET"})
+        .then(att => att.json())
+        .then(data => {
+          console.log(data[0].attendanceDate.substring(0, 10));
+          visitDate.splice(0, visitDate.length);
+          visitCnt.splice(0, visitCnt.length);
+
+          data.forEach(e => {
+            visitDate.push(e.attendanceDate.substring(0, 10));
+            visitCnt.push(Number(e.cnt));
+          })
+
+          console.log(visitDate.length)
+
+          const ctx = document.getElementById("visitChart");
+          let chartStatus = Chart.getChart(ctx);
+          if (chartStatus !== undefined) {
+            chartStatus.destroy();
+          }
+
+          new Chart(ctx, {
+            type: "line",
+            data: {
+              labels: visitDate, //날짜
+              datasets: [
+                {
+                  label: "# of Votes",
+                  data: visitCnt, //그 날에 출석 수
+                  borderWidth: 1,
+                  backgroundColor: [
+                    "rgba(255, 99, 132, 0.2)",
+                    "rgba(54, 162, 235, 0.2)",
+                    "rgba(255, 206, 86, 0.2)",
+                    "rgba(75, 192, 192, 0.2)",
+                    "rgba(153, 102, 255, 0.2)",
+                    "rgba(255, 159, 64, 0.2)",
+                  ],
+                },
+              ],
+            },
+            options: {
+              responsive: false,
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+            },
+          });
+
+        })
+  })
+
+  let dateValue = [
+    "2023.11",
+    "2023.12",
+    "2024.01",
+    "2024.02",
+    "2024.03",
+    "2024.04","2024.04","2024.04","2024.04","2024.04","2024.04","2024.04","2024.04","2024.04","2024.04","2024.04"
+  ]
+
+  let data = [100, 78, 90, 120, 115, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90]
   const ctx = document.getElementById("visitChart");
 
-  let labelArr;
-  let datasetAr;
+  console.log('dataValue' + dateValue);
+  console.log('data' + data);
 
-  // $chartInfoList[0].forEach()
+  console.log('visitdate', visitDate)
+  console.log('visitcnt', visitCnt)
 
-  new Chart(ctx, {
-    type: "line",
-    data: {
-      labels: [
-        "2023.11",
-        "2023.12",
-        "2024.01",
-        "2024.02",
-        "2024.03",
-        "2024.04",
-      ], //날짜
-      datasets: [
-        {
-          label: "# of Votes",
-          data: [100, 78, 90, 120, 115, 90], //그 날에 출석 수
-          borderWidth: 1,
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(255, 206, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-          ],
-        },
-      ],
-    },
-    options: {
-      responsive: false,
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
-  });
 }
 
 {
@@ -72,15 +109,21 @@
     ".main__chart-search-date > div > label > input"
   );
 
+  let $termNow = document.querySelector('.main__chart-search-date');
+
   $chartTermRadio.forEach((ele) => {
     ele.addEventListener("change", function () {
       $chartTermRadio.forEach((e) => {
         e.closest(".main__chart-search-date > div").style.border =
           "1px solid rgb(143, 141, 141)";
+
+
       });
 
       ele.closest(".main__chart-search-date > div").style.border =
         "1px solid #2bc1bf";
+
+      $termNow.dataset.nowterm = ele.value;
     });
   });
   //

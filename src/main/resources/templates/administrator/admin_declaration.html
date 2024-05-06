@@ -68,8 +68,8 @@
               <section class="main__center-container-box-search">
                 <div class="main__declaration-title-div">
                   <h1>신고글 관리</h1>
-                  <select name="declaration" class="main__declaration-select">
-                    <option value="feed">피드 신고</option>
+                  <select name="declaration" class="main__declaration-select" th:data-decltype="feed">
+                    <option value="feed" selected>피드 신고</option>
                     <option value="post">게시글 신고</option>
                     <option value="comment">코멘트 신고</option>
                   </select>
@@ -86,7 +86,7 @@
                         <td>
                           <input
                             type="text"
-                            name="declarationDate"
+                            name="declarationContent"
                             class="main__declarationDate-input"
                           />
                         </td>
@@ -121,14 +121,14 @@
                           />
                         </td>
                       </tr>
-                      <tr>
+                      <tr class="feed-can-not-see decl-type">
                         <th>신고글유형</th>
                         <td class="main__declaration-type-td">
                           <label>
                             <input
                               type="radio"
                               name="declarationType"
-                              value="D"
+                              value="deal"
                               checked
                             />
                             중고
@@ -137,7 +137,7 @@
                             <input
                               type="radio"
                               name="declarationType"
-                              value="B"
+                              value="board"
                             />
                             자유
                           </label>
@@ -145,7 +145,7 @@
                             <input
                               type="radio"
                               name="declarationType"
-                              value="B"
+                              value="novel"
                             />
                             소설
                           </label>
@@ -153,15 +153,15 @@
                             <input
                               type="radio"
                               name="declarationType"
-                              value="N"
+                              value="claim"
                             />
                             사용자문의
                           </label>
-                          <label>
+                          <label class="book-can-see type-book">
                             <input
                               type="radio"
                               name="declarationType"
-                              value="C"
+                              value="book"
                             />
                             책
                           </label>
@@ -174,7 +174,7 @@
                             <input
                               type="radio"
                               name="pocessType"
-                              value="A"
+                              value=""
                               checked
                             />
                             전체

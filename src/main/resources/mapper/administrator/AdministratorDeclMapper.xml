@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.hippobookproject.mapper.administrator.AdministratorDeclMapper">
+    <select id="selectDeclList" resultType="ResultDeclAdminDto">
+        SELECT POST_DECLARATION_ID DECLARAION_ID, POST_DECLARATION_DATE DECLARAION_DATE, POST_DECLARATION_CONTENT DECLARAION_CONTENT,
+            USER_ID, POST_DECLARATION_CHECK DECLARAION_CHECK, POST_ID, POST_CATE CATE,  POST_DECLARATION_PROCESS_DATE DECL_PROCESS_DATE
+            FROM (SELECT ROWNUM AS RNUM, POST_DECLARATION_ID, POST_DECLARATION_DATE, POST_DECLARATION_CONTENT,
+                    USER_ID, POST_DECLARATION_CHECK, POST_ID, POST_CATE,  POST_DECLARATION_PROCESS_DATE
+                    FROM (SELECT POST_DECLARATION_ID, POST_DECLARATION_DATE, POST_DECLARATION_CONTENT,
+                            USER_ID, POST_DECLARATION_CHECK, POST_ID, POST_CATE,  POST_DECLARATION_PROCESS_DATE
+                            FROM TBL_POST_DECLARATION
+                        <trim prefix="WHERE" prefixOverrides="AND">
+                            <if test="selectDecl.declarationContent != null">
+                                POST_DECLARATION_CONTENT LIKE '%' || #{selectDecl.declarationContent} || '%'
+                            </if>
+                            <if test="selectDecl.startDeclarationDate != null and selectDecl.endDeclarationDate != null" >
+                                AND TO_CHAR(POST_DECLARATION_DATE, 'YYYY-MM-DD') BETWEEN
+                                #{selectDecl.startDeclarationDate} AND #{selectDecl.endDeclarationDate}
+                            </if>
+                            <if test="selectDecl.startDeclarationDate != null and selectDecl.endDeclarationDate != null" >
+                                AND TO_CHAR(POST_DECLARATION_PROCESS_DATE, 'YYYY-MM-DD') BETWEEN
+                                #{selectDecl.startPocecssDate} AND #{selectDecl.endPocecssDate}
+                            </if>
+                            <if test="selectDecl.declarationType != null">
+                                AND POST_CATE = #{selectDecl.declarationType}
+                            </if>
+                            <if test="selectDecl.processType != null and selectDecl.processType.length() == 1">
+                                AND POST_DECLARATION_CHECK = #{selectDecl.processType}
+                            </if>
+                        </trim>
+                            ORDER BY POST_DECLARATION_ID)
+        <![CDATA[
+                WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}
+        )
+        WHERE RNUM > #{criteria.page} - 1) * #{criteria.amount}
+        ]]>
+    </select>
+
+    <select id="selectDeclTotal" parameterType="SelectDeclAdminDto" resultType="int">
+        SELECT count(POST_DECLARATION_ID)
+        FROM TBL_POST_DECLARATION
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="selectDecl.declarationContent != null">
+                POST_DECLARATION_CONTENT LIKE '%' || #{selectDecl.declarationContent} || '%'
+            </if>
+            <if test="selectDecl.startDeclarationDate != null and selectDecl.endDeclarationDate != null" >
+                AND TO_CHAR(POST_DECLARATION_DATE, 'YYYY-MM-DD') BETWEEN
+                #{selectDecl.startDeclarationDate} AND #{selectDecl.endDeclarationDate}
+            </if>
+            <if test="selectDecl.startDeclarationDate != null and selectDecl.endDeclarationDate != null" >
+                AND TO_CHAR(POST_DECLARATION_PROCESS_DATE, 'YYYY-MM-DD') BETWEEN
+                #{selectDecl.startPocecssDate} AND #{selectDecl.endPocecssDate}
+            </if>
+            <if test="selectDecl.declarationType != null">
+                AND POST_CATE = #{selectDecl.declarationType}
+            </if>
+            <if test="selectDecl.processType != null and selectDecl.processType.length() == 1">
+                AND POST_DECLARATION_CHECK = #{selectDecl.processType}
+            </if>
+        </trim>
+    </select>
+</mapper>

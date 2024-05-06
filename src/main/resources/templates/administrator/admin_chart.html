@@ -79,7 +79,7 @@
                     <tbody>
                       <tr>
                         <th>방문수 통계 조회</th>
-                        <td class="main__chart-search-date">
+                        <td class="main__chart-search-date" data-nowterm="0">
                           <div>
                             <label
                               ><input
@@ -172,7 +172,7 @@
                     </tbody>
                   </table>
                   <div class="main__user-search-btn-div">
-                    <button
+                    <button type="button"
                     ><span class="main__user-search-btn">검색</span></button>
 
                   </div>
@@ -186,6 +186,6 @@
         </div>
       </main>
     </div>
-    <input type="hidden" class="chart-info-input" th:data-chart="${visistList}" th:data-term="${term}">
+    <input type="hidden" class="chart-info-input" th:value="${visitJson}" th:data-term="${term}">
   </body>
 </html>
