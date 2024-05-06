@@ -1,6 +1,6 @@
 package com.example.hippobookproject.api.follow;
 
-import com.example.hippobookproject.dto.follow.FollowDto;
+import com.example.hippobookproject.dto.feed.FollowDto;
 import com.example.hippobookproject.service.feed.FeedService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -25,9 +25,17 @@ public class FollowApi {
         feedService.insertFollow(followDto);
     }
 
-    @DeleteMapping("/v1/follows")
-    public void unFollow(@RequestBody FollowDto followDto, HttpSession session){
+    @DeleteMapping("/v1/unfollows")
+    public void unFollow(@RequestBody FollowDto followDto,
+                        @RequestBody Long followTo,
+                         HttpSession session){
 //        Long userId = (Long) session.getAttribute("userId");
+
+        log.info("followTo = " + followTo);
+        Long userId = 3L;
+        followDto.setFollowFrom(userId);
+        feedService.deleteFollow(followTo);
+
 
     }
 }

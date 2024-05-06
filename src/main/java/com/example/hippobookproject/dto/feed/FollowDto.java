@@ -1,4 +1,4 @@
-package com.example.hippobookproject.dto.follow;
+package com.example.hippobookproject.dto.feed;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

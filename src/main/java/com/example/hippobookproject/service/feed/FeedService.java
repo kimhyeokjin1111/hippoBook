@@ -1,7 +1,7 @@
 package com.example.hippobookproject.service.feed;
 
 import com.example.hippobookproject.dto.feed.CardDto;
-import com.example.hippobookproject.dto.follow.FollowDto;
+import com.example.hippobookproject.dto.feed.FollowDto;
 import com.example.hippobookproject.mapper.feed.FeedMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,5 +21,9 @@ public class FeedService {
 
     public void insertFollow(FollowDto followDto){
         feedMapper.insertFollow(followDto);
+    }
+
+    public void deleteFollow(Long followTo){
+        feedMapper.deleteFollow(followTo);
     }
 }

@@ -24,4 +24,9 @@
         insert into TBL_FOLLOW (FOLLOW_ID,  FOLLOW_TO, FOLLOW_FROM)
         values (SEQ_FOLLOW.nextval, #{followTo}, #{followFrom})
     </insert>
+
+    <delete id="deleteFollow" parameterType="Long">
+        DELETE FROM TBL_FOLLOW
+        WHERE FOLLOW_TO = #{followTo}
+    </delete>
 </mapper>
