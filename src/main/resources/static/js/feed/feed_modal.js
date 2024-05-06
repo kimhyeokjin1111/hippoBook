@@ -52,6 +52,21 @@
     });
   });
 
+//   언팔로우 btn 처리
+  let unfollowList = document.querySelectorAll(".feed_unfollow_btn");
+  unfollowList.forEach(ele => {
+    ele.addEventListener("click" , function (){
+
+      fetch('v1/unfollows',
+          {
+            method: "DELETE",
+          }).then(resp => resp);
+
+      location.reload();
+
+
+    });
+  });
 
  
 
