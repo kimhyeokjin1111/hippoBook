@@ -9,4 +9,6 @@ import java.util.Optional;
 @Mapper
 public interface MypageBookContainerMapper {
     List<BookContainerDto> selectBookContainer(Long userId);
+
+    void deleteBookHas(Long bookHasId);
 }

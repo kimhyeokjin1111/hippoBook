@@ -23,4 +23,19 @@ class MypageBookContainerMapperTest {
 
         List<BookContainerDto> bookContainerList = mypageBookContainerMapper.selectBookContainer(1L);
     }
+
+    @Test
+    void deleteBookHas(){
+        //given
+        List<BookContainerDto> bookContainerDtoList = mypageBookContainerMapper.selectBookContainer(1L);
+        //System.out.println("bookContainerDtoList = " + bookContainerDtoList);
+        //when
+
+            BookContainerDto bookContainerDto = bookContainerDtoList.get(0);
+            //System.out.println("bookContainerDto = " + bookContainerDto);
+            mypageBookContainerMapper.deleteBookHas(7L);
+
+        //then
+
+    }
 }

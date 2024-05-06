@@ -19,7 +19,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class MypageServiceTest {
@@ -75,5 +75,15 @@ class MypageServiceTest {
         List<BookContainerDto> bookContainerList = mypageService.findBookContainer(1L);
        // then
         assertThat(bookContainerList).hasSize(1);
+    }
+
+    @Test
+    void removeBookContainer(){
+        //given
+        doNothing().when(mypageBookContainerMapper).deleteBookHas(any());
+        //when
+        mypageService.removeBookContainer(7L,1L);
+        //then
+        verify(mypageBookContainerMapper, times(1)).deleteBookHas(any());
     }
 }

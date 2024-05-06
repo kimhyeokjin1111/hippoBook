@@ -5,6 +5,9 @@
   let $readingBookPlusImgs = document.querySelectorAll(
     ".reading-book-img-check"
   );
+  let $modalBox2 = document.querySelector(".book-container-modal-bg2");
+  let $bookStatusSet = document.querySelector(".book-status-set");
+
 
   console.log($readingBookPlus);
 
@@ -15,6 +18,8 @@
   $xBox.addEventListener("click", function () {
     $modalBox.style.display = "none";
   });
+
+
 
   let $title = $modalBox.querySelector("h1");
   console.log($title);

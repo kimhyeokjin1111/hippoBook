@@ -56,6 +56,13 @@ public class MyPageController {
         return "mypage/myPageBookContainer";
     }
 
+    @GetMapping ("/remove")
+    public String bookContainer(BookContainerDto bookContainerDto){
+        bookContainerDto.setUserId(1L);
+        mypageService.removeBookContainer(bookContainerDto.getBookHasId(),1L);
+        return "redirect:/mypage/myPageBookContainer";
+    }
+
     @GetMapping("/book/write-content")
     public String bookWriteContent() {
         return "mypage/myWriteContent";
