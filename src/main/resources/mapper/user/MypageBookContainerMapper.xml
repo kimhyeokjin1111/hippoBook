@@ -11,5 +11,10 @@
                       ON T.USER_ID = #{userId} AND U.USER_ID = T.USER_ID
     </select>
 
+    <delete id="deleteBookHas" parameterType="Long">
+        DELETE FROM TBL_BOOK_HAS
+        WHERE BOOK_HAS_ID = #{bookHasId}
+    </delete>
+
 
 </mapper>

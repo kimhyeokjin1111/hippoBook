@@ -45,4 +45,10 @@ public class MypageService {
        return mypageBookContainerMapper.selectBookContainer(1L);
     }
 
+    public void removeBookContainer(Long bookHasId,Long userId){
+       List<BookContainerDto> bookContainerDtoList = mypageBookContainerMapper.selectBookContainer(userId);
+       mypageBookContainerMapper.deleteBookHas(bookHasId);
+
+    }
+
 }

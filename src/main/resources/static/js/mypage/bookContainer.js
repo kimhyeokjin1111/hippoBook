@@ -7,6 +7,7 @@
     let $bookListDelete = document.querySelector(".book-list-delete")
     let $bookContainerSort = document.querySelector(".book-Container-cate-list-setting")
     let $bookContainerSortImage = document.querySelector("#list-setting-image")
+
     console.log($bookContainerSet);
   
     if ($bookContainerSet.length > 0) {
