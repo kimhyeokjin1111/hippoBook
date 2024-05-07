@@ -42,3 +42,28 @@
     }
   });
 }
+
+{
+  let $declTypeSelect = document.querySelector('.main__declaration-select');
+  let $declType = document.querySelector('.decl-type');
+  let $typeBook = document.querySelector('.type-book');
+
+  $declTypeSelect.addEventListener('change', function (){
+    if($declTypeSelect.value === 'feed'){
+      $declType.classList.add('feed-can-not-see');
+    }else{
+      $declType.classList.remove('feed-can-not-see');
+    }
+
+    if($declTypeSelect.value === 'comment'){
+      $typeBook.classList.remove('book-can-see');
+    }else {$typeBook.classList.add('book-can-see');}
+
+  })
+}
+
+{
+  let $declContent = document.querySelectorAll('.main__search-option td');
+
+  console.log($declContent);
+}
