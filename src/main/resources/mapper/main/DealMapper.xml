@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.hippobookproject.mapper.main.DealMapper">
-    <select id="selectAll" resultType="DealListDto">
-
+    <select id="selectByTitle" resultType="DealListDto">
+        SELECT DEAL_ID, DEAL_TITLE, USER_NICKNAME
+        FROM (
+        SELECT DEAL_ID, DEAL_TITLE, U.USER_NICKNAME
+        FROM TBL_DEAL JOIN TBL_USER U
+        ON TBL_DEAL.USER_ID = U.USER_ID
+        ORDER BY DEAL_ID DESC)
+        WHERE <![CDATA[ROWNUM < =5]]>
     </select>
 
 

@@ -110,7 +110,7 @@ main {
   margin-right: 12px;
 }
 .main_top_category_tap {
-  position: "relative";
+  position: relative;
   left: 0;
   top: 0;
 }
@@ -146,6 +146,7 @@ a {
 
 .category_popup {
   position: fixed;
+  display: none;
   left: 0;
   right: 0;
   top: 109px;
@@ -153,10 +154,10 @@ a {
   z-index: 10;
   background: rgba(0, 0, 0, 0.3);
 }
-/*.category_popup_inner {*/
-/*  max-width: 1440px;*/
-/*  margin: 0 auto;*/
-/*}*/
+.category_popup_inner {
+  max-width: 1440px;
+  margin: 0 auto;
+}
 
 .category_popup_inner_layout {
   overflow: hidden;
@@ -200,19 +201,25 @@ a {
 }
 
 .category_popup_title3 {
+  margin-right: 11px;
   font-size: 15px;
-  margin: 50px 0 0 25px;
+  /*margin: 50px 0 0 25px;*/
   color: #2bc1bf;
   font-weight: 700;
   cursor: pointer;
 }
+/*.category_popup_title4{*/
+/*  margin: 50px 0 0 100px;*/
+/*  font-size: 15px;*/
+/*  color: #2bc1bf;*/
+/*  font-weight: 700;*/
+/*  cursor: pointer;*/
+/*}*/
 
-/*  */
+
 
 .main_content {
   height: auto;
-  /* min-height: 800px;
-  overflow: hidden; */
 }
 
 /* 슬라이드 */
@@ -243,9 +250,9 @@ a {
 }
 
 .btn_wrap {
+  z-index: 1;
   position: absolute;
   /* font-size: 60px; */
-  z-index: 10;
   top: 0;
   left: 0;
   right: 0;
@@ -616,12 +623,13 @@ a {
 }
 .novel_box_border {
   padding: 16px;
-  width: 100%;
+  width: 300px;
   height: 212px;
   position: relative;
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.06), 2px 2px 10px rgba(0, 0, 0, 0.04);
   border-radius: 12px;
   margin-right: 50px;
+  text-overflow: ellipsis;
 }
 
 .novel_data {
@@ -693,7 +701,6 @@ a {
 .novel_box_content_title {
   overflow: hidden;
   text-overflow: ellipsis;
-  word-wrap: break-word;
   margin-bottom: 3px;
   font-weight: 700;
   font-size: 18px;
@@ -711,7 +718,12 @@ a {
 }
 
 .novel_box_bottom {
-  justify-content: center;
+  padding-top: 20px;
+  padding-right: 16px;
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
+  height: 100px;
+  /*justify-content: center;*/
   position: absolute;
   left: 8px;
   right: 8px;
@@ -719,7 +731,7 @@ a {
   display: flex;
   flex-direction: column;
   min-height: 72px;
-  padding: 16px;
+  padding-left: 16px;
   backdrop-filter: blur(40px);
   background: rgba(176, 179, 188, 0.1)
     url(https://d3udu241ivsax2.cloudfront.net/v3/images/common/millie-logo-white.02b2313….svg);
@@ -728,45 +740,14 @@ a {
 }
 
 .novel_box_bottom_content {
-  width: calc(100% - 32px);
+  overflow-wrap: break-word;
   color: #6f6f6f;
-  overflow: hidden;
+  /*overflow: hidden;*/
   text-overflow: ellipsis;
-  word-wrap: break-word;
   max-height: 1.35em;
 }
 
-.novel_box_border2 {
-  padding: 16px;
-  width: 100%;
-  height: 212px;
-  position: relative;
-  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.06), 2px 2px 10px rgba(0, 0, 0, 0.04);
-  border-radius: 12px;
-  bottom: 210px;
-  left: 500px;
 
-  margin-right: 16px;
-  min-width: 306px;
-  max-width: 400px;
-  flex: 1 0 auto;
-}
-
-.novel_box_border3 {
-  padding: 16px;
-  width: 100%;
-  height: 212px;
-  position: relative;
-  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.06), 2px 2px 10px rgba(0, 0, 0, 0.04);
-  border-radius: 12px;
-  left: 1000px;
-  bottom: 420px;
-
-  margin-right: 16px;
-  min-width: 306px;
-  max-width: 400px;
-  flex: 1 0 auto;
-}
 
 .main_book_report {
   padding: 32px 0;
@@ -807,17 +788,18 @@ a {
 }
 
 .main_report_container {
+  display: flex;
   overflow: hidden;
   margin-top: -16px;
 }
 
 .main_report_content {
-  /* width: 1440px; */
+   width: 1440px;
   padding-top: 16px;
   align-items: baseline;
   display: inline-flex;
   flex-wrap: nowrap;
-  padding-right: 24px;
+  /*padding-right: 24px;*/
   margin-bottom: 20px;
   list-style: none;
 }
@@ -833,6 +815,7 @@ a {
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.06), 2px 2px 10px rgba(0, 0, 0, 0.04);
   overflow: hidden;
   border-radius: 12px;
+
 }
 
 .main_report_detail_box {
@@ -851,7 +834,8 @@ a {
   height: 100%;
 }
 
-.main_book_report_content {
+.main_book_report_box {
+  height: 180px;
   padding: 16px 24px;
 }
 
@@ -859,19 +843,17 @@ a {
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  word-wrap: break-word;
   max-height: 1.35em;
   font-size: 16px;
   font-weight: 700;
 }
 
-.main_book_report_content_substance {
+.main_book_report_content{
+  overflow-wrap: break-word;
   min-height: 19px;
   margin-top: 4px;
   color: #6f6f6f;
-  overflow: hidden;
+  height: 100px;
   text-overflow: ellipsis;
 }
 
@@ -929,7 +911,7 @@ a {
   display: flex;
 }
 .main_deal_item {
-  margin: 0 100px;
+  margin: 0 140px;
   list-style: none;
   max-width: 125px;
   min-width: 125px;

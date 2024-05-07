@@ -58,7 +58,7 @@
                 <!-- 내 서재 이동 -->
               </li>
               <li class="main_top_category_list2">
-                <a href="" class="main_top_category_list_title">쪽지</a>
+                <a th:href="@{/message/letter/get}" class="main_top_category_list_title">쪽지</a>
                 <!-- 쪽지 이동 -->
               </li>
               <li class="main_top_category_list2">
@@ -68,6 +68,11 @@
                 <a href="" class="main_top_category_list_title">이벤트</a>
                 <!-- 이벤트 이동 -->
               </li>
+
+              <li class="main_top_category_list2">
+                <a th:href="@{/categorie/Categoriepage}" class="main_top_category_list_title">카테고리</a>
+              </li>
+
             </ul>
           </div>
         </div>
@@ -140,7 +145,9 @@
         <div class="main_content_layout">
           <section class="hipppo_ranking">
             <div class="hipppo_ranking_layout">
+              <a th:href="@{/book/info}">
               <h3 class="hipppo_ranking_title">히포 랭킹</h3>
+              </a>
               <div class="hipppo_ranking_content">
                         <div class="ranking_content1">
                           <div class="rank_num1">
@@ -321,116 +328,66 @@
         </div>
 
         <div class="novel_preview">
-            <h3 class="novel_preview_title">소설 미리보기</h3>
+          <a th:href="@{/feed}">
+            <h3 class="novel_preview_title">독후감 바로가기</h3>
+          </a>
             <div class="novel_content">
               <div class="novel_content_wrapper">
                 <div class="novel_box">
-                  <div class="novel_box_border" th:each="novel :${novelList}">
+                  <div class="novel_box_border" th:each="board :${boardList}">
                     <div class="novel_thumbnail_wrap">
-                        <div class="novel_data">
-                          <div class="novel_box_inner">
-                            <a href="" class="novel_url">
-                              <div class="thumbnail2">
-                                <div class="novel_thumbnail_inner">
-                                  <div class="novel_thumbnail_inner2">
-                                    <div class="novel_thumbnail_inner_picture">
-                                      <img th:src="@{/images/main/novel_thumbnail.png}" alt=""
-                                      class="novel_thumbnail_inner_picture2">
-                                    </div>
+                      <div class="novel_data">
+                        <div class="novel_box_inner">
+                          <a href="" class="novel_url">
+                            <div class="thumbnail2">
+                              <div class="novel_thumbnail_inner">
+                                <div class="novel_thumbnail_inner2">
+                                  <div class="novel_thumbnail_inner_picture">
+                                    <img th:src="@{/images/main/novel_thumbnail.png}" alt=""
+                                         class="novel_thumbnail_inner_picture2">
                                   </div>
-                                </div>        
+                                </div>
                               </div>
-                            </a>
-                            <a href="" class="book_data2">  <!--책 정보 url이동-->
-                              <div class="novel_box_content">
-                                <p class="novel_box_content_title" th:text="${novel.novelTitle}"></p>
-                                <p class="novel_box_content_content" th:text="${novel.userNickName}"></p>
-                              </div>
-                            </a>
-                          </div>
+                            </div>
+                          </a>
+                          <a href="" class="book_data2">  <!--책 정보 url이동-->
+                            <div class="novel_box_content">
+                              <p class="novel_box_content_title" th:text="${board.boardTitle}"></p>
+                              <p class="novel_box_content_content" th:text="${board.userNickName}"></p>
+                            </div>
+                          </a>
                         </div>
-                        <div class="novel_box_bottom">
-                          <p class="novel_box_bottom_content" th:text="${novel.novelContent}"></p>
-                        </div>
+                      </div>
+                      <div class="novel_box_bottom">
+                        <div class="novel_box_bottom_content" th:text="${board.boardContent}"></div>
+                      </div>
                     </div>
                   </div>
                 </div>
-            </div>
+              </div>
 
-        </div>
-      </div>
+            </div>
+          </a></div>
       <div class="main_book_report">
         <div class="main_book_report_layout">
-          <h3 class="main_report_title">독후감 미리보기
-            <a href="" class="main_report_title_url"></a>
-          </h3>
+          <a th:href="@{/board/post/main}">
+          <h3 class="main_report_title">소설 바로가기</h3>
+          </a>
           <div class="main_report_section">
             <div class="main_report_container">
-              <ul class="main_report_content">
+              <ul class="main_report_content" th:each="novel :${novelList}">
                 <li class="main_report_item">
                   <div class="main_report_section_box">
                     <a href="" class="main_report_detail_box">
                       <div class="main_book_report_thumbnail">
-                        <img th:src="@{/images/main/report_thumbnail.png}" alt="" class="main_book_report_thumbnail_img">
                       </div>
-                      <div class="main_book_report_content">
-                        <div class="main_book_report_content_title">제목제목제목제목제목제목제목제목제목제목제목제목</div>
-                        <p class="main_book_report_content_substance">내용내용내용내용내용내용내용내용내용내용내용내용내용</p>
-                      </div>
-                      <div class="main_book_report_writer_content">
-                        <div class="main_book_report_writer_content_icon"></div>
-                        <div class="main_book_report_writer_content_username">닉네임닉네임</div>
-                      </div>
-                    </a>
-                  </div>
-                </li>
-                <li class="main_report_item">
-                  <div class="main_report_section_box">
-                    <a href="" class="main_report_detail_box"> <!-- 독후감 페이지 이동-->
-                      <div class="main_book_report_thumbnail">
-                        <img th:src="@{/images/main/report_thumbnail.png}" alt="" class="main_book_report_thumbnail_img">
-                      </div>
-                      <div class="main_book_report_content">
-                        <div class="main_book_report_content_title">제목제목제목제목제목제목제목제목제목제목제목제목</div>
-                        <p class="main_book_report_content_substance">내용내용내용내용내용내용내용내용내용내용내용내용내용</p>
+                      <div class="main_book_report_box">
+                        <div class="main_book_report_content_title" th:text="${novel.novelTitle}"></div>
+                        <div class="main_book_report_content" th:text="${novel.novelContent}"></div>
                       </div>
                       <div class="main_book_report_writer_content">
                         <div class="main_book_report_writer_content_icon"></div>
-                        <div class="main_book_report_writer_content_username">닉네임닉네임</div>
-                      </div>
-                    </a>
-                  </div>
-                </li>
-                <li class="main_report_item">
-                  <div class="main_report_section_box">
-                    <a href="" class="main_report_detail_box"> <!-- 독후감 페이지 이동-->
-                      <div class="main_book_report_thumbnail">
-                        <img th:src="@{/images/main/report_thumbnail.png}" alt="" class="main_book_report_thumbnail_img">
-                      </div>
-                      <div class="main_book_report_content">
-                        <div class="main_book_report_content_title">제목제목제목제목제목제목제목제목제목제목제목제목</div>
-                        <p class="main_book_report_content_substance">내용내용내용내용내용내용내용내용내용내용내용내용내용</p>
-                      </div>
-                      <div class="main_book_report_writer_content">
-                        <div class="main_book_report_writer_content_icon"></div>
-                        <div class="main_book_report_writer_content_username">닉네임닉네임</div>
-                      </div>
-                    </a>
-                  </div>
-                </li>
-                <li class="main_report_item">
-                  <div class="main_report_section_box">
-                    <a href="" class="main_report_detail_box"> <!-- 독후감 페이지 이동-->
-                      <div class="main_book_report_thumbnail">
-                        <img th:src="@{/images/main/report_thumbnail.png}" alt="" class="main_book_report_thumbnail_img">
-                      </div>
-                      <div class="main_book_report_content">
-                        <div class="main_book_report_content_title">제목제목제목제목제목제목제목제목제목제목제목제목</div>
-                        <p class="main_book_report_content_substance">내용내용내용내용내용내용내용내용내용내용내용내용내용</p>
-                      </div>
-                      <div class="main_book_report_writer_content">
-                        <div class="main_book_report_writer_content_icon"></div>
-                        <div class="main_book_report_writer_content_username">닉네임닉네임</div>
+                        <div class="main_book_report_writer_content_username" th:text="${novel.userNickName}"></div>
                       </div>
                     </a>
                   </div>
@@ -442,9 +399,11 @@
       </div>
       <div class="main_deal">
         <div class="main_deal_inner">
+          <a th:href="@{/board/post/main}">
           <h3 class="main_deal_title">방금 올라온 중고장터</h3>
+          </a>
           <div class="main_deal_layout">
-            <ul class="main_deal_wrap">
+            <ul class="main_deal_wrap" th:each="deal :${dealList}">
               <li class="main_deal_item">
                 <div class="main_deal_box">
                   <a href=""> <!--중고거래 게시글로 이동-->
@@ -456,101 +415,12 @@
                   </a>
                   <a href="" class="main_deal_boox_content">
                     <div class="main_deal_boox_content_box">
-                      <p class="title">제목제목</p>
+                      <p class="title" th:text="${deal.dealTitle}"></p>
+                      <p th:text="${deal.userNickName}"></p>
                     </div>
                   </a>
                 </div>
               </li>
-              <li class="main_deal_item">
-                <div class="main_deal_box">
-                  <a href=> <!--중고거래 게시글로 이동-->
-                    <div class="main_deal_book_thumbnail">
-                      <div class="main_deal_book_thumbnail_inner">
-                        <img th:src="@{/images/main/deal_thumbnail.png}" alt="" class="main_deal_book_thumbnail_img">
-                      </div>
-                    </div>
-                  </a>
-                  <a href="" class="main_deal_boox_content">
-                    <div class="main_deal_boox_content_box">
-                      <p class="title">제목제목</p>
-                      <p class="author">지은이</p>
-                      <p class="price">가격가격</p>
-                    </div>
-                  </a>
-                </div>
-              </li>
-              <li class="main_deal_item">
-                <div class="main_deal_box">
-                  <a href=""> <!--중고거래 게시글로 이동-->
-                    <div class="main_deal_book_thumbnail">
-                      <div class="main_deal_book_thumbnail_inner">
-                        <img th:src="@{/images/main/deal_thumbnail.png}" alt="" class="main_deal_book_thumbnail_img">
-                      </div>
-                    </div>
-                  </a>
-                  <a href="" class="main_deal_boox_content">
-                    <div class="main_deal_boox_content_box">
-                      <p class="title">제목제목</p>
-                      <p class="author">지은이</p>
-                      <p class="price">가격가격</p>
-                    </div>
-                  </a>
-                </div>
-              </li>
-              <li class="main_deal_item">
-                <div class="main_deal_box">
-                  <a href=""> <!--중고거래 게시글로 이동-->
-                    <div class="main_deal_book_thumbnail">
-                      <div class="main_deal_book_thumbnail_inner">
-                        <img th:src="@{/images/main/deal_thumbnail.png}" alt="" class="main_deal_book_thumbnail_img">
-                      </div>
-                    </div>
-                  </a>
-                  <a href="" class="main_deal_boox_content">
-                    <div class="main_deal_boox_content_box">
-                      <p class="title">제목제목</p>
-                      <p class="author">지은이</p>
-                      <p class="price">가격가격</p>
-                    </div>
-                  </a>
-                </div>
-              </li>
-              <li class="main_deal_item">
-                <div class="main_deal_box">
-                  <a href=""> <!--중고거래 게시글로 이동-->
-                    <div class="main_deal_book_thumbnail">
-                      <div class="main_deal_book_thumbnail_inner">
-                        <img th:src="@{/images/main/deal_thumbnail.png}" alt="" class="main_deal_book_thumbnail_img">
-                      </div>
-                    </div>
-                  </a>
-                  <a href="" class="main_deal_boox_content">
-                    <div class="main_deal_boox_content_box">
-                      <p class="title">제목제목</p>
-                      <p class="author">지은이</p>
-                      <p class="price">가격가격</p>
-                    </div>
-                  </a>
-                </div>
-              </li> 
-              <li class="main_deal_item">
-                <div class="main_deal_box">
-                  <a href=""> <!--중고거래 게시글로 이동-->
-                    <div class="main_deal_book_thumbnail">
-                      <div class="main_deal_book_thumbnail_inner">
-                        <img th:src="@{/images/main/deal_thumbnail.png}" alt="" class="main_deal_book_thumbnail_img">
-                      </div>
-                    </div>
-                  </a>
-                  <a href="" class="main_deal_boox_content">
-                    <div class="main_deal_boox_content_box">
-                      <p class="title">제목제목</p>
-                      <p class="author">지은이</p>
-                      <p class="price">가격가격</p>
-                    </div>
-                  </a>
-                </div>
-              </li> 
             </ul>
           </div>
         </div>
@@ -582,6 +452,7 @@
         </div>
       </div>
       <div class="category_popup" id="category_wrap">
+        <div class="category_popup_inner">
           <section class="category_popup_inner_layout">
             <section class="category_popup_content_layout">
               <a th:href="@{/board/post/main}">
@@ -607,8 +478,12 @@
               <a th:href="@{/search}">
               <span class="category_popup_title3">검색</span>
               </a>
+              <a th:href="@{/categorie/Categoriepage}">
+                <span class="category_popup_title3">카테고리</span>
+              </a>
             </section>
           </section>
+        </div>
       </div>
     </div>  
     </main>
