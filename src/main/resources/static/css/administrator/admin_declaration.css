@@ -525,3 +525,12 @@ main {
 .declaration-view-flex {
   display: flex;
 }
+
+.feed-can-not-see{
+  display: none;
+}
+
+.book-can-see{
+  display: none;
+}
+
