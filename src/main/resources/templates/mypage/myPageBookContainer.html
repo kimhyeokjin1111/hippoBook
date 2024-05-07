@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" th:href="@{/css/mypage/myPageBookContainer.css}">
-    <script defer th:src="@{/js/mypage/bookContainer.js}"></script>
+    <script type="module" defer th:src="@{/js/mypage/bookContainer.js}"></script>
 </head>
 <body>
 
@@ -128,14 +128,14 @@
 
         <section class="my-book-get-list-section">
             <div class="my-book-get-list" >
-                <div th:each="bookContainerList : ${bookContainerList}">
-                    <div class="my-book-get-list-image" >
+                <div th:each="bookContainerDto : ${bookContainerList}">
+                    <div class="my-book-get-list-image" th:data-id="${bookContainerDto.bookHasId}">
                         <img src="/images/mypage/책표지 예제.jpg" alt="">
                     </div>
                     <div class="my-book-get-list-detail">
-                        <span th:text="${bookContainerList.bookCaseName}"></span>
-                        <span class="writer" th:text="${bookContainerList.bookCaseCreate}"></span>
-                        <span class="writer" th:text="${bookContainerList.bookHasPercent}"></span>
+                        <span th:text="${bookContainerDto.bookCaseName}"></span>
+                        <span class="writer" th:text="${bookContainerDto.bookCaseCreate}"></span>
+                        <span class="writer" th:text="${bookContainerDto.bookHasPercent}"></span>
                     </div>
                 </div>
 
@@ -152,18 +152,21 @@
                 <div class="x-box">
                     <img src="" alt="">
                 </div>
+
                 <div class="book-container-modal-list-btn">
-                    <input type="button" value="인생책 설정" class="best-book">
+                    <input type="button" value="인생책 설정" class="best-book" data-id="">
                 </div>
                 <div class="book-container-modal-list-btn">
                     <input type="button" value="책정보 보기" class="book-info-detail">
                 </div>
                 <div class="book-container-modal-list-btn">
-                    <input type="button" value="목록에서 삭제" class="book-list-delete">
+                    <input type="button" value="목록에서 삭제" class="book-list-delete" data-id="">
                 </div>
                 <div class="book-container-modal-list-btn">
                     <input type="button" value="책 상태 설정" class="book-status-set">
                 </div>
+
+
             </form>
         </div>
 
@@ -176,13 +179,13 @@
                     <img src="" alt="">
                 </div>
                 <div class="book-container-modal-list-btn">
-                    <input type="button" value="읽음" class="best-book">
+                    <input type="button" value="읽음" >
                 </div>
                 <div class="book-container-modal-list-btn">
-                    <input type="button" value="읽는 중" class="book-info-detail">
+                    <input type="button" value="읽는 중" >
                 </div>
                 <div class="book-container-modal-list-btn">
-                    <input type="button" value="안읽음" class="book-list-delete">
+                    <input type="button" value="안읽음" >
                 </div>
 
             </form>
