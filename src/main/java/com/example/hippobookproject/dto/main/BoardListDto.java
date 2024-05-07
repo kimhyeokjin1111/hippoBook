@@ -9,9 +9,8 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor
-public class DealListDto {
-   private String dealTitle;
-   private String userNickName;
-
-//    DEAL_ID, DEAL_TITLE, DEAL_CONTENT, DEAL_DATE, USER_ID, DEAL_VIEW
+public class BoardListDto {
+    private String boardTitle;
+    private String boardContent;
+    private String userNickName;
 }

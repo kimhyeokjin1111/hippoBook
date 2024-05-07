@@ -1,18 +1,25 @@
 {
+
   // 모달 띄우는
-  let $categoryOpenBtn = document.getElementById("OpenBtn");
-  let $getmodal = document.getElementById("category_wrap");
-  let $categoryCloseBtn = document.getElementById("CloseBtn");
+  let $categoryOpenBtn = document.querySelector(".category_openBtn");
+  let $getmodal = document.querySelector(".category_popup");
+  let $categoryCloseBtn = document.querySelector(".main_content");
 
-  OpenBtn.onclick = function () {
+
+  $categoryOpenBtn.addEventListener("click", function(){
     $getmodal.style.display = "block";
-  };
+  });
 
-  window.onclick = function (categoryEvent) {
-    if (categoryEvent.target == $getmodal) {
-      $getmodal.style.display = "none";
-    }
-  };
+
+  $categoryCloseBtn.addEventListener("click", function (){
+    $getmodal.style.display = "none";
+  })
+
+  // window.onclick = function (categoryEvent) {
+  //   if (categoryEvent.target === $getmodal) {
+  //     $getmodal.style.display = "none";
+  //   }
+  // };
 
   let $slidesBanner = document.querySelector(".slides_banner");
   let $slidesContent = document.querySelectorAll(".slides_content");

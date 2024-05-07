@@ -1,5 +1,7 @@
 package com.example.hippobookproject.controller.mainpage;
 
+import com.example.hippobookproject.dto.main.BoardListDto;
+import com.example.hippobookproject.dto.main.DealListDto;
 import com.example.hippobookproject.dto.main.NovelListDto;
 import com.example.hippobookproject.service.main.MainService;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +29,12 @@ public class MainPageController {
     @GetMapping("/")
     public String enterMain(Model model){
         List<NovelListDto> novelList = mainService.findAll();
+        List<DealListDto> dealList = mainService.selectByTitle();
+
+        List<BoardListDto> boardList = mainService.selectByContent();
+
+        model.addAttribute("boardList", boardList);
+        model.addAttribute("dealList", dealList);
         model.addAttribute("novelList", novelList);
         return "main/mainpage";
     }
