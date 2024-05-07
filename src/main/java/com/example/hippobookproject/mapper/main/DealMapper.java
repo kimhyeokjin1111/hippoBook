@@ -7,5 +7,5 @@ import java.util.List;
 
 @Mapper
 public interface DealMapper {
-//    List<DealListDto> selectAll();
+    List<DealListDto> selectByTitle();
 }
