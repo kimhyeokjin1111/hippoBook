@@ -1,3 +1,5 @@
+import * as module from '../mypage/module/bookContainerModule.js'
+
 {
     let $bookContainerSet = document.querySelectorAll(".my-book-get-list-image");
     let $modalBox = document.querySelector(".book-container-modal-bg");
@@ -14,6 +16,8 @@
         $bookContainerSet.forEach(function(bookImage) {
           bookImage.addEventListener("click", function () {
             $modalBox.style.display = "flex";
+              let id = this.dataset.id;
+            $modalBox.querySelector('.book-list-delete').dataset.id = id;
           });
         });
       }
@@ -23,16 +27,27 @@
     });
 
     $bestBook.addEventListener("click", function(){
+        module.register(this.dataset.id, function (){
+            location.reload();
+        });
+        
         $modalBox.style.display = "none";
     });
   
     $bookInfoDetail.addEventListener("click", function(){
+
         $modalBox.style.display = "none";
     });
 
     $bookListDelete.addEventListener("click", function(){
+        module.remove(this.dataset.id, function (){
+            location.reload();
+        });
+
         $modalBox.style.display = "none";
     });
+
+
 
     
     let sortStatus = false;

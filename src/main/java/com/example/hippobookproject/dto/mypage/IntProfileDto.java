@@ -12,4 +12,5 @@ public class IntProfileDto {
     private String userNickName;
     private Long followingCnt;
     private Long followerCnt;
+    private Long bestBookId;
 }

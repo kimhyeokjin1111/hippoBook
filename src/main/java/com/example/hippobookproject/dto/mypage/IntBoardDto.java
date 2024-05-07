@@ -11,4 +11,5 @@ public class IntBoardDto {
     private Long intBoardId;
     private String intBoardContent;
     private Long userId;
+
 }

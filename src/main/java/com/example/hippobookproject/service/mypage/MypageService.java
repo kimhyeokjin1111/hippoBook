@@ -36,6 +36,7 @@ public class MypageService {
    }
 
     public IntBoardDto findIntBoardText(Long userId){
+
        return mypageMapper.selectIntBoardText(userId)
                .orElseThrow(() -> new IllegalStateException("존재하지 않는 회원 번호"));
     }
@@ -45,10 +46,12 @@ public class MypageService {
        return mypageBookContainerMapper.selectBookContainer(1L);
     }
 
-    public void removeBookContainer(Long bookHasId,Long userId){
-       List<BookContainerDto> bookContainerDtoList = mypageBookContainerMapper.selectBookContainer(userId);
+    public void removeBookContainer(Long bookHasId){
+//       List<BookContainerDto> bookContainerDtoList = mypageBookContainerMapper.selectBookContainer(userId);
        mypageBookContainerMapper.deleteBookHas(bookHasId);
 
     }
+
+
 
 }
