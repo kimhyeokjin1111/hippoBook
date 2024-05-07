@@ -209,8 +209,10 @@ main {
   outline: 0 none;
 }
 
-.startDate,
-.endDate {
+.startDeclDate,
+.endDeclDate,
+.startPDate,
+.endPDate{
   height: 28px;
   padding: 0 8px;
   border: 1px solid #d6dae1;
@@ -234,6 +236,10 @@ main {
   margin-top: 42px;
   display: flex;
   justify-content: center;
+}
+
+.decl-search-btn{
+  border: 0;
 }
 
 .main__user-search-btn {

@@ -97,12 +97,12 @@
                           <input
                             type="date"
                             name="startDeclarationDate"
-                            class="startDate"
+                            class="startDeclDate"
                           /><span>~</span
                           ><input
                             type="date"
                             name="endDeclarationDate"
-                            class="endDate"
+                            class="endDeclDate"
                           />
                         </td>
                       </tr>
@@ -112,23 +112,24 @@
                           <input
                             type="date"
                             name="startPocecssDate"
-                            class="startDate"
+                            class="startPDate"
                           /><span>~</span
                           ><input
                             type="date"
                             name="endPocecssDate"
-                            class="endDate"
+                            class="endPDate"
                           />
                         </td>
                       </tr>
                       <tr class="feed-can-not-see decl-type">
                         <th>신고글유형</th>
-                        <td class="main__declaration-type-td">
+                        <td class="main__declaration-type-td" >
                           <label>
                             <input
                               type="radio"
                               name="declarationType"
                               value="deal"
+                              class="decl-opt-type"
                               checked
                             />
                             중고
@@ -137,6 +138,7 @@
                             <input
                               type="radio"
                               name="declarationType"
+                              class="decl-opt-type"
                               value="board"
                             />
                             자유
@@ -145,6 +147,7 @@
                             <input
                               type="radio"
                               name="declarationType"
+                              class="decl-opt-type"
                               value="novel"
                             />
                             소설
@@ -153,6 +156,7 @@
                             <input
                               type="radio"
                               name="declarationType"
+                              class="decl-opt-type"
                               value="claim"
                             />
                             사용자문의
@@ -161,6 +165,7 @@
                             <input
                               type="radio"
                               name="declarationType"
+                              class="decl-opt-type"
                               value="book"
                             />
                             책
@@ -175,16 +180,17 @@
                               type="radio"
                               name="pocessType"
                               value=""
+                              class="decl-opt-p-type"
                               checked
                             />
                             전체
                           </label>
                           <label>
-                            <input type="radio" name="pocessType" value="Y" />
+                            <input type="radio" name="pocessType" value="Y" class="decl-opt-p-type"/>
                             처리
                           </label>
                           <label>
-                            <input type="radio" name="pocessType" value="N" />
+                            <input type="radio" name="pocessType" value="N" class="decl-opt-p-type"/>
                             미처리
                           </label>
                         </td>
@@ -192,8 +198,8 @@
                     </tbody>
                   </table>
                   <div class="main__user-search-btn-div">
-                    <a href=""
-                      ><span class="main__user-search-btn">검색</span></a
+                    <button type="button" class="decl-search-btn"
+                      ><span class="main__user-search-btn">검색</span></button
                     >
                   </div>
                 </div>
