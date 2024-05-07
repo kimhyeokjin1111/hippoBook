@@ -82,8 +82,11 @@ class MypageServiceTest {
         //given
         doNothing().when(mypageBookContainerMapper).deleteBookHas(any());
         //when
-        mypageService.removeBookContainer(7L,1L);
+        mypageService.removeBookContainer(1L);
         //then
         verify(mypageBookContainerMapper, times(1)).deleteBookHas(any());
+
     }
+
+
 }

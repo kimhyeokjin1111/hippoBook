@@ -1,6 +1,8 @@
 package com.example.hippobookproject.mapper.user;
 
 import com.example.hippobookproject.dto.mypage.BookContainerDto;
+import com.example.hippobookproject.dto.mypage.IntBoardDto;
+import com.example.hippobookproject.dto.mypage.IntProfileDto;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ class MypageBookContainerMapperTest {
     MypageBookContainerMapper mypageBookContainerMapper;
 
     BookContainerDto bookContainerDto;
+
+    IntProfileDto intProfileDto;
+
     @Test
     void selectBookContainer() {
 
@@ -31,11 +36,20 @@ class MypageBookContainerMapperTest {
         //System.out.println("bookContainerDtoList = " + bookContainerDtoList);
         //when
 
-            BookContainerDto bookContainerDto = bookContainerDtoList.get(0);
+        int oldSize = bookContainerDtoList.size();
+        BookContainerDto bookContainerDto = bookContainerDtoList.get(0);
             //System.out.println("bookContainerDto = " + bookContainerDto);
-            mypageBookContainerMapper.deleteBookHas(7L);
+        Long bookHasId = bookContainerDto.getBookHasId();
+        mypageBookContainerMapper.deleteBookHas(bookHasId);
 
+        List<BookContainerDto> list = mypageBookContainerMapper.selectBookContainer(1L);
         //then
+//        Assertions.assertThat(bookContainerDto).isNull();
+        assertThat(list.size()).isEqualTo(oldSize - 1);
+    }
+
+    @Test
+    void insertBestBook(){
 
     }
 }
