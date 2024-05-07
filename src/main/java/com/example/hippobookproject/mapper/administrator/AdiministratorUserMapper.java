@@ -18,5 +18,4 @@ public interface AdiministratorUserMapper {
 
     void deleteUserAdminById(List<Integer> userIdList);
 
-
 }

@@ -31,7 +31,7 @@ class AdministratorDeclMapperTest {
         selectDeclAdminDto.setEndDeclarationDate(LocalDate.parse("2024-05-07", DateTimeFormatter.ISO_DATE));
         selectDeclAdminDto.setStartPocecssDate(LocalDate.parse("2024-05-06", DateTimeFormatter.ISO_DATE));
         selectDeclAdminDto.setEndPocecssDate(LocalDate.parse("2024-05-07", DateTimeFormatter.ISO_DATE));
-        selectDeclAdminDto.setDeclarationType("deal");
+        selectDeclAdminDto.setDeclarationType("decl");
         selectDeclAdminDto.setProcessType("");
 
         criteria = new AdminUserCriteria();
@@ -43,7 +43,7 @@ class AdministratorDeclMapperTest {
     void selectDeclList() {
         List<ResultDeclAdminDto> resultDeclAdminDtos = administratorDeclMapper.selectDeclList(selectDeclAdminDto, criteria);
         assertThat(resultDeclAdminDtos)
-                .hasSize(8)
+                .hasSize(5)
                 .extracting("declarationContent")
                 .isEqualTo("test");
     }
@@ -51,6 +51,6 @@ class AdministratorDeclMapperTest {
     @Test
     void selectDeclTotal() {
         int i = administratorDeclMapper.selectDeclTotal(selectDeclAdminDto);
-        assertThat(i).isEqualTo(8);
+        assertThat(i).isEqualTo(5);
     }
 }

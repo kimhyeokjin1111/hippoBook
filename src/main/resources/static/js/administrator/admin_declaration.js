@@ -47,10 +47,12 @@
   let $declTypeSelect = document.querySelector('.main__declaration-select');
   let $declType = document.querySelector('.decl-type');
   let $typeBook = document.querySelector('.type-book');
+  let $declTypeTd = document.querySelectorAll('.main__declaration-type-td');
 
   $declTypeSelect.addEventListener('change', function (){
     if($declTypeSelect.value === 'feed'){
       $declType.classList.add('feed-can-not-see');
+      $declTypeTd.dataset.type = '';
     }else{
       $declType.classList.remove('feed-can-not-see');
     }
@@ -63,7 +65,74 @@
 }
 
 {
-  let $declContent = document.querySelectorAll('.main__search-option td');
+  let $declTypes = document.querySelectorAll('.decl-opt-type');
+  let $declPrypes = document.querySelectorAll('.decl-opt-p-type');
 
-  console.log($declContent);
+  $declTypes.forEach(ele => {
+    ele.addEventListener('click', function (){
+      ele.closest('.main__declaration-type-td').dataset.type = ele.value;
+    })
+  })
+
+  $declPrypes.forEach(ele => {
+    ele.addEventListener('click', function (){
+      ele.closest('.main__process-type-td').dataset.ptype = ele.value;
+    })
+  })
+}
+
+
+{
+  let $declContent = document.querySelector('.main__declarationDate-input');
+  let $declStDecl = document.querySelector('.startDeclDate');
+  let $declEdDecl = document.querySelector('.endDeclDate');
+  let $declStPDecl = document.querySelector('.startPDate');
+  let $declEdPDecl = document.querySelector('.endPDate');
+  let $declType = document.querySelector('.main__declaration-type-td');
+  let $declPType = document.querySelector('.main__process-type-td');
+  let $declSearchBtn = document.querySelector('.decl-search-btn');
+  let $
+
+  $declSearchBtn.addEventListener('click', function (){
+    let searchDeclInfo = {
+      declarationContent : $declContent.value,
+      startDeclarationDate : $declStDecl.value,
+      endDeclarationDate : $declEdDecl.value,
+      startPocecssDate : $declStPDecl.value,
+      endPocecssDate : $declEdPDecl.value,
+      declarationType : $declType.dataset.type,
+      processType : $declPType.dataset.ptype
+    };
+
+    console.log(searchDeclInfo)
+
+    fetch(`/v1/declarations?declarationContent=${$declContent.value}&startDeclarationDate=${$declStDecl.value}&endDeclarationDate=${$declEdDecl.value}&startPocecssDate=${$declStPDecl.value}&endPocecssDate=${$declEdPDecl.value}&declarationType=${$declType.dataset.type || ''}&processType=${$declPType.dataset.ptype}`, {
+      method : 'GET',
+    }).then(resp => resp.json())
+        .then(list => {
+          let declTags = ``;
+          let $declResultBox = document.querySelector('.main__result-list-container');
+
+          for (let i = 0; i < list.length; i++) {
+            declTags += `
+                    <ul>
+                      <li>${list.declarationDate}</li>
+                      <li>
+                        <div class="declaration-content-text">
+                          ${list.declarationContent}
+                        </div>
+                      </li>
+                      <li>${list.userId}</li>
+                      <li>${list.declProcessDate}</li>
+                      <li>${list.declarationCheck}</li>
+                    </ul>
+        `
+          }
+
+          $declResultBox.innerHTML = declTags;
+
+
+    });
+  })
+
 }
