@@ -13,6 +13,4 @@ public class BookService {
     private final BookHasMapper bookHasMapper;
     private final BookCateMapper bookCateMapper;
     private final BookCaseMapper bookCaseMapper;
-    private final PublisherMapper publisherMapper;
-
 }
