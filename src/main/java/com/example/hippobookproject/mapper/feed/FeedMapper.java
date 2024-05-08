@@ -10,6 +10,6 @@ import java.util.List;
 public interface FeedMapper {
     List<CardDto> selectAll(Long userId);
     void insertFollow(FollowDto followDto);
-    void deleteFollow(Long followTo);
+    void deleteFollow(FollowDto followDto);
 
 }

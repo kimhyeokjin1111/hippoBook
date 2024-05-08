@@ -25,8 +25,8 @@
         values (SEQ_FOLLOW.nextval, #{followTo}, #{followFrom})
     </insert>
 
-    <delete id="deleteFollow" parameterType="Long">
+    <delete id="deleteFollow" parameterType="FollowDto">
         DELETE FROM TBL_FOLLOW
-        WHERE FOLLOW_TO = #{followTo}
+        WHERE FOLLOW_TO = #{followTo} AND FOLLOW_FROM = #{followFrom}
     </delete>
 </mapper>

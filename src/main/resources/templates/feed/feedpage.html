@@ -48,7 +48,7 @@
                             <a href="">쪽지</a> <!-- 쪽지 이동 -->
                         </li> 
                         <li>
-                            <a href="">내서재</a> <!-- 내 서재 이동 -->
+                            <a href="">이벤트</a> <!-- 이벤트 이동 -->
                         </li>
                         <li>
                             <a th:href="@{/search}">검색</a> <!-- 검색 이동 -->
@@ -86,13 +86,13 @@
             <div class="sub_container">
                 <ul class="sub_list">
                     <li>
-                        <a href="" class="">포스트</a>
+                        <a th:href="@{/feed}" class="">포스트</a>
                     </li>
                     <li>
-                        <a href="" class="">한 줄 리뷰</a>
+                        <a th:href="@{/feed/oneline}" class="">한 줄 리뷰</a>
                     </li>
                     <li>
-                        <a href="" class="">독후감</a>
+                        <a th:href="@{/feed/read}" class="">독후감</a>
                     </li>
                 </ul>
             </div>
@@ -104,13 +104,13 @@
         <section class="modal_section">
             <div class="modal">
                 <ul class="modal_ul">
-                    <a href="">
+                    <a th:href="@{/feed/postwrite}">
                         <li>포스트 쓰기</li>
                     </a>
-                    <a href="">
+                    <a th:href="@{/feed/readwrite}">
                         <li>독서록 쓰기</li>
                     </a>
-                    <a href="">
+                    <a th:href="@{/book/info}" >
                         <li>한 줄 리뷰</li>
                     </a>
                 </ul>

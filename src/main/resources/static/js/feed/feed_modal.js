@@ -15,8 +15,6 @@
   $close.addEventListener("click", function(){
     $modal.style.display = "none";
   });
-    
-
 
 
        // 카테고리 모달 띄우는
@@ -46,9 +44,11 @@
             method: "POST",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({"followTo": userId}),
-          }).then(resp => resp);
+          }).then(() => {
+        location.reload();
+      });
 
-      location.reload();
+
     });
   });
 
@@ -56,15 +56,13 @@
   let unfollowList = document.querySelectorAll(".feed_unfollow_btn");
   unfollowList.forEach(ele => {
     ele.addEventListener("click" , function (){
-
-      fetch('v1/unfollows',
+      let userId = this.dataset.id;
+      fetch('v1/unfollows/' + userId,
           {
             method: "DELETE",
-          }).then(resp => resp);
-
-      location.reload();
-
-
+          }).then(() => {
+        location.reload();
+      });
     });
   });
 

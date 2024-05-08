@@ -5,10 +5,8 @@ import com.example.hippobookproject.service.feed.FeedService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -25,16 +23,19 @@ public class FollowApi {
         feedService.insertFollow(followDto);
     }
 
-    @DeleteMapping("/v1/unfollows")
-    public void unFollow(@RequestBody FollowDto followDto,
-                        @RequestBody Long followTo,
+    @DeleteMapping("/v1/unfollows/{followTo}")
+    public void unFollow(@PathVariable("followTo") Long followTo,
                          HttpSession session){
 //        Long userId = (Long) session.getAttribute("userId");
 
         log.info("followTo = " + followTo);
-        Long userId = 3L;
+        Long userId = 1L;
+
+        FollowDto followDto = new FollowDto();
+        followDto.setFollowTo(followTo);
         followDto.setFollowFrom(userId);
-        feedService.deleteFollow(followTo);
+
+        feedService.deleteFollow(followDto);
 
 
     }

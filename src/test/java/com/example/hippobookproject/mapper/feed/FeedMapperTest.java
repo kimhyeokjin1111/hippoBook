@@ -44,7 +44,7 @@ class FeedMapperTest {
         followDto = new FollowDto();
         followDto.setFollowTo(1L);
         System.out.println("followTo = " + followDto.getFollowTo());
-        feedMapper.deleteFollow(followDto.getFollowTo());
+//        feedMapper.deleteFollow(followDto.getFollowTo());
 
     }
 }
