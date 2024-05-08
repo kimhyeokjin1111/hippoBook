@@ -208,13 +208,6 @@ a {
   font-weight: 700;
   cursor: pointer;
 }
-/*.category_popup_title4{*/
-/*  margin: 50px 0 0 100px;*/
-/*  font-size: 15px;*/
-/*  color: #2bc1bf;*/
-/*  font-weight: 700;*/
-/*  cursor: pointer;*/
-/*}*/
 
 
 
@@ -320,6 +313,15 @@ a {
   margin-bottom: -16px;
   height: 500px;
 }
+/*.reanking_box{*/
+/*  height: 400px;*/
+/*}*/
+
+
+.ranking_border_box{
+  max-height: 350px;
+  max-width: 400px;
+}
 
 .hipppo_ranking_layout {
   max-width: 1440px;
@@ -339,38 +341,12 @@ a {
 .hipppo_ranking_content {
   margin-top: 40px;
   height: 400px;
+  width: 80px;
 }
 
-.hipppo_ranking_wrapper {
-  margin-left: -24px;
-  position: relative;
-}
 
-.ranking_wrapper {
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-  overflow: hidden;
-  list-style: none;
-  padding: 0;
-  z-index: 1;
-}
-
-.ranking_container {
-  transform: translate3d(0px, 0px, 0px);
-  /* position: static; */
-  width: auto;
-  height: auto;
-}
-
-.ranking_box {
-  min-width: 327px;
-  max-width: 327px;
-  margin-left: 8px;
-}
-
-.ranking_content1 {
-  width: 400px;
+.ranking_content {
+  width: 300px;
   display: flex;
   position: relative;
   align-items: center;
@@ -380,7 +356,7 @@ a {
   cursor: pointer;
 }
 
-.rank_num1 {
+.rank_num {
   background-position-x: -20px;
   background-position-y: -20px;
   position: absolute;
