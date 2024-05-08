@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.anyOf;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
@@ -49,7 +50,13 @@ class MypageBookContainerMapperTest {
     }
 
     @Test
-    void insertBestBook(){
+    void updateBestBook(){
+        // given
+
+        // when
+
+
+        // then
 
     }
 }
