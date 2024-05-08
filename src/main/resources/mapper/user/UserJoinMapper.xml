@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.hippobookproject.mapper.user.UserJoinMapper">
+    <insert id="insertJoinUser" parameterType="UserJoinDto">
+        <!--        <selectKey keyProperty="joinId" resultType="Long" order="BEFORE">-->
+        <!--            SELECT SEQ_JOIN.NEXTVAL FROM DUAL-->
+        <!--        </selectKey>-->
+        INSERT INTO TBL_JOIN(JOIN_ID, JOIN_PASSWORD)
+        VALUES (#{joinId}, #{joinPassword})
+    </insert>
+
+    <select id="selectJoinId" resultType="Long">
+        SELECT JOIN_ID
+        FROM TBL_JOIN
+        WHERE JOIN_ID = #{joinId} AND JOIN_PASSWORD = #{joinPassword}
+    </select>
+</mapper>

@@ -1,11 +1,14 @@
 package com.example.hippobookproject.controller.user;
 
+import com.example.hippobookproject.dto.UserJoinDto;
 import com.example.hippobookproject.dto.UserPhoneInfoDto;
 import com.example.hippobookproject.service.user.UserService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Slf4j
@@ -16,56 +19,68 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/login")
-    public String loginPage() {
-        return "user/login";
+    public String loginPage(HttpSession session){
+        Long id = (Long) session.getAttribute("joinId");
+        if (id != null) {
+            return "redirect:/";
+        }
+        return "redirect:/user/login";
     }
 
-    @GetMapping("/register")
+    @GetMapping("/terms-of-use")
     public String register() {
-        return "user/register";
+        return "user/terms_of_use";
     }
 
-    @GetMapping("/phoneinfo")
+    @GetMapping("/phone-info")
     public String phoneInfo(UserPhoneInfoDto userPhoneInfoDto) {
         log.info("userPhoneInfoDto = {}", userPhoneInfoDto);
 
-        userService.phoneInfo(userPhoneInfoDto);
+//        userService.phoneInfo(userPhoneInfoDto);
 
-        return "user/phoneinfo";
+        return "user/phone_info";
     }
 
-    @GetMapping("/phoneinfocode")
+    @GetMapping("/phone-info-code")
     public String phoneInfoCode() {
-        return "user/phoneinfocode";
+        return "user/phone_info_code";
     }
 
-    @GetMapping("/idpassword")
-    public String idPassword() {
-        return "user/idpassword";
+    @GetMapping("/register")
+    public String idPassword(){
+        return "user/register";
     }
 
-    @GetMapping("/profilesetting")
+    @PostMapping("/register")
+    public String postRegister(UserJoinDto userJoinDto){
+
+        userService.joinUser(userJoinDto);
+
+        return "redirect:/user/register";
+    }
+
+    @GetMapping("/profile-setting")
     public String profileSetting() {
-        return "user/profilesetting";
+        return "user/profile_setting";
     }
 
-    @GetMapping("/findaccountphoneinfo")
+    @GetMapping("/find/account/phone-info")
     public String findAccountPhoneInfo(){
-        return "user/findaccountphoneinfo";
+        return "user/find_account_phone_info";
     }
 
-    @GetMapping("/findaccountphoneinfocode")
+    @GetMapping("/find/account/phone-info-code")
     public String findAccountPhoneInfoCode() {
-        return "user/findaccountphoneinfocode";
+        return "user/find_account_phone_info_code";
     }
 
-    @GetMapping("/checkaccount")
+    @GetMapping("/check-account")
     public String checkAccount(){
-        return "user/checkaccount";
+        return "user/check_account";
     }
 
-    @GetMapping("/passwordreset")
+    @GetMapping("/password-reset")
     public String passwordReset(){
-        return "user/passwordreset";
+        return "user/password_reset";
     }
 }
