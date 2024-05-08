@@ -114,3 +114,50 @@
   let interval = setInterval(bannerInterval, 3000);
   checkEnd();
 }
+
+
+// BestSeller
+{
+  fetch(`/api`, {
+    method: 'GET'
+  }).then(resp => resp.json())
+      .then(result => {
+        displayBookList(result);
+      });
+
+  function displayBookList(obj) {
+    // console.log(obj)
+    // let bookList = obj.item;
+    // console.log(bookList)
+    // let tags = '';
+    //
+    // bookList.forEach(book => {
+    //   // console.log(book.title);
+    //   tags += `
+    //               <div class="ranking_content1">
+    //                 <div class="rank_num1">
+    //                 </div>
+    //                 <div class="thumbnail">
+    //                   <div class="book_picture">
+    //                     <picture>
+    //                       <img src="${book.cover}" alt="">
+    //                     </picture>
+    //                   </div>
+    //                 </div>
+    //                 <div class="thumbnail_title">
+    //                   <a href="" class="book_data">
+    //                     <div class="book_content">
+    //                       <p class="rank_book_title">${book.title}</p>
+    //                     </div>
+    //                   </a>
+    //                 </div>
+    //               </div>
+    //
+    //             `;
+    // });
+    //
+    // let $box = document.querySelector('.reanking_box');
+    // $box.innerHTML = tags;
+  }
+}
+
