@@ -81,6 +81,15 @@
   })
 }
 
+{
+  let $nowrowBox = document.querySelector('.main__rownum-select');
+
+  $nowrowBox.addEventListener('change', function (){
+    console.log($nowrowBox.value)
+  })
+
+}
+
 
 {
   let $declContent = document.querySelector('.main__declarationDate-input');
@@ -91,48 +100,77 @@
   let $declType = document.querySelector('.main__declaration-type-td');
   let $declPType = document.querySelector('.main__process-type-td');
   let $declSearchBtn = document.querySelector('.decl-search-btn');
-  let $
+
+  let searchDeclInfo = {
+    declarationContent : $declContent.value,
+    startDeclarationDate : $declStDecl.value,
+    endDeclarationDate : $declEdDecl.value,
+    startPocecssDate : $declStPDecl.value,
+    endPocecssDate : $declEdPDecl.value,
+    declarationType : $declType.dataset.type || '',
+    processType : $declPType.dataset.ptype
+  };
 
   $declSearchBtn.addEventListener('click', function (){
-    let searchDeclInfo = {
-      declarationContent : $declContent.value,
-      startDeclarationDate : $declStDecl.value,
-      endDeclarationDate : $declEdDecl.value,
-      startPocecssDate : $declStPDecl.value,
-      endPocecssDate : $declEdPDecl.value,
-      declarationType : $declType.dataset.type,
-      processType : $declPType.dataset.ptype
-    };
+
 
     console.log(searchDeclInfo)
+    let params = new URLSearchParams(searchDeclInfo);
 
-    fetch(`/v1/declarations?declarationContent=${$declContent.value}&startDeclarationDate=${$declStDecl.value}&endDeclarationDate=${$declEdDecl.value}&startPocecssDate=${$declStPDecl.value}&endPocecssDate=${$declEdPDecl.value}&declarationType=${$declType.dataset.type || ''}&processType=${$declPType.dataset.ptype}`, {
+    // console.log(params.toString())
+
+    fetch(`/v1/declarations?${params.toString()}`, {
       method : 'GET',
     }).then(resp => resp.json())
         .then(list => {
-          let declTags = ``;
+          console.log('list', list);
+          console.log(list.declList)
+          let declListTags = ``;
+          let declPageTags = ``;
           let $declResultBox = document.querySelector('.main__result-list-container');
+          let $declPageBox = document.querySelector('.main__searched-result-page-btn > ul');
 
-          for (let i = 0; i < list.length; i++) {
-            declTags += `
+          for (let i = 0; i < list.declList.length; i++) {
+            let declarationDate = list.declList[i].declarationDate;
+            let declarationContent = list.declList[i].declarationContent;
+            let userId = list.declList[i].userId;
+            let declProcessDate = list.declList[i].declProcessDate;
+            let declarationCheck = list.declList[i].declarationCheck;
+
+            declListTags += `
                     <ul>
-                      <li>${list.declarationDate}</li>
+                      <li>${declarationDate}</li>
                       <li>
                         <div class="declaration-content-text">
-                          ${list.declarationContent}
+                          ${declarationContent}
                         </div>
                       </li>
-                      <li>${list.userId}</li>
-                      <li>${list.declProcessDate}</li>
-                      <li>${list.declarationCheck}</li>
+                      <li>${userId}</li>
+                      <li>${declProcessDate}</li>
+                      <li>${declarationCheck}</li>
                     </ul>
         `
           }
 
-          $declResultBox.innerHTML = declTags;
+          $declResultBox.innerHTML = declListTags;
+          let $nowrowBox = document.querySelector('.main__rownum-select');
 
+          if(list.declPage.prev){
+            declPageTags += `<span className="lf-arrow"><a href="/v1/declarations?${params.toString()}&amount=${$nowrowBox.value}&page=${list.declPage.startPage -1}">&lt;</a></span>`
+          }
+          for (let i = list.declPage.startPage; i < list.declPage.startPage + 1; i++) {
+            let prev = list.declPage.prev;
 
-    });
+            declPageTags += `   
+                      <li><a href="/v1/declarations?${params.toString()}&amount=${$nowrowBox.value}&page=${i}"><strong>${i}</strong></a></li>    
+            `
+          }
+          if(list.declPage.next) {
+            declPageTags += `<span class="rt-arrow"><a href="/v1/declarations?${params.toString()}&amount=${$nowrowBox.value}&page=${list.declPage.endPage + 1}">&gt;</a></span>`;
+          }
+
+          $declPageBox.innerHTML = declPageTags
+        });
   })
 
 }

@@ -209,7 +209,7 @@
                 <div class="main__result-box-container">
                   <div class="main__list-rownum-box">
                     <p>[검색결과 0건]</p>
-                    <select name="rownum" class="main__rownum-select">
+                    <select name="rownum" class="main__rownum-select" th:data-row="10">
                       <option value="10">10개씩 보기</option>
                       <option value="20">20개씩 보기</option>
                       <option value="30">30개씩 보기</option>
@@ -233,18 +233,9 @@
                       <th>처리여부</th>
                     </tr>
                   </table>
-                  <div class="main__result-list-container">
+                  <div class="main__result-list-container" >
                     <ul>
-                      <li>24.04.17</li>
-                      <li>
-                        <div class="declaration-content-text">
-                          test declaration
-                          contednnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnt
-                        </div>
-                      </li>
-                      <li>test reporter</li>
-                      <li>24.04.17</li>
-                      <li>N</li>
+
                     </ul>
                   </div>
                   <section class="main__declaration-content-view-box">
@@ -325,13 +316,13 @@
                   </div>
                   <div class="main__searched-result-page-btn">
                     <ul>
-                      <span class="lf-arrow">&lt;</span>
-                      <li><strong>1</strong></li>
-                      <li><strong>2</strong></li>
-                      <li><strong>3</strong></li>
-                      <li><strong>4</strong></li>
-                      <li><strong>5</strong></li>
-                      <span class="rt-arrow">&gt;</span>
+<!--                      <span class="lf-arrow"><a>&lt;</a></span>-->
+                        <li><a href=""><strong>1</strong></a></li>
+<!--                        <li><a href=""><strong>2</strong></a></li>-->
+<!--                        <li><a href=""><strong>3</strong></a></li>-->
+<!--                        <li><a href=""><strong>4</strong></a></li>-->
+<!--                        <li><a href=""><strong>5</strong></a></li>-->
+<!--                      <span class="rt-arrow"><a href="">&gt;</a></span>-->
                     </ul>
                   </div>
                 </div>
