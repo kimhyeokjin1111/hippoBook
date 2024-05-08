@@ -284,6 +284,7 @@ a{
 .sub_list{
     height: 64px;
     display: flex;
+    align-items: center;
 }
 
 .sub_list > li{
@@ -292,12 +293,12 @@ a{
 
 .sub_list > li > a{
     font-size: 14px;
-    color: #242424;
+    color: #2bc1bf;
     padding: 6px 16px;
     border-radius: 100px;
     background-color: #f7f7f7;
     cursor: pointer;
-    border: 1px solid black;
+    border: 1px solid #2bc1bf;
 }
 
 .feed_contentbox{
@@ -383,10 +384,22 @@ a{
 
 .feed_follow_btn{
     height: 32px;
+    border: 1px solid #2bc1bf;
     border-radius: 4px;
-    background-color: #333;
+    background-color: #2bc1bf;
     color: #fff;
-    width: 48px;
+    width: 53px;
+    font-size: 12px;
+    margin-right: 8px;
+}
+
+.feed_unfollow_btn{
+    height: 32px;
+    border-radius: 4px;
+    border: 1px solid #2bc1bf;
+    background-color: white;
+    color: #2bc1bf;
+    width: 53px;
     font-size: 12px;
     margin-right: 8px;
 }

@@ -23,7 +23,7 @@ public class FeedService {
         feedMapper.insertFollow(followDto);
     }
 
-    public void deleteFollow(Long followTo){
-        feedMapper.deleteFollow(followTo);
+    public void deleteFollow(FollowDto followDto){
+        feedMapper.deleteFollow(followDto);
     }
 }

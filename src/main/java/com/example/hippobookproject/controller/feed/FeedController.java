@@ -32,6 +32,15 @@ public class FeedController {
         return "feed/feedpage";
     }
 
+    @GetMapping("/oneline")
+    public String onelinePage(){
+        return "feed/onelinepage";
+    }
+
+    @GetMapping("/read")
+    public String readPage(){
+        return "feed/readpage";
+    }
     @GetMapping("/postwrite")
     public String postwrite(){
         return "feed/postwrite";

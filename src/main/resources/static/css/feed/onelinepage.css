@@ -284,20 +284,23 @@ a{
 .sub_list{
     height: 64px;
     display: flex;
+    align-items: center;
 }
 
 .sub_list > li{
     list-style: none;
 }
 
-.sub_list > li > button{
+.sub_list > li > a{
     font-size: 14px;
-    color: #242424;
+    color: #2bc1bf;
     padding: 6px 16px;
     border-radius: 100px;
     background-color: #f7f7f7;
     cursor: pointer;
+    border: 1px solid #2bc1bf;
 }
+
 
 .feed_contentbox{
     height: 100%;

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>히포북</title>
-    <link rel="stylesheet" href="/css/onelinepage.css">
-    <script defer src="/js/feed_modal.js"></script>
+    <link rel="stylesheet" th:href="@{/css/feed/onelinepage.css}">
+    <script defer th:src="@{/js/feed/feed_modal.js}"></script>
 </head>
 <body>
     
@@ -13,17 +13,17 @@
         <div class="header_layout">
             <h1 class="header_logo">
                 <div class="header_logo_layout">
-                    <a href="">  <!--홈페이지 버튼 -->
-                    <img src="/images/HippoBook_logo.png" alt="" class="header_logo_images">
+                    <a th:href="@{/}">  <!--홈페이지 버튼 -->
+                    <img th:src="@{/images/main/HippoBook_logo.png}" alt="" class="header_logo_images">
                     </a>
                 </div>
             </h1>
             <div class="header_right_layout">
                 <a href=""> <!-- 알람 페이지 이동  -->
-                <img src="/images/alarm.png" alt="" class="header_right_alarm">
+                <img th:src="@{/images/main/alarm.png}" alt="" class="header_right_alarm">
                 </a>
                 <ul class="header_right_login">
-                    <a href="" class="header_right_login_box">로그인</a>
+                    <a th:href="@{/user/login}" class="header_right_login_box">로그인</a>
                 </ul>
             </div>
         </div>
@@ -32,7 +32,7 @@
             <div class="main_top_layout">
                 <div class="main_category_btnbox">
                     <div class="main_category_btn">
-                        <img src="/images/Category.png" alt="" class="main_top_category">
+                        <img th:src="@{/images/main/Category.png}" alt="" class="main_top_category">
                     </div>
                 
                 </div>
@@ -42,7 +42,7 @@
                             <a href="">내 서재</a> <!-- 내 서재 이동 -->
                         </li>
                         <li>
-                            <a href="">피드</a> <!-- 피드 이동-->
+                            <a th:href="@{/}">피드</a> <!-- 피드 이동-->
                         </li>    
                         <li>
                             <a href="">쪽지</a> <!-- 쪽지 이동 -->
@@ -51,7 +51,7 @@
                             <a href="">내서재</a> <!-- 내 서재 이동 -->
                         </li>
                         <li>
-                            <a href="">검색</a> <!-- 검색 이동 -->
+                            <a th:href="@{/search}">검색</a> <!-- 검색 이동 -->
                         </li>
                     </ul>
                 </div>
@@ -63,36 +63,36 @@
             <div class="feed_menu_container">
                 <ul class="feed_menu_list">
                     <li>
-                        <a href="feedpage.html" class="feed_random">
+                        <a th:href="@{/feed}" class="feed_random">
                             <span>추천</span>
                         </a>
                     </li>
                     <li>
-                        <a href="followingpage.html" class="feed_following">
+                        <a th:href="@{/follow/follow}" class="feed_following">
                             <span>팔로잉</span>
                         </a>
                     </li>
                 </ul>
                 <button class="feed_writer"> <!-- 클릭하면 글쓰기 종류 선택하는 팝업이 뿌려진다.-->
-                    <img src="/images/writer.png" alt=""> 
+                    <img th:src="@{/images/feed/writer.png}" alt="">
                 </button>
             </div>
         </div>
     </header>
 
     <main>
-        
+
         <div class="sub_menu">
             <div class="sub_container">
                 <ul class="sub_list">
                     <li>
-                        <button>포스트</button>
+                        <a th:href="@{/feed}" class="">포스트</a>
                     </li>
                     <li>
-                        <button>한 줄 리뷰</button>
+                        <a th:href="@{/feed/oneline}" class="">한 줄 리뷰</a>
                     </li>
                     <li>
-                        <button>독후감</button>
+                        <a th:href="@{/feed/read}" class="">독후감</a>
                     </li>
                 </ul>
             </div>
