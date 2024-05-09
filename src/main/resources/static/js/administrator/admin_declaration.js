@@ -5,12 +5,36 @@
     ".main__declaration-content-view-box"
   );
 
-  $declarationList.forEach((ele) => {
-    ele.addEventListener("click", function () {
-      // console.log(ele);
+  let $resultBox = document.querySelector('.main__result-list-container');
+
+  $resultBox.addEventListener('click', function (e){
+    console.log('e.target : ', e.target)
+    console.log('this : ', this)
+    console.log('e : ', e)
+
+    let classList = e.target.classList;
+    let postId, cate;
+
+    if(classList.contains('decl-content-box')){
       $declarationBox.classList.add("declaration-view-flex");
-    });
-  });
+      postId = e.target.dataset.postid;
+      cate = e.target.dataset.cate;
+    } else if(classList.contains('declaration-content-text')){
+      $declarationBox.classList.add("declaration-view-flex");
+      let $target = e.target.closest('.decl-content-box');
+      postId = $target.dataset.postid;
+      cate = $target.dataset.cate;
+    }
+
+
+  })
+
+  // $declarationList.forEach((ele) => {
+  //   ele.addEventListener("click", function () {
+  //     // console.log(ele);
+  //     $declarationBox.classList.add("declaration-view-flex");
+  //   });
+  // });
 
   let $declarationCloseBtn = document.querySelectorAll(
     ".main__declaration-close_btn"
@@ -101,46 +125,55 @@
   let $declPType = document.querySelector('.main__process-type-td');
   let $declSearchBtn = document.querySelector('.decl-search-btn');
 
-  let searchDeclInfo = {
-    declarationContent : $declContent.value,
-    startDeclarationDate : $declStDecl.value,
-    endDeclarationDate : $declEdDecl.value,
-    startPocecssDate : $declStPDecl.value,
-    endPocecssDate : $declEdPDecl.value,
-    declarationType : $declType.dataset.type || '',
-    processType : $declPType.dataset.ptype
-  };
-
   $declSearchBtn.addEventListener('click', function (){
+    let searchDeclInfo = {
+      declarationContent : $declContent.value,
+      startDeclarationDate : $declStDecl.value,
+      endDeclarationDate : $declEdDecl.value,
+      startPocecssDate : $declStPDecl.value,
+      endPocecssDate : $declEdPDecl.value,
+      declarationType : $declType.dataset.type || '',
+      processType : $declPType.dataset.ptype
+    };
+    let $nowrowBox = document.querySelector('.main__rownum-select');
+
+    declReq(searchDeclInfo, $nowrowBox.value)
+  })
 
 
-    console.log(searchDeclInfo)
-    let params = new URLSearchParams(searchDeclInfo);
 
-    // console.log(params.toString())
+}
 
-    fetch(`/v1/declarations?${params.toString()}`, {
-      method : 'GET',
-    }).then(resp => resp.json())
-        .then(list => {
-          console.log('list', list);
-          console.log(list.declList)
-          let declListTags = ``;
-          let declPageTags = ``;
-          let $declResultBox = document.querySelector('.main__result-list-container');
-          let $declPageBox = document.querySelector('.main__searched-result-page-btn > ul');
+function declReq(searchDeclInfo, amount, page){
+  console.log(searchDeclInfo)
+  let params = new URLSearchParams(searchDeclInfo);
 
-          for (let i = 0; i < list.declList.length; i++) {
-            let declarationDate = list.declList[i].declarationDate;
-            let declarationContent = list.declList[i].declarationContent;
-            let userId = list.declList[i].userId;
-            let declProcessDate = list.declList[i].declProcessDate;
-            let declarationCheck = list.declList[i].declarationCheck;
+  // console.log(params.toString())
 
-            declListTags += `
+  fetch(`/v1/declarations?${params.toString()}&amount=${amount}`, {
+    method : 'GET',
+  }).then(resp => resp.json())
+      .then(list => {
+        console.log('list', list);
+        console.log(list.declList)
+        let declListTags = ``;
+        let declPageTags = ``;
+        let $declResultBox = document.querySelector('.main__result-list-container');
+        let $declPageBox = document.querySelector('.main__searched-result-page-btn > ul');
+
+        for (let i = 0; i < list.declList.length; i++) {
+          let declarationDate = list.declList[i].declarationDate;
+          let declarationContent = list.declList[i].declarationContent;
+          let userId = list.declList[i].userId;
+          let declProcessDate = list.declList[i].declProcessDate;
+          let declarationCheck = list.declList[i].declarationCheck;
+          let postId = list.declList[i].postId;
+          let cate = list.declList[i].cate;
+
+          declListTags += `
                     <ul>
                       <li>${declarationDate}</li>
-                      <li>
+                      <li class="decl-content-box" data-postid="${postId}" data-cate="${cate}">
                         <div class="declaration-content-text">
                           ${declarationContent}
                         </div>
@@ -150,27 +183,44 @@
                       <li>${declarationCheck}</li>
                     </ul>
         `
-          }
+        }
 
-          $declResultBox.innerHTML = declListTags;
-          let $nowrowBox = document.querySelector('.main__rownum-select');
+        $declResultBox.innerHTML = declListTags;
+        let $nowrowBox = document.querySelector('.main__rownum-select');
 
-          if(list.declPage.prev){
-            declPageTags += `<span className="lf-arrow"><a href="/v1/declarations?${params.toString()}&amount=${$nowrowBox.value}&page=${list.declPage.startPage -1}">&lt;</a></span>`
-          }
-          for (let i = list.declPage.startPage; i < list.declPage.startPage + 1; i++) {
-            let prev = list.declPage.prev;
+        if(list.declPage.prev){
+          declPageTags += `<span class="lf-arrow decl-page-btn"><a  href="/v1/declarations?${params.toString()}&page=${list.declPage.startPage -1}">&lt;</a></span>`
+        }
+        for (let i = list.declPage.startPage; i < list.declPage.startPage + 1; i++) {
+          let prev = list.declPage.prev;
 
-            declPageTags += `   
-                      <li><a href="/v1/declarations?${params.toString()}&amount=${$nowrowBox.value}&page=${i}"><strong>${i}</strong></a></li>    
+          declPageTags += `   
+                      <li class="decl-page-btn"><a href="/v1/declarations?${params.toString()}&page=${i}"><strong>${i}</strong></a></li>    
             `
-          }
-          if(list.declPage.next) {
-            declPageTags += `<span class="rt-arrow"><a href="/v1/declarations?${params.toString()}&amount=${$nowrowBox.value}&page=${list.declPage.endPage + 1}">&gt;</a></span>`;
-          }
+        }
+        if(list.declPage.next) {
+          declPageTags += `<span class="rt-arrow decl-page-btn"><a  href="/v1/declarations?${params.toString()}&page=${list.declPage.endPage + 1}">&gt;</a></span>`;
+        }
 
-          $declPageBox.innerHTML = declPageTags
-        });
+        $declPageBox.innerHTML = declPageTags
+      });
+}
+
+{
+  let $pageBox = document.querySelector('.main__searched-result-page-btn');
+
+  $pageBox.addEventListener('click', function (e){
+    console.log(e.target)
+
+    if(e.target.classList.contains('decl-page-btn')){
+      let $pageLink = document.querySelector('a');
+      console.log('pageLink', $pageLink)
+      let $nowrowBox = document.querySelector('.main__rownum-select');
+
+      declReq($pageLink.getAttribute('href'), $nowrowBox.value);
+    }
+
   })
 
 }
+
