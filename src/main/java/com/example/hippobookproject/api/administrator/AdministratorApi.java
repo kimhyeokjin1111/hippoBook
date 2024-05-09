@@ -4,6 +4,7 @@ import com.example.hippobookproject.dto.administrator.ResultChartAdminDto;
 import com.example.hippobookproject.dto.administrator.ResultDeclAdminDto;
 import com.example.hippobookproject.dto.administrator.SelectDeclAdminDto;
 import com.example.hippobookproject.dto.page.AdminUserCriteria;
+import com.example.hippobookproject.dto.page.AdminUserPage;
 import com.example.hippobookproject.service.administrator.AdministratorChartService;
 import com.example.hippobookproject.service.administrator.AdministratorDeclService;
 import com.example.hippobookproject.service.administrator.AdministratorUserService;
@@ -11,7 +12,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -38,13 +41,18 @@ public class AdministratorApi {
     }
 
     @GetMapping("/v1/declarations")
-    public List<ResultDeclAdminDto> searchDeclarationList(SelectDeclAdminDto selectDeclAdminDto,
-                                                          AdminUserCriteria adminDeclCriteria){
+    public Map<String , Object> searchDeclarationList(SelectDeclAdminDto selectDeclAdminDto,
+                                                          AdminUserCriteria adminDeclCriteria) {
         log.info("selectDeclAdminDto = " + selectDeclAdminDto + ", adminDeclCriteria = " + adminDeclCriteria);
         List<ResultDeclAdminDto> declList = administratorDeclService.findDeclList(selectDeclAdminDto, adminDeclCriteria);
         log.info("declList = {}", declList);
-        return declList;
+        int declTotal = administratorDeclService.selectDeclTotal(selectDeclAdminDto);
+        AdminUserPage declPage = new AdminUserPage(adminDeclCriteria, declTotal);
+
+        Map<String , Object> declMap = new HashMap<>();
+        declMap.put("declList", declList);
+        declMap.put("declPage", declPage);
+
+        return declMap;
     }
-
-
 }
