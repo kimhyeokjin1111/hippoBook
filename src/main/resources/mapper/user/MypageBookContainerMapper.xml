@@ -22,6 +22,12 @@
         WHERE USER_ID = #{userId}
     </update>
 
+    <select id="selectBestBook">
+        SELECT BEST_BOOK_ID
+        FROM TBL_USER
+        WHERE USER_ID = #{userId}
+    </select>
+
 
 
 

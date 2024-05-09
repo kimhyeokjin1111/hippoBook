@@ -52,7 +52,15 @@ public class MypageService {
 
     }
 
+    public BookContainerDto findBestBook(Long userId){
+        return mypageBookContainerMapper.selectBestBook(userId)
+                .orElseThrow(()-> new IllegalStateException("존재하지 않는 회원번호"));
+    }
 
+    public void modifyBestBook(BookContainerDto bookContainerDto){
+        mypageBookContainerMapper.updateBestBook(bookContainerDto);
+
+    }
 
 
 

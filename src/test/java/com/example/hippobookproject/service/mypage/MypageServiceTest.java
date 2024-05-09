@@ -36,7 +36,9 @@ class MypageServiceTest {
     @Test
     void findProfile() {
         // given
-        doReturn(Optional.of("닉네임")).when(mypageMapper).selectProfile(any());
+        IntProfileDto dto = new IntProfileDto();
+        dto.setUserNickName("닉네임");
+        doReturn(Optional.of(dto)).when(mypageMapper).selectProfile(any());
         // when
         IntProfileDto profileDto = mypageService.findProfile(1L);
         // then
@@ -87,16 +89,26 @@ class MypageServiceTest {
         verify(mypageBookContainerMapper, times(1)).deleteBookHas(any());
 
     }
+    @Test
+    void findBestBook(){
+        // give
+        BookContainerDto dto = new BookContainerDto();
+        dto.setBookHasId(3L);
+        doReturn(Optional.of(dto)).when(mypageBookContainerMapper).selectBestBook(any());
+        // when
+        BookContainerDto bookContainerDto = mypageService.findBestBook(1L);
+        // then
+        assertThat(bookContainerDto).extracting("bookHasId").isEqualTo(3L);
+    }
 
     @Test
-    void resisterBestBook(){
+    void modifyBestBook(){
         //given
-        Mockito.doNothing().when(mypageBookContainerMapper).updateBestBook(any());
+        doNothing().when(mypageBookContainerMapper).updateBestBook(any());
         // when
-        mypageService.registerBestBook(new BookContainerDto());
+        mypageService.modifyBestBook(new BookContainerDto());
         // then
-        Mockito.verify(mypageBookContainerMapper, Mockito.times(1)).updateBestBook(any());
-
+        verify(mypageBookContainerMapper, times(1)).updateBestBook(any());
     }
 
 
