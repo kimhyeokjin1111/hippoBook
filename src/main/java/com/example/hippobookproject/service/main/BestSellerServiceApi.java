@@ -1,14 +1,15 @@
-package com.example.hippobookproject.service.main;
-
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
-
-
-@Slf4j
-@Service
-public class BestSellerServiceApi {
+//package com.example.hippobookproject.service.main;
+//
+//import lombok.extern.slf4j.Slf4j;
+//import org.springframework.beans.factory.annotation.Value;
+//import org.springframework.stereotype.Service;
+//import org.springframework.web.reactive.function.client.WebClient;
+//
+//
+//
+//@Slf4j
+//@Service
+//public class BestSellerServiceApi {
 //    @Value("${api.key.aladin}")
 //    private String apiKey;
 //
@@ -38,7 +39,8 @@ public class BestSellerServiceApi {
 //                .block();
 //
 //
+//
 //        return result;
 //    }
-
-}
+//
+//}
