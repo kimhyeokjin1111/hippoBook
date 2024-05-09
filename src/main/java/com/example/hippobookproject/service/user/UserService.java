@@ -14,7 +14,7 @@ public class UserService {
     private final UserMapper userMapper;
 
     public void joinUser(UserJoinDto userJoinDto) {
-        userMapper.insertUser(userJoinDto);
+        userMapper.insertJoinUser(userJoinDto);
     }
 
     //    public void phoneInfo(UserPhoneInfoDto userPhoneInfoDto){
@@ -22,7 +22,7 @@ public class UserService {
 //    }
 
     public Long findId(String joinId, String joinPassword){
-        return userMapper.joinSelectId(joinId, joinPassword)
+        return userMapper.selectJoinId(joinId, joinPassword)
                 .orElseThrow(() -> new IllegalStateException("존재 하지 않는 회원 정보입니다."));
     }
 }
