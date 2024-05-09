@@ -15,4 +15,6 @@ public interface MypageBookContainerMapper {
     void deleteBookHas(Long bookHasId);
 
     void updateBestBook(BookContainerDto bookContainerDto);
+
+    Optional<BookContainerDto> selectBestBook(Long userId);
 }
