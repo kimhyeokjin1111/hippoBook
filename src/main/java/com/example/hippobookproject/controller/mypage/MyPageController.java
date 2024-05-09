@@ -10,7 +10,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,9 +52,20 @@ public class MyPageController {
         Long userId = 1L;
         List<BookContainerDto> bookContainerList  = mypageService.findBookContainer(userId);
         model.addAttribute("bookContainerList", bookContainerList);
+
         log.info("bookContainerList={}",bookContainerList);
         return "mypage/myPageBookContainer";
     }
+
+    @PostMapping("/modify")
+    public String bestBookModify(BookContainerDto bookContainerDto){
+        log.info("bookContainerDto = " + bookContainerDto);
+        mypageService.modifyBestBook(bookContainerDto);
+
+        return "redirect:/mypage/myPageBookContainer";
+    }
+
+
 
 
 

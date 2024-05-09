@@ -9,7 +9,7 @@ import * as module from '../mypage/module/bookContainerModule.js'
     let $bookListDelete = document.querySelector(".book-list-delete")
     let $bookContainerSort = document.querySelector(".book-Container-cate-list-setting")
     let $bookContainerSortImage = document.querySelector("#list-setting-image")
-
+    let $bestBookImg = document.querySelector("#best-book-img")
     console.log($bookContainerSet);
   
     if ($bookContainerSet.length > 0) {
@@ -26,10 +26,11 @@ import * as module from '../mypage/module/bookContainerModule.js'
       $modalBox.style.display = "none";
     });
 
+
+
+
     $bestBook.addEventListener("click", function(){
-        module.register(this.dataset.id, function (){
-            location.reload();
-        });
+
         
         $modalBox.style.display = "none";
     });
