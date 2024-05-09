@@ -1,6 +1,7 @@
 package com.example.hippobookproject.mapper.administrator;
 
 import com.example.hippobookproject.dto.administrator.ResultDeclAdminDto;
+import com.example.hippobookproject.dto.administrator.ResultPostInfoDto;
 import com.example.hippobookproject.dto.administrator.SelectDeclAdminDto;
 import com.example.hippobookproject.dto.page.AdminUserCriteria;
 import org.junit.jupiter.api.BeforeEach;
@@ -52,5 +53,13 @@ class AdministratorDeclMapperTest {
     void selectDeclTotal() {
         int i = administratorDeclMapper.selectDeclTotal(selectDeclAdminDto);
         assertThat(i).isEqualTo(5);
+    }
+
+    @Test
+    void selectBoardDecl(){
+        ResultPostInfoDto resultPostInfoDto = administratorDeclMapper.selectBoardDecl(2L).get();
+        assertThat(resultPostInfoDto)
+                .extracting("postTitle")
+                .isEqualTo("test board title2");
     }
 }
