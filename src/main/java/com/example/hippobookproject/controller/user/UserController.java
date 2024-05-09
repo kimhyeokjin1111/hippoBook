@@ -7,7 +7,9 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -24,11 +26,11 @@ public class UserController {
         if (id != null) {
             return "redirect:/";
         }
-        return "redirect:/user/login";
+        return "/user/login";
     }
 
     @GetMapping("/terms-of-use")
-    public String register() {
+    public String termsOfUse() {
         return "user/terms_of_use";
     }
 
@@ -47,16 +49,14 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String idPassword(){
+    public String register(){
         return "user/register";
     }
 
     @PostMapping("/register")
-    public String postRegister(UserJoinDto userJoinDto){
-
+    public String register(UserJoinDto userJoinDto, Model model){
         userService.joinUser(userJoinDto);
-
-        return "redirect:/user/register";
+        return "/user/register";
     }
 
     @GetMapping("/profile-setting")
@@ -64,14 +64,14 @@ public class UserController {
         return "user/profile_setting";
     }
 
-    @GetMapping("/find/account/phone-info")
+    @GetMapping("/find-phone-info")
     public String findAccountPhoneInfo(){
-        return "user/find_account_phone_info";
+        return "user/find_phone_info";
     }
 
-    @GetMapping("/find/account/phone-info-code")
+    @GetMapping("/find-phone-info-code")
     public String findAccountPhoneInfoCode() {
-        return "user/find_account_phone_info_code";
+        return "user/find_phone_info_code";
     }
 
     @GetMapping("/check-account")

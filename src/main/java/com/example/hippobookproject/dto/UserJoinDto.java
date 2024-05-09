@@ -8,6 +8,7 @@ import lombok.ToString;
 @Getter @Setter @ToString
 @NoArgsConstructor
 public class UserJoinDto {
-    private String joinId;
+    private Long joinId;
+    private String joinLoginId;
     private String joinPassword;
 }
