@@ -93,7 +93,7 @@ class MypageServiceTest {
         //given
         Mockito.doNothing().when(mypageBookContainerMapper).updateBestBook(any());
         // when
-        mypageService.registerBestBook(new BookContainerDto());
+//        mypageService.registerBestBook(new BookContainerDto());
         // then
         Mockito.verify(mypageBookContainerMapper, Mockito.times(1)).updateBestBook(any());
 

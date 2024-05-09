@@ -1,7 +1,9 @@
 package com.example.hippobookproject.controller.feed;
 
 import com.example.hippobookproject.dto.feed.CardDto;
+import com.example.hippobookproject.dto.feed.ReadCardDto;
 import com.example.hippobookproject.service.feed.FeedService;
+import com.example.hippobookproject.service.feed.ReadService;
 import com.example.hippobookproject.service.follow.FollowService;
 import com.example.hippobookproject.service.recommend.RecommendService;
 import jakarta.servlet.http.HttpSession;
@@ -22,6 +24,7 @@ public class FeedController {
     private final FeedService feedService;
     private final RecommendService recommendService;
     private final FollowService followService;
+    private final ReadService readService;
 
     @GetMapping()
     public String feedPage(Model model, HttpSession session){
@@ -38,7 +41,13 @@ public class FeedController {
     }
 
     @GetMapping("/read")
-    public String readPage(){
+    public String readPage(Model model, HttpSession httpSession){
+        Long userId = 1L;
+        List<ReadCardDto> readList = readService.selectAll();
+
+        System.out.println("readList = " + readList);
+
+        model.addAttribute("readList", readList);
         return "feed/readpage";
     }
     @GetMapping("/postwrite")

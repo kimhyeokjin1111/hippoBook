@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>히포북</title>
-    <link rel="stylesheet" href="/css/readpage.css">
-    <script defer src="/js/feed_modal.js"></script>
+    <link rel="stylesheet" th:href="@{/css/feed/readpage.css}">
+    <script defer th:src="@{/js/feed/feed_modal.js}"></script>
 </head>
 <body>
     
@@ -13,17 +13,17 @@
         <div class="header_layout">
             <h1 class="header_logo">
                 <div class="header_logo_layout">
-                    <a href="">  <!--홈페이지 버튼 -->
-                    <img src="/images/HippoBook_logo.png" alt="" class="header_logo_images">
+                    <a th:href="@{/}">  <!--홈페이지 버튼 -->
+                    <img th:src="@{/images/main/HippoBook_logo.png}" alt="" class="header_logo_images">
                     </a>
                 </div>
             </h1>
             <div class="header_right_layout">
                 <a href=""> <!-- 알람 페이지 이동  -->
-                <img src="/images/alarm.png" alt="" class="header_right_alarm">
+                <img th:src="@{/images/main/alarm.png}" alt="" class="header_right_alarm">
                 </a>
                 <ul class="header_right_login">
-                    <a href="" class="header_right_login_box">로그인</a>
+                    <a th:href="@{/user/login}" class="header_right_login_box">로그인</a>
                 </ul>
             </div>
         </div>
@@ -32,7 +32,7 @@
             <div class="main_top_layout">
                 <div class="main_category_btnbox">
                     <div class="main_category_btn">
-                        <img src="/images/Category.png" alt="" class="main_top_category">
+                        <img th:src="@{/images/main/Category.png}" alt="" class="main_top_category">
                     </div>
                 
                 </div>
@@ -42,7 +42,7 @@
                             <a href="">내 서재</a> <!-- 내 서재 이동 -->
                         </li>
                         <li>
-                            <a href="">피드</a> <!-- 피드 이동-->
+                            <a th:href="@{/feed}">피드</a> <!-- 피드 이동-->
                         </li>    
                         <li>
                             <a href="">쪽지</a> <!-- 쪽지 이동 -->
@@ -51,7 +51,7 @@
                             <a href="">내서재</a> <!-- 내 서재 이동 -->
                         </li>
                         <li>
-                            <a href="">검색</a> <!-- 검색 이동 -->
+                            <a th:href="@{/search}">검색</a> <!-- 검색 이동 -->
                         </li>
                     </ul>
                 </div>
@@ -63,18 +63,18 @@
             <div class="feed_menu_container">
                 <ul class="feed_menu_list">
                     <li>
-                        <a href="feedpage.html" class="feed_random">
+                        <a th:href="@{/feed}" class="feed_random">
                             <span>추천</span>
                         </a>
                     </li>
                     <li>
-                        <a href="followingpage.html" class="feed_following">
+                        <a th:href="@{/feed/follow}" class="feed_following">
                             <span>팔로잉</span>
                         </a>
                     </li>
                 </ul>
                 <button class="feed_writer"> <!-- 클릭하면 글쓰기 종류 선택하는 팝업이 뿌려진다.-->
-                    <img src="/images/writer.png" alt=""> 
+                    <img th:src="@{/images/feed/writer.png}" alt="">
                 </button>
             </div>
         </div>
@@ -106,13 +106,13 @@
         <section class="modal_section">
             <div class="modal">
                 <ul class="modal_ul">
-                    <a href="">
+                    <a th:href="@{/feed/postwrite}">
                     <li>포스트 쓰기</li>
                     </a>
-                    <a href="">
+                    <a th:href="@{/feed/readwrite}">
                     <li>독서록 쓰기</li>
                     </a>
-                    <a href="">
+                    <a th:href="@{/book/info}">
                     <li>한 줄 리뷰</li>
                     </a>
                 </ul>
@@ -120,228 +120,34 @@
         </section>
 
         <div class="feed_contentlayer">
-            <div class="feed_cardbox">
+            <div class="feed_cardbox" th:each="card : ${readList}">
                 <div class="feed_infobox">
                     <div class="feed_metadata">
                         <div class="feed_user">
                             <a href="">
-                                <span class="nickname">aaa</span>
+                                <span class="nickname" th:text="${card.userNickname}"></span>
                             </a>
                         </div>
                         <div class="feed_timebox">
-                            <span>1시간전</span>
+                            <span th:text="${card.readDate}"></span>
                         </div>
                     </div>
-                    <button class="feed_follow_btn">팔로우</button>
+                    <th:block th:if="${session.userId != card.userId}">
+                        <button class="feed_follow_btn" th:if="${!card.isFollow}" th:data-id="${card.userId}">팔로우</button>
+                        <button class="feed_unfollow_btn" th:if="${card.isFollow}" th:data-id="${card.userId}">언팔로우</button>
+                    </th:block>
                 </div>
                 <div class="feed_cardimg">
-                    <div>독후감 내용</div>
+                    <div th:text="${card.readContent}"></div>
                 </div>
                 <div class="feed_likebox">
                     <button class="feed_like_btn">
                         <span class="like_icon">♡ 좋아요</span>
-                        <span class="like_sheep">0</span>
+                        <span class="like_sheep" th:text="${card.likeCnt}"></span>
                     </button>
                 </div>
             </div>
 
-            <div class="feed_cardbox">
-                <div class="feed_infobox">
-                    <div class="feed_metadata">
-                        <div class="feed_user">
-                            <a href="">
-                                <span class="nickname"></span>
-                            </a>
-                        </div>
-                        <div class="feed_timebox">
-                            <span></span>
-                        </div>
-                    </div>
-                    <button class="feed_follow_btn">팔로우</button>
-                </div>
-                <div class="feed_cardimg">
-                    <img src="" alt="">
-                </div>
-                <div class="feed_likebox">
-                    <button class="feed_like_btn">
-                        <span class="like_icon">♡ 좋아요</span>
-                        <span class="like_sheep">0</span>
-                    </button>
-                </div>
-            </div>
-            <div class="feed_cardbox">
-                <div class="feed_infobox">
-                    <div class="feed_metadata">
-                        <div class="feed_user">
-                            <a href="">
-                                <span class="nickname"></span>
-                            </a>
-                        </div>
-                        <div class="feed_timebox">
-                            <span></span>
-                        </div>
-                    </div>
-                    <button class="feed_follow_btn">팔로우</button>
-                </div>
-                <div class="feed_cardimg">
-                    <img src="" alt="">
-                </div>
-                <div class="feed_likebox">
-                    <button class="feed_like_btn">
-                        <span class="like_icon">♡ 좋아요</span>
-                        <span class="like_sheep">0</span>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="feed_cardbox">
-                <div class="feed_infobox">
-                    <div class="feed_metadata">
-                        <div class="feed_user">
-                            <a href="">
-                                <span class="nickname"></span>
-                            </a>
-                        </div>
-                        <div class="feed_timebox">
-                            <span></span>
-                        </div>
-                    </div>
-                    <button class="feed_follow_btn">팔로우</button>
-                </div>
-                <div class="feed_cardimg">
-                    <img src="" alt="">
-                </div>
-                <div class="feed_likebox">
-                    <button class="feed_like_btn">
-                        <span class="like_icon">♡ 좋아요</span>
-                        <span class="like_sheep">0</span>
-                    </button>
-                </div>
-            </div>
-            <div class="feed_cardbox">
-                <div class="feed_infobox">
-                    <div class="feed_metadata">
-                        <div class="feed_user">
-                            <a href="">
-                                <span class="nickname"></span>
-                            </a>
-                        </div>
-                        <div class="feed_timebox">
-                            <span></span>
-                        </div>
-                    </div>
-                    <button class="feed_follow_btn">팔로우</button>
-                </div>
-                <div class="feed_cardimg">
-                    <img src="" alt="">
-                </div>
-                <div class="feed_likebox">
-                    <button class="feed_like_btn">
-                        <span class="like_icon">♡ 좋아요</span>
-                        <span class="like_sheep">0</span>
-                    </button>
-                </div>
-            </div>
-            <div class="feed_cardbox">
-                <div class="feed_infobox">
-                    <div class="feed_metadata">
-                        <div class="feed_user">
-                            <a href="">
-                                <span class="nickname"></span>
-                            </a>
-                        </div>
-                        <div class="feed_timebox">
-                            <span></span>
-                        </div>
-                    </div>
-                    <button class="feed_follow_btn">팔로우</button>
-                </div>
-                <div class="feed_cardimg">
-                    <img src="" alt="">
-                </div>
-                <div class="feed_likebox">
-                    <button class="feed_like_btn">
-                        <span class="like_icon">♡ 좋아요</span>
-                        <span class="like_sheep">0</span>
-                    </button>
-                </div>
-            </div>
-
-            <div class="feed_cardbox">
-                <div class="feed_infobox">
-                    <div class="feed_metadata">
-                        <div class="feed_user">
-                            <a href="">
-                                <span class="nickname"></span>
-                            </a>
-                        </div>
-                        <div class="feed_timebox">
-                            <span></span>
-                        </div>
-                    </div>
-                    <button class="feed_follow_btn">팔로우</button>
-                </div>
-                <div class="feed_cardimg">
-                    <img src="" alt="">
-                </div>
-                <div class="feed_likebox">
-                    <button class="feed_like_btn">
-                        <span class="like_icon">♡ 좋아요</span>
-                        <span class="like_sheep">0</span>
-                    </button>
-                </div>
-            </div>
-            <div class="feed_cardbox">
-                <div class="feed_infobox">
-                    <div class="feed_metadata">
-                        <div class="feed_user">
-                            <a href="">
-                                <span class="nickname"></span>
-                            </a>
-                        </div>
-                        <div class="feed_timebox">
-                            <span></span>
-                        </div>
-                    </div>
-                    <button class="feed_follow_btn">팔로우</button>
-                </div>
-                <div class="feed_cardimg">
-                    <img src="" alt="">
-                </div>
-                <div class="feed_likebox">
-                    <button class="feed_like_btn">
-                        <span class="like_icon">♡ 좋아요</span>
-                        <span class="like_sheep">0</span>
-                    </button>
-                </div>
-            </div>
-            <div class="feed_cardbox">
-                <div class="feed_infobox">
-                    <div class="feed_metadata">
-                        <div class="feed_user">
-                            <a href="">
-                                <span class="nickname"></span>
-                            </a>
-                        </div>
-                        <div class="feed_timebox">
-                            <span></span>
-                        </div>
-                    </div>
-                    <button class="feed_follow_btn">팔로우</button>
-                </div>
-                <div class="feed_cardimg">
-                    <img src="" alt="">
-                </div>
-                <div class="feed_likebox">
-                    <button class="feed_like_btn">
-                        <span class="like_icon">♡ 좋아요</span>
-                        <span class="like_sheep">0</span>
-                    </button>
-                </div>
-            </div>
-            
-
-         
         </div>
 
 
