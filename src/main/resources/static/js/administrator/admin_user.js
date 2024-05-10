@@ -105,7 +105,7 @@
     }
 
     if(($startUserAge.value == '' && $endUserAge.value == '') || ($startUserAge.value != '' && $endUserAge.value != '')) {
-      if(!$submitBtn.getAttribute("type") == 'button') {
+      if(!($submitBtn.getAttribute("type") == 'button')) {
         $submitBtn.setAttribute("type", "submit");
       }
     }else{
@@ -113,7 +113,7 @@
     }
 
     if(($startVDate.value == '' && $endVDate.value == '') || ($startVDate.value != '' && $endVDate.value != '')) {
-      if(!$submitBtn.getAttribute("type") == 'button'){
+      if(!($submitBtn.getAttribute("type") == 'button')){
         $submitBtn.setAttribute("type", "submit");
       }
     }else{
@@ -123,7 +123,7 @@
 
   $submitBtn.addEventListener('click', function (){
     if($submitBtn.getAttribute("type") == 'button'){
-      alert($submitBtn.dataset.unpair + "의 검색 조건이 부정확합니다.")
+      alert("검색 조건이 부정확합니다.")
     }
   })
 

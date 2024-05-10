@@ -60,6 +60,15 @@ public class AdministratorApi {
     @GetMapping("/v1/post/{postId}")
     public ResultPostInfoDto searchPostInfo(@PathVariable("postId") Long postId,
                                             String cate){
-        return administratorDeclService.findPostDecl(postId, cate);
+        log.info("postId = " + postId + ", cate = " + cate);
+        ResultPostInfoDto postDecl = administratorDeclService.findPostDecl(postId, cate);
+        postDecl.setCate(cate);
+        return postDecl;
     }
+
+    @DeleteMapping("/v1/declaration/{declId}")
+    public void removeDeclById(@PathVariable("declId") Long declId){
+        log.info("declId = " + declId);
+        administratorDeclService.removeDecl(declId);
+    };
 }

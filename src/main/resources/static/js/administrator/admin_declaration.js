@@ -16,14 +16,95 @@
     let postId, cate;
 
     if(classList.contains('decl-content-box')){
-      $declarationBox.classList.add("declaration-view-flex");
+
       postId = e.target.dataset.postid;
       cate = e.target.dataset.cate;
+
+      let declUlDataset = e.target.closest('ul').dataset;
+      let $declIdStore = document.querySelector('.decl-id-store');
+      $declIdStore.value = declUlDataset.declid;
+
+      postReq(postId, cate);
+
+      console.log('declUlDataset : ' ,declUlDataset)
+      let $declWriter = document.querySelector('.decl-writer')
+      let $declDate = document.querySelector('.decl-write-date')
+      let $declContent = document.querySelector('.decl-write-content')
+
+      $declWriter.innerText = declUlDataset.loginid;
+      $declDate.innerText = declUlDataset.decldate;
+      $declContent.innerText = declUlDataset.content;
+
     } else if(classList.contains('declaration-content-text')){
-      $declarationBox.classList.add("declaration-view-flex");
+      // $declarationBox.classList.add("declaration-view-flex");
       let $target = e.target.closest('.decl-content-box');
       postId = $target.dataset.postid;
       cate = $target.dataset.cate;
+
+      let declUlDataset = e.target.closest('ul').dataset;
+      let $declIdStore = document.querySelector('.decl-id-store');
+      $declIdStore.value = declUlDataset.declid;
+
+      postReq(postId, cate);
+
+      console.log('declUlDataset : ' ,declUlDataset)
+      let $declWriter = document.querySelector('.decl-writer')
+      let $declDate = document.querySelector('.decl-write-date')
+      let $declContent = document.querySelector('.decl-write-content')
+
+      $declWriter.innerText = declUlDataset.loginid;
+      $declDate.innerText = declUlDataset.decldate;
+      $declContent.innerText = declUlDataset.content;
+    }
+
+    function postReq(postId, cate){
+      fetch(`/v1/post/${postId}?cate=${cate}`, {method : "GET"})
+          .then(board => {
+              if(board.status === 500){
+                  removeDeclaration()
+                  // $declarationBox.classList.remove("declaration-view-flex");
+                  alert("해당 게시물이 존재하지 않습니다.")
+                  return;
+              }
+              $declarationBox.classList.add("declaration-view-flex");
+              return board.json();
+          })
+          .then(b => {
+
+              console.log(b)
+            let $declTargetTab = document.querySelector('.declaration-to-content-table');
+            let cate = b.cate;
+            let nickname = b.nickname;
+            let postContent = b.postContent;
+            let postDate = b.postDate;
+
+            console.log(cate);
+            console.log(nickname);
+            console.log(postContent);
+            console.log(postDate);
+
+            let tags = `
+                          <tr>
+                            <th>게시글명</th>
+                            <td>${cate}</td>
+                          </tr>
+                          <tr>
+                            <th>작성자</th>
+                            <td>${nickname}</td>
+                          </tr>
+                          <tr>
+                            <th>작성일</th>
+                            <td>${postDate}</td>
+                          </tr>
+                          <tr>
+                            <th>내용</th>
+                            <td>${postContent}</td>
+                          </tr>
+            `;
+
+            $declTargetTab.innerHTML = tags;
+
+          });
     }
 
 
@@ -169,9 +250,11 @@ function declReq(searchDeclInfo, amount, page){
           let declarationCheck = list.declList[i].declarationCheck;
           let postId = list.declList[i].postId;
           let cate = list.declList[i].cate;
+          let declId = list.declList[i].declarationId;
 
           declListTags += `
-                    <ul>
+                    <ul data-declId=${declId} data-declDate=${declarationDate}
+                    data-content="${declarationContent}" data-loginid="${userId}">
                       <li>${declarationDate}</li>
                       <li class="decl-content-box" data-postid="${postId}" data-cate="${cate}">
                         <div class="declaration-content-text">
@@ -220,6 +303,72 @@ function declReq(searchDeclInfo, amount, page){
       declReq($pageLink.getAttribute('href'), $nowrowBox.value);
     }
 
+  })
+
+}
+
+{
+    let $declIgnore = document.querySelector('#declaration-ignore-btn');
+    let $declarationBox = document.querySelector(
+        ".main__declaration-content-view-box"
+    );
+
+    $declIgnore.addEventListener('click', function (){
+      removeDeclaration();
+      $declarationBox.classList.remove("declaration-view-flex");
+    })
+}
+
+function removeDeclaration(){
+  let $declIdStore = document.querySelector('.decl-id-store');
+  let declId = $declIdStore.value;
+
+  console.log('declId : ', declId)
+
+  fetch(`/v1/declaration/${declId}`, {method : "DELETE"})
+      .then(() => {
+        let firstPage = document.querySelector('.decl-page-btn:nth-child(1)');
+        let $nowrowBox = document.querySelector('.main__rownum-select');
+        // console.log('firstPage : ', firstPage)
+        declReq(firstPage.getAttribute('href'), $nowrowBox.value)
+      });
+}
+
+{
+  //검색 쌍 안맞는 문제 조건
+
+  let $startDeclDate = document.querySelector('.startDeclDate');
+  let $endDeclDate = document.querySelector('.endDeclDate');
+
+  let $startPDate = document.querySelector('.startPDate');
+  let $endPDate = document.querySelector('.endPDate');
+
+  let $searchBtn = document.querySelector('.decl-search-btn');
+
+  let $pairOptions = document.querySelectorAll('.pair-options');
+
+  $pairOptions.forEach(ele => ele.addEventListener('change', function (){
+    console.log('hi222222222222222222222222222222')
+    console.log($startDeclDate.value + "------------" + $endDeclDate.value);
+    if(($startDeclDate.value == '' && $endDeclDate.value == '') || ($startDeclDate.value != '' && $endDeclDate.value != '')) {
+      $searchBtn.dataset.pair = "pair";
+    }else{
+      $searchBtn.dataset.pair = "notpair";
+    }
+
+    if(($startPDate.value == '' && $endPDate.value == '') || ($startPDate.value != '' && $endPDate.value != '')) {
+      if(!($searchBtn.dataset.pair === "notpair")){
+        $searchBtn.dataset.pair = "pair";
+      }
+    }else{
+      $searchBtn.dataset.pair = "notpair";
+    }
+  }))
+
+  $searchBtn.addEventListener('click', function (){
+    if($searchBtn.dataset.pair === "notpair"){
+      alert("검색 조건이 부정확합니다.")
+    }
   })
 
 }

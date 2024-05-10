@@ -21,4 +21,6 @@ public interface AdministratorDeclMapper {
     Optional<ResultPostInfoDto> selectBoardDecl(Long postId);
     Optional<ResultPostInfoDto> selectNovelDecl(Long postId);
     Optional<ResultPostInfoDto> selectClaimDecl(Long postId);
+
+    void deleteDeclaration(Long declId);
 }
