@@ -42,4 +42,8 @@ public class AdministratorDeclService {
 
         return resultPostInfoDto.orElseThrow(() -> new IllegalStateException("해당 게시물이 존재하지 않음"));
     }
+
+    public void removeDecl(Long declId) {
+        administratorDeclMapper.deleteDeclaration(declId);
+    };
 }
