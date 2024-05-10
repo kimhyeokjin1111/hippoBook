@@ -11,11 +11,17 @@ import java.util.Date;
 @Getter @Setter @ToString
 @NoArgsConstructor
 public class BookContainerDto {
-    private String bookCaseName;
+    private String bookName;
+    private String bookWriter;
     private Long bookHasId;
+    private Long bestBookId;
     private String bookHasPercent;
     private Long bookCaseId;
     private Long bookId;
     private Long userId;
     private LocalDate bookCaseCreate;
+    private String fileName;
+    private String fileUploadPath;
+    private String fileUuid;
+    private Long fileId;
 }

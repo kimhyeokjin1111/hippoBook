@@ -17,4 +17,6 @@ public interface MypageBookContainerMapper {
     void updateBestBook(BookContainerDto bookContainerDto);
 
     Optional<BookContainerDto> selectBestBook(Long userId);
+
+    void updateBookStatus(BookContainerDto bookContainerDto);
 }

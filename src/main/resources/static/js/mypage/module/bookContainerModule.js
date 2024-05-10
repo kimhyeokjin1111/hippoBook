@@ -10,8 +10,8 @@ export function remove(bookHasId,callback){
     });
 }
 
-export function register(bestBookId,callback){
-    fetch(`/v2/containers/book/${bestBookId}`, {
+export function modify(bestBookId,callback){
+    fetch(`/v1/containers/book/${bestBookId}`, {
         method: 'PATCH'
     }).then(resp => {
         if(resp.status === 200){

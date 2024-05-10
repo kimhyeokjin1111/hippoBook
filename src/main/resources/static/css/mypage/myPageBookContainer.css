@@ -1,6 +1,6 @@
 @font-face {
   font-family: "neon";
-  src: url("../font/SpoqaHanSansNeo_all/SpoqaHanSansNeo_TTF_original/SpoqaHanSansNeo-Bold.ttf");
+
 }
 
 * {
@@ -171,6 +171,12 @@ input[type="file"] {
   padding: 3px 3px;
 }
 
+#best-book-img{
+  width: 150px;
+  height: 150px;
+  border: solid #96eae8;
+}
+
 .mypage-cate {
   display: flex;
   padding: -1px 160px 0 160px;
@@ -322,6 +328,8 @@ button {
   border-radius: 20px;
 }
 
+
+
 .book-container-modal-bg2 {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.4);
@@ -333,3 +341,44 @@ button {
   align-items: center;
   justify-content: center;
 }
+
+.book-container-modal-list2 {
+  background-color: white;
+  width: 150px;
+  height: 200px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.book-container-modal-list-btn2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.book-container-modal-list-btn2 input {
+  background-color: #2bc1bf;
+  height: 30px;
+  width: 100%;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+.book-container-modal-list2 {
+  padding: 40px 50px;
+}
+
+
+.x-box2 {
+  background-image: url("/images/mypage/cancel.png");
+  width: 15px;
+  height: 15px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+

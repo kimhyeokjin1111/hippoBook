@@ -76,4 +76,18 @@ class MypageBookContainerMapperTest {
                 .isEqualTo(bookContainerDto.getBookHasId());
 
     }
+
+    @Test
+    void updateBookStatus(){
+        // given
+        // when
+        mypageBookContainerMapper.updateBookStatus(bookContainerDto);
+        bookContainerDto = new BookContainerDto();
+        // then
+        assertThat(bookContainerDto)
+                .extracting("bookHasPercent")
+                .isEqualTo(bookContainerDto.getBookHasPercent());
+
+    }
+
 }
