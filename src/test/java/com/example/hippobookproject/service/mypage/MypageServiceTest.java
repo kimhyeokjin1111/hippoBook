@@ -110,7 +110,4 @@ class MypageServiceTest {
         // then
         verify(mypageBookContainerMapper, times(1)).updateBestBook(any());
     }
-
-
-
 }

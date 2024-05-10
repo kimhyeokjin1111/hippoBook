@@ -2,6 +2,7 @@ package com.example.hippobookproject.api.administrator;
 
 import com.example.hippobookproject.dto.administrator.ResultChartAdminDto;
 import com.example.hippobookproject.dto.administrator.ResultDeclAdminDto;
+import com.example.hippobookproject.dto.administrator.ResultPostInfoDto;
 import com.example.hippobookproject.dto.administrator.SelectDeclAdminDto;
 import com.example.hippobookproject.dto.page.AdminUserCriteria;
 import com.example.hippobookproject.dto.page.AdminUserPage;
@@ -46,7 +47,7 @@ public class AdministratorApi {
         log.info("selectDeclAdminDto = " + selectDeclAdminDto + ", adminDeclCriteria = " + adminDeclCriteria);
         List<ResultDeclAdminDto> declList = administratorDeclService.findDeclList(selectDeclAdminDto, adminDeclCriteria);
         log.info("declList = {}", declList);
-        int declTotal = administratorDeclService.selectDeclTotal(selectDeclAdminDto);
+        int declTotal = administratorDeclService.findDeclTotal(selectDeclAdminDto);
         AdminUserPage declPage = new AdminUserPage(adminDeclCriteria, declTotal);
 
         Map<String , Object> declMap = new HashMap<>();
@@ -54,5 +55,11 @@ public class AdministratorApi {
         declMap.put("declPage", declPage);
 
         return declMap;
+    }
+
+    @GetMapping("/v1/post/{postId}")
+    public ResultPostInfoDto searchPostInfo(@PathVariable("postId") Long postId,
+                                            String cate){
+        return administratorDeclService.findPostDecl(postId, cate);
     }
 }

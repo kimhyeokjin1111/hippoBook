@@ -58,4 +58,32 @@
             </if>
         </trim>
     </select>
+
+    <select id="selectDealDecl" parameterType="Long" resultType="ResultPostInfoDto">
+        SELECT DEAL_ID post_id, DEAL_TITLE post_title, DEAL_CONTENT post_content, DEAL_DATE, U.USER_NICKNAME
+            FROM TBL_DEAL D JOIN TBL_USER U
+                            ON D.USER_ID = U.USER_ID
+        WHERE DEAL_ID = #{postId}
+    </select>
+
+    <select id="selectBoardDecl" parameterType="Long" resultType="ResultPostInfoDto">
+        SELECT BOARD_ID post_id, BOARD_TITLE post_title, BOARD_CONTENT post_content, BOARD_DATE post_date, U.USER_NICKNAME nickname
+            FROM TBL_BOARD B JOIN TBL_USER U
+                            ON B.USER_ID = U.USER_ID
+        WHERE BOARD_ID = #{postId}
+    </select>
+
+    <select id="selectNovelDecl" parameterType="Long" resultType="ResultPostInfoDto">
+        SELECT NOVEL_ID post_id, NOVEL_TITLE post_title, NOVEL_CONTENT post_content, NOVEL_DATE post_date, U.USER_NICKNAME nickname
+        FROM TBL_NOVEL N JOIN TBL_USER U
+                            ON N.USER_ID = U.USER_ID
+        WHERE NOVEL_ID = #{postId}
+    </select>
+
+    <select id="selectClaimDecl" parameterType="Long" resultType="ResultPostInfoDto">
+        SELECT CLAIM_ID post_id, CLAIM_TITLE post_title, CLAIM_CONTENT, CLAIM_DATE, U.USER_NICKNAME
+        FROM TBL_CLAIM C JOIN TBL_USER U
+                            ON C.USER_ID = U.USER_ID
+        WHERE CLAIM_ID = #{postId}
+    </select>
 </mapper>
