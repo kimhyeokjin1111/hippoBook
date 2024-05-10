@@ -1,6 +1,6 @@
 package com.example.hippobookproject.controller.mainpage;
 
-import com.example.hippobookproject.dto.main.BoardListDto;
+import com.example.hippobookproject.dto.main.ReadListDto;
 import com.example.hippobookproject.dto.main.DealListDto;
 import com.example.hippobookproject.dto.main.NovelListDto;
 import com.example.hippobookproject.service.main.MainService;
@@ -31,9 +31,9 @@ public class MainPageController {
         List<NovelListDto> novelList = mainService.findAll();
         List<DealListDto> dealList = mainService.selectByTitle();
 
-        List<BoardListDto> boardList = mainService.selectByContent();
+        List<ReadListDto> readList = mainService.selectByContent();
 
-        model.addAttribute("boardList", boardList);
+        model.addAttribute("readList", readList);
         model.addAttribute("dealList", dealList);
         model.addAttribute("novelList", novelList);
         return "main/mainpage";

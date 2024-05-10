@@ -9,8 +9,8 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor
-public class BoardListDto {
-    private String boardTitle;
-    private String boardContent;
+public class ReadListDto {
+    private String ReadTitle;
+    private String ReadContent;
     private String userNickName;
 }

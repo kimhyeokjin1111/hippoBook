@@ -1,9 +1,9 @@
 package com.example.hippobookproject.service.main;
 
-import com.example.hippobookproject.dto.main.BoardListDto;
+import com.example.hippobookproject.dto.main.ReadListDto;
 import com.example.hippobookproject.dto.main.DealListDto;
 import com.example.hippobookproject.dto.main.NovelListDto;
-import com.example.hippobookproject.mapper.main.BoardTestMapper;
+import com.example.hippobookproject.mapper.main.ReadTestMapper;
 import com.example.hippobookproject.mapper.main.DealMapper;
 import com.example.hippobookproject.mapper.main.NovelMapper;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ import java.util.List;
 public class MainService {
     private final NovelMapper novelMapper;
     private final DealMapper dealMapper;
-    private final BoardTestMapper boardTestMapper;
+    private final ReadTestMapper boardTestMapper;
 
     public List<NovelListDto> findAll(){
         return novelMapper.selectAll();
@@ -28,7 +28,7 @@ public class MainService {
         return dealMapper.selectByTitle();
     }
 
-    public List<BoardListDto> selectByContent(){
+    public List<ReadListDto> selectByContent(){
         return boardTestMapper.selectByContent();
     }
 
