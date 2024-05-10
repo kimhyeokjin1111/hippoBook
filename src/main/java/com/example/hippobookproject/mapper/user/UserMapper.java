@@ -9,8 +9,11 @@ import java.util.Optional;
 
 @Mapper
 public interface UserMapper {
-    //    회원 정보 저장 (회원가입)
-    void insertJoinUser(UserJoinDto userJoinDto);
-    Optional<Long> selectJoinId(@Param("joinLoginId") String joinLoginId,
+    Optional<Long> joinSelectId(@Param("joinId") String joinId,
                                 @Param("joinPassword") String joinPassword);
+
+//    회원 정보 저장 (회원가입)
+    void insertUser(UserJoinDto userJoinDto);
+
+
 }
