@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.hippobookproject.mapper.main.ReadTestMapper">
+    <select id="selectByContent" resultType="ReadListDto">
+        SELECT READ_TITLE, READ_CONTENT, USER_NICKNAME
+        FROM (
+        SELECT READ_TITLE, READ_CONTENT, USER_NICKNAME
+        FROM TBL_READ JOIN TBL_USER U
+        ON TBL_READ.USER_ID = U.USER_ID
+        ORDER BY READ_ID DESC
+        )
+     WHERE <![CDATA[ROWNUM < =4]]>
+    </select>
+
+
+</mapper>

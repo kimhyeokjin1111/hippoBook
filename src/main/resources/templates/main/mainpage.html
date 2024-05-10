@@ -23,7 +23,7 @@
           </div>
         </h1>
         <div class="header_right_layout">
-          <a href="">
+          <a th:href="@{/alarm}">
             <!-- 알람 페이지 이동  -->
             <img th:src="@{/images/book/alarm.png}" alt="" class="header_right_alarm" />
           </a>
@@ -31,6 +31,9 @@
           <ul class="header_right_login">
             <button type="button" class="header_right_login_btn">
               <a th:href="@{/user/login}" class="header_right_login_box">로그인</a>
+            </button>
+            <button type="button" class="header_right_login_btn">
+              <a th:href="@{/user/phone-info}" class="header_right_login_box">회원가입</a>
             </button>
           </ul>
         </div>
@@ -142,132 +145,19 @@
         </section>
       <div class="main_layout">
         <!-- 배너 밑 부분 -->
-        <div class="main_content_layout">
+          <!-- 배너 밑 부분 --><div class="main_content_layout">
           <section class="hipppo_ranking">
-            <div class="hipppo_ranking_layout">
-              <a th:href="@{/book/info}">
-              <h3 class="hipppo_ranking_title">히포 랭킹</h3>
-              </a>
-              <section class="ranking_border_box">
-                  <div class="ranking_content">
-                      <div class="rank_num"></div>
-                      <div class="thumbnail">
-                          <div class="book_picture">
-                              <picture>
-                                  <img th:src="@{/images/main/ranking_thumbnail.png}" alt="">
-                              </picture>
-                          </div>
-                      </div>
-                      <div class="thumbnail_title">
-                          <a href="" class="book_data">
-                              <div class="book_content">
-                                  <p class="rank_book_title">제목제목</p>
-                                  <p class="rank_book_author">지은이지은이</p>
-                              </div>
-                          </a>
-                      </div>
+              <div class="hipppo_ranking_layout">
+                  <a th:href="@{/book/info}">
+                      <h3 class="hipppo_ranking_title">히포 랭킹</h3>
+                  </a>
+                  <div class="hipppo_ranking-box">
+
                   </div>
-                  <div class="ranking_content">
-                      <div class="rank_num"></div>
-                      <div class="thumbnail">
-                          <div class="book_picture">
-                              <picture>
-                                  <img th:src="@{/images/main/ranking_thumbnail.png}" alt="">
-                              </picture>
-                          </div>
-                      </div>
-                      <div class="thumbnail_title">
-                          <a href="" class="book_data">
-                              <div class="book_content">
-                                  <p class="rank_book_title">제목제목</p>
-                                  <p class="rank_book_author">지은이지은이</p>
-                              </div>
-                          </a>
-                      </div>
-                  </div>
-                  <div class="ranking_content">
-                      <div class="rank_num"></div>
-                      <div class="thumbnail">
-                          <div class="book_picture">
-                              <picture>
-                                  <img th:src="@{/images/main/ranking_thumbnail.png}" alt="">
-                              </picture>
-                          </div>
-                      </div>
-                      <div class="thumbnail_title">
-                          <a href="" class="book_data">
-                              <div class="book_content">
-                                  <p class="rank_book_title">제목제목</p>
-                                  <p class="rank_book_author">지은이지은이</p>
-                              </div>
-                          </a>
-                      </div>
-                  </div>
-              </section>
-                <section class="ranking_border_box">
-                    <div class="ranking_content">
-                        <div class="rank_num"></div>
-                        <div class="thumbnail">
-                            <div class="book_picture">
-                                <picture>
-                                    <img th:src="@{/images/main/ranking_thumbnail.png}" alt="">
-                                </picture>
-                            </div>
-                        </div>
-                        <div class="thumbnail_title">
-                            <a href="" class="book_data">
-                                <div class="book_content">
-                                    <p class="rank_book_title">제목제목</p>
-                                    <p class="rank_book_author">지은이지은이</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="ranking_content">
-                        <div class="rank_num"></div>
-                        <div class="thumbnail">
-                            <div class="book_picture">
-                                <picture>
-                                    <img th:src="@{/images/main/ranking_thumbnail.png}" alt="">
-                                </picture>
-                            </div>
-                        </div>
-                        <div class="thumbnail_title">
-                            <a href="" class="book_data">
-                                <div class="book_content">
-                                    <p class="rank_book_title">제목제목</p>
-                                    <p class="rank_book_author">지은이지은이</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="ranking_content">
-                        <div class="rank_num"></div>
-                        <div class="thumbnail">
-                            <div class="book_picture">
-                                <picture>
-                                    <img th:src="@{/images/main/ranking_thumbnail.png}" alt="">
-                                </picture>
-                            </div>
-                        </div>
-                        <div class="thumbnail_title">
-                            <a href="" class="book_data">
-                                <div class="book_content">
-                                    <p class="rank_book_title">제목제목</p>
-                                    <p class="rank_book_author">지은이지은이</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </section>
 
-
-
-
-            </div>
+              </div>
           </section>
-        </div>
-
+      </div>
         <div class="novel_preview">
           <a th:href="@{/feed}">
             <h3 class="novel_preview_title">독후감 바로가기</h3>
@@ -275,7 +165,7 @@
             <div class="novel_content">
               <div class="novel_content_wrapper">
                 <div class="novel_box">
-                  <div class="novel_box_border" th:each="board :${boardList}">
+                  <div class="novel_box_border" th:each="read :${readList}">
                     <div class="novel_thumbnail_wrap">
                       <div class="novel_data">
                         <div class="novel_box_inner">
@@ -293,14 +183,14 @@
                           </a>
                           <a href="" class="book_data2">  <!--책 정보 url이동-->
                             <div class="novel_box_content">
-                              <p class="novel_box_content_title" th:text="${board.boardTitle}"></p>
-                              <p class="novel_box_content_content" th:text="${board.userNickName}"></p>
+                              <p class="novel_box_content_title" th:text="${read.readTitle}"></p>
+                              <p class="novel_box_content_content" th:text="${read.userNickName}"></p>
                             </div>
                           </a>
                         </div>
                       </div>
                       <div class="novel_box_bottom">
-                        <div class="novel_box_bottom_content" th:text="${board.boardContent}"></div>
+                        <div class="novel_box_bottom_content" th:text="${read.readContent}"></div>
                       </div>
                     </div>
                   </div>
@@ -327,7 +217,6 @@
                         <div class="main_book_report_content" th:text="${novel.novelContent}"></div>
                       </div>
                       <div class="main_book_report_writer_content">
-                        <div class="main_book_report_writer_content_icon"></div>
                         <div class="main_book_report_writer_content_username" th:text="${novel.userNickName}"></div>
                       </div>
                     </a>
@@ -450,21 +339,6 @@
           </li>
           <li class="footer_services_content">
             <a href="" class="footer_services_link">청소년보호정책 ></a>
-          </li>
-          <li class="footer_services_content">
-            <a href="" class="footer_services_link">고객센터 ></a>
-          </li>
-          <li class="footer_services_content">
-            <a href="" class="footer_services_link">환불신청 ></a>
-          </li>
-          <li class="footer_services_content">
-            <a href="" class="footer_services_link">내용내용 ></a>
-          </li>
-          <li class="footer_services_content">
-            <a href="" class="footer_services_link">내용내용 ></a>
-          </li>
-          <li class="footer_services_content">
-            <a href="" class="footer_services_link">내용내용 ></a>
           </li>
         </ul>
         <p class="footer_copyright">Copyright © 2024 히포북 All Rights Reserved.</p>
