@@ -17,12 +17,16 @@ import java.util.List;
 public class ReadService {
     private final ReadMapper readMapper;
 
-    public List<ReadCardDto> selectAll(){
-        return readMapper.selectAll(1L);
+    public List<ReadCardDto> selectAll(Long userId){
+        return readMapper.selectAll(userId);
     }
 
     public void insertFollow(FollowDto followDto){
         readMapper.insertFollow(followDto);
+    }
+
+    public void deleteFollow(FollowDto followDto){
+        readMapper.deleteFollow(followDto);
     }
 
 

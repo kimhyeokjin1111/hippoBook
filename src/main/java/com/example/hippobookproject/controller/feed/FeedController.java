@@ -42,8 +42,9 @@ public class FeedController {
 
     @GetMapping("/read")
     public String readPage(Model model, HttpSession httpSession){
+ //        Long userId = (Long) session.getAttribute("userId");
         Long userId = 1L;
-        List<ReadCardDto> readList = readService.selectAll();
+        List<ReadCardDto> readList = readService.selectAll(userId);
 
         System.out.println("readList = " + readList);
 

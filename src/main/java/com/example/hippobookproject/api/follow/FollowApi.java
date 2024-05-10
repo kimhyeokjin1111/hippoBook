@@ -2,6 +2,7 @@ package com.example.hippobookproject.api.follow;
 
 import com.example.hippobookproject.dto.feed.FollowDto;
 import com.example.hippobookproject.service.feed.FeedService;
+import com.example.hippobookproject.service.feed.ReadService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class FollowApi {
     private final FeedService feedService;
+    private final ReadService readService;
 
     @PostMapping("/v1/follows")
     public void follow(@RequestBody FollowDto followDto, HttpSession session){
@@ -21,6 +23,7 @@ public class FollowApi {
         Long userId = 1L;
         followDto.setFollowFrom(userId);
         feedService.insertFollow(followDto);
+        readService.insertFollow(followDto);
     }
 
     @DeleteMapping("/v1/unfollows/{followTo}")
@@ -36,6 +39,7 @@ public class FollowApi {
         followDto.setFollowFrom(userId);
 
         feedService.deleteFollow(followDto);
+        readService.deleteFollow(followDto);
 
 
     }

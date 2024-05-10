@@ -36,4 +36,13 @@ class ReadMapperTest {
         followDto.setFollowFrom(1L);
         readMapper.insertFollow(followDto);
     }
+
+    @Test
+    void deleteFollow(){
+        followDto = new FollowDto();
+        followDto.setFollowTo(1L);
+        System.out.println("followTo = " + followDto.getFollowTo());
+//        feedMapper.deleteFollow(followDto.getFollowTo());
+
+    }
 }

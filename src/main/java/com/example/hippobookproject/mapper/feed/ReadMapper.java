@@ -10,4 +10,5 @@ import java.util.List;
 public interface ReadMapper {
     List<ReadCardDto> selectAll(Long userId);
     void insertFollow(FollowDto followDto);
+    void deleteFollow(FollowDto followDto);
 }
