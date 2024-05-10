@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/alarm/alarmpage.css}"/>
+    <script defer th:src="@{/js/alarm/alarmpage.js}"></script>
+</head>
+<body>
+<header>
+    <div class="alarm_title">알림센터</div>
+</header>
+<div class="tab_menu">
+    <ul class="list">
+        <li class="btn_box">
+            <a href="" class="alarm_btn">알림</a>
+            <div  class="cont">
+              <div class="alarm_inner">
+                <div class="alarm_content">
+                    <a href="" class="alarm_book"> <!--북 페이지 이동-->
+                    <span>알림 내용</span>
+                    </a>
+                </div>
+              </div>
+            </div>
+        </li>
+        <li>
+            <a href="" class="alarm_btn">공지사항</a>
+            <div class="cont">
+                <div class="alarm_inner">
+                    <div class="alarm_content">
+                        <a href="" class="alarm_book"> <!--북 페이지 이동-->
+                            <span>공지사항 내용</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <a href="" class="alarm_btn">이벤트</a>
+            <div class="cont">
+                <div class="alarm_inner">
+                    <div class="alarm_content">
+                        <a href="" class="alarm_book"> <!--북 페이지 이동-->
+                            <span>이벤트 내용</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

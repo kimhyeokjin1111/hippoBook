@@ -127,37 +127,48 @@
 
   function displayBookList(obj) {
     // console.log(obj)
-    // let bookList = obj.item;
-    // console.log(bookList)
-    // let tags = '';
-    //
-    // bookList.forEach(book => {
-    //   // console.log(book.title);
-    //   tags += `
-    //               <div class="ranking_content1">
-    //                 <div class="rank_num1">
-    //                 </div>
-    //                 <div class="thumbnail">
-    //                   <div class="book_picture">
-    //                     <picture>
-    //                       <img src="${book.cover}" alt="">
-    //                     </picture>
-    //                   </div>
-    //                 </div>
-    //                 <div class="thumbnail_title">
-    //                   <a href="" class="book_data">
-    //                     <div class="book_content">
-    //                       <p class="rank_book_title">${book.title}</p>
-    //                     </div>
-    //                   </a>
-    //                 </div>
-    //               </div>
-    //
-    //             `;
-    // });
-    //
-    // let $box = document.querySelector('.reanking_box');
-    // $box.innerHTML = tags;
+    let bookList = obj.item;
+    console.log(bookList)
+    let tags = '';
+
+    let idx = 0;
+
+    for(let i=0; i<3; i++){
+      tags += '<div class="ranking_border_box_wrap">';
+
+      for(let j=0; j<3; j++){
+        tags += `
+        <a href="">
+        <div class="ranking_content">
+            <div class="rank_num${idx + 1}"></div>
+            <div class="thumbnail">
+                <div class="book_picture">
+                    <picture>
+                        <img src="${bookList[idx].cover}" alt="">
+                    </picture>
+                </div>
+            </div>
+            <div class="thumbnail_title">
+                <a href="" class="book_data">
+                    <div class="book_content">
+                        <p class="rank_book_title">${bookList[idx].title}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        </a>
+        `;
+        idx++;
+      }
+
+      tags += `</div>`;
+    }
+
+
+    let $box = document.querySelector('.hipppo_ranking-box');
+    $box.innerHTML = tags;
+    // let $box = document.querySelector('.hipppo_ranking_layout');
+    // $box.insertAdjacentHTML('beforeend', tags);
   }
 }
 

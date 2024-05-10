@@ -1,0 +1,86 @@
+
+*{
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+body{
+  max-width: 1440px;
+}
+
+
+header{
+    height: 44px;
+    position: relative;
+}
+.alarm_title{
+    font-size: 18px;
+    color: #2BC1BF;
+    padding: 0 45px;
+    text-align: center;
+    line-height: 44px;
+    font-weight: bolder;
+}
+.tab_menu{
+    position:relative;
+    border-bottom: 1px solid #8b8b8b;
+}
+.list{
+    overflow:hidden;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab_menu .list li.btn_box .btn{
+    font-weight:bold;
+    color: #2BC1BF;
+}
+
+.alarm_btn{
+    font-weight: 700;
+    color: black;
+    position: relative;
+    padding: 10px 12px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.alarm_content{
+    border-bottom: 1px solid #8b8b8b;
+    height: 100px;
+}
+
+.alarm_book{
+    padding: 22px 16px;
+}
+
+.alarm_btn:hover{
+    color: #2BC1BF;
+}
+.alarm_btn:active{
+    color: #2BC1BF;
+}
+
+
+
+.cont{
+    margin: 0 auto;
+
+}
+.alarm_inner{
+    margin-top: 50px;
+}
+
+.tab_menu .list .cont{
+    display:none;
+    position:absolute;
+    text-align:center;
+}
+
+.tab_menu .btn_box .cont{
+    display:block;
+}

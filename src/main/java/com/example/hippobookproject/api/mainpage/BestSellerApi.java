@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class BestSellerApi {
     private final BestSellerServiceApi bestSellerServiceApi;
 
-//    @GetMapping("/api")
-//    public String bestSeller(){
-//        return bestSellerServiceApi.findBestSeller();
-//    }
+    @GetMapping("/api")
+    public String bestSeller(){
+        return bestSellerServiceApi.findBestSeller();
+    }
 }
