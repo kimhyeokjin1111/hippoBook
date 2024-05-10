@@ -23,6 +23,18 @@ public class bookContainerApi {
 
     }
 
+    @PatchMapping("/v1/containers/book/{bestBookId}")
+    public void modifyBestBook(@SessionAttribute(value = "userId", required = false) Long userId,
+                               @PathVariable("bestBookId") Long bestBookId
+                               ){
+        userId = 1L;
+        BookContainerDto bookContainerDto = new BookContainerDto();
+        bookContainerDto.setUserId(userId);
+        bookContainerDto.setBookHasId(bestBookId);
+        log.info("bookContainerDto={}",bookContainerDto);
+        mypageService.modifyBestBook(bookContainerDto);
+    }
+
     
 
 
