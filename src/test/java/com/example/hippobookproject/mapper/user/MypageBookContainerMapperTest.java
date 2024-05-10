@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.anyOf;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -49,14 +50,30 @@ class MypageBookContainerMapperTest {
         assertThat(list.size()).isEqualTo(oldSize - 1);
     }
 
+
+
+    @Test
+    void selectBestBook(){
+        Optional<BookContainerDto> bookContainerDto = mypageBookContainerMapper.selectBestBook(1L);
+        System.out.println("bookContainerDto = " + bookContainerDto);
+
+    }
+
     @Test
     void updateBestBook(){
         // given
-
+        BookContainerDto bookContainerDto = new BookContainerDto();
+        bookContainerDto.setUserId(1L);
+        bookContainerDto.setBookHasId(3L);
         // when
-
+        mypageBookContainerMapper.updateBestBook(bookContainerDto);
+        mypageBookContainerMapper.selectBestBook(1L).orElse(null);
 
         // then
+
+        assertThat(bookContainerDto)
+                .extracting("bookHasId")
+                .isEqualTo(bookContainerDto.getBookHasId());
 
     }
 }
