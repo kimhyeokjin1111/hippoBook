@@ -1,7 +1,7 @@
 .login-container .login-content {
   flex-basis: 520px;
   max-width: 1000px;
-  padding: 80px 40px;
+  padding: 20px 40px;
   background-color: white;
 }
 
@@ -340,8 +340,10 @@ h3 {
   font-size: 16px;
   color: #242424;
   -ms-flex: 1;
-  flex: 1;
-  padding: 8px 0;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  /*flex: 1;*/
+  /*padding: 8px 0;*/
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
@@ -401,7 +403,7 @@ h3 {
 .login-container .text {
   color: #8d8d8d;
   font-size: 14px;
-  margin: 24px 0;
+  margin: 5px 0;
   text-align: center;
 }
 
@@ -416,7 +418,7 @@ h3 {
 }
 
 .login-container .picture-box {
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .login-container .picture-box .inner {
@@ -517,7 +519,7 @@ h3 {
 .login-container .text{
   color: #8b8b8b;
   font-size: 14px;
-  margin: 24px 0;
+  margin: 5px 0;
   text-align: center;
 }
 .login-container .text .text-button{
@@ -647,9 +649,9 @@ img{
   font-size: 10px;
   color: #a451f7;
 }
-.login-content .mds-input{
-  margin-bottom: 8px;
-}
+/*.login-content .mds-input{*/
+/*  margin-bottom: 4px;*/
+/*}*/
 .mds-input{
   overflow: hidden;
 }

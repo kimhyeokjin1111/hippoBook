@@ -30,7 +30,7 @@
   min-height: 100vh;
   /*flex: 1;*/
   flex-basis: 520px;
-  padding: 80px 40px;
+  padding: 20px 40px;
   max-width: 1000px;
 }
 
@@ -81,7 +81,7 @@
 }
 
 .login-container .agency-popup .contents {
-  margin-top: 8px;
+  margin-top: 6px;
   flex: 1;
 }
 

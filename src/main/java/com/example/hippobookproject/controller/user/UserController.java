@@ -59,6 +59,12 @@ public class UserController {
         return "/user/register";
     }
 
+    // HTML 테스트용
+    @GetMapping("/test-register")
+    public String testRegister(){
+        return "user/test_register";
+    }
+
     @GetMapping("/profile-setting")
     public String profileSetting() {
         return "user/profile_setting";
