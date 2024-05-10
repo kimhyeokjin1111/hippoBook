@@ -16,4 +16,5 @@ public class ResultPostInfoDto {
     private String postContent;
     private LocalDate postDate;
     private String nickname;
+    private String cate;
 }

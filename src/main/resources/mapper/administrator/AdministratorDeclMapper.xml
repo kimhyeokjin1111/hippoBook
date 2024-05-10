@@ -81,9 +81,39 @@
     </select>
 
     <select id="selectClaimDecl" parameterType="Long" resultType="ResultPostInfoDto">
-        SELECT CLAIM_ID post_id, CLAIM_TITLE post_title, CLAIM_CONTENT, CLAIM_DATE, U.USER_NICKNAME
+        SELECT CLAIM_ID post_id, CLAIM_TITLE post_title, CLAIM_CONTENT post_content, CLAIM_DATE post_date, U.USER_NICKNAME
         FROM TBL_CLAIM C JOIN TBL_USER U
                             ON C.USER_ID = U.USER_ID
         WHERE CLAIM_ID = #{postId}
     </select>
+
+    <delete id="deleteDeclaration" parameterType="Long">
+        DELETE
+            FROM TBL_POST_DECLARATION
+        WHERE POST_DECLARATION_ID = #{declId}
+    </delete>
+
+<!--    <delete id="deleteDealDecl" parameterType="Long">-->
+<!--        DELETE-->
+<!--            FROM TBL_DEAL-->
+<!--        WHERE DEAL_ID = #{postId}-->
+<!--    </delete>-->
+
+<!--    <delete id="deleteBoardDecl" parameterType="Long">-->
+<!--        DELETE-->
+<!--        FROM TBL_BOARD-->
+<!--        WHERE BOARD_ID = #{postId}-->
+<!--    </delete>-->
+
+<!--    <delete id="deleteNovelDecl" parameterType="Long">-->
+<!--        DELETE-->
+<!--        FROM TBL_NOVEL-->
+<!--        WHERE NOVEL_ID = #{postId}-->
+<!--    </delete>-->
+
+<!--    <delete id="deleteClaimDecl" parameterType="Long">-->
+<!--        DELETE-->
+<!--        FROM TBL_CLAIM-->
+<!--        WHERE CLAIM_ID = #{postId}-->
+<!--    </delete>-->
 </mapper>

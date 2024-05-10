@@ -97,12 +97,12 @@
                           <input
                             type="date"
                             name="startDeclarationDate"
-                            class="startDeclDate"
+                            class="startDeclDate pair-options"
                           /><span>~</span
                           ><input
                             type="date"
                             name="endDeclarationDate"
-                            class="endDeclDate"
+                            class="endDeclDate pair-options"
                           />
                         </td>
                       </tr>
@@ -112,12 +112,12 @@
                           <input
                             type="date"
                             name="startPocecssDate"
-                            class="startPDate"
+                            class="startPDate pair-options"
                           /><span>~</span
                           ><input
                             type="date"
                             name="endPocecssDate"
-                            class="endPDate"
+                            class="endPDate pair-options"
                           />
                         </td>
                       </tr>
@@ -209,6 +209,7 @@
                 <div class="main__result-box-container">
                   <div class="main__list-rownum-box">
                     <p>[검색결과 0건]</p>
+                    <input type="hidden" class="decl-id-store">
                     <select name="rownum" class="main__rownum-select" th:data-row="10">
                       <option value="10">10개씩 보기</option>
                       <option value="20">20개씩 보기</option>
@@ -285,15 +286,15 @@
                         <table class="declaration-to-content-table">
                           <tr>
                             <th>신고자</th>
-                            <td></td>
+                            <td class="decl-writer"></td>
                           </tr>
                           <tr>
                             <th>신고일</th>
-                            <td></td>
+                            <td class="decl-write-date"></td>
                           </tr>
                           <tr>
                             <th>신고내용</th>
-                            <td></td>
+                            <td class="decl-write-content"></td>
                           </tr>
                         </table>
                         <div class="declaration-content-view-bottom">
