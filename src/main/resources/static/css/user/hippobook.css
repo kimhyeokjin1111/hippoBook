@@ -512,6 +512,7 @@ i {
 
 .login-container .jumin-number {
   display: -ms-flexbox;
+  margin-bottom: 10px;
   display: flex;
   -ms-flex-align: center;
   align-items: center;
@@ -550,7 +551,7 @@ i {
 
 .mds-input .inner {
   /*height: 100%;*/
-  gap: 8px;
+  /*gap: 8px;*/
 }
 
 .mds-input .input {
@@ -625,6 +626,7 @@ i {
 
 .mds-select .inner:before {
   position: absolute;
+  margin: 10px;
   left: 0;
   right: 0;
   top: 0;
@@ -801,7 +803,7 @@ li {
 }
 
 .mds-input .label {
-  display: block;
+  display: flex;
   margin-bottom: 1px;
   font-size: 10px;
   color: #6f6f6f;
@@ -848,8 +850,10 @@ li {
 .mds-input .inner, .mds-input .mds-icon--searchbar {
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 8px;
   -ms-flex-align: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .mds-input .input {
