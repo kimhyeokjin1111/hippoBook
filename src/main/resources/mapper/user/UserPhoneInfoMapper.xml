@@ -3,10 +3,10 @@
 <mapper namespace="com.example.hippobookproject.mapper.user.UserPhoneInfoMapper">
 
     <!--    사용자 휴대폰 저장-->
-<!--    <insert id="insertUser" parameterType="UserPhoneInfoDto">-->
-<!--        INSERT INTO TBL_PHONEINFO(PHONEINFO_NAME, PHONEINFO_BIRTH_DATE, PHONEINFO_PHONENUMBER)-->
-<!--        VALUES (#{phoneInfoName}, #{phoneInfoBirthDate}, #{phoneInfoPhoneNumber})-->
-<!--    </insert>-->
+    <insert id="insertUser" parameterType="UserPhoneInfoDto">
+        INSERT INTO TBL_PHONEINFO(PHONEINFO_NAME, PHONEINFO_BIRTH_DATE, PHONEINFO_PHONENUMBER)
+        VALUES (#{phoneInfoName}, #{phoneInfoBirthDate}, #{phoneInfoPhoneNumber})
+    </insert>
 
     <!--    휴대폰 사용자 정보 조회-->
     <!--    <select id="selectId" resultType="Long">-->
