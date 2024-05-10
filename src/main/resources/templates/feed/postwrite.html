@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>히포북</title>
-    <link rel="stylesheet" th:href="@{/css/feed/readwrite.css}" />
+    <link rel="stylesheet" th:href="@{/css/feed/postwrite.css}" />
     <script defer th:src="@{/js/feed/category_modal.js}"></script>
   </head>
   <body>
@@ -75,6 +75,10 @@
                 <input type="text" class="read_titleinput"
                 placeholder="  이곳에 제목을 입력하세요" >
             </div>
+            <div class="post_infoarea">
+            <span>히포북 정보</span>
+              <button>검색</button>
+            </div>
             <span>목차</span>
             <div class="read_onelinebox">
               <textarea
@@ -108,11 +112,6 @@
                 <input type="text" class="read_dateinput"
                 placeholder="   이곳에 페이지 수를 입력하세요"
                 style="font-size: 12px;">
-            </div>
-            <span>책 저자</span>
-            <div class="read_datebox">
-                <input type="date" class="read_dateinput"
-                style="font-size: 15px;">
             </div>
             <span>출판사</span>
             <div class="read_datebox">
