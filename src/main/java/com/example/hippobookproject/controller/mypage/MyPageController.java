@@ -53,17 +53,21 @@ public class MyPageController {
         List<BookContainerDto> bookContainerList  = mypageService.findBookContainer(userId);
         model.addAttribute("bookContainerList", bookContainerList);
 
+        IntProfileDto profileDto = mypageService.findProfile(userId);
+        model.addAttribute("profileDto", profileDto);
+
+
         log.info("bookContainerList={}",bookContainerList);
         return "mypage/myPageBookContainer";
     }
 
-    @PostMapping("/modify")
-    public String bestBookModify(BookContainerDto bookContainerDto){
-        log.info("bookContainerDto = " + bookContainerDto);
-        mypageService.modifyBestBook(bookContainerDto);
-
-        return "redirect:/mypage/myPageBookContainer";
-    }
+//    @PostMapping("/modify")
+//    public String bestBookModify(BookContainerDto bookContainerDto){
+//        log.info("bookContainerDto = " + bookContainerDto);
+//        mypageService.modifyBestBook(bookContainerDto);
+//
+//        return "redirect:/mypage/myPageBookContainer";
+//    }
 
 
 
