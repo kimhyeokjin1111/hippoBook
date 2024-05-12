@@ -77,7 +77,9 @@
             </div>
             <div class="post_infoarea">
             <span>히포북 정보</span>
+              <div class="post_infoBtn">
               <button>검색</button>
+              </div>
             </div>
             <span>목차</span>
             <div class="read_onelinebox">
@@ -143,7 +145,26 @@
         
         </div>
     </main>
-   
+
+    <section class="book_infoarea">
+      <div class="book_modal">
+        <div class="Xbtn-box">x</div>
+        <div class="book_selectbox">
+          <select name="book_info" id="book_info">
+            <option value="">제목</option>
+            <option value="">저자</option>
+          </select>
+        </div>
+        <div class="book_search">
+          검색 : <input type="text">
+        </div>
+        <div class="book_submitBtn">
+          <button type="submit">선택</button>
+        </div>
+      </div>
+    </section>
+
+    <input type="hidden" class="book_info_hiddenBox">
  
     <div class="category_popup" id="category_wrap">
       <div class="category_popup_inner">

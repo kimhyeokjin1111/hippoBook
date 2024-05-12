@@ -163,8 +163,13 @@ a{
 
 }
 
-.post_infoarea > button{
+.post_infoBtn > button{
+    height: 30px;
+    width: 40px;
+}
 
+.post_infoBtn{
+    padding-left: 10px;
 }
 
 
@@ -345,4 +350,68 @@ textarea{
     padding-left: 24px;
     padding-right: 24px;
 }
+
+/* book-info modal */
+
+.read_write_input{
+    position: relative;
+}
+
+.book_modal{
+    width: 320px;
+    height: 300px;
+    background-color: #f7f7f7;
+    border-radius: 40px;
+    border: 2px solid #2bc1bf;
+    position: absolute;
+    top: 300px;
+    left: 40%;
+     display: none;
+}
+
+.Xbtn-box{
+    text-align: right;
+    margin-top: 10px;
+    margin-right: 25px;
+    font-size: 35px;
+    color: #2bc1bf;
+}
+
+.book_selectbox{
+    padding: 35px 0 0 20px;
+
+}
+
+#book_info{
+    max-width: 60px;
+    height: 30px;
+}
+
+.book_search{
+    width: 100%;
+    height: 30px;
+    padding: 25px 0 0 20px;
+}
+
+.book_search > input{
+    width: 70%;
+    height: 30px;
+}
+
+
+
+.book_submitBtn{
+    width: 100%;
+    text-align: center;
+    margin-top: 75px;
+}
+
+.book_submitBtn > button{
+    color: black;
+    background-color: #2bc1bf;
+    width: 80px;
+    height: 32px;
+    border-radius: 4px;
+}
+
 
