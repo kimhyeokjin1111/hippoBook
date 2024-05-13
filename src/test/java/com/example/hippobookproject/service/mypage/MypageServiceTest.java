@@ -110,4 +110,14 @@ class MypageServiceTest {
         // then
         verify(mypageBookContainerMapper, times(1)).updateBestBook(any());
     }
+
+    @Test
+    void modifyBookStatus(){
+        doNothing().when(mypageBookContainerMapper).updateBookStatus(any());
+
+        mypageService.modifyBookStatus(new BookContainerDto());
+
+        verify(mypageBookContainerMapper, times(1)).updateBookStatus(any());
+
+    }
 }

@@ -361,12 +361,12 @@ input[type="file"] {
 }
 
 .reading-book-plus-modal-bg {
-  position: absolute;
+  position: fixed;
   background-color: rgba(0, 0, 0, 0.4);
   top: 0;
   left: 0;
   width: 100%;
-  height: 150%;
+  height: 100%;
   display: none;
   align-items: center;
   justify-content: center;
@@ -439,8 +439,8 @@ h1 {
   align-items: center;
 }
 
-.reading-book-plus-modal-book-img div.active {
-  border: solid #2bc1bf;
+.reading-book-plus-modal-book-img div{
+  border: solid lightgrey;
 }
 
 .reading-book-plus-modal-book-img div img {

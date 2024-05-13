@@ -34,6 +34,10 @@ public class MyPageController {
 
         IntBoardDto intBoardDto = mypageService.findIntBoardText(userId);
         model.addAttribute("intBoardDto", intBoardDto);
+
+
+        List<BookContainerDto> bookContainerList  = mypageService.findBookContainer(userId);
+        model.addAttribute("bookContainerList", bookContainerList);
         return "mypage/myPageInt";
     }
 
@@ -61,13 +65,6 @@ public class MyPageController {
         return "mypage/myPageBookContainer";
     }
 
-//    @PostMapping("/modify")
-//    public String bestBookModify(BookContainerDto bookContainerDto){
-//        log.info("bookContainerDto = " + bookContainerDto);
-//        mypageService.modifyBestBook(bookContainerDto);
-//
-//        return "redirect:/mypage/myPageBookContainer";
-//    }
 
 
 
