@@ -15,6 +15,8 @@ public interface AdministratorDeclMapper {
     List<ResultDeclAdminDto> selectDeclList(@Param("selectDecl") SelectDeclAdminDto selectDeclAdminDto,
                                             @Param("criteria") AdminUserCriteria adminDeclCriteria);
 
+    List<ResultDeclAdminDto> selectCommentDecl(@Param("selectDecl") SelectDeclAdminDto selectDeclAdminDto,
+                                            @Param("criteria") AdminUserCriteria adminDeclCriteria);
     int selectDeclTotal(@Param("selectDecl") SelectDeclAdminDto selectDeclAdminDto);
 
     Optional<ResultPostInfoDto> selectDealDecl(Long postId);
