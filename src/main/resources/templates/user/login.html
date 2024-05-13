@@ -23,7 +23,7 @@
 
 <!--      </div>-->
 <!--    </div>-->
-    <div data-b-1130 class="login-content">
+    <form data-b-1130 class="login-content" th:action="@{/user/login}" method="post">
       <img data-b-1130 class="logo-picture" th:src="@{/images/user/Logo.png}" width="79px">
         <h3 data-b-1130 class="title">히포북</h3>
       <p data-b-1130 class="sub-title">나만의 작은 도서관 히포북</p>
@@ -38,7 +38,9 @@
 
                                 </span>
                 <input autocomplete="off" id="input-278" aria-labelledby="input-278-label" type="text" placeholder="아이디 입력"
-                       class="mds-input-field">
+                       class="mds-input-field"
+                       name="userLoginId"
+                >
               </div>
 
               <button type="button" aria-label="내용 삭제" class="mds-icon--input-delete clear-button" style="display: none;"></button>
@@ -61,7 +63,9 @@
                                     비밀번호
 
                                 </span>
-              <input autocomplete="off" id="input-279" aria-labelledby="input-279-label" type="password" placeholder="비밀번호 입력" class="mds-input-field">
+              <input autocomplete="off" id="input-279" aria-labelledby="input-279-label" type="password" placeholder="비밀번호 입력" class="mds-input-field"
+              name="userPassword"
+              >
             </div>
 
             <button type="button" aria-label="내용 삭제" class="mds-icon--input-delete clear-button" style="display: none;"></button>
@@ -69,7 +73,7 @@
       </div>
     </div>
     <div data-b-1130 class="button-area mt16">
-      <button data-b-1130 type="button" disabled="disabled" class="next-button mds-button mds-button--primary mds-button--h56 mds-button--r4">
+      <button data-b-1130 type="submit" class="next-button mds-button mds-button--primary mds-button--h56 mds-button--r4">
         <span>로그인</span>
       </button>
     </div>
@@ -78,13 +82,13 @@
         <a data-b-1130 th:href="@{/user/register}">회원가입</a>
       </li>
 <!--      <li data-b-1130>-->
-        <a data-b-1130 th:href="@{/user/findaccountphoneinfo}">계정 정보 찾기</a>
+        <a data-b-1130 th:href="@{/user/find-account}">계정 정보 찾기</a>
 <!--      </li>-->
 <!--      <li data-b-1130>-->
 <!--        <a data-b-1130 href="">기업회원 로그인</a>-->
 <!--      </li>-->
     </ul>
-  </div>
+  </form>
   </div>
 </section>
 </div>

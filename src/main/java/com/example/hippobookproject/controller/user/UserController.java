@@ -1,7 +1,6 @@
 package com.example.hippobookproject.controller.user;
 
-import com.example.hippobookproject.dto.UserJoinDto;
-import com.example.hippobookproject.dto.UserPhoneInfoDto;
+import com.example.hippobookproject.dto.user.UserJoinDto;
 import com.example.hippobookproject.service.user.UserService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -19,74 +18,59 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/login")
-    public String loginPage(HttpSession session){
-        Long id = (Long) session.getAttribute("joinId");
-        if (id != null) {
-            return "redirect:/";
+    public String loginPage() {
+
+        return "user/login";
+    }
+
+    @PostMapping("/login")
+    public String postLoginPage(String userLoginId, String userPassword, HttpSession session){
+        try {
+            Long userId = userService.findUserId(userLoginId, userPassword);
+            session.setAttribute("userId", userId);
+        } catch (IllegalArgumentException e){
+            e.printStackTrace();
+            return "user/login";
         }
         return "redirect:/user/login";
     }
 
     @GetMapping("/terms-of-use")
-    public String register() {
+    public String termsOfUse() {
         return "user/terms_of_use";
     }
 
-    @GetMapping("/phone-info")
-    public String phoneInfo(UserPhoneInfoDto userPhoneInfoDto) {
-        log.info("userPhoneInfoDto = {}", userPhoneInfoDto);
-
-//        userService.phoneInfo(userPhoneInfoDto);
-
-        return "user/phone_info";
-    }
-
-    @GetMapping("/phone-info-code")
-    public String phoneInfoCode() {
-        return "user/phone_info_code";
-    }
-
     @GetMapping("/register")
-    public String idPassword(){
+    public String register() {
         return "user/register";
     }
 
     @PostMapping("/register")
     public String postRegister(UserJoinDto userJoinDto){
 
+        log.info("userJoinDto = {}",  userJoinDto);
+
         userService.joinUser(userJoinDto);
 
-        return "redirect:/user/register";
+        return "redirect:/user/login";
     }
 
-    // HTML 테스트용
-    @GetMapping("/test-register")
-    public String testRegister(){
-        return "user/test_register";
-    }
-
-    @GetMapping("/profile-setting")
-    public String profileSetting() {
-        return "user/profile_setting";
-    }
-
-    @GetMapping("/find/account/phone-info")
-    public String findAccountPhoneInfo(){
-        return "user/find_account_phone_info";
-    }
-
-    @GetMapping("/find/account/phone-info-code")
-    public String findAccountPhoneInfoCode() {
-        return "user/find_account_phone_info_code";
-    }
-
-    @GetMapping("/check-account")
-    public String checkAccount(){
-        return "user/check_account";
-    }
-
-    @GetMapping("/password-reset")
-    public String passwordReset(){
-        return "user/password_reset";
+    @GetMapping("/find-account")
+    public String findAccount(){
+        return "user/find_account";
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
