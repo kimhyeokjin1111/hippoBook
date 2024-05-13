@@ -70,18 +70,34 @@ import * as module from '../mypage/module/bookContainerModule.js'
         $modalBox.style.display = "none";
     });
 
+
+
     // 책상태 선택 모달창 버튼
     $readingFinishBtn.addEventListener("click", function(){
+        console.log(this.dataset.status)
+        module.modify2(this.dataset.status, function (){
+
+            location.reload();
+        });
 
         $modalBox2.style.display = "none";
     });
 
     $readingBtn.addEventListener("click", function(){
+        console.log(this.dataset.status)
+        module.modify2(this.dataset.status, function (){
 
+            location.reload();
+        });
         $modalBox2.style.display = "none";
     });
 
     $noReadingBtn.addEventListener("click", function(){
+        console.log(this.dataset.status)
+        module.modify2(this.dataset.status, function (){
+
+            location.reload();
+        });
 
         $modalBox2.style.display = "none";
     });
