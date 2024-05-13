@@ -31,6 +31,9 @@ public interface AdministratorDeclMapper {
     Optional<ResultPostInfoDto> selectNovelCMDecl(Long commentId);
     Optional<ResultPostInfoDto> selectClaimCMDecl(Long commentId);
     Optional<ResultPostInfoDto> selectBookCMDecl(Long commentId);
+    Optional<ResultPostInfoDto> selectFeedDecl(Long feedId);
 
     void deleteDeclaration(Long declId);
+
+    void deleteCMDeclaration(Long declId);
 }

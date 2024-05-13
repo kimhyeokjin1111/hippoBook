@@ -6,7 +6,6 @@ import com.example.hippobookproject.dto.administrator.SelectDeclAdminDto;
 import com.example.hippobookproject.dto.page.AdminUserCriteria;
 import com.example.hippobookproject.mapper.administrator.AdministratorDeclMapper;
 import lombok.RequiredArgsConstructor;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -71,7 +70,16 @@ public class AdministratorDeclService {
         return resultPostInfoDto.orElseThrow(() -> new IllegalStateException("해당 코멘트가 존재하지 않음"));
     }
 
+    public ResultPostInfoDto findFeedDecl(Long feedId){
+        Optional<ResultPostInfoDto> resultFeedInfoDto = administratorDeclMapper.selectFeedDecl(feedId);
+        return resultFeedInfoDto.orElseThrow(() -> new IllegalStateException("해당 코멘트가 존재하지 않음"));
+    }
+
     public void removeDecl(Long declId) {
         administratorDeclMapper.deleteDeclaration(declId);
+    };
+
+    public void removeCMDeclaration(Long declId){
+        administratorDeclMapper.deleteCMDeclaration(declId);
     };
 }

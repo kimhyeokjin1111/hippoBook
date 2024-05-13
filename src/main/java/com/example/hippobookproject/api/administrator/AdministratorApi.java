@@ -103,9 +103,24 @@ public class AdministratorApi {
         return commentDecl;
     }
 
-    @DeleteMapping("/v1/declaration/{declId}")
+    @GetMapping("/v1/feed/{feedId}")
+    public ResultPostInfoDto searchFeedInfo(@PathVariable("feedId") Long feedId){
+        log.info("feedId = " + feedId);
+        ResultPostInfoDto feedDecl = administratorDeclService.findFeedDecl(feedId);
+        log.info("feedDecl = {}", feedDecl);
+        feedDecl.setCate("feed");
+        return feedDecl;
+    }
+
+    @DeleteMapping("/v1/declaration/post/{declId}")
     public void removeDeclById(@PathVariable("declId") Long declId){
         log.info("declId = " + declId);
         administratorDeclService.removeDecl(declId);
+    };
+
+    @DeleteMapping("/v1/declaration/comment/{declId}")
+    public void removeCMDeclById(@PathVariable("declId") Long declId){
+        log.info("declId = " + declId);
+        administratorDeclService.removeCMDeclaration(declId);
     };
 }
