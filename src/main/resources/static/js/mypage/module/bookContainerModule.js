@@ -19,3 +19,13 @@ export function modify(bestBookId,callback){
         }
     });
 }
+
+export function modify2(bookHasPercent,callback){
+    fetch(`/v2/containers/book/${bookHasPercent}`, {
+        method: 'PATCH'
+    }).then(resp => {
+        if(resp.status === 200){
+            callback();
+        }
+    });
+}

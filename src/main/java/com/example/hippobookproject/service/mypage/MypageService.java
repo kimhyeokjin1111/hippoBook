@@ -62,6 +62,11 @@ public class MypageService {
 
     }
 
+    public void modifyBookStatus(BookContainerDto bookContainerDto){
+        mypageBookContainerMapper.updateBookStatus(bookContainerDto);
+
+    }
+
 
 
 }

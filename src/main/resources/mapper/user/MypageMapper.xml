@@ -7,10 +7,11 @@
                (SELECT COUNT(FOLLOW_ID) FROM TBL_FOLLOW WHERE FOLLOW_FROM = U.USER_ID) FOLLOWER_CNT,
                CF.FILE_ID, CF.FILE_UPLOAD_PATH, CF.FILE_UUID, CF.FILE_NAME
         FROM TBL_USER U
-                 JOIN TBL_BOOK_HAS H
-                      ON U.USER_ID = #{userId} AND U.BEST_BOOK_ID= H.BOOK_HAS_ID
+                 LEFT JOIN TBL_BOOK_HAS H
+                      ON U.BEST_BOOK_ID= H.BOOK_HAS_ID
                  LEFT JOIN TBL_COVERFILE CF
                            ON H.BOOK_ID = CF.BOOK_ID
+        WHERE U.USER_ID = #{userId}
     </select>
 
     <insert id="insertIntBoardText" parameterType="IntBoardDto">

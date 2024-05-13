@@ -7,7 +7,7 @@
         FROM TBL_USER U
                  JOIN (SELECT BOOK_HAS_ID, BOOK_HAS_PERCENT, H.BOOKCASE_ID, BOOK_ID, C.USER_ID, BOOKCASE_CREATE,BOOKCASE_NAME
                        FROM TBL_BOOK_HAS H
-                                JOIN TBL_BOOKCASE C
+                                 JOIN TBL_BOOKCASE C
                                      ON H.BOOKCASE_ID = C.BOOKCASE_ID) T
                       ON T.USER_ID = #{userId} AND U.USER_ID = T.USER_ID
                  JOIN TBL_BOOK B

@@ -98,7 +98,10 @@
         </div>
 
         <div id="my-favorite-book">
-            <img th:src="@{'/upload/' + *{fileUploadPath} + '/' + *{fileUuid} + '_' + *{fileName}}"
+            <img th:if="*{fileId == null}"
+                    th:src="@{/imgs/mypage/best_book_default.png}">
+            <img th:unless="*{fileId == null}"
+                    th:src="@{'/upload/' + *{fileUploadPath} + '/' + *{fileUuid} + '_' + *{fileName}}"
                  id="best-book-img" alt=""/>
         </div>
     </section>
@@ -132,7 +135,7 @@
 <section class="my-book-get-list-section">
     <div class="my-book-get-list">
         <div th:each="bookContainerDto : ${bookContainerList}">
-            <div class="my-book-get-list-image" th:data-id="${bookContainerDto.bookHasId}">
+            <div class="my-book-get-list-image" th:data-id="${bookContainerDto.bookHasId}" th:data-status="${bookContainerDto.bookHasPercent}">
                 <img th:src="@{'/upload/' + ${bookContainerDto.fileUploadPath} + '/' + ${bookContainerDto.fileUuid} + '_' + ${bookContainerDto.fileName}}"
                      alt="">
             </div>
@@ -188,7 +191,7 @@
                 <input type="button" value="읽음" class="book-reading-finish-btn" data-status="읽음">
             </div>
             <div class="book-container-modal-list-btn2">
-                <input type="button" value="읽는 중" class="book-reading-btn" data-status="읽는 중">
+                <input type="button" value="읽는 중" class="book-reading-btn" data-status="읽는중">
             </div>
             <div class="book-container-modal-list-btn2">
                 <input type="button" value="안읽음" class="book-no-reading-btn" data-status="안읽음">
