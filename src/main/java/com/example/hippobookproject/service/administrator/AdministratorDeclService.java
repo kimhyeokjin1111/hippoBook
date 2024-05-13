@@ -23,8 +23,17 @@ public class AdministratorDeclService {
         return administratorDeclMapper.selectDeclList(selectDeclAdminDto, adminDeclCriteria);
     }
 
+    public List<ResultDeclAdminDto> findCommentDecl(SelectDeclAdminDto selectDeclAdminDto,
+                                                 AdminUserCriteria adminDeclCriteria) {
+        return administratorDeclMapper.selectCommentDecl(selectDeclAdminDto, adminDeclCriteria);
+    }
+
     public int findDeclTotal(SelectDeclAdminDto selectDeclAdminDto) {
         return administratorDeclMapper.selectDeclTotal(selectDeclAdminDto);
+    }
+
+    public int findCommentDeclTotal(SelectDeclAdminDto selectDeclAdminDto) {
+        return administratorDeclMapper.selectCommentDeclTotal(selectDeclAdminDto);
     }
 
     public ResultPostInfoDto findPostDecl(Long postId, String cate){
@@ -41,6 +50,25 @@ public class AdministratorDeclService {
         }
 
         return resultPostInfoDto.orElseThrow(() -> new IllegalStateException("해당 게시물이 존재하지 않음"));
+    }
+
+    public ResultPostInfoDto findCommentDecl(Long commentId, String cate){
+        Optional<ResultPostInfoDto> resultPostInfoDto = Optional.empty();
+
+        if("deal".equals(cate)){
+            System.out.println("deal comment in~~~~~~~~~~~~~");
+            resultPostInfoDto = administratorDeclMapper.selectDealCMDecl(commentId);
+        }else if("board".equals(cate)){
+            resultPostInfoDto = administratorDeclMapper.selectBoardCMDecl(commentId);
+        }else if("novel".equals(cate)){
+            resultPostInfoDto = administratorDeclMapper.selectNovelCMDecl(commentId);
+        }else if("claim".equals(cate)){
+            resultPostInfoDto = administratorDeclMapper.selectClaimCMDecl(commentId);
+        } else if("book".equals(cate)){
+            resultPostInfoDto = administratorDeclMapper.selectBookCMDecl(commentId);
+        }
+
+        return resultPostInfoDto.orElseThrow(() -> new IllegalStateException("해당 코멘트가 존재하지 않음"));
     }
 
     public void removeDecl(Long declId) {
