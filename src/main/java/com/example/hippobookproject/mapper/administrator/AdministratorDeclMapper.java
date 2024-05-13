@@ -19,10 +19,18 @@ public interface AdministratorDeclMapper {
                                             @Param("criteria") AdminUserCriteria adminDeclCriteria);
     int selectDeclTotal(@Param("selectDecl") SelectDeclAdminDto selectDeclAdminDto);
 
+    int selectCommentDeclTotal(@Param("selectDecl") SelectDeclAdminDto selectDeclAdminDto);
+
     Optional<ResultPostInfoDto> selectDealDecl(Long postId);
     Optional<ResultPostInfoDto> selectBoardDecl(Long postId);
     Optional<ResultPostInfoDto> selectNovelDecl(Long postId);
     Optional<ResultPostInfoDto> selectClaimDecl(Long postId);
+
+    Optional<ResultPostInfoDto> selectDealCMDecl(Long commentId);
+    Optional<ResultPostInfoDto> selectBoardCMDecl(Long commentId);
+    Optional<ResultPostInfoDto> selectNovelCMDecl(Long commentId);
+    Optional<ResultPostInfoDto> selectClaimCMDecl(Long commentId);
+    Optional<ResultPostInfoDto> selectBookCMDecl(Long commentId);
 
     void deleteDeclaration(Long declId);
 }

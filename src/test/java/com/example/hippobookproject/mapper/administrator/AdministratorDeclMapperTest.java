@@ -28,11 +28,11 @@ class AdministratorDeclMapperTest {
     void setUp() {
         selectDeclAdminDto = new SelectDeclAdminDto();
         selectDeclAdminDto.setDeclarationContent("test");
-        selectDeclAdminDto.setStartDeclarationDate(LocalDate.parse("2024-05-06", DateTimeFormatter.ISO_DATE));
-        selectDeclAdminDto.setEndDeclarationDate(LocalDate.parse("2024-05-07", DateTimeFormatter.ISO_DATE));
-        selectDeclAdminDto.setStartPocecssDate(LocalDate.parse("2024-05-06", DateTimeFormatter.ISO_DATE));
-        selectDeclAdminDto.setEndPocecssDate(LocalDate.parse("2024-05-07", DateTimeFormatter.ISO_DATE));
-        selectDeclAdminDto.setDeclarationType("decl");
+        selectDeclAdminDto.setStartDeclarationDate(LocalDate.parse("2024-05-13", DateTimeFormatter.ISO_DATE));
+        selectDeclAdminDto.setEndDeclarationDate(LocalDate.parse("2024-05-13", DateTimeFormatter.ISO_DATE));
+        selectDeclAdminDto.setStartPocecssDate(LocalDate.parse("2024-05-13", DateTimeFormatter.ISO_DATE));
+        selectDeclAdminDto.setEndPocecssDate(LocalDate.parse("2024-05-13", DateTimeFormatter.ISO_DATE));
+        selectDeclAdminDto.setDeclarationType("board");
         selectDeclAdminDto.setProcessType("");
 
         criteria = new AdminUserCriteria();
@@ -50,9 +50,23 @@ class AdministratorDeclMapperTest {
     }
 
     @Test
+    void selectCommentDecl(){
+        List<ResultDeclAdminDto> resultDeclAdminDtos = administratorDeclMapper.selectCommentDecl(selectDeclAdminDto, criteria);
+        assertThat(resultDeclAdminDtos)
+                .extracting("DeclarationContent")
+                .isEqualTo("comment decl test content");
+    }
+
+    @Test
     void selectDeclTotal() {
         int i = administratorDeclMapper.selectDeclTotal(selectDeclAdminDto);
         assertThat(i).isEqualTo(5);
+    }
+
+    @Test
+    void selectCommentDeclTotal(){
+        int i = administratorDeclMapper.selectCommentDeclTotal(selectDeclAdminDto);
+        assertThat(i).isEqualTo(15);
     }
 
     @Test

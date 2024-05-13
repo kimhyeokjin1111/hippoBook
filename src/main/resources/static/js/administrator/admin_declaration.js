@@ -58,7 +58,8 @@
     }
 
     function postReq(typeId, cate){
-      fetch(`/v1/post/${typeId}?cate=${cate}`, {method : "GET"})
+        let nowDeclType = document.querySelector('.main__declaration-select').value;
+      fetch(`/v1/${nowDeclType}/${typeId}?cate=${cate}`, {method : "GET"})
           .then(board => {
               if(board.status === 500){
                   removeDeclaration()
@@ -227,7 +228,7 @@ function declReq(searchDeclInfo, amount, page, type){
   console.log(searchDeclInfo)
   let params = new URLSearchParams(searchDeclInfo);
 
-  // console.log(params.toString())
+  console.log('type :', type)
 
   fetch(`/v1/declarations/${type}?${params.toString()}&amount=${amount}`, {
     method : 'GET',

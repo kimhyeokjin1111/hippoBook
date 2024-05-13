@@ -47,12 +47,34 @@ public class AdministratorApi {
         return createDeclMap(selectDeclAdminDto, adminDeclCriteria);
     }
 
+    @GetMapping("/v1/declarations/comment")
+    public Map<String , Object> searchDeclarationComment(SelectDeclAdminDto selectDeclAdminDto,
+                                                      AdminUserCriteria adminDeclCriteria) {
+        log.info("selectDeclAdminDto = " + selectDeclAdminDto + ", adminDeclCriteria = " + adminDeclCriteria);
+        return createCommentDeclMap(selectDeclAdminDto, adminDeclCriteria);
+    }
+
     public Map<String , Object> createDeclMap(SelectDeclAdminDto selectDeclAdminDto,
                                               AdminUserCriteria adminDeclCriteria){
         log.info("selectDeclAdminDto = " + selectDeclAdminDto + ", adminDeclCriteria = " + adminDeclCriteria);
         List<ResultDeclAdminDto> declList = administratorDeclService.findDeclList(selectDeclAdminDto, adminDeclCriteria);
         log.info("declList = {}", declList);
         int declTotal = administratorDeclService.findDeclTotal(selectDeclAdminDto);
+        AdminUserPage declPage = new AdminUserPage(adminDeclCriteria, declTotal);
+
+        Map<String , Object> declMap = new HashMap<>();
+        declMap.put("declList", declList);
+        declMap.put("declPage", declPage);
+
+        return declMap;
+    }
+
+    public Map<String , Object> createCommentDeclMap(SelectDeclAdminDto selectDeclAdminDto,
+                                              AdminUserCriteria adminDeclCriteria){
+        log.info("selectDeclAdminDto = " + selectDeclAdminDto + ", adminDeclCriteria = " + adminDeclCriteria);
+        List<ResultDeclAdminDto> declList = administratorDeclService.findCommentDecl(selectDeclAdminDto, adminDeclCriteria);
+        log.info("declList = {}", declList);
+        int declTotal = administratorDeclService.findCommentDeclTotal(selectDeclAdminDto);
         AdminUserPage declPage = new AdminUserPage(adminDeclCriteria, declTotal);
 
         Map<String , Object> declMap = new HashMap<>();
@@ -69,6 +91,16 @@ public class AdministratorApi {
         ResultPostInfoDto postDecl = administratorDeclService.findPostDecl(postId, cate);
         postDecl.setCate(cate);
         return postDecl;
+    }
+
+    @GetMapping("/v1/comment/{commentId}")
+    public ResultPostInfoDto searchCommentInfo(@PathVariable("commentId") Long commentId,
+                                            String cate){
+        log.info("commentId = " + commentId + ", cate = " + cate);
+        ResultPostInfoDto commentDecl = administratorDeclService.findCommentDecl(commentId, cate);
+        log.info("commentDecl = {}", commentDecl);
+        commentDecl.setCate(cate);
+        return commentDecl;
     }
 
     @DeleteMapping("/v1/declaration/{declId}")
