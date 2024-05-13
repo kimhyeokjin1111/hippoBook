@@ -13,18 +13,18 @@
     console.log('e : ', e)
 
     let classList = e.target.classList;
-    let postId, cate;
+    let typeId, cate;
 
     if(classList.contains('decl-content-box')){
 
-      postId = e.target.dataset.postid;
+      typeId = e.target.dataset.typeid;
       cate = e.target.dataset.cate;
 
       let declUlDataset = e.target.closest('ul').dataset;
       let $declIdStore = document.querySelector('.decl-id-store');
       $declIdStore.value = declUlDataset.declid;
 
-      postReq(postId, cate);
+      postReq(typeId, cate);
 
       console.log('declUlDataset : ' ,declUlDataset)
       let $declWriter = document.querySelector('.decl-writer')
@@ -38,14 +38,14 @@
     } else if(classList.contains('declaration-content-text')){
       // $declarationBox.classList.add("declaration-view-flex");
       let $target = e.target.closest('.decl-content-box');
-      postId = $target.dataset.postid;
+      typeId = $target.dataset.typeid;
       cate = $target.dataset.cate;
 
       let declUlDataset = e.target.closest('ul').dataset;
       let $declIdStore = document.querySelector('.decl-id-store');
       $declIdStore.value = declUlDataset.declid;
 
-      postReq(postId, cate);
+      postReq(typeId, cate);
 
       console.log('declUlDataset : ' ,declUlDataset)
       let $declWriter = document.querySelector('.decl-writer')
@@ -57,8 +57,8 @@
       $declContent.innerText = declUlDataset.content;
     }
 
-    function postReq(postId, cate){
-      fetch(`/v1/post/${postId}?cate=${cate}`, {method : "GET"})
+    function postReq(typeId, cate){
+      fetch(`/v1/post/${typeId}?cate=${cate}`, {method : "GET"})
           .then(board => {
               if(board.status === 500){
                   removeDeclaration()
@@ -217,21 +217,19 @@
       processType : $declPType.dataset.ptype
     };
     let $nowrowBox = document.querySelector('.main__rownum-select');
+    let nowDeclType = document.querySelector('.main__declaration-select').value;
 
-    declReq(searchDeclInfo, $nowrowBox.value)
+    declReq(searchDeclInfo, $nowrowBox.value, 0 ,nowDeclType)
   })
-
-
-
 }
 
-function declReq(searchDeclInfo, amount, page){
+function declReq(searchDeclInfo, amount, page, type){
   console.log(searchDeclInfo)
   let params = new URLSearchParams(searchDeclInfo);
 
   // console.log(params.toString())
 
-  fetch(`/v1/declarations?${params.toString()}&amount=${amount}`, {
+  fetch(`/v1/declarations/${type}?${params.toString()}&amount=${amount}`, {
     method : 'GET',
   }).then(resp => resp.json())
       .then(list => {
@@ -248,7 +246,7 @@ function declReq(searchDeclInfo, amount, page){
           let userId = list.declList[i].userId;
           let declProcessDate = list.declList[i].declProcessDate;
           let declarationCheck = list.declList[i].declarationCheck;
-          let postId = list.declList[i].postId;
+          let typeId = list.declList[i].typeId;
           let cate = list.declList[i].cate;
           let declId = list.declList[i].declarationId;
 
@@ -256,7 +254,7 @@ function declReq(searchDeclInfo, amount, page){
                     <ul data-declId=${declId} data-declDate=${declarationDate}
                     data-content="${declarationContent}" data-loginid="${userId}">
                       <li>${declarationDate}</li>
-                      <li class="decl-content-box" data-postid="${postId}" data-cate="${cate}">
+                      <li class="decl-content-box" data-typeid="${typeId}" data-cate="${cate}">
                         <div class="declaration-content-text">
                           ${declarationContent}
                         </div>
@@ -269,20 +267,93 @@ function declReq(searchDeclInfo, amount, page){
         }
 
         $declResultBox.innerHTML = declListTags;
+        let $totalDeclNum = document.querySelector('.main__list-rownum-box > p > span');
         let $nowrowBox = document.querySelector('.main__rownum-select');
+        let nowDeclType = document.querySelector('.main__declaration-select').value;
+        console.log('nowDeclType : ' , nowDeclType)
+
+        $totalDeclNum.innerText = list.declPage.total;
 
         if(list.declPage.prev){
-          declPageTags += `<span class="lf-arrow decl-page-btn"><a  href="/v1/declarations?${params.toString()}&page=${list.declPage.startPage -1}">&lt;</a></span>`
+          declPageTags += `<span class="lf-arrow decl-page-btn"><a  href="${params}" data-page="${list.declPage.startPage -1}">&lt;</a></span>`
         }
-        for (let i = list.declPage.startPage; i < list.declPage.startPage + 1; i++) {
+        for (let i = list.declPage.startPage; i < list.declPage.endPage + 1; i++) {
           let prev = list.declPage.prev;
 
           declPageTags += `   
-                      <li class="decl-page-btn"><a href="/v1/declarations?${params.toString()}&page=${i}"><strong>${i}</strong></a></li>    
+                      <li class="decl-page-btn"><a href="${params}" data-page="${i}""><strong>${i}</strong></a></li>    
             `
         }
         if(list.declPage.next) {
-          declPageTags += `<span class="rt-arrow decl-page-btn"><a  href="/v1/declarations?${params.toString()}&page=${list.declPage.endPage + 1}">&gt;</a></span>`;
+          declPageTags += `<span class="rt-arrow decl-page-btn"><a  href="${params}" data-page="${list.declPage.endPage +1}">&gt;</a></span>`;
+        }
+
+        $declPageBox.innerHTML = declPageTags
+      });
+}
+
+function declReqA(searchDeclInfo, amount, page, type){
+  console.log(searchDeclInfo)
+
+  // console.log(params.toString())
+  let params = searchDeclInfo;
+
+  fetch(`/v1/declarations/${type}?${params.toString()}&amount=${amount}&page=${page}`, {
+    method : 'GET',
+  }).then(resp => resp.json())
+      .then(list => {
+        console.log('list', list);
+        console.log(list.declList)
+        let declListTags = ``;
+        let declPageTags = ``;
+        let $declResultBox = document.querySelector('.main__result-list-container');
+        let $declPageBox = document.querySelector('.main__searched-result-page-btn > ul');
+
+        for (let i = 0; i < list.declList.length; i++) {
+          let declarationDate = list.declList[i].declarationDate;
+          let declarationContent = list.declList[i].declarationContent;
+          let userId = list.declList[i].userId;
+          let declProcessDate = list.declList[i].declProcessDate;
+          let declarationCheck = list.declList[i].declarationCheck;
+          let typeId = list.declList[i].typeId;
+          let cate = list.declList[i].cate;
+          let declId = list.declList[i].declarationId;
+
+          declListTags += `
+                    <ul data-declId=${declId} data-declDate=${declarationDate}
+                    data-content="${declarationContent}" data-loginid="${userId}">
+                      <li>${declarationDate}</li>
+                      <li class="decl-content-box" data-typeid="${typeId}" data-cate="${cate}">
+                        <div class="declaration-content-text">
+                          ${declarationContent}
+                        </div>
+                      </li>
+                      <li>${userId}</li>
+                      <li>${declProcessDate}</li>
+                      <li>${declarationCheck}</li>
+                    </ul>
+        `
+        }
+
+        $declResultBox.innerHTML = declListTags;
+        let $totalDeclNum = document.querySelector('.main__list-rownum-box > p > span');
+        let $nowrowBox = document.querySelector('.main__rownum-select');
+        console.log('nowDeclType : ' , nowDeclType)
+
+        $totalDeclNum.innerText = list.declPage.total;
+
+        if(list.declPage.prev){
+          declPageTags += `<span class="lf-arrow decl-page-btn"><a  href="${params}" data-page="${list.declPage.startPage -1}">&lt;</a></span>`
+        }
+        for (let i = list.declPage.startPage; i < list.declPage.endPage + 1; i++) {
+          let prev = list.declPage.prev;
+
+          declPageTags += `   
+                      <li class="decl-page-btn"><a href="${params}" data-page="${i}""><strong>${i}</strong></a></li>    
+            `
+        }
+        if(list.declPage.next) {
+          declPageTags += `<span class="rt-arrow decl-page-btn"><a  href="${params}" data-page="${list.declPage.startPage -1}">&gt;</a></span>`;
         }
 
         $declPageBox.innerHTML = declPageTags
@@ -296,11 +367,13 @@ function declReq(searchDeclInfo, amount, page){
     console.log(e.target)
 
     if(e.target.classList.contains('decl-page-btn')){
-      let $pageLink = document.querySelector('a');
+      let nowDeclType = document.querySelector('.main__declaration-select').value;
+      let $pageLink = e.target.querySelector('a');
       console.log('pageLink', $pageLink)
       let $nowrowBox = document.querySelector('.main__rownum-select');
+      console.log('$pageLink.getAttribute(\'href\') : ' , $pageLink.getAttribute('href'))
 
-      declReq($pageLink.getAttribute('href'), $nowrowBox.value);
+      declReqA($pageLink.getAttribute('href'), $nowrowBox.value, $pageLink.dataset.page , nowDeclType);
     }
 
   })
