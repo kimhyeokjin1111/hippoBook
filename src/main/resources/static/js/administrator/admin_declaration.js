@@ -61,10 +61,11 @@
         let nowDeclType = document.querySelector('.main__declaration-select').value;
       fetch(`/v1/${nowDeclType}/${typeId}?cate=${cate}`, {method : "GET"})
           .then(board => {
+              console.log('board.status : ', board.status)
               if(board.status === 500){
                   removeDeclaration()
                   // $declarationBox.classList.remove("declaration-view-flex");
-                  alert("해당 게시물이 존재하지 않습니다.")
+                  alert("해당 신고대상이 존재하지 않습니다.")
                   return;
               }
               $declarationBox.classList.add("declaration-view-flex");
@@ -339,7 +340,6 @@ function declReqA(searchDeclInfo, amount, page, type){
         $declResultBox.innerHTML = declListTags;
         let $totalDeclNum = document.querySelector('.main__list-rownum-box > p > span');
         let $nowrowBox = document.querySelector('.main__rownum-select');
-        console.log('nowDeclType : ' , nowDeclType)
 
         $totalDeclNum.innerText = list.declPage.total;
 
@@ -396,15 +396,18 @@ function declReqA(searchDeclInfo, amount, page, type){
 function removeDeclaration(){
   let $declIdStore = document.querySelector('.decl-id-store');
   let declId = $declIdStore.value;
-
+  let nowDeclType = document.querySelector('.main__declaration-select').value;
   console.log('declId : ', declId)
 
-  fetch(`/v1/declaration/${declId}`, {method : "DELETE"})
+  fetch(`/v1/declaration/${nowDeclType}/${declId}`, {method : "DELETE"})
       .then(() => {
-        let firstPage = document.querySelector('.decl-page-btn:nth-child(1)');
+          // let $pageLink = e.target.querySelector('a');
+        let firstPage = document.querySelector('.decl-page-btn:nth-child(1) > a');
+          console.log('firstPage : ', firstPage)
         let $nowrowBox = document.querySelector('.main__rownum-select');
+        let nowDeclType = document.querySelector('.main__declaration-select').value;
         // console.log('firstPage : ', firstPage)
-        declReq(firstPage.getAttribute('href'), $nowrowBox.value)
+        declReqA(firstPage.getAttribute('href'), $nowrowBox.value, firstPage.dataset.page , nowDeclType)
       });
 }
 

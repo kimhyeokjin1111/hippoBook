@@ -211,10 +211,23 @@
         WHERE BOOK_COMMENT_ID = #{postId}
     </select>
 
+    <select id="selectFeedDecl" parameterType="Long" resultType="ResultPostInfoDto">
+        SELECT FEED_ID post_id, FEED_CONTENT post_content, FEED_DATE post_date, U.USER_NICKNAME nickname
+            FROM TBL_FEED F JOIN TBL_USER U
+                                  ON F.USER_ID = U.USER_ID
+        WHERE FEED_ID = #{feedId}
+    </select>
+
     <delete id="deleteDeclaration" parameterType="Long">
         DELETE
             FROM TBL_POST_DECLARATION
         WHERE POST_DECLARATION_ID = #{declId}
+    </delete>
+
+    <delete id="deleteCMDeclaration" parameterType="Long">
+        DELETE
+        FROM TBL_COMMENT_DECLARATION
+        WHERE COMMENT_DECLARATION_ID = #{declId}
     </delete>
 
 <!--    <delete id="deleteCMDeclaration" parameterType="Long">-->
