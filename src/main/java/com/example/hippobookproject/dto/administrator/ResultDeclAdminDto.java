@@ -17,7 +17,7 @@ public class ResultDeclAdminDto {
     String DeclarationContent;
     Long userId;
     String DeclarationCheck;
-    Long postId;
+    Long typeId;
     String cate;
     LocalDate DeclProcessDate;
 }

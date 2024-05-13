@@ -41,9 +41,14 @@ public class AdministratorApi {
         return visitByRange;
     }
 
-    @GetMapping("/v1/declarations")
+    @GetMapping("/v1/declarations/post")
     public Map<String , Object> searchDeclarationList(SelectDeclAdminDto selectDeclAdminDto,
                                                           AdminUserCriteria adminDeclCriteria) {
+        return createDeclMap(selectDeclAdminDto, adminDeclCriteria);
+    }
+
+    public Map<String , Object> createDeclMap(SelectDeclAdminDto selectDeclAdminDto,
+                                              AdminUserCriteria adminDeclCriteria){
         log.info("selectDeclAdminDto = " + selectDeclAdminDto + ", adminDeclCriteria = " + adminDeclCriteria);
         List<ResultDeclAdminDto> declList = administratorDeclService.findDeclList(selectDeclAdminDto, adminDeclCriteria);
         log.info("declList = {}", declList);

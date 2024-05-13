@@ -3,7 +3,7 @@
 <mapper namespace="com.example.hippobookproject.mapper.administrator.AdministratorDeclMapper">
     <select id="selectDeclList" resultType="ResultDeclAdminDto">
         SELECT POST_DECLARATION_ID DECLARATION_ID, POST_DECLARATION_DATE DECLARATION_DATE, POST_DECLARATION_CONTENT DECLARATION_CONTENT,
-            USER_ID, POST_DECLARATION_CHECK DECLARATION_CHECK, POST_ID, POST_CATE CATE, POST_PROCESS_DATE DECL_PROCESS_DATE
+            USER_ID, POST_DECLARATION_CHECK DECLARATION_CHECK, POST_ID type_id, POST_CATE CATE, POST_PROCESS_DATE DECL_PROCESS_DATE
             FROM (SELECT ROWNUM AS RNUM, POST_DECLARATION_ID, POST_DECLARATION_DATE, POST_DECLARATION_CONTENT,
                     USER_ID, POST_DECLARATION_CHECK, POST_ID, POST_CATE,  POST_PROCESS_DATE
                     FROM (SELECT POST_DECLARATION_ID, POST_DECLARATION_DATE, POST_DECLARATION_CONTENT,
@@ -29,6 +29,40 @@
                                 </if>
                             </trim>
                         ORDER BY POST_DECLARATION_ID)
+        <![CDATA[
+                WHERE ROWNUM <= #{criteria.page} * #{criteria.amount})
+        WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amount}
+        ]]>
+    </select>
+
+    <select id="selectCommentDecl" resultType="ResultDeclAdminDto">
+        SELECT COMMENT_DECLARATION_ID DECLARATION_ID, COMMENT_DECLARATION_DATE DECLARATION_DATE, POST_DECLARATION_CONTENT DECLARATION_CONTENT,
+        USER_ID, COMMENT_DECLARATION_CHECK DECLARATION_CHECK, COMMENT_ID, COMMENT_CATE CATE, COMMENT_PROCESS_DATE DECL_PROCESS_DATE
+        FROM (SELECT ROWNUM AS RNUM, COMMENT_DECLARATION_ID, COMMENT_DECLARATION_DATE, COMMENT_DECLARATION_CONTENT,
+        USER_ID, COMMENT_DECLARATION_CHECK, COMMENT_ID, COMMENT_CATE,  COMMENT_PROCESS_DATE
+        FROM (SELECT COMMENT_DECLARATION_ID, COMMENT_DECLARATION_DATE, COMMENT_DECLARATION_CONTENT,
+        USER_ID, COMMENT_DECLARATION_CHECK, COMMENT_ID, COMMENT_CATE,  COMMENT_PROCESS_DATE
+        FROM TBL_COMMENT_DECLARATION
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="selectDecl.declarationContent != null">
+                COMMENT_DECLARATION_CONTENT LIKE '%' || #{selectDecl.declarationContent} || '%'
+            </if>
+            <if test="selectDecl.startDeclarationDate != null and selectDecl.endDeclarationDate != null" >
+                AND TO_CHAR(COMMENT_DECLARATION_DATE, 'YYYY-MM-DD') BETWEEN
+                #{selectDecl.startDeclarationDate} AND #{selectDecl.endDeclarationDate}
+            </if>
+            <if test="selectDecl.startPocecssDate != null and selectDecl.endPocecssDate != null" >
+                AND TO_CHAR(COMMENT_PROCESS_DATE, 'YYYY-MM-DD') BETWEEN
+                #{selectDecl.startPocecssDate} AND #{selectDecl.endPocecssDate}
+            </if>
+            <if test="selectDecl.declarationType != null and selectDecl.declarationType.length() >= 1">
+                AND COMMENT_CATE = #{selectDecl.declarationType}
+            </if>
+            <if test="selectDecl.processType != null and selectDecl.processType.length() == 1">
+                AND COMMENT_DECLARATION_CHECK = #{selectDecl.processType}
+            </if>
+        </trim>
+        ORDER BY COMMENT_DECLARATION_ID)
         <![CDATA[
                 WHERE ROWNUM <= #{criteria.page} * #{criteria.amount})
         WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amount}
