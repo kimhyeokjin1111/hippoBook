@@ -178,6 +178,12 @@
     width: 1440px;
     border-bottom: 1px solid #2bc1bf;
   }
+
+#best-book-img{
+  width: 129px;
+  height: 120px;
+  border: solid #96eae8;
+}
   
   .mypage-cate a {
     color: black;
