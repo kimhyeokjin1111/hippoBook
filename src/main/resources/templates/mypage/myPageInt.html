@@ -5,69 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Document</title>
     <link rel="stylesheet" th:href="@{/css/mypage/myPageInt.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main/mainpage.css}" />
     <script defer th:src="@{/js/mypage/readingBook.js}"></script>
     <script defer th:src="@{/js/mypage/readingBookDeleteButton.js}"></script>
     <script defer th:src="@{/js/mypage/myPageInt.js}"></script>
     <script type="module" defer th:src="@{/js/mypage/bookContainer.js}"></script>
+
 </head>
 <body>
+<header class="header" th:replace="~{/fragment/header :: header}"></header>
 <div>
     <div>
-        <header>
-            <div class="header_layout">
-                <h1 class="header_logo">
-                    <div class="header_logo_layout">
-                        <a href="">
-                            <!--홈페이지 버튼 -->
-                            <img
-                                    src="/imgs/mypage/HippoBook_logo.png"
-                                    alt=""
-                                    class="header_logo_images"
-                            />
-                        </a>
-                    </div>
-                </h1>
-                <div class="header_right_layout">
-                    <a href="">
-                        <!-- 알람 페이지 이동  -->
-                        <img
-                                src="/imgs/mypage/alarm.png"
-                                alt=""
-                                class="header_right_alarm"
-                        />
-                    </a>
-                    <ul class="header_right_login">
-                        <a href="" class="header_right_login_box">로그인</a>
-                    </ul>
-                </div>
-            </div>
-        </header>
-
         <main>
+            <!-- 메인 상단 -->
             <div class="main_top">
                 <div class="main_top_layout">
-                    <a href="">
-                        <!-- 카테고리  -->
+                    <button type="button" class="category_openBtn" id="OpenBtn">
+                        <!-- 모달창 띄우는 버튼  -->
                         <img
-                                src="/imgs/mypage/Category.png"
+                                th:src="@{/images/book/category.png}"
                                 alt=""
                                 class="main_top_category"
                         />
-                    </a>
+                    </button>
                     <div class="main_top_category_tap">
                         <ul class="main_top_category_list">
-                            <li>
-                                <a href="">내 서재</a>
+                            <li class="main_top_category_list2">
+                                <a th:href="@{/mypage/int}" class="main_top_category_list_title">내 서재</a>
                                 <!-- 내 서재 이동 -->
                             </li>
-                            <li>
-                                <a href="">쪽지</a>
+                            <li class="main_top_category_list2">
+                                <a th:href="@{/message/letter/get}" class="main_top_category_list_title">쪽지</a>
                                 <!-- 쪽지 이동 -->
                             </li>
-                            <li>
-                                <a href="">검색</a>
-                                <!-- 검색 이동 -->
+                            <li class="main_top_category_list2">
+                                <a th:href="@{/search}" class="main_top_category_list_title">검색</a>
+
+                            <li class="main_top_category_list2">
+                                <a href="" class="main_top_category_list_title">이벤트</a>
+                                <!-- 이벤트 이동 -->
                             </li>
+
+                            <li class="main_top_category_list2">
+                                <a th:href="@{/categorie/Categoriepage}" class="main_top_category_list_title">카테고리</a>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -137,22 +119,21 @@
         <div id="mypage-book-cate-img">
 
 
-
         </div>
     </div>
     <div class="mybook-collection">
-<!--        <div id="mybook-first">-->
-<!--            <h5>최근 담은 책</h5>-->
+        <!--            <div class="mybook-second">-->
+        <!--                <h5>최근 담은 책</h5>-->
 
-<!--            <div>-->
-<!--                <span>책장에 책을 담아주세요</span>-->
-<!--            </div>-->
-<!--        </div>-->
-
-        <div th:each="bookContainerDto : ${bookContainerList}" class="mybook-second">
+        <!--                <div>-->
+        <!--                    <span>책장에 책을 담아주세요</span>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <div th:each="i : ${#numbers.sequence(0, 1)}" class="mybook-second">
 
             <h5>최근 담은 책</h5>
-            <div class="my-recent-book">
+            <div class="my-recent-book" th:if="${i < bookContainerList.size()}"
+                 th:with="bookContainerDto=${bookContainerList.get(i)}">
                 <div class="reading-book-img">
                     <img th:src="@{'/upload/' + ${bookContainerDto.fileUploadPath} + '/' + ${bookContainerDto.fileUuid} + '_' + ${bookContainerDto.fileName}}"
                          alt="">
@@ -162,13 +143,37 @@
                         <span th:text="${bookContainerDto.bookName}">제목</span>
                     </div>
                     <div id="reading-book-date">
-                       <p>저자 : <span th:text="${bookContainerDto.bookWriter}"></span></p>
+                        <p>저자 : <span th:text="${bookContainerDto.bookWriter}"></span></p>
                         <p>담은 날짜: <span th:text="${bookContainerDto.bookHasRecentDate}"></span></p>
                     </div>
                 </div>
             </div>
-        </div>
 
+            <div th:unless="${i < bookContainerList.size()}">
+                <span>책장에 책을 담아주세요</span>
+            </div>
+        </div>
+        <!--        <th:block th:if="${bookContainerList.size() > 0}">-->
+        <!--            <div th:each="bookContainerDto : ${bookContainerList}" class="mybook-second">-->
+
+        <!--                <h5>최근 담은 책</h5>-->
+        <!--                <div class="my-recent-book">-->
+        <!--                    <div class="reading-book-img">-->
+        <!--                        <img th:src="@{'/upload/' + ${bookContainerDto.fileUploadPath} + '/' + ${bookContainerDto.fileUuid} + '_' + ${bookContainerDto.fileName}}"-->
+        <!--                             alt="">-->
+        <!--                    </div>-->
+        <!--                    <div class="reading-book-infor">-->
+        <!--                        <div id="reading-book-title">-->
+        <!--                            <span th:text="${bookContainerDto.bookName}">제목</span>-->
+        <!--                        </div>-->
+        <!--                        <div id="reading-book-date">-->
+        <!--                            <p>저자 : <span th:text="${bookContainerDto.bookWriter}"></span></p>-->
+        <!--                            <p>담은 날짜: <span th:text="${bookContainerDto.bookHasRecentDate}"></span></p>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </th:block>-->
 
     </div>
 </div>

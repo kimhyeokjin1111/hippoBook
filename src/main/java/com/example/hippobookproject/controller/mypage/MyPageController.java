@@ -67,7 +67,11 @@ public class MyPageController {
 
 
     @GetMapping("/book/write-content")
-    public String bookWriteContent() {
+    public String bookWriteContent(Model model/*@SessionAttribute("userId") Long userId*/) {
+        Long userId = 1L;
+        IntProfileDto profileDto = mypageService.findProfile(userId);
+        model.addAttribute("profileDto", profileDto);
+        log.info("profileDto={}",profileDto);
         return "mypage/myWriteContent";
     }
 
