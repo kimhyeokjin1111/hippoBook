@@ -45,7 +45,7 @@
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({"followTo": userId}),
           }).then(() => {
-        // location.reload();
+        location.reload();
       });
 
 
@@ -61,7 +61,7 @@
           {
             method: "DELETE",
           }).then(() => {
-        // location.reload();
+        location.reload();
       });
     });
   });

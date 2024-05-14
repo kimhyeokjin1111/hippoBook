@@ -78,7 +78,7 @@
             <div class="post_infoarea">
             <span>히포북 정보</span>
               <div class="post_infoBtn">
-              <button>검색</button>
+              <button type="button" class="post_bookBtn">검색</button>
               </div>
             </div>
             <span>목차</span>
@@ -146,6 +146,7 @@
         </div>
     </main>
 
+<!--    책 info 검색 모달 창-->
     <section class="book_infoarea">
       <div class="book_modal">
         <div class="Xbtn-box">x</div>
@@ -158,14 +159,47 @@
         <div class="book_search">
           검색 : <input type="text">
         </div>
+        <div class="book_selectarea">
+        <table class="book_select">
+          <th>저자</th>
+          <th>제목</th>
+          <th></th>
+        <!-- 첫번째 행-->
+          <tr>
+            <td></td>
+            <td></td>
+            <td class="book_radioBox"><input class="book_radio" type="radio"></td>
+          </tr>
+          <!-- 두번째 행-->
+          <tr>
+            <td></td>
+            <td></td>
+            <td class="book_radioBox"><input class="book_radio" type="radio"></td>
+          </tr>
+          <!-- 세번째 행-->
+          <tr>
+            <td></td>
+            <td></td>
+            <td class="book_radioBox"><input class="book_radio" type="radio"></td>
+          </tr>
+          <!-- 네번째 행-->
+          <tr>
+            <td></td>
+            <td></td>
+            <td class="book_radioBox"><input class="book_radio" type="radio"></td>
+          </tr>
+        </table>
+        </div>
         <div class="book_submitBtn">
           <button type="submit">선택</button>
         </div>
       </div>
     </section>
 
+<!--    책 정보받는 hidden 태그-->
     <input type="hidden" class="book_info_hiddenBox">
- 
+
+<!--    카테고리 모달 창-->
     <div class="category_popup" id="category_wrap">
       <div class="category_popup_inner">
         <section class="category_popup_inner_layout">
