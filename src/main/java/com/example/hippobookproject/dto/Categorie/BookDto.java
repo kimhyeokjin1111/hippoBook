@@ -14,6 +14,6 @@ public class BookDto {
     private String bookName;
     private String bookWriter;
     private Long publisherId;
-
+    private Long bookDate;
 }
 

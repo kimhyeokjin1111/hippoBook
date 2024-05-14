@@ -18,7 +18,7 @@
 
 .back-component {
   height: 44px;
-  background: var(--ui-background);
+  background: #fff;
   border-bottom: 1px solid rgb(131, 129, 129);
   position: relative;
   max-width: var(--header-width);
@@ -88,8 +88,8 @@
 }
 
 .subb-inner > .into .tton {
-  color: var(--text-02);
-  background: var(--ui-background)
+  color: #555;
+  background: #fff
     url(https://d3udu241ivsax2.cloudfront.net/v3/images/common/more-button.0b293f1f10f97e5a2a744710ef0d1133.png)
     100% no-repeat;
   background-size: 12px;
@@ -133,9 +133,9 @@
   width: inherit;
   background: linear-gradient(
     90deg,
-    var(--ui-05) 25%,
-    var(--ui-05) 37%,
-    var(--ui-05) 63%
+    #ececec 25%,
+    #ececec 37%,
+    #ececec 63%
   );
   border-radius: 0 4px 4px 0;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1), 0 0 2px rgba(0, 0, 0, 0.2);
@@ -172,7 +172,7 @@
 .author {
   -webkit-line-clamp: 1;
   max-height: 1.35em;
-  color: var(--text-03);
+  color: #6f6f6f;
   font-size: 14px;
 }
 
@@ -188,7 +188,7 @@
   -webkit-box-orient: vertical;
   word-wrap: break-word;
   max-height: 1.35em;
-  color: var(--text-03);
+  color: #6f6f6f;
   font-size: 14px;
   white-space: normal;
 }
