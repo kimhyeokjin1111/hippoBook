@@ -6,12 +6,13 @@
     <link rel="stylesheet" th:href="@{/css/user/login.css}">
     <link rel="stylesheet" th:href="@{/css/user/hippobook.css}">
     <!--    <link rel="stylesheet" th:href="@{/css/user/joinAuth.css}">-->
+    <script defer th:src="@{/js/user/register.js}"></script>
 </head>
 <body data-theme="light">
 <div data-a-1120 id="wrap" class="web-mount">
     <section data-a-1120 class="content">
         <div data-g-1180 data-a-1120 class="login-container">
-            <form class="login-content" th:action="@{/user/register}" method="post">
+            <form class="login-content" th:action="@{/user/register}" method="post" enctype="multipart/form-data">
                 <img class="logo-picture" th:src="@{/images/user/Logo.png}">
                 <h3 class="title">회원가입</h3>
                 <p class="sub-title">나만의 작은 도서관 히포북</p>
@@ -21,7 +22,7 @@
                         <div class="inner">
                             <div class="image-box"></div>
                             <label class="picture-change-button">
-                                <input type="file" id="file-input" accept=".jpg, .jpeg, .png, .gif, .heic">
+                                <input type="file" id="file-input" accept=".jpg, .jpeg, .png, .gif, .heic" name="profile">
                                 변경
                             </label>
                         </div>

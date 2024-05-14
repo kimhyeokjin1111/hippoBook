@@ -37,4 +37,14 @@ class UserServiceTest {
 
         System.out.println("foundIdTest = " + foundIdTest);
     }
+
+
+    @Test
+    void dateTest2(){
+        LocalDate now = LocalDate.now();
+        System.out.println("now = " + now);
+
+        String format = now.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+        System.out.println("format = " + format);
+    }
 }
