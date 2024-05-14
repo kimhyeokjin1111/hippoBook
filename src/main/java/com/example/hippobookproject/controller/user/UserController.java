@@ -9,6 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Slf4j
 @Controller
@@ -46,11 +50,15 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String postRegister(UserJoinDto userJoinDto){
-
+    public String postRegister(UserJoinDto userJoinDto, @RequestParam("profile") MultipartFile multipartFile){
+        log.info("multipart = {} ", multipartFile.getOriginalFilename());
         log.info("userJoinDto = {}",  userJoinDto);
 
-        userService.joinUser(userJoinDto);
+        try {
+            userService.joinUser(userJoinDto, multipartFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         return "redirect:/user/login";
     }
