@@ -14,4 +14,9 @@
         FROM HR.TBL_USER
         WHERE USER_LOGIN_ID = #{userLoginId} AND USER_PASSWORD = #{userPassword}
     </select>
+
+    <insert id="insertUserProfile" parameterType="UserProfileDto">
+        INSERT INTO TBL_USER_PROFILE (USER_PROFILE_ID, USER_PROFILE_UPLOAD_PATH, USER_PROFILE_UUID, USER_PROFILE_NAME, USER_ID)
+        VALUES (SEQ_USER_PROFILE.nextval, #{userProfileUploadPath}, #{userProfileUuid}, #{userProfileName}, #{userId})
+    </insert>
 </mapper>
