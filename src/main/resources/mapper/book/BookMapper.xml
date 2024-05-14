@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.hippobookproject.mapper.book.BookMapper">
+    <select id="getBookById" parameterType="java.lang.Long" resultType="com.example.hippobookproject.dto.Categorie.BookDto">
+        SELECT BOOK_ID, BOOK_NAME, BOOK_WRITER, BOOK_DATE, PUBLISHER_ID
+        FROM TBL_BOOK
+        WHERE BOOK_ID = #{bookId}
+    </select>
 
+    <insert id="insertBook" parameterType="com.example.hippobookproject.dto.Categorie.BookDto">
+        INSERT INTO TBL_BOOK (BOOK_ID, BOOK_NAME, BOOK_WRITER, PUBLISHER_ID)
+        VALUES (#{bookId}, #{bookName}, #{bookWriter}, #{publisherId})
+    </insert>
+
+    <update id="updateBook" parameterType="com.example.hippobookproject.dto.Categorie.BookDto">
+        UPDATE TBL_BOOK
+        SET BOOK_NAME = #{bookName}, BOOK_WRITER = #{bookWriter}, PUBLISHER_ID = #{publisherId}
+        WHERE BOOK_ID = #{bookId}
+    </update>
+
+    <delete id="deleteBookById" parameterType="java.lang.Long">
+        DELETE FROM TBL_BOOK WHERE BOOK_ID = #{bookId}
+    </delete>
 </mapper>
