@@ -131,9 +131,9 @@
   width: inherit;
   background: linear-gradient(
     90deg,
-    var(--ui-05) 25%,
-    var(--ui-05) 37%,
-    var(--ui-05) 63%
+    #ececec 25%,
+    #ececec 37%,
+    #ececec 63%
   );
   border-radius: 0 4px 4px 0;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1), 0 0 2px rgba(0, 0, 0, 0.2);

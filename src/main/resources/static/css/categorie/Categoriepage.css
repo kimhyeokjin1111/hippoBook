@@ -129,7 +129,7 @@ a {
 
 .rrrr {
   width: 100%;
-  border: 1px solid#e0dcdc;
+  border: 1px solid #e0dcdc;
   border-radius: 8px;
   padding: 10px 12px;
   font-size: 14px;
@@ -137,26 +137,6 @@ a {
   font-size: 20px;
 }
 
-/* .area {
-  background: var(--ui-background);
-} */
-
-/* .search {
-  position: sticky; 
-  z-index: 500;
-  background: #fff;
-  width: 100%;
-  top: 65px;
-}  */
-
-/* .img-button {
-  background: url(../img/magnifier.png) no-repeat;
-  width: 25px;
-  height: 25px;
-  border-width: 0;
-} */
-
-/* ------------카테고리------------- */
 
 .tab-list {
   display: flex;
@@ -180,7 +160,6 @@ a {
   top: 25px;
   width: 82px;
   height: 100px;
-  /* overflow: hidden; */
   display: flex;
   float: right;
 }
@@ -201,10 +180,6 @@ li {
 
 .img-so {
   object-fit: cover;
-  /* position: absolute; */
-  /* right: 0; */
-  /* top: 100%; */
-  /* transform: translateY(-100%); */
   max-width: 100%;
   width: 100px;
   height: 100px;

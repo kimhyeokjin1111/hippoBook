@@ -2,7 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.hippobookproject.mapper.book.BookMapper">
     <select id="getBookById" parameterType="java.lang.Long" resultType="com.example.hippobookproject.dto.Categorie.BookDto">
-        SELECT * FROM TBL_BOOK WHERE BOOK_ID = #{bookId}
+        SELECT BOOK_ID, BOOK_NAME, BOOK_WRITER, BOOK_DATE, PUBLISHER_ID
+        FROM TBL_BOOK
+        WHERE BOOK_ID = #{bookId}
     </select>
 
     <insert id="insertBook" parameterType="com.example.hippobookproject.dto.Categorie.BookDto">
