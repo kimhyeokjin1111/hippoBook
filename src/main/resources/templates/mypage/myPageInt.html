@@ -8,6 +8,7 @@
     <script defer th:src="@{/js/mypage/readingBook.js}"></script>
     <script defer th:src="@{/js/mypage/readingBookDeleteButton.js}"></script>
     <script defer th:src="@{/js/mypage/myPageInt.js}"></script>
+    <script type="module" defer th:src="@{/js/mypage/bookContainer.js}"></script>
 </head>
 <body>
 <div>
@@ -72,7 +73,7 @@
                 </div>
             </div>
         </main>
-        <section class="profile">
+        <section class="profile" th:object="${profileDto}">
             <div class="profile-all">
                 <div id="profile-photo">
                     <input
@@ -97,17 +98,21 @@
                 </div>
             </div>
             <div id="my-favorite-book">
-                <img src="/images/mypage/인생책 이미지.png" alt=""/>
+                <img th:if="*{fileId == null}"
+                     th:src="@{/imgs/mypage/best_book_default.png}">
+                <img th:unless="*{fileId == null}"
+                     th:src="@{'/upload/' + *{fileUploadPath} + '/' + *{fileUuid} + '_' + *{fileName}}"
+                     id="best-book-img" alt=""/>
             </div>
         </section>
     </div>
     <div>
         <div class="mypage-cate">
-            <div><a href="">소개</a></div>
-            <div><a href="">책장</a></div>
-            <div><a href="">내 게시물</a></div>
-            <div><a href="">스티커 신청</a></div>
-            <div><a href="">관리</a></div>
+            <div><a th:href="@{/mypage/int}">소개</a></div>
+            <div><a th:href="@{/mypage/book/container}">책장</a></div>
+            <div><a th:href="@{/mypage/book/write-content}">내 게시물</a></div>
+            <div><a th:href="@{/mypage/sticker}">스티커 신청</a></div>
+            <div><a th:href="@{/mypage/manage}">관리</a></div>
         </div>
         <div id="introduce-content">
 
@@ -136,32 +141,29 @@
         </div>
     </div>
     <div class="mybook-collection">
-        <div id="mybook-first">
-            <h5>최근 담은 책</h5>
+<!--        <div id="mybook-first">-->
+<!--            <h5>최근 담은 책</h5>-->
 
-            <div>
-                <span>책장에 책을 담아주세요</span>
-            </div>
-        </div>
+<!--            <div>-->
+<!--                <span>책장에 책을 담아주세요</span>-->
+<!--            </div>-->
+<!--        </div>-->
 
-        <div class="mybook-second">
-            <input
-                    type="hidden"
-                    name="readingBookDeleteCheck"
-                    id="reading-book-delete-check"
-            />
+        <div th:each="bookContainerDto : ${bookContainerList}" class="mybook-second">
+
             <h5>최근 담은 책</h5>
-            <div class="mybook-reading-select">
+            <div class="my-recent-book">
                 <div class="reading-book-img">
-                    <img src="/images/mypage/책표지 예제.jpg" alt=""/>
+                    <img th:src="@{'/upload/' + ${bookContainerDto.fileUploadPath} + '/' + ${bookContainerDto.fileUuid} + '_' + ${bookContainerDto.fileName}}"
+                         alt="">
                 </div>
                 <div class="reading-book-infor">
                     <div id="reading-book-title">
-                        <span>제목</span>
+                        <span th:text="${bookContainerDto.bookName}">제목</span>
                     </div>
                     <div id="reading-book-date">
-                        <span>구매한 날짜</span>
-                        <span>마지막으로 읽은 날짜</span>
+                       <p>저자 : <span th:text="${bookContainerDto.bookWriter}"></span></p>
+                        <p>담은 날짜: <span th:text="${bookContainerDto.bookHasRecentDate}"></span></p>
                     </div>
                 </div>
             </div>
@@ -172,36 +174,9 @@
 </div>
 <footer>
     <div>
-        <button id="reading-book-delete-button">삭제하기</button>
+
     </div>
 </footer>
-<section class="reading-book-plus-modal-bg">
-    <div class="reading-book-plus-box">
-        <div class="x-box">
-            <img src="" alt="">
-        </div>
-        <h1>책장 전체 도서</h1>
-        <form action="" class="reading-book-plus-form">
-            <div class="reading-book-plus-modal-book-img">
-                <div th:each="bookContainerDto : ${bookContainerList}" class="reading-book-img-check">
 
-                    <div class="my-book-get-list-image" th:data-id="${bookContainerDto.bookHasId}">
-                        <input type="hidden" class="book-plus-check"/>
-                        <img th:src="@{'/upload/' + ${bookContainerDto.fileUploadPath} + '/' + ${bookContainerDto.fileUuid} + '_' + ${bookContainerDto.fileName}}"
-                             alt="">
-                    </div>
-
-                </div>
-
-
-            </div>
-            <div></div>
-
-            <div class="reading-book-plus-button">
-                <button type="submit">추가하기</button>
-            </div>
-        </form>
-    </div>
-</section>
 </body>
 </html>

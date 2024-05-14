@@ -67,6 +67,10 @@ public class MypageService {
 
     }
 
+    public List<BookContainerDto> findRecentBook(Long userId){
+       return mypageMapper.selectRecentBook(1L);
+    }
+
 
 
 }

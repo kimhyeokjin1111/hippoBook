@@ -20,6 +20,7 @@ public class BookContainerDto {
     private Long bookId;
     private Long userId;
     private LocalDate bookCaseCreate;
+    private String bookHasRecentDate;
     private String fileName;
     private String fileUploadPath;
     private String fileUuid;
