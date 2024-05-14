@@ -19,6 +19,26 @@
       $categoryXBtn.addEventListener("click", function(){
         $getmodal.style.display = "none";
       })
- 
+
+
+
+
+}
+
+{
+    // book 모달 창
+    let $book_OpenBtn = document.querySelector(".post_bookBtn");
+    let $book_getModal = document.querySelector(".book_modal");
+    let $book_XBtn = document.querySelector(".Xbtn-box");
+
+
+    $book_OpenBtn.addEventListener("click", function (){
+        $book_getModal.style.display = "block";
+    });
+
+    $book_XBtn.addEventListener("click", function (){
+        $book_getModal.style.display = "none";
+    });
+
 
 }
