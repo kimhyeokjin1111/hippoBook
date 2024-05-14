@@ -8,7 +8,7 @@
 
 
 body{
-  max-width: 1440px;
+  width: 1440px;
 }
 
 
@@ -69,6 +69,7 @@ header{
 
 .cont{
     margin: 0 auto;
+    width: 1440px;
 
 }
 .alarm_inner{
@@ -83,4 +84,8 @@ header{
 
 .tab_menu .btn_box .cont{
     display:block;
+}
+
+.alarm_box{
+    display: inline-block;
 }
