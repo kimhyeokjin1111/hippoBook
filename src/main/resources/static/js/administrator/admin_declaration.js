@@ -87,7 +87,7 @@
 
             let tags = `
                           <tr>
-                            <th>게시글명</th>
+                            <th>신고타입</th>
                             <td>${cate}</td>
                           </tr>
                           <tr>

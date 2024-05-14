@@ -28,10 +28,10 @@ class AdministratorDeclMapperTest {
     void setUp() {
         selectDeclAdminDto = new SelectDeclAdminDto();
         selectDeclAdminDto.setDeclarationContent("test");
-        selectDeclAdminDto.setStartDeclarationDate(LocalDate.parse("2024-05-13", DateTimeFormatter.ISO_DATE));
-        selectDeclAdminDto.setEndDeclarationDate(LocalDate.parse("2024-05-13", DateTimeFormatter.ISO_DATE));
-        selectDeclAdminDto.setStartPocecssDate(LocalDate.parse("2024-05-13", DateTimeFormatter.ISO_DATE));
-        selectDeclAdminDto.setEndPocecssDate(LocalDate.parse("2024-05-13", DateTimeFormatter.ISO_DATE));
+        selectDeclAdminDto.setStartDeclarationDate(LocalDate.parse("2024-05-14", DateTimeFormatter.ISO_DATE));
+        selectDeclAdminDto.setEndDeclarationDate(LocalDate.parse("2024-05-14", DateTimeFormatter.ISO_DATE));
+        selectDeclAdminDto.setStartPocecssDate(LocalDate.parse("2024-05-14", DateTimeFormatter.ISO_DATE));
+        selectDeclAdminDto.setEndPocecssDate(LocalDate.parse("2024-05-14", DateTimeFormatter.ISO_DATE));
         selectDeclAdminDto.setDeclarationType("board");
         selectDeclAdminDto.setProcessType("");
 
@@ -76,4 +76,22 @@ class AdministratorDeclMapperTest {
                 .extracting("postTitle")
                 .isEqualTo("test board title2");
     }
+    
+    @Test
+    void selectFeedDecl(){
+        List<ResultDeclAdminDto> resultDeclAdminDtos = administratorDeclMapper.selectFeedDeclList(selectDeclAdminDto, criteria);
+        assertThat(resultDeclAdminDtos)
+                .extracting("DeclarationContent")
+                .isEqualTo("test feed decl content");
+    }
+
+    @Test
+    void deleteFDeclaration(){
+        administratorDeclMapper.deleteFDeclaration(1L);
+
+        List<ResultDeclAdminDto> resultDeclAdminDtos = administratorDeclMapper.selectFeedDeclList(selectDeclAdminDto, criteria);
+        assertThat(resultDeclAdminDtos)
+                .isEmpty();
+    }
+    
 }

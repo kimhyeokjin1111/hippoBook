@@ -17,9 +17,14 @@ public interface AdministratorDeclMapper {
 
     List<ResultDeclAdminDto> selectCommentDecl(@Param("selectDecl") SelectDeclAdminDto selectDeclAdminDto,
                                             @Param("criteria") AdminUserCriteria adminDeclCriteria);
+
+    List<ResultDeclAdminDto> selectFeedDeclList(@Param("selectDecl") SelectDeclAdminDto selectDeclAdminDto,
+                                               @Param("criteria") AdminUserCriteria adminDeclCriteria);
     int selectDeclTotal(@Param("selectDecl") SelectDeclAdminDto selectDeclAdminDto);
 
     int selectCommentDeclTotal(@Param("selectDecl") SelectDeclAdminDto selectDeclAdminDto);
+
+    int selectFDeclTotal(@Param("selectDecl") SelectDeclAdminDto selectDeclAdminDto);
 
     Optional<ResultPostInfoDto> selectDealDecl(Long postId);
     Optional<ResultPostInfoDto> selectBoardDecl(Long postId);
@@ -36,4 +41,5 @@ public interface AdministratorDeclMapper {
     void deleteDeclaration(Long declId);
 
     void deleteCMDeclaration(Long declId);
+    void deleteFDeclaration(Long declId);
 }

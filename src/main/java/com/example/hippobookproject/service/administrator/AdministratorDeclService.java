@@ -27,8 +27,17 @@ public class AdministratorDeclService {
         return administratorDeclMapper.selectCommentDecl(selectDeclAdminDto, adminDeclCriteria);
     }
 
+    public List<ResultDeclAdminDto> findFeedDeclList(SelectDeclAdminDto selectDeclAdminDto,
+                                                    AdminUserCriteria adminDeclCriteria) {
+        return administratorDeclMapper.selectFeedDeclList(selectDeclAdminDto, adminDeclCriteria);
+    }
+
     public int findDeclTotal(SelectDeclAdminDto selectDeclAdminDto) {
         return administratorDeclMapper.selectDeclTotal(selectDeclAdminDto);
+    }
+
+    public int findFDeclTotal(SelectDeclAdminDto selectDeclAdminDto) {
+        return administratorDeclMapper.selectFDeclTotal(selectDeclAdminDto);
     }
 
     public int findCommentDeclTotal(SelectDeclAdminDto selectDeclAdminDto) {
@@ -81,5 +90,8 @@ public class AdministratorDeclService {
 
     public void removeCMDeclaration(Long declId){
         administratorDeclMapper.deleteCMDeclaration(declId);
+    };
+    public void removeFDeclaration(Long declId){
+        administratorDeclMapper.deleteFDeclaration(declId);
     };
 }
