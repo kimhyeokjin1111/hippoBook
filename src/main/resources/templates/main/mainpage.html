@@ -183,7 +183,7 @@
                         <div class="main_book_report_content" th:text="${novel.novelContent}"></div>
                       </div>
                       <div class="main_book_report_writer_content">
-                        <img class="main_book_report_writer_content_icon" th:src="@{'/upload/' + ${novel.uploadPath + '/' + novel.uuId + '_' + novel.fileName}}" alt="">
+                        <img class="main_book_report_writer_content_icon" th:src="@{'/upload/' + ${novel.userProfileUploadPath + '/' + novel.userProfileUuId + '_' + novel.userProfileName}}" alt="">
                         <div class="main_book_report_writer_content_username" th:text="${novel.userNickName}"></div>
                       </div>
                     </a>
