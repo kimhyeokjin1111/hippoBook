@@ -47,7 +47,7 @@ class MypageServiceTest {
     }
 
     @Test
-    void resisterIntBoardText(){
+    void resisterIntBoardText() {
         //given
         Mockito.doNothing().when(mypageMapper).insertIntBoardText(any());
         // when
@@ -57,7 +57,7 @@ class MypageServiceTest {
     }
 
     @Test
-    void findIntBoardText(){
+    void findIntBoardText() {
         // given
         IntBoardDto boardDto = new IntBoardDto();
         boardDto.setIntBoardContent("안녕하세요");
@@ -70,17 +70,17 @@ class MypageServiceTest {
     }
 
     @Test
-    void findBookContainer(){
+    void findBookContainer() {
         // give
         doReturn(List.of(new BookContainerDto())).when(mypageBookContainerMapper).selectBookContainer(any());
-       // when
+        // when
         List<BookContainerDto> bookContainerList = mypageService.findBookContainer(1L);
-       // then
+        // then
         assertThat(bookContainerList).hasSize(1);
     }
 
     @Test
-    void removeBookContainer(){
+    void removeBookContainer() {
         //given
         doNothing().when(mypageBookContainerMapper).deleteBookHas(any());
         //when
@@ -89,8 +89,9 @@ class MypageServiceTest {
         verify(mypageBookContainerMapper, times(1)).deleteBookHas(any());
 
     }
+
     @Test
-    void findBestBook(){
+    void findBestBook() {
         // give
         BookContainerDto dto = new BookContainerDto();
         dto.setBookHasId(3L);
@@ -102,7 +103,7 @@ class MypageServiceTest {
     }
 
     @Test
-    void modifyBestBook(){
+    void modifyBestBook() {
         //given
         doNothing().when(mypageBookContainerMapper).updateBestBook(any());
         // when
@@ -112,12 +113,21 @@ class MypageServiceTest {
     }
 
     @Test
-    void modifyBookStatus(){
+    void modifyBookStatus() {
         doNothing().when(mypageBookContainerMapper).updateBookStatus(any());
 
         mypageService.modifyBookStatus(new BookContainerDto());
 
         verify(mypageBookContainerMapper, times(1)).updateBookStatus(any());
 
+    }
+
+    @Test
+    void findRecentBook() {
+        doReturn(List.of(new BookContainerDto())).when(mypageMapper).selectRecentBook(any());
+
+        List<BookContainerDto> recentBookList = mypageService.findRecentBook(1L);
+
+        assertThat(recentBookList).hasSize(1);
     }
 }

@@ -10,12 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -36,7 +32,7 @@ public class MyPageController {
         model.addAttribute("intBoardDto", intBoardDto);
 
 
-        List<BookContainerDto> bookContainerList  = mypageService.findBookContainer(userId);
+        List<BookContainerDto> bookContainerList  = mypageService.findRecentBook(userId);
         model.addAttribute("bookContainerList", bookContainerList);
         return "mypage/myPageInt";
     }
