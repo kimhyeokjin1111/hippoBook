@@ -20,7 +20,7 @@
                     </button>
                 </div>
             </div>
-            <div class="login-content">
+            <form class="login-content" th:action="@{user/check_account}" method="post">
                 <img class="logo-picture" th:src="@{/images/user/Logo.png}" width="79px">
                 <h3 class="title">가입된 계정 정보 확인</h3>
                 <p class="sub-title">가입하신 아이디를 확인하세요</p>
@@ -57,7 +57,7 @@
                         </div>
                     </li>
                 </ul>
-            </div>
+            </form>
         </div>
     </section>
 </div>

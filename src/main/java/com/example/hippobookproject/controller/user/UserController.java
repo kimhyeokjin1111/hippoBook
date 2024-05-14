@@ -32,7 +32,7 @@ public class UserController {
             e.printStackTrace();
             return "user/login";
         }
-        return "redirect:/user/login";
+        return "redirect:/";
     }
 
     @GetMapping("/terms-of-use")
@@ -58,6 +58,16 @@ public class UserController {
     @GetMapping("/find-account")
     public String findAccount(){
         return "user/find_account";
+    }
+
+    @GetMapping("/check-account")
+    public String checkAccount() {
+        return "user/check_account";
+    }
+
+    @GetMapping("/password-reset")
+    public String passwordReset(){
+        return "user/password_reset";
     }
 }
 
