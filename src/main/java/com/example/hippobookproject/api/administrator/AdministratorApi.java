@@ -1,13 +1,12 @@
 package com.example.hippobookproject.api.administrator;
 
-import com.example.hippobookproject.dto.administrator.ResultChartAdminDto;
-import com.example.hippobookproject.dto.administrator.ResultDeclAdminDto;
-import com.example.hippobookproject.dto.administrator.ResultPostInfoDto;
-import com.example.hippobookproject.dto.administrator.SelectDeclAdminDto;
+import com.example.hippobookproject.dto.administrator.*;
 import com.example.hippobookproject.dto.page.AdminUserCriteria;
 import com.example.hippobookproject.dto.page.AdminUserPage;
+import com.example.hippobookproject.mapper.administrator.AdministratorStickerMapper;
 import com.example.hippobookproject.service.administrator.AdministratorChartService;
 import com.example.hippobookproject.service.administrator.AdministratorDeclService;
+import com.example.hippobookproject.service.administrator.AdministratorFollowService;
 import com.example.hippobookproject.service.administrator.AdministratorUserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +23,7 @@ public class AdministratorApi {
     private final AdministratorUserService administratorUserService;
     private final AdministratorChartService administratorChartService;
     private final AdministratorDeclService administratorDeclService;
+    private final AdministratorFollowService administratorFollowService;
 
     @DeleteMapping("/v1/users")
     public void removeUserByIdList(@RequestParam(value="userIdList" , required = false)
@@ -150,4 +150,22 @@ public class AdministratorApi {
         log.info("declId = " + declId);
         administratorDeclService.removeFDeclaration(declId);
     };
+
+    @GetMapping("/v1/admin/follow")
+    public Map<String , Object> searchFollowSticker(SelectStickerDto selectStickerDto,
+                                    AdminUserCriteria adminDeclCriteria){
+        log.info("selectDeclAdminDto = " + selectStickerDto + ", adminDeclCriteria = " + adminDeclCriteria);
+        List<ResultStickerDto> followList = administratorFollowService.findStickerReqList(selectStickerDto, adminDeclCriteria);
+        log.info("followList = {}", followList);
+        int followTotal = administratorFollowService.findFollowReqTotal(selectStickerDto);
+        AdminUserPage stickerPage = new AdminUserPage(adminDeclCriteria, followTotal);
+        log.info("stickerPage = {}", stickerPage);
+
+        Map<String , Object> stickerMap = new HashMap<>();
+        stickerMap.put("followList", followList);
+        stickerMap.put("stickerPage", stickerPage);
+
+        return stickerMap;
+    }
+
 }
