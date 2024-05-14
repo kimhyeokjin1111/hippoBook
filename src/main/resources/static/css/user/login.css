@@ -104,17 +104,17 @@ h3 {
   margin-buttom: 34px;
 }
 
-.login-container .input-item {
-  margin-bottom: 8px;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
+/*.login-container .input-item {*/
+/*  margin-bottom: 8px;*/
+/*  display: -ms-flexbox;*/
+/*  display: flex;*/
+/*  -ms-flex-align: center;*/
+/*  align-items: center;*/
+/*  -ms-flex-pack: justify;*/
+/*  justify-content: space-between;*/
+/*  -ms-flex-direction: column;*/
+/*  flex-direction: column;*/
+/*}*/
 
 .login-container .input-item>.mds-input {
   -ms-flex: 1;
@@ -366,33 +366,33 @@ h3 {
   animation: fadeIn .2s linear;
 }
 
-.login-container .input-item {
-  margin-bottom: 8px;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
+/*.login-container .input-item {*/
+/*  margin-bottom: 8px;*/
+/*  display: -ms-flexbox;*/
+/*  display: flex;*/
+/*  -ms-flex-align: center;*/
+/*  align-items: center;*/
+/*  -ms-flex-pack: justify;*/
+/*  justify-content: space-between;*/
+/*  -ms-flex-direction: column;*/
+/*  flex-direction: column;*/
+/*}*/
 
 .login-container .mds-select {
   width: 100%;
 }
 
-.login-container .input-item {
-  margin-bottom: 8px;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
+/*.login-container .input-item {*/
+/*  margin-bottom: 8px;*/
+/*  display: -ms-flexbox;*/
+/*  display: flex;*/
+/*  -ms-flex-align: center;*/
+/*  align-items: center;*/
+/*  -ms-flex-pack: justify;*/
+/*  justify-content: space-between;*/
+/*  -ms-flex-direction: column;*/
+/*  flex-direction: column;*/
+/*}*/
 
 .login-container .input-item>.mds-input {
   -ms-flex: 1;
@@ -466,17 +466,17 @@ h3 {
   display: none;
 }
 
-.login-container .input-item {
-  margin-bottom: 8px;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
+/*.login-container .input-item {*/
+/*  margin-bottom: 8px;*/
+/*  display: -ms-flexbox;*/
+/*  display: flex;*/
+/*  -ms-flex-align: center;*/
+/*  align-items: center;*/
+/*  -ms-flex-pack: justify;*/
+/*  justify-content: space-between;*/
+/*  -ms-flex-direction: column;*/
+/*  flex-direction: column;*/
+/*}*/
 
 .login-container .input-item>.mds-input {
   -ms-flex: 1;
