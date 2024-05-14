@@ -44,6 +44,6 @@ public class UserService {
 
     public Long findUserId(String userLoginId, String userPassword) {
         return userMapper.selectId(userLoginId, userPassword)
-                .orElseThrow(() -> new IllegalStateException("잘못된 인증 정보입니다."));
+                .orElseThrow(() -> new IllegalStateException("아이디 혹은 비밀번호가 잘못되었습니다."));
     }
 }
