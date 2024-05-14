@@ -192,8 +192,8 @@ input[type="file"] {
   padding: 10px;
 }
 #best-book-img{
-  width: 150px;
-  height: 150px;
+  width: 129px;
+  height: 120px;
   border: solid #96eae8;
 }
 
@@ -424,12 +424,12 @@ h1 {
   height: 240px;
 }
 
-button {
-  background-color: #2bc1bf;
-  height: 30px;
-  width: 50%;
-  border-radius: 20px;
-}
+/*button {*/
+/*  background-color: #2bc1bf;*/
+/*  height: 30px;*/
+/*  width: 50%;*/
+/*  border-radius: 20px;*/
+/*}*/
 
 #reading-book-delete-button {
   display: flex;
