@@ -54,6 +54,28 @@ public class AdministratorApi {
         return createCommentDeclMap(selectDeclAdminDto, adminDeclCriteria);
     }
 
+    @GetMapping("/v1/declarations/feed")
+    public Map<String , Object> searchDeclarationFeed(SelectDeclAdminDto selectDeclAdminDto,
+                                                         AdminUserCriteria adminDeclCriteria) {
+        log.info("selectDeclAdminDto = " + selectDeclAdminDto + ", adminDeclCriteria = " + adminDeclCriteria);
+        return createFeedDeclMap(selectDeclAdminDto, adminDeclCriteria);
+    }
+
+    public Map<String , Object> createFeedDeclMap(SelectDeclAdminDto selectDeclAdminDto,
+                                              AdminUserCriteria adminDeclCriteria){
+        log.info("selectDeclAdminDto = " + selectDeclAdminDto + ", adminDeclCriteria = " + adminDeclCriteria);
+        List<ResultDeclAdminDto> declList = administratorDeclService.findFeedDeclList(selectDeclAdminDto, adminDeclCriteria);
+        log.info("declList = {}", declList);
+        int declTotal = administratorDeclService.findFDeclTotal(selectDeclAdminDto);
+        AdminUserPage declPage = new AdminUserPage(adminDeclCriteria, declTotal);
+
+        Map<String , Object> declMap = new HashMap<>();
+        declMap.put("declList", declList);
+        declMap.put("declPage", declPage);
+
+        return declMap;
+    }
+
     public Map<String , Object> createDeclMap(SelectDeclAdminDto selectDeclAdminDto,
                                               AdminUserCriteria adminDeclCriteria){
         log.info("selectDeclAdminDto = " + selectDeclAdminDto + ", adminDeclCriteria = " + adminDeclCriteria);
@@ -122,5 +144,10 @@ public class AdministratorApi {
     public void removeCMDeclById(@PathVariable("declId") Long declId){
         log.info("declId = " + declId);
         administratorDeclService.removeCMDeclaration(declId);
+    };
+    @DeleteMapping("/v1/declaration/feed/{declId}")
+    public void removeFDeclById(@PathVariable("declId") Long declId){
+        log.info("declId = " + declId);
+        administratorDeclService.removeFDeclaration(declId);
     };
 }

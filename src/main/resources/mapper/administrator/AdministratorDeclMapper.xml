@@ -69,36 +69,57 @@
         ]]>
     </select>
 
-<!--    <select id="selectFeedDecl" resultType="ResultDeclAdminDto">-->
-<!--        SELECT COMMENT_DECLARATION_ID DECLARATION_ID, COMMENT_DECLARATION_DATE DECLARATION_DATE, COMMENT_DECLARATION_CONTENT DECLARATION_CONTENT,-->
-<!--        USER_ID, COMMENT_DECLARATION_CHECK DECLARATION_CHECK, COMMENT_ID type_id, COMMENT_CATE CATE, COMMENT_PROCESS_DATE DECL_PROCESS_DATE-->
-<!--        FROM (SELECT ROWNUM AS RNUM, COMMENT_DECLARATION_ID, COMMENT_DECLARATION_DATE, COMMENT_DECLARATION_CONTENT,-->
-<!--        USER_ID, COMMENT_DECLARATION_CHECK, COMMENT_ID, COMMENT_CATE,  COMMENT_PROCESS_DATE-->
-<!--        FROM (SELECT FEED_DECLARATION_ID, FEED_DECLARATION_DATE, FEED_DECLARATION_CONTENT,-->
-<!--        USER_ID, FEED_DECLARATION_CHECK, FEED_ID, FEED_PROCESS_DATE-->
-<!--        FROM TBL_FEED_DECLARATION-->
-<!--        <trim prefix="WHERE" prefixOverrides="AND">-->
-<!--            <if test="selectDecl.declarationContent != null">-->
-<!--                FEED_DECLARATION_CONTENT LIKE '%' || #{selectDecl.declarationContent} || '%'-->
-<!--            </if>-->
-<!--            <if test="selectDecl.startDeclarationDate != null and selectDecl.endDeclarationDate != null" >-->
-<!--                AND TO_CHAR(FEED_DECLARATION_DATE, 'YYYY-MM-DD') BETWEEN-->
-<!--                #{selectDecl.startDeclarationDate} AND #{selectDecl.endDeclarationDate}-->
-<!--            </if>-->
-<!--            <if test="selectDecl.startPocecssDate != null and selectDecl.endPocecssDate != null" >-->
-<!--                AND TO_CHAR(FEED_PROCESS_DATE, 'YYYY-MM-DD') BETWEEN-->
-<!--                #{selectDecl.startPocecssDate} AND #{selectDecl.endPocecssDate}-->
-<!--            </if>-->
-<!--            <if test="selectDecl.processType != null and selectDecl.processType.length() == 1">-->
-<!--                AND FEED_DECLARATION_CHECK = #{selectDecl.processType}-->
-<!--            </if>-->
-<!--        </trim>-->
-<!--        ORDER BY COMMENT_DECLARATION_ID)-->
-<!--        <![CDATA[-->
-<!--                WHERE ROWNUM <= #{criteria.page} * #{criteria.amount})-->
-<!--        WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amount}-->
-<!--        ]]>-->
-<!--    </select>-->
+    <select id="selectFeedDeclList" resultType="ResultDeclAdminDto">
+        SELECT FEED_DECLARATION_ID DECLARATION_ID, FEED_DECLARATION_DATE DECLARATION_DATE, FEED_DECLARATION_CONTENT DECLARATION_CONTENT,
+        USER_ID, FEED_DECLARATION_CHECK DECLARATION_CHECK,FEED_ID type_id, FEED_PROCESS_DATE DECL_PROCESS_DATE
+        FROM (SELECT ROWNUM AS RNUM, FEED_DECLARATION_ID, FEED_DECLARATION_DATE, FEED_DECLARATION_CONTENT,
+        USER_ID, FEED_DECLARATION_CHECK, FEED_ID, FEED_PROCESS_DATE
+        FROM (SELECT FEED_DECLARATION_ID, FEED_DECLARATION_DATE, FEED_DECLARATION_CONTENT,
+        USER_ID, FEED_DECLARATION_CHECK, FEED_ID, FEED_PROCESS_DATE
+        FROM TBL_FEED_DECLARATION
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="selectDecl.declarationContent != null">
+                FEED_DECLARATION_CONTENT LIKE '%' || #{selectDecl.declarationContent} || '%'
+            </if>
+            <if test="selectDecl.startDeclarationDate != null and selectDecl.endDeclarationDate != null" >
+                AND TO_CHAR(FEED_DECLARATION_DATE, 'YYYY-MM-DD') BETWEEN
+                #{selectDecl.startDeclarationDate} AND #{selectDecl.endDeclarationDate}
+            </if>
+            <if test="selectDecl.startPocecssDate != null and selectDecl.endPocecssDate != null" >
+                AND TO_CHAR(FEED_PROCESS_DATE, 'YYYY-MM-DD') BETWEEN
+                #{selectDecl.startPocecssDate} AND #{selectDecl.endPocecssDate}
+            </if>
+            <if test="selectDecl.processType != null and selectDecl.processType.length() == 1">
+                AND FEED_DECLARATION_CHECK = #{selectDecl.processType}
+            </if>
+        </trim>
+        ORDER BY FEED_DECLARATION_ID)
+        <![CDATA[
+                WHERE ROWNUM <= #{criteria.page} * #{criteria.amount})
+        WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amount}
+        ]]>
+    </select>
+
+    <select id="selectFDeclTotal" parameterType="SelectDeclAdminDto" resultType="int">
+        SELECT count(FEED_DECLARATION_ID)
+        FROM TBL_FEED_DECLARATION
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="selectDecl.declarationContent != null">
+                FEED_DECLARATION_CONTENT LIKE '%' || #{selectDecl.declarationContent} || '%'
+            </if>
+            <if test="selectDecl.startDeclarationDate != null and selectDecl.endDeclarationDate != null" >
+                AND TO_CHAR(FEED_DECLARATION_DATE, 'YYYY-MM-DD') BETWEEN
+                #{selectDecl.startDeclarationDate} AND #{selectDecl.endDeclarationDate}
+            </if>
+            <if test="selectDecl.startPocecssDate != null and selectDecl.endPocecssDate != null" >
+                AND TO_CHAR(FEED_PROCESS_DATE, 'YYYY-MM-DD') BETWEEN
+                #{selectDecl.startPocecssDate} AND #{selectDecl.endPocecssDate}
+            </if>
+            <if test="selectDecl.processType != null and selectDecl.processType.length() == 1">
+                AND FEED_DECLARATION_CHECK = #{selectDecl.processType}
+            </if>
+        </trim>
+    </select>
 
     <select id="selectDeclTotal" parameterType="SelectDeclAdminDto" resultType="int">
         SELECT count(POST_DECLARATION_ID)
@@ -228,6 +249,12 @@
         DELETE
         FROM TBL_COMMENT_DECLARATION
         WHERE COMMENT_DECLARATION_ID = #{declId}
+    </delete>
+
+    <delete id="deleteFDeclaration" parameterType="Long">
+        DELETE
+        FROM TBL_FEED_DECLARATION
+        WHERE FEED_DECLARATION_ID = #{declId}
     </delete>
 
 <!--    <delete id="deleteCMDeclaration" parameterType="Long">-->
