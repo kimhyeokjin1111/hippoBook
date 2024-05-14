@@ -13,4 +13,9 @@ public class ReadListDto {
     private String ReadTitle;
     private String ReadContent;
     private String userNickName;
+    private Long readFileId;
+    private String readFileName;
+    private String readUploadPath;
+    private String readUuId;
+
 }

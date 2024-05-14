@@ -656,9 +656,9 @@ a {
   position: static;
 }
 .novel_thumbnail_inner_picture2 {
-  min-height: 0px;
-  height: 100%;
-  width: 100%;
+  /*min-height: 0px;*/
+  height: 140px;
+  width: 105px;
   display: block;
 }
 
@@ -733,6 +733,15 @@ a {
   max-height: 1.35em;
 }
 
+.main_book_report_writer_content_icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+  background-size: cover;
+  background-position: 50%;
+  border-radius: 50px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
+}
 
 
 .main_book_report {
@@ -908,6 +917,7 @@ a {
 /*  height: 100%;*/
 /*}*/
 
+
 .main_deal_book_thumbnail {
   position: relative;
   width: 100%;
@@ -916,12 +926,18 @@ a {
 }
 
 .main_deal_book_thumbnail_inner {
+  height: 140px;
   overflow: hidden;
   position: relative;
-  width: inherit;
   border-radius: 0 4px 4px 0;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1), 0 0 2px rgba(0, 0, 0, 0.2);
 }
+
+.main_deal_book_img{
+  width: 100px;
+  height: 140px;
+}
+
 
 .main_deal_book_thumbnail_img {
   max-height: 175px;
