@@ -3,6 +3,7 @@ package com.example.hippobookproject.mapper.user;
 import com.example.hippobookproject.dto.mypage.BookContainerDto;
 import com.example.hippobookproject.dto.mypage.IntBoardDto;
 import com.example.hippobookproject.dto.mypage.IntProfileDto;
+import com.example.hippobookproject.dto.mypage.MyContentDto;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,6 +26,7 @@ class MypageMapperTest {
     IntProfileDto intProfileDto;
     IntBoardDto intBoardDto;
     BookContainerDto bookContainerDto;
+    MyContentDto myContentDto;
     @Test
     void selectProfile() {
 
@@ -68,6 +70,13 @@ class MypageMapperTest {
     void selectRecentBook(){
         List<BookContainerDto> bookRecentList = mypageMapper.selectRecentBook(1L);
         System.out.println("bookRecentList = " + bookRecentList);
+
+    }
+
+    @Test
+    void selectMyContent(){
+        List<MyContentDto> myContentList = mypageMapper.selectMyContent(1L);
+        System.out.println("myContentList = " + myContentList);
 
     }
 
