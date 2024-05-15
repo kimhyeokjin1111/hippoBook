@@ -49,21 +49,19 @@
         ]]>
     </select>
 
-    <select id="selectWriteContent">
-        SELECT FEED_ID,
-               FEED_TITLE,
-               FEED_DATE,
-               FEED_LIKE,
-               CF.BOOK_ID,
-               USER_ID,
-               CF.FILE_ID,
-               CF.FILE_NAME,
-               CF.FILE_UPLOAD_PATH,
-               CF.FILE_UUID
-        FROM TBL_FEED FE
+    <select id="selectMyContent">
+        SELECT FEED_ID, FEED_TITLE, FEED_TYPE, FEED_DATE, USER_ID, FFL.BOOK_ID,TOTAL_LIKE,
+               FILE_ID,FILE_NAME,FILE_UPLOAD_PATH,FILE_UUID
+        FROM (SELECT F.FEED_ID, FEED_TITLE, FEED_TYPE, FEED_DATE, F.USER_ID, BOOK_ID,TOTAL_LIKE
+              FROM TBL_FEED F JOIN (SELECT SUM(FEED_LIKE_ID) AS TOTAL_LIKE ,FEED_ID
+                                    FROM TBL_FEED_LIKE
+                                    GROUP BY FEED_ID) FL
+                                   ON F.FEED_ID = FL.FEED_ID) FFL
                  JOIN TBL_COVERFILE CF
-                      ON USER_ID = #{userId} AND FE.BOOK_ID = CF.BOOK_ID
+                      ON FFL.BOOK_ID = CF.BOOK_ID
+        WHERE FFL.USER_ID = #{userId}
     </select>
+
 
 
 

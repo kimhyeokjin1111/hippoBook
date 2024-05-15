@@ -72,6 +72,8 @@ public class MyPageController {
         IntProfileDto profileDto = mypageService.findProfile(userId);
         model.addAttribute("profileDto", profileDto);
         log.info("profileDto={}",profileDto);
+
+
         return "mypage/myWriteContent";
     }
 

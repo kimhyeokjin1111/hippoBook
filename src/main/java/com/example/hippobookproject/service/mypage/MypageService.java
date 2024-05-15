@@ -3,6 +3,7 @@ package com.example.hippobookproject.service.mypage;
 import com.example.hippobookproject.dto.mypage.BookContainerDto;
 import com.example.hippobookproject.dto.mypage.IntBoardDto;
 import com.example.hippobookproject.dto.mypage.IntProfileDto;
+import com.example.hippobookproject.dto.mypage.MyContentDto;
 import com.example.hippobookproject.mapper.user.MypageBookContainerMapper;
 import com.example.hippobookproject.mapper.user.MypageMapper;
 import lombok.RequiredArgsConstructor;
@@ -68,9 +69,12 @@ public class MypageService {
     }
 
     public List<BookContainerDto> findRecentBook(Long userId){
-       return mypageMapper.selectRecentBook(1L);
+       return mypageMapper.selectRecentBook(userId);
     }
 
+    public List<MyContentDto> findMyContent(Long userId){
+       return mypageMapper.selectMyContent(userId);
+    }
 
 
 }
