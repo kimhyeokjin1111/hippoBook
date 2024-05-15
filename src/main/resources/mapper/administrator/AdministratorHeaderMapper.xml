@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.hippobookproject.mapper.administrator.AdministratorHeaderMapper">
+    <select id="selectDeclAll" resultType="resultNoticeDto">
+        SELECT FEED_DECLARATION_ID NOTICE_ID, FEED_DECLARATION_DATE NOTICE_DATE, USER_NICKNAME NOTICE_USER
+        FROM (SELECT FEED_DECLARATION_ID, FEED_DECLARATION_DATE, USER_NICKNAME
+              FROM TBL_FEED_DECLARATION F JOIN TBL_USER U
+                                               ON F.USER_ID = U.USER_ID
+              UNION
+              SELECT POST_DECLARATION_ID, POST_DECLARATION_DATE, USER_NICKNAME
+              FROM TBL_POST_DECLARATION P JOIN TBL_USER U
+                                               ON P.USER_ID = U.USER_ID
+              UNION
+              SELECT COMMENT_DECLARATION_ID, COMMENT_DECLARATION_DATE, USER_NICKNAME
+              FROM TBL_COMMENT_DECLARATION C JOIN TBL_USER U
+                                                  ON C.USER_ID = U.USER_ID
+             )
+        ORDER BY NOTICE_DATE;
+    </select>
+</mapper>

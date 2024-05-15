@@ -39,8 +39,7 @@
     </select>
 
     <select id="selectFollowReqTotal">
-        SELECT STIKER_ID, STIKER_DATE,USER_ID, USER_NAME, USER_NICKNAME,
-        USER_GENDER, USER_AGE, FCNT
+        SELECT count(STIKER_ID)
         FROM (
         SELECT STIKER_ID, STIKER_DATE,U.USER_ID, USER_NAME, USER_NICKNAME,
         USER_GENDER, USER_AGE
