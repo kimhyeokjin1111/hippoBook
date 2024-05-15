@@ -43,6 +43,8 @@
             e.dataset.clicked = "F";
           });
           this.dataset.clicked = "T";
+          console.log("신고창 띄움~~~~~~~~~~~~~~~~~~22222222222222222222222")
+
         }
       }
     });
