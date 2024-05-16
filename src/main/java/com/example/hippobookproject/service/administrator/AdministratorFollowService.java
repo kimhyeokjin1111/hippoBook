@@ -26,4 +26,8 @@ public class AdministratorFollowService {
     public int findFollowReqTotal(SelectStickerDto selectStickerDto){
         return administratorStickerMapper.selectFollowReqTotal(selectStickerDto);
     }
+
+    public void modifyUserStickerCheck(List<Integer> idList){
+        administratorStickerMapper.updateUserStickerCheck(idList);
+    }
 }

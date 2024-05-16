@@ -64,8 +64,8 @@ public class AdministratorController {
         return "administrator/admin_follow";
     }
 
-    @GetMapping("/header")
-    public String adminHeader() {
-        return "administrator/fragment/admin_header";
-    }
+//    @GetMapping("/header")
+//    public String adminHeader() {
+//        return "administrator/fragment/admin_header";
+//    }
 }

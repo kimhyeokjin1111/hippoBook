@@ -21,10 +21,10 @@ header > div {
   justify-content: flex-end;
 }
 
-header div {
-  padding-left: 9px;
-  margin-left: 9px;
-}
+/*header div {*/
+/*  padding-left: 9px;*/
+/*  margin-left: 9px;*/
+/*}*/
 
 header > div img {
   width: 25px;
@@ -244,6 +244,10 @@ main {
   justify-content: center;
 }
 
+.main__user-search-btn-div > button{
+  border: 0;
+}
+
 .main__user-search-btn {
   cursor: pointer;
   display: inline-block;
@@ -251,7 +255,6 @@ main {
   text-decoration: none;
   box-sizing: border-box;
   border-radius: 3px;
-  border: 1px solid transparent;
   color: #fff;
   background-color: #444b59;
   min-width: 72px;

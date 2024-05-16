@@ -14,4 +14,6 @@ public interface AdministratorStickerMapper {
                                                 @Param("criteria")AdminUserCriteria criteria);
 
     int selectFollowReqTotal(@Param("selectSticker") SelectStickerDto selectStickerDto);
+
+    void updateUserStickerCheck(List<Integer> idList);
 }

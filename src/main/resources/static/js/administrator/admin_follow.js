@@ -226,14 +226,26 @@
         let $checkonebtnList = document.querySelectorAll('.main__result-checkone');
         console.log('$checkonebtnList', $checkonebtnList)
         console.log('click1111111111111111')
+        let idList = [1]
+        idList.splice(0, idList.length);
         for (let i = 0; i < $checkonebtnList.length; i++) {
             console.log($checkonebtnList[i].checked)
             if($checkonebtnList[i].checked === true){
                 console.log($checkonebtnList[i].closest("ul"))
                 let uid = $checkonebtnList[i].closest("ul").dataset.uid;
                 console.log(uid);
+                idList.push(Number(uid));
             }
         }
+        console.log(idList)
+
+        fetch(`/v1/admin/sticker`,
+            {
+            method : "PATCH",
+            headers : {'Content-Type' : 'application/json;'},
+            body : JSON.stringify(idList)
+            }
+        )
     })
 }
 
