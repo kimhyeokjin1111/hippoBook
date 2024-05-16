@@ -3,6 +3,7 @@ package com.example.hippobookproject.controller.mypage;
 import com.example.hippobookproject.dto.mypage.BookContainerDto;
 import com.example.hippobookproject.dto.mypage.IntBoardDto;
 import com.example.hippobookproject.dto.mypage.IntProfileDto;
+import com.example.hippobookproject.dto.mypage.MyContentDto;
 import com.example.hippobookproject.service.mypage.MypageService;
 import com.example.hippobookproject.service.user.UserService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,10 @@ public class MyPageController {
     @GetMapping("/int")
     public String myPageInt(Model model/*@SessionAttribute("userId") Long userId*/){
         Long userId = 1L;
+
+        IntProfileDto profilePhoto = mypageService.findProfilePhoto(userId);
+        model.addAttribute("profilePhoto",profilePhoto);
+
         IntProfileDto profileDto = mypageService.findProfile(userId);
         model.addAttribute("profileDto", profileDto);
         log.info("profileDto={}",profileDto);
@@ -50,6 +55,10 @@ public class MyPageController {
     @GetMapping("/book/container")
     public String bookContainer(Model model){
         Long userId = 1L;
+
+        IntProfileDto profilePhoto = mypageService.findProfilePhoto(userId);
+        model.addAttribute("profilePhoto",profilePhoto);
+
         List<BookContainerDto> bookContainerList  = mypageService.findBookContainer(userId);
         model.addAttribute("bookContainerList", bookContainerList);
 
@@ -72,6 +81,20 @@ public class MyPageController {
         IntProfileDto profileDto = mypageService.findProfile(userId);
         model.addAttribute("profileDto", profileDto);
         log.info("profileDto={}",profileDto);
+
+        List<MyContentDto> myContentList = mypageService.findMyContent(userId);
+        model.addAttribute("myContentList", myContentList);
+
+        log.info("myContentList={}",myContentList);
+
+        Long reviewCount = mypageService.findReviewCount(userId);
+        model.addAttribute("reviewCount",reviewCount);
+
+        Long postCount = mypageService.findPostCount(userId);
+        model.addAttribute("postCount",postCount);
+
+        IntProfileDto profilePhoto = mypageService.findProfilePhoto(userId);
+        model.addAttribute("profilePhoto",profilePhoto);
 
 
         return "mypage/myWriteContent";

@@ -16,10 +16,13 @@ public class MyContentDto {
         private String feedDate;
         private Long userId;
         private Long bookId;
+        private String bookName;
+        private String bookWriter;
         private Long totalLike;
         private Long fileId;
         private String fileName;
         private String fileUploadPath;
         private String fileUuid;
-
+        private int reviewCnt;
+        private int postCnt;
 }

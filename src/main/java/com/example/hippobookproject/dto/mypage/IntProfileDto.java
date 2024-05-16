@@ -17,4 +17,10 @@ public class IntProfileDto {
     private String fileUploadPath;
     private String fileUuid;
     private String fileName;
+    private Long userProfileId;
+    private String userProfileUploadPath;
+    private String userProfileUuid;
+    private String userProfileName;
+
+
 }
