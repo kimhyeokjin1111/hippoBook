@@ -366,7 +366,7 @@ textarea{
     position: absolute;
     top: 300px;
     left: 35%;
-     display: none;
+    /*display: none;*/
 }
 
 .Xbtn-box{
@@ -416,7 +416,7 @@ textarea{
 
 /*책 조회 표*/
 .book_selectarea{
-    padding-top: 20px;
+    padding: 20px 10px 0 10px;
 }
 
 .book_select{
@@ -432,6 +432,7 @@ textarea{
 
 .book_select tr{
     border: 1px solid #8d8d8d;
+    text-align: center;
 }
 
 .book_select td{
