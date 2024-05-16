@@ -1,7 +1,4 @@
-@font-face {
-    font-family: "neon";
-    src: url("../font/SpoqaHanSansNeo_all/SpoqaHanSansNeo_TTF_original/SpoqaHanSansNeo-Bold.ttf");
-  }
+
   
   * {
     margin: 0;
@@ -143,6 +140,13 @@
     border-radius: 50px;
     background-color: whitesmoke;
   }
+
+  #profile-photo > img {
+    width: 100%;
+    height: 100%;
+    border-width: 1px;
+    border-radius: 50px;
+  }
   
   #hippo {
     width: 48px;
@@ -261,6 +265,24 @@
     justify-content: flex-start;
   }
 
+.review-content-box-wrap2{
+  width: 1440px;
+  margin: auto;
+  display: none;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.review-count{
+  display: flex;
+}
+
+.post-count{
+  display: none;
+}
+
+
   .review-content-box{
     margin: 20px 84px;
     border: 1px solid lightgray;
@@ -302,7 +324,6 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-top: 20px;
     margin-left: 20px;
   }
 
@@ -328,5 +349,5 @@
 
 
   footer{
-    height: 100px;
+    height: 300px;
   }

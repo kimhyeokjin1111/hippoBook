@@ -144,6 +144,13 @@ a {
   background-color: whitesmoke;
 }
 
+#profile-photo > img {
+  width: 100%;
+  height: 100%;
+  border-width: 1px;
+  border-radius: 50px;
+}
+
 #hippo {
   width: 48px;
   height: 48px;

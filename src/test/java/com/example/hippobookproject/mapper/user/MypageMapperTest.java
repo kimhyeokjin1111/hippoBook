@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalLong;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -80,4 +81,18 @@ class MypageMapperTest {
 
     }
 
+    @Test
+    void selectReviewCount(){
+        Long reviewCount = mypageMapper.selectReviewCount(1L);
+    }
+
+    @Test
+    void selectPostCount(){
+        Long postCount = mypageMapper.selectPostCount(1L);
+    }
+
+    @Test
+    void selectProfilePhoto(){
+        mypageMapper.selectProfilePhoto(21L);
+    }
 }

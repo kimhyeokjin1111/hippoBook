@@ -141,4 +141,20 @@ class MypageServiceTest {
         assertThat(myContentList).hasSize(1);
 
     }
+
+    @Test
+    void findProfilePhoto() {
+        // given
+        IntProfileDto dto = new IntProfileDto();
+        dto.setUserId(21L);
+        dto.setUserProfileId(1L);
+
+        doReturn(Optional.of(dto)).when(mypageMapper).selectProfilePhoto(any());
+        // when
+        IntProfileDto profileDto = mypageService.findProfilePhoto(21L);
+        // then
+        assertThat(profileDto).extracting("userProfileId").isEqualTo(1L);
+
+    }
+
 }
