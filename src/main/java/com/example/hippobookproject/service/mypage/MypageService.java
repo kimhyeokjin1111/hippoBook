@@ -76,5 +76,19 @@ public class MypageService {
        return mypageMapper.selectMyContent(userId);
     }
 
+    public Long findReviewCount(Long userId){
+       return mypageMapper.selectReviewCount(userId);
+    }
+
+    public Long findPostCount(Long userId){
+        return mypageMapper.selectPostCount(userId);
+    }
+
+    public IntProfileDto findProfilePhoto(Long userId){
+        return mypageMapper.selectProfilePhoto(userId)
+                .orElse(new IntProfileDto());
+    }
+
+
 
 }

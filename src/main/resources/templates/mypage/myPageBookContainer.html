@@ -45,17 +45,12 @@
     <section class="profile" th:object="${profileDto}">
         <div class="profile-all">
             <div id="profile-photo">
-                <input
-                        type="file"
-                        id="profile-image"
-                        name="profile-photo-file"
-                        accept="image/*"
-                />
-                <img
-                        id="hippo"
-                        src="/images/mypage/free-icon-hippo-3250992.png"
-                        alt=""
-                />
+
+                <img th:if="${profilePhoto.userProfileId == null}"
+                     th:src="@{/imgs/mypage/free-icon-hippo-3250992.png}">
+                <img th:unless="${profilePhoto.userProfileId == null}"
+                     th:src="@{'/upload/' + ${profilePhoto.userProfileUploadPath} + '/' + ${profilePhoto.userProfileUuid} + '_' + ${profilePhoto.userProfileName}}"
+                     alt=""/>
             </div>
 
             <div id="profile-name">
