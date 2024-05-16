@@ -3,11 +3,9 @@ package com.example.hippobookproject.api.administrator;
 import com.example.hippobookproject.dto.administrator.*;
 import com.example.hippobookproject.dto.page.AdminUserCriteria;
 import com.example.hippobookproject.dto.page.AdminUserPage;
+import com.example.hippobookproject.mapper.administrator.AdministratorHeaderMapper;
 import com.example.hippobookproject.mapper.administrator.AdministratorStickerMapper;
-import com.example.hippobookproject.service.administrator.AdministratorChartService;
-import com.example.hippobookproject.service.administrator.AdministratorDeclService;
-import com.example.hippobookproject.service.administrator.AdministratorFollowService;
-import com.example.hippobookproject.service.administrator.AdministratorUserService;
+import com.example.hippobookproject.service.administrator.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +22,7 @@ public class AdministratorApi {
     private final AdministratorChartService administratorChartService;
     private final AdministratorDeclService administratorDeclService;
     private final AdministratorFollowService administratorFollowService;
+    private final AdministratorHeaderService administratorHeaderService;
 
     @DeleteMapping("/v1/users")
     public void removeUserByIdList(@RequestParam(value="userIdList" , required = false)
@@ -168,4 +167,38 @@ public class AdministratorApi {
         return stickerMap;
     }
 
+    @GetMapping("/v1/admin/header/notice/{type}")
+    public List<ResultNoticeDto> searchNoticeByType(@PathVariable("type") String type){
+        switch (type){
+            case "decl":
+                return administratorHeaderService.findDeclAll();
+            case "sticker":
+                return administratorHeaderService.findStickerAll();
+            default:
+                return administratorHeaderService.findNoticeAll();
+        }
+    }
+
+    @PatchMapping("/v1/admin/header/notice/{type}")
+    public void modifyReadStatusByIds(@PathVariable("type") String type,
+                                      @RequestBody List<Integer> idList){
+        log.info("type = " + type + ", idList = " + idList);
+        switch (type){
+            case "post":
+                administratorHeaderService.modifyPDeclByIds(idList);
+            case "comment":
+                administratorHeaderService.modifyCDeclByIds(idList);
+            case "feed":
+                administratorHeaderService.modifyFDeclByIds(idList);
+            default:
+                administratorHeaderService.modifyStickerByIds(idList);
+        }
+    }
+
+    @PatchMapping("/v1/admin/sticker")
+    public void modifyStickerCheckById(@RequestBody List<Integer> idList){
+        log.info("idList = " + idList);
+
+        administratorFollowService.modifyUserStickerCheck(idList);
+    }
 }

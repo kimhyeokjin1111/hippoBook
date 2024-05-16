@@ -62,4 +62,14 @@
         GROUP BY FOLLOW_TO) F
         ON R.USER_ID = F.FOLLOW_TO
     </select>
+
+    <update id="updateUserStickerCheck" parameterType="Long">
+        UPDATE TBL_USER
+        SET USER_STIKER_CHECK = 'Y'
+        WHERE USER_ID IN
+        <foreach collection="idList" item="list" index="index"
+                 separator="," open="(" close=")">
+            #{list}
+        </foreach>
+    </update>
 </mapper>
