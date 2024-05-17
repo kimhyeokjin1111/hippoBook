@@ -1,9 +1,6 @@
 package com.example.hippobookproject.mapper.user;
 
-import com.example.hippobookproject.dto.mypage.BookContainerDto;
-import com.example.hippobookproject.dto.mypage.IntBoardDto;
-import com.example.hippobookproject.dto.mypage.IntProfileDto;
-import com.example.hippobookproject.dto.mypage.MyContentDto;
+import com.example.hippobookproject.dto.mypage.*;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,6 +25,8 @@ class MypageMapperTest {
     IntBoardDto intBoardDto;
     BookContainerDto bookContainerDto;
     MyContentDto myContentDto;
+    StickerDto stickerDto;
+
     @Test
     void selectProfile() {
 
@@ -94,5 +93,17 @@ class MypageMapperTest {
     @Test
     void selectProfilePhoto(){
         mypageMapper.selectProfilePhoto(21L);
+    }
+
+    @Test
+    void insertSticker(){
+        stickerDto = new StickerDto();
+        stickerDto.setUserId(1L);
+        stickerDto.setStikerId(1L);
+        stickerDto.setStickerPermissionCheck("N");
+        stickerDto.setStickerRead("N");
+        mypageMapper.insertSticker(stickerDto);
+        System.out.println("stickerDto = " + stickerDto);
+
     }
 }

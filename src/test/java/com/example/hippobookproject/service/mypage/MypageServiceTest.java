@@ -1,9 +1,6 @@
 package com.example.hippobookproject.service.mypage;
 
-import com.example.hippobookproject.dto.mypage.BookContainerDto;
-import com.example.hippobookproject.dto.mypage.IntBoardDto;
-import com.example.hippobookproject.dto.mypage.IntProfileDto;
-import com.example.hippobookproject.dto.mypage.MyContentDto;
+import com.example.hippobookproject.dto.mypage.*;
 import com.example.hippobookproject.mapper.user.MypageBookContainerMapper;
 import com.example.hippobookproject.mapper.user.MypageMapper;
 import org.assertj.core.api.Assertions;
@@ -157,4 +154,15 @@ class MypageServiceTest {
 
     }
 
+    @Test
+    void registerSticker(){
+        Mockito.doNothing().when(mypageMapper).insertSticker(any());
+
+        mypageService.registerSticker(new StickerDto());
+
+        Mockito.verify(mypageMapper, Mockito.times(1)).insertSticker(any());
+    }
+
+
 }
+
