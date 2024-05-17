@@ -49,13 +49,6 @@ public class MainPageController {
         return new RedirectView("/");
     }
 
-    @GetMapping("/alarm")
-    public String alarmPage(@SessionAttribute(value = "userId", required = false)
-                            Long userId){
-        return userId == null ?
-                "redirect:/user/login" : "/alarm/alarmpage";
-    }
-
 
 
     }
