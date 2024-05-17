@@ -106,4 +106,10 @@ class MypageMapperTest {
         System.out.println("stickerDto = " + stickerDto);
 
     }
+
+    @Test
+    void selectSticker(){
+        Long stickerCnt = mypageMapper.selectSticker(1L);
+        System.out.println("stickerCnt = " + stickerCnt);
+    }
 }
