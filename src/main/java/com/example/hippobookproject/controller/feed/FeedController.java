@@ -1,8 +1,11 @@
 package com.example.hippobookproject.controller.feed;
 
 import com.example.hippobookproject.dto.feed.CardDto;
+import com.example.hippobookproject.dto.feed.PostBookDto;
+import com.example.hippobookproject.dto.feed.PostSearchDto;
 import com.example.hippobookproject.dto.feed.ReadCardDto;
 import com.example.hippobookproject.service.feed.FeedService;
+import com.example.hippobookproject.service.feed.PostService;
 import com.example.hippobookproject.service.feed.ReadService;
 import com.example.hippobookproject.service.follow.FollowService;
 import com.example.hippobookproject.service.recommend.RecommendService;
@@ -25,6 +28,7 @@ public class FeedController {
     private final RecommendService recommendService;
     private final FollowService followService;
     private final ReadService readService;
+    private final PostService postService;
 
     @GetMapping()
     public String feedPage(Model model, HttpSession session){
@@ -52,7 +56,10 @@ public class FeedController {
         return "feed/readpage";
     }
     @GetMapping("/postwrite")
-    public String postwrite(){
+    public String postwrite(PostSearchDto postSearchDto, Model model){
+        List<PostBookDto> postList = postService.selecyByKeyword(postSearchDto);
+        model.addAttribute("postList", postList);
+
         return "feed/postwrite";
     }
 

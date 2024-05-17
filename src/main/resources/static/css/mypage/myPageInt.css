@@ -145,6 +145,13 @@ a {
   background-color: whitesmoke;
 }
 
+#profile-photo > img {
+  width: 100%;
+  height: 100%;
+  border-width: 1px;
+  border-radius: 50px;
+}
+
 #hippo {
   width: 48px;
   height: 48px;
@@ -152,12 +159,12 @@ a {
   margin-left: 7px;
 }
 
-input[type="file"] {
+input [type="file"] {
   position: absolute;
   width: 64px;
   height: 64px;
   opacity: 0;
-  cursor: pointer;
+
 }
 
 #profile-name {
@@ -192,8 +199,8 @@ input[type="file"] {
   padding: 10px;
 }
 #best-book-img{
-  width: 150px;
-  height: 150px;
+  width: 129px;
+  height: 120px;
   border: solid #96eae8;
 }
 
@@ -424,12 +431,12 @@ h1 {
   height: 240px;
 }
 
-button {
-  background-color: #2bc1bf;
-  height: 30px;
-  width: 50%;
-  border-radius: 20px;
-}
+/*button {*/
+/*  background-color: #2bc1bf;*/
+/*  height: 30px;*/
+/*  width: 50%;*/
+/*  border-radius: 20px;*/
+/*}*/
 
 #reading-book-delete-button {
   display: flex;

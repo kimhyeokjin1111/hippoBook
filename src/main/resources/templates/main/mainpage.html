@@ -35,11 +35,6 @@
                 <a th:href="@{/search}" class="main_top_category_list_title">검색</a>
 
               <li class="main_top_category_list2">
-                <a href="" class="main_top_category_list_title">이벤트</a>
-                <!-- 이벤트 이동 -->
-              </li>
-
-              <li class="main_top_category_list2">
                 <a th:href="@{/categorie/Categoriepage}" class="main_top_category_list_title">카테고리</a>
               </li>
 
@@ -129,6 +124,7 @@
           <a th:href="@{/feed}">
             <h3 class="novel_preview_title">독후감 바로가기</h3>
           </a>
+
             <div class="novel_content">
               <div class="novel_content_wrapper">
                 <div class="novel_box">
@@ -136,7 +132,7 @@
                     <div class="novel_thumbnail_wrap">
                       <div class="novel_data">
                         <div class="novel_box_inner">
-                          <a href="" class="novel_url">
+                          <a th:href="@{/feed}" class="novel_url">
                             <div class="thumbnail2">
                               <div class="novel_thumbnail_inner">
                                 <div class="novel_thumbnail_inner2">
@@ -147,7 +143,7 @@
                               </div>
                             </div>
                           </a>
-                          <a href="" class="book_data2">  <!--책 정보 url이동-->
+                          <a th:href="@{/feed}" class="book_data2">  <!--책 정보 url이동-->
                             <div class="novel_box_content">
                               <p class="novel_box_content_title" th:text="${read.readTitle}"></p>
                               <p class="novel_box_content_content" th:text="${read.userNickName}"></p>
@@ -155,16 +151,17 @@
                           </a>
                         </div>
                       </div>
+                      <a th:href="@{/feed}">
                       <div class="novel_box_bottom">
                         <div class="novel_box_bottom_content" th:text="${read.readContent}"></div>
                       </div>
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
-          </a></div>
+        </div>
       <div class="main_book_report">
         <div class="main_book_report_layout">
           <a th:href="@{/board/post/main}">
@@ -183,7 +180,7 @@
                         <div class="main_book_report_content" th:text="${novel.novelContent}"></div>
                       </div>
                       <div class="main_book_report_writer_content">
-                        <img class="main_book_report_writer_content_icon" th:src="@{'/upload/' + ${novel.uploadPath + '/' + novel.uuId + '_' + novel.fileName}}" alt="">
+                        <img class="main_book_report_writer_content_icon" th:src="@{'/upload/' + ${novel.userProfileUploadPath + '/' + novel.userProfileUuId + '_' + novel.userProfileName}}" alt="">
                         <div class="main_book_report_writer_content_username" th:text="${novel.userNickName}"></div>
                       </div>
                     </a>
@@ -231,7 +228,7 @@
             <ul class="main_event_content_layout">
               <li class="main_event_content_box">
                 <a href="">
-                  <img th:src="@{/images/main/event_thumbnail.png}" alt="">
+                  <img th:src="@{/images/main/thumbnail1.png}" alt="">
                 </a> <!--이벤트 페이지 이동-->
               </li>
               <li class="main_event_content_box">

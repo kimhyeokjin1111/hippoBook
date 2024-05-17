@@ -9,7 +9,7 @@
   </head>
   <body>
     <header th:fragment="admin-header">
-      <h1>히포북</h1>
+      <h1><img th:src="@{/images/book/HippoBook_logo.png}" alt=""></h1>
       <div class="header__admin-icon-box">
         <div class="header__admin-icon" data-name="notice" data-clicked="F">
           <img th:src="@{/imgs/administrator/fragment/notice.png}" alt="" />
@@ -29,85 +29,13 @@
       <hr />
       <nav class="notice-type-menu">
         <ul>
-          <li>전체</li>
-          <li>신고</li>
-          <li>스티커</li>
+          <li class="notice-btn" th:data-type="A">전체</li>
+          <li class="notice-btn" th:data-type="decl">신고</li>
+          <li class="notice-btn" th:data-type="sticker">스티커</li>
         </ul>
       </nav>
       <div class="header__notice-content-box">
-        <article>
-          <div class="notice-preview-head">
-            <strong>신고</strong>
-            <span>24.04.17</span>
-          </div>
-          <hr />
-          <span>발신자</span>
-          <div>알림 내용</div>
-        </article>
-        <article>
-          <div class="notice-preview-head">
-            <strong>신고</strong>
-            <span>24.04.17</span>
-          </div>
-          <hr />
-          <span>발신자</span>
-          <div>알림 내용</div>
-        </article>
-        <article>
-          <div class="notice-preview-head">
-            <strong>신고</strong>
-            <span>24.04.17</span>
-          </div>
-          <hr />
-          <span>발신자</span>
-          <div>알림 내용</div>
-        </article>
-        <article>
-          <div class="notice-preview-head">
-            <strong>신고</strong>
-            <span>24.04.17</span>
-          </div>
-          <hr />
-          <span>발신자</span>
-          <div>알림 내용</div>
-        </article>
 
-        <article>
-          <div class="notice-preview-head">
-            <strong>신고</strong>
-            <span>24.04.17</span>
-          </div>
-          <hr />
-          <span>발신자</span>
-          <div>알림 내용</div>
-        </article>
-        <article>
-          <div class="notice-preview-head">
-            <strong>신고</strong>
-            <span>24.04.17</span>
-          </div>
-          <hr />
-          <span>발신자</span>
-          <div>알림 내용</div>
-        </article>
-        <article>
-          <div class="notice-preview-head">
-            <strong>신고</strong>
-            <span>24.04.17</span>
-          </div>
-          <hr />
-          <span>발신자</span>
-          <div>알림 내용</div>
-        </article>
-        <article>
-          <div class="notice-preview-head">
-            <strong>신고</strong>
-            <span>24.04.17</span>
-          </div>
-          <hr />
-          <span>발신자</span>
-          <div>알림 내용</div>
-        </article>
       </div>
       <div class="header__notice-content-box-none">
         <img th:src="@{/imgs/administrator/fragment/notice-none-bell.png}" alt="" />
@@ -115,13 +43,13 @@
       </div>
     </div>
     <div class="header__admin-info">
-      <div class="header__admin-nickname">
-        <span>kimhyeokjin</span> <br />
-        관리자님 안녕하세요
-      </div>
-      <hr />
-      <div class="header__admin-nickname header__">내 정보 보기</div>
-      <hr />
+<!--      <div class="header__admin-nickname">-->
+<!--        <span>kimhyeokjin</span> <br />-->
+<!--        관리자님 안녕하세요-->
+<!--      </div>-->
+<!--      <hr />-->
+<!--      <div class="header__admin-nickname header__">내 정보 보기</div>-->
+<!--      <hr />-->
       <div class="header__admin-logout">
         <span>로그아웃</span>
       </div>

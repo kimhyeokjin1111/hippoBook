@@ -1,8 +1,6 @@
 package com.example.hippobookproject.service.mypage;
 
-import com.example.hippobookproject.dto.mypage.BookContainerDto;
-import com.example.hippobookproject.dto.mypage.IntBoardDto;
-import com.example.hippobookproject.dto.mypage.IntProfileDto;
+import com.example.hippobookproject.dto.mypage.*;
 import com.example.hippobookproject.mapper.user.MypageBookContainerMapper;
 import com.example.hippobookproject.mapper.user.MypageMapper;
 import lombok.RequiredArgsConstructor;
@@ -38,7 +36,7 @@ public class MypageService {
     public IntBoardDto findIntBoardText(Long userId){
 
        return mypageMapper.selectIntBoardText(userId)
-               .orElseThrow(() -> new IllegalStateException("존재하지 않는 회원 번호"));
+               .orElse(new IntBoardDto());
     }
 
     public List<BookContainerDto> findBookContainer(Long userId){
@@ -68,8 +66,34 @@ public class MypageService {
     }
 
     public List<BookContainerDto> findRecentBook(Long userId){
-       return mypageMapper.selectRecentBook(1L);
+       return mypageMapper.selectRecentBook(userId);
     }
+
+    public List<MyContentDto> findMyContent(Long userId){
+       return mypageMapper.selectMyContent(userId);
+    }
+
+    public Long findReviewCount(Long userId){
+       return mypageMapper.selectReviewCount(userId);
+    }
+
+    public Long findPostCount(Long userId){
+        return mypageMapper.selectPostCount(userId);
+    }
+
+    public IntProfileDto findProfilePhoto(Long userId){
+        return mypageMapper.selectProfilePhoto(userId)
+                .orElse(new IntProfileDto());
+    }
+
+    public void registerSticker(StickerDto stickerDto){
+       if (stickerDto.getUserId() != null){
+           mypageMapper.insertSticker(stickerDto);
+       }
+
+
+    }
+
 
 
 

@@ -1,8 +1,6 @@
 package com.example.hippobookproject.mapper.user;
 
-import com.example.hippobookproject.dto.mypage.BookContainerDto;
-import com.example.hippobookproject.dto.mypage.IntBoardDto;
-import com.example.hippobookproject.dto.mypage.IntProfileDto;
+import com.example.hippobookproject.dto.mypage.*;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalLong;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,6 +24,9 @@ class MypageMapperTest {
     IntProfileDto intProfileDto;
     IntBoardDto intBoardDto;
     BookContainerDto bookContainerDto;
+    MyContentDto myContentDto;
+    StickerDto stickerDto;
+
     @Test
     void selectProfile() {
 
@@ -71,4 +73,37 @@ class MypageMapperTest {
 
     }
 
+    @Test
+    void selectMyContent(){
+        List<MyContentDto> myContentList = mypageMapper.selectMyContent(1L);
+        System.out.println("myContentList = " + myContentList);
+
+    }
+
+    @Test
+    void selectReviewCount(){
+        Long reviewCount = mypageMapper.selectReviewCount(1L);
+    }
+
+    @Test
+    void selectPostCount(){
+        Long postCount = mypageMapper.selectPostCount(1L);
+    }
+
+    @Test
+    void selectProfilePhoto(){
+        mypageMapper.selectProfilePhoto(21L);
+    }
+
+    @Test
+    void insertSticker(){
+        stickerDto = new StickerDto();
+        stickerDto.setUserId(1L);
+        stickerDto.setStikerId(1L);
+        stickerDto.setStickerPermissionCheck("N");
+        stickerDto.setStickerRead("N");
+        mypageMapper.insertSticker(stickerDto);
+        System.out.println("stickerDto = " + stickerDto);
+
+    }
 }

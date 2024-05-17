@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  text-decoration-line: none;
 }
 
 ul {
@@ -20,10 +21,10 @@ header > div {
   justify-content: flex-end;
 }
 
-header div {
-  padding-left: 9px;
-  margin-left: 9px;
-}
+/*header div {*/
+/*  padding-left: 9px;*/
+/*  margin-left: 9px;*/
+/*}*/
 
 header > div img {
   width: 25px;
@@ -423,7 +424,7 @@ main {
   margin-left: 5px;
 }
 
-.main__searched-result-page-btn strong {
+.main__searched-result-page-btn a {
   color: #fff;
   background-color: #5eadac;
   display: inline-block;
@@ -432,4 +433,5 @@ main {
   font-size: 14px;
   line-height: 24px;
   text-align: center;
+  pointer-events: none;
 }
