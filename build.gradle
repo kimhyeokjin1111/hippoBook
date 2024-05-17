@@ -39,6 +39,8 @@ dependencies {
     // 썸네일
     implementation 'net.coobird:thumbnailator:0.4.20'
 
+
+
 }
 
 
