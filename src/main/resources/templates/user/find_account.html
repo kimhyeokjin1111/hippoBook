@@ -37,7 +37,7 @@
                                 </div>
                                 <span class="line">-</span>
                                 <div class="two">
-                                    <div class="mds-input input jumin2 mds-input--default mds-input--center">
+                                    <div class="mds-input input jumin2 mds-input--default mds-input--center" style="width: 78px;">
                                         <label>
                                             <div class="inner">
                                                 <div class="input">
@@ -58,36 +58,6 @@
                                         style="display: none;"></button>
                             </div>
                         </div>
-                        <div data-e-1160 aria-owns="mdsselect-input- 156"
-                             class="mds-select input mds-select--default mds-select--action" name="agency">
-                            <div class="inner" style="height: 56px;">
-                                <span id="mdsselct-label-input-156" class="label">통신사</span>
-                                <input type="text" placeholder="통신사 선택" readonly="readonly" class="mds-select-input">
-                            </div>
-                        </div>
-                        <i class="mds-icon--down-filled">
-                        </i>
-                    </div>
-                    <ul role="listbox" aria-labelledby="mdsselct-label-input-156" style="display: none;">
-                        <li role="option" id="input-156-0" tabindex="-1" class>
-                            <span>SKT</span>
-                        </li>
-                        <li role="option" id="input-156-1" tabindex="-1" class>
-                            <span>KT</span>
-                        </li>
-                        <li role="option" id="input-156-2" tabindex="-1" class>
-                            <span>LG U+</span>
-                        </li>
-                        <li role="option" id="input-156-3" tabindex="-1" class>
-                            <span>SKT 알뜰폰</span>
-                        </li>
-                        <li role="option" id="input-156-4" tabindex="-1" class>
-                            <span>KT 알뜰폰</span>
-                        </li>
-                        <li role="option" id="input-156-5" tabindex="-1" class>
-                            <span>LG U+ 알뜰폰</span>
-                        </li>
-                    </ul>
                 <div class="input-item">
                     <div class="mds-input input mds-input--default mds-input--left">
                         <label style="margin-bottom: 10px;">
@@ -96,12 +66,12 @@
                                                                 <span id="input-157-label" class="label">
                                                                     휴대폰 번호 입력
                                                                 </span>
-                                    <input autocomplete="off" id="input-157" aria-labelledby="input-157-label"
-                                           type="number" placeholder="01012345678" pattern="\d*"
+                                    <input  id="input-157" placeholder="01012345678"
                                            class="mds-input-field" name="userPhonenumber">
                                 </div>
-                                <button type="button" aria-label="내용 삭제" class="mds-icon--input-delete clear-button"
-                                        style="display: none;"></button>
+                                <button type="submit" class="phone-info-code-button">
+                                    <span>인증번호 발송</span>
+                                </button>
                             </div>
                         </label>
                     </div>
@@ -135,6 +105,7 @@
                         <button type="submit" class="next-button mds-button mds-button--primary mds-button--h56 mds-button--r4">
                             계정 정보 찾기
                         </button>
+                    </div>
                     </div>
             </form>
         </div>
