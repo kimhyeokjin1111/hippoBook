@@ -9,7 +9,7 @@
   $optionSpanBtn.forEach((ele) => {
     // console.log(ele);
     ele.addEventListener('click', function () {
-      // console.log(this.dataset.search_type);
+      console.log('this : ', this);
       if (this.dataset.search_type == 'post') {
         if ($postUl.classList.contains('search-option-ul-block')) {
           $postUl.classList.remove('search-option-ul-block');
@@ -38,7 +38,7 @@
     menu.addEventListener('click', function () {
       let $postNow = document.querySelector('.post-menu-active-info');
       let postNow = $postNow.dataset.postnow;
-      let $postTitle = document.querySelector('.main__title-box');
+      let $postTitle = document.querySelector('.main__title-box > span');
 
       let clickedPost = this.dataset.postnow;
       console.log(clickedPost);
