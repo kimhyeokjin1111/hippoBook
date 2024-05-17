@@ -11,6 +11,12 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 @RequiredArgsConstructor
 public class alarmController {
 
+    @GetMapping("/alarm")
+    public String alarmPage(@SessionAttribute(value = "userId", required = false)
+                            Long userId){
+        return userId == null ?
+                "redirect:/user/login" : "/alarm/alarmpage";
+    }
 
 
 }
