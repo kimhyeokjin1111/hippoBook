@@ -111,9 +111,12 @@ public class MyPageController {
     public String myPageSticker(StickerDto stickerDto,
                                 @SessionAttribute(value = "userId", required = false) Long userId,
                                 RedirectAttributes redirectAttributes) {
-        stickerDto.setUserId(1L);
+        if (userId == null){
+            userId =1L;
+        }
+
         log.info("stickerDto={}", stickerDto);
-        mypageService.registerSticker(stickerDto);
+        mypageService.registerSticker(stickerDto,userId);
         redirectAttributes.addFlashAttribute("stickerId", stickerDto.getStikerId());
         return "redirect:/mypage/sticker";
     }

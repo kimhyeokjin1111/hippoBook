@@ -111,5 +111,11 @@
         VALUES (SEQ_STICKER.nextval,#{userId},'N','N')
     </insert>
 
+    <select id="selectSticker" resultType="Long">
+        SELECT COUNT(USER_ID) AS USERID_CNT
+        FROM TBL_STICKER
+        WHERE USER_ID = #{userId}
+    </select>
+
 
 </mapper>

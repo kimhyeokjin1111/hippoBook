@@ -158,9 +158,11 @@ class MypageServiceTest {
     void registerSticker(){
         Mockito.doNothing().when(mypageMapper).insertSticker(any());
 
-        mypageService.registerSticker(new StickerDto());
+        mypageService.registerSticker(new StickerDto(),1L);
 
         Mockito.verify(mypageMapper, Mockito.times(1)).insertSticker(any());
+
+
     }
 
 

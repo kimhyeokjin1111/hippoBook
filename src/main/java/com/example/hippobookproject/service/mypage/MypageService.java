@@ -4,6 +4,7 @@ import com.example.hippobookproject.dto.mypage.*;
 import com.example.hippobookproject.mapper.user.MypageBookContainerMapper;
 import com.example.hippobookproject.mapper.user.MypageMapper;
 import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -86,11 +87,14 @@ public class MypageService {
                 .orElse(new IntProfileDto());
     }
 
-    public void registerSticker(StickerDto stickerDto){
-       if (stickerDto.getUserId() != null){
-           mypageMapper.insertSticker(stickerDto);
-       }
+    public void registerSticker(@Param("stickerDto") StickerDto stickerDto,
+                                @Param("userId") Long userId){
 
+        Long stickerCnt = mypageMapper.selectSticker(userId);
+
+        if (stickerCnt == 0){
+            mypageMapper.insertSticker(stickerDto);
+        }
 
     }
 
