@@ -1,9 +1,6 @@
 package com.example.hippobookproject.mapper.user;
 
-import com.example.hippobookproject.dto.mypage.BookContainerDto;
-import com.example.hippobookproject.dto.mypage.IntBoardDto;
-import com.example.hippobookproject.dto.mypage.IntProfileDto;
-import com.example.hippobookproject.dto.mypage.MyContentDto;
+import com.example.hippobookproject.dto.mypage.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.awt.print.Book;
@@ -31,5 +28,7 @@ public interface MypageMapper {
     Long selectPostCount(Long userId);
 
     Optional<IntProfileDto> selectProfilePhoto(Long userId);
+
+    void insertSticker(StickerDto stickerDto);
 
 }
