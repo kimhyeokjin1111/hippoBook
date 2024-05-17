@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest
 @Transactional
 class BookMapperTest {
@@ -15,6 +17,8 @@ class BookMapperTest {
     @BeforeEach
     void setUp(){
         Book = new BookDto();
+        Book.setBookName("Book");
+        Book.setBookWriter("Writer");
         Book.setBookDate(1L);
         Book.setBookId(1L);
         Book.setPublisherId(1L);
@@ -23,22 +27,33 @@ class BookMapperTest {
     void insertBook(){
         bookMapper.insertBook(Book);
         BookDto insertBook = bookMapper.findBookById(Book.getBookId());
-//        BookDto insertBook = bookMapper.findBookById(Book.getBookDate());
-//        BookDto insertBook = bookMapper.findBookById(Book.getPublisherId());
-
+        assertNotNull(insertBook);
+        assertEquals(insertBook.getBookName(), Book.getBookName());
+        assertEquals(insertBook.getBookId(), Book.getBookId());
+        assertEquals(insertBook.getBookWriter(), Book.getBookWriter());
+        assertEquals(insertBook.getBookDate(), Book.getBookDate());
+        assertEquals(insertBook.getPublisherId(), Book.getPublisherId());
     }
     @Test
     void updateBook(){
         bookMapper.updateBook(Book);
         BookDto updateBook = bookMapper.findBookById(Book.getBookId());
-//        BookDto updateBook = bookMapper.findBookById(Book.getBookDate());
-//        BookDto updateBook = bookMapper.findBookById(Book.getPublisherId());
+        assertNotNull(updateBook);
+        assertEquals(updateBook.getBookName(), Book.getBookName());
+        assertEquals(updateBook.getBookId(), Book.getBookId());
+        assertEquals(updateBook.getBookWriter(), Book.getBookWriter());
+        assertEquals(updateBook.getBookDate(), Book.getBookDate());
+        assertEquals(updateBook.getPublisherId(), Book.getPublisherId());
     }
     @Test
     void deleteBook(){
         bookMapper.deleteBook(Book);
         BookDto deleteBook = bookMapper.findBookById(Book.getBookId());
-//        BookDto deleteBook = bookMapper.findBookById(Book.getBookDate());
-//        BookDto deleteBook = bookMapper.findBookById(Book.getBookDate());
+        assertNotNull(deleteBook);
+        assertEquals(deleteBook.getBookName(), Book.getBookName());
+        assertEquals(deleteBook.getBookId(), Book.getBookId());
+        assertEquals(deleteBook.getBookWriter(), Book.getBookWriter());
+        assertEquals(deleteBook.getBookDate(), Book.getBookDate());
+        assertEquals(deleteBook.getPublisherId(), Book.getPublisherId());
     }
 }
