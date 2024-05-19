@@ -10,7 +10,7 @@
     <script defer th:src="@{js/mypage/myPageInt_modify.js}"></script>
 </head>
 <body>
-<form action="">
+
     <div>
         <div>
             <header>
@@ -70,7 +70,7 @@
                     </div>
                 </div>
             </main>
-            <section class="profile">
+            <section class="profile" th:object="${profileDto}">
                 <div class="profile-all">
                     <div id="profile-photo">
                         <input
@@ -112,7 +112,7 @@
     <div class="main__myInfo-modi-out-container">
         <div class="main__myInfo-modi-in-container">
             <div class="main__myInfo-title-box">
-                <h3>개인정보 수정</h3>
+                <h3>닉네임 변경</h3>
             </div>
             <div class="main__myInfo-modify-boxs">
                 <label class="main__myInfo-modify-label">
@@ -124,26 +124,26 @@
             </div>
             <div class="main__myInfo-modify-boxs">
                 <label class="main__myInfo-modify-label">
-                    <div class="myInfo-midify-content myInfo-modify-nn">
-                        <span>닉네임*</span>
-                        <input type="text" name="nickname" placeholder="닉네임 입력">
-                    </div>
-                </label>
-            </div>
-            <div class="main__myInfo-modify-boxs">
-                <label class="main__myInfo-modify-label">
                     <div class="myInfo-midify-content myInfo-modify-pw">
                         <span>비밀번호*</span>
                         <input type="password" name="password" placeholder="비밀번호 입력">
                     </div>
                 </label>
             </div>
+            <div class="main__myInfo-modify-boxs">
+                <label class="main__myInfo-modify-label">
+                    <div class="myInfo-midify-content myInfo-modify-nn">
+                        <span>닉네임*</span>
+                        <input type="text" name="nickname" placeholder="닉네임 입력">
+                    </div>
+                </label>
+            </div>
         </div>
 
         <div class="main__myInfo-modify-btn-box">
-            <button>개인정보 수정</button>
+            <button>닉네임 변경</button>
         </div>
-        <p class="myInfo-modify-cf">인증 완료 이후 안전한 사용을 위해 로그아웃됩니다.</p>
+        <p class="myInfo-modify-cf">변경 완료 이후 안전한 사용을 위해 로그아웃됩니다.</p>
     </div>
     <footer>
         <div>

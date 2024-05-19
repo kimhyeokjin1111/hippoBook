@@ -9,7 +9,7 @@
     <script defer th:src="@{js/mypage/readingBookDeleteButton.js}"></script>
   </head>
   <body>
-    <form action="">
+
       <div>
         <div>
           <header>
@@ -69,7 +69,7 @@
               </div>
             </div>
           </main>
-          <section class="profile">
+          <section class="profile" th:object="${profileDto}">
             <div class="profile-all">
               <div id="profile-photo">
                 <input
@@ -117,8 +117,10 @@
               <hr>
               <p><span>서재에 기록된 도서</span><span><strong>0</strong>권</span></p>
               <p><span>서재에 기록된 리뷰</span><span><strong>0</strong>개</span></p>
+              <p><span>서재에 기록된 포스트</span><span><strong>0</strong>개</span></p>
             </div>
           </div>
+          <form th:action="@{/mypage/secession}" method="post">
           <div class="main__secession-description-content-box">
             <p>탈퇴 시 유의사항</p>
             <ul>
@@ -127,9 +129,11 @@
               <li>탈퇴 시에도 회원님이 작성하신 포스트, 댓글을 포함한 모든 게시물은 자동 삭제되지 않습니다. 노출을 원치 않으시면 반드시 미리 삭제하신 후 탈퇴해주세요.</li>
             </ul>
             <p><input type="checkbox" id="secession-agree-check"><label for="secession-agree-check">회원 탈퇴에 관한 모든 내용을 숙지하였고, 회원 탈퇴를 신청합니다.</label></p>
-            <div><button>돌아가기</button><button>탈퇴하기</button></div>
+            <div><button>돌아가기</button><input type="hidden" th:value="${profileDto.userId}"/><button type="submit" onclick="alert('회원 탈퇴가 완료되었습니다.')">탈퇴하기</button></div>
           </div>
+          </form>
         </div>
+
       </div>
       <footer>
         <div>
