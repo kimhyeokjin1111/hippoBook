@@ -117,5 +117,16 @@
         WHERE USER_ID = #{userId}
     </select>
 
+    <delete id="deleteUser">
+        DELETE FROM TBL_USER
+        WHERE USER_ID = #{userId}
+    </delete>
+
+    <update id="updateUserNickName">
+        UPDATE TBL_USER
+        SET USER_NICKNAME = #{userNickName}
+        WHERE USER_ID = #{userId}
+    </update>
+
 
 </mapper>

@@ -132,12 +132,56 @@ public class MyPageController {
     }
 
     @GetMapping("/modify")
-    public String myPageModify() {
+    public String myPageModify(Model model) {
+        Long userId = 1L;
+        IntProfileDto profileDto = mypageService.findProfile(userId);
+        model.addAttribute("profileDto", profileDto);
+        log.info("profileDto={}", profileDto);
+
+        IntProfileDto profilePhoto = mypageService.findProfilePhoto(userId);
+        model.addAttribute("profilePhoto", profilePhoto);
+
         return "mypage/myPageInt_modify";
     }
 
+    @PostMapping("/modify")
+    public String myPageModify(IntBoardDto intBoardDto,
+                               @SessionAttribute(value = "userId", required = false) Long userId,
+                               RedirectAttributes redirectAttributes){
+
+        if (userId == null){
+            userId =1L;
+
+        }
+        mypageService.modifyNickName(new IntProfileDto());
+
+        return "redirect:/mypage/modify";
+    }
+
     @GetMapping("/secession")
-    public String myPageSecession() {
+    public String myPageSecession(Model model) {
+
+        Long userId = 1L;
+        IntProfileDto profileDto = mypageService.findProfile(userId);
+        model.addAttribute("profileDto", profileDto);
+        log.info("profileDto={}", profileDto);
+
+        IntProfileDto profilePhoto = mypageService.findProfilePhoto(userId);
+        model.addAttribute("profilePhoto", profilePhoto);
         return "mypage/myPageInt_secession";
+    }
+
+    @PostMapping("/secession")
+    public String myPageSecession(@SessionAttribute(value = "userId", required = false) Long userId,
+                                  RedirectAttributes redirectAttributes){
+
+        if (userId == null){
+            userId =1L;
+
+        }
+
+        mypageService.removeUser(userId);
+        redirectAttributes.addFlashAttribute("userId", userId);
+        return "redirect:/mypage/secession";
     }
 }

@@ -165,6 +165,27 @@ class MypageServiceTest {
 
     }
 
+    @Test
+    void removeUser() {
+        //given
+        doNothing().when(mypageMapper).deleteUser(any());
+        //when
+        mypageService.removeUser(1L);
+        //then
+        verify(mypageMapper, times(1)).deleteUser(any());
+
+    }
+
+    @Test
+    void modifyNickName(){
+        doNothing().when(mypageMapper).updateUserNickName(any());
+
+        mypageService.modifyNickName(new IntProfileDto());
+
+        verify(mypageMapper,times(1)).updateUserNickName(any());
+    }
+
+
 
 }
 

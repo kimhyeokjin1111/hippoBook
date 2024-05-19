@@ -98,6 +98,14 @@ public class MypageService {
 
     }
 
+    public void removeUser(Long userId){
+       mypageMapper.deleteUser(userId);
+    }
+
+    public void modifyNickName(IntProfileDto intProfileDto){
+       mypageMapper.updateUserNickName(intProfileDto);
+    }
+
 
 
 
