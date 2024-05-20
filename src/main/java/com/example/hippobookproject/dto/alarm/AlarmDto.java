@@ -10,10 +10,13 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 public class AlarmDto {
+    private Long alarmId;
     private String alarmContent;
-    private String alarmDate;
+    private String alarmCheck;
+    private Long alarmTo;
+    private Long alarmFrom;
     private String userNickName;
 
 
-//    ALARM_ID, ALARM_CONTENT, ALARM_DATE, ALARM_TO, ALARM_FROM
+//   ALARM_ID, ALARM_CONTENT, ALARM_DATE, ALARM_CHECK, ALARM_TO, ALARM_FROM
 }
