@@ -7,6 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/user/hippobook.css}">
     <!--    <link rel="stylesheet" th:href="@{/css/user/joinAuth.css}">-->
     <script defer th:src="@{/js/user/register.js}"></script>
+    <script defer th:src="@{/js/user/sms_code_timer.js}"></script>
 </head>
 <body data-theme="light">
 <div data-a-1120 id="wrap" class="web-mount">
@@ -103,7 +104,7 @@
                                            placeholder="01012345678"
                                            class="mds-input-field" name="userPhonenumber">
                                 </div>
-                                <button type="submit" class="phone-info-code-button">
+                                <button type="button" class="phone-info-code-button" onclick="takeTarget()">
                                     <span>인증번호 발송</span>
                                 </button>
                             </div>
@@ -125,7 +126,10 @@
                                     </div>
                                     <button type="button" aria-label="내용 삭제" class="mds-icon--input-delete clear-button"
                                             style="display: none;"></button>
-                                    <span class="time">0:00</span>
+                                    <span class="sms_code_timer">
+                                        <span id="remaining__min">3</span> :
+                                        <span id="remaining__sec">00</span>
+                                    </span>
                                 </div>
                             </label>
                         </div>
