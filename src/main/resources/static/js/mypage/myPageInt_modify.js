@@ -1,6 +1,6 @@
 {
   let $myInfoModifyInput = document.querySelectorAll(
-    '.myInfo-midify-content > input'
+    '.myInfo-modify-content > input'
   );
 
   $myInfoModifyInput.forEach((input) => {

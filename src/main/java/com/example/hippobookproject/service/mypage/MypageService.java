@@ -25,11 +25,17 @@ public class MypageService {
    }
 
    public void registerIntBoardText(IntBoardDto intBoardDto){
-       if (intBoardDto.getUserId() == null){
-           mypageMapper.insertIntBoardText(intBoardDto);
-       }else {
-           mypageMapper.updateIntBoardText(intBoardDto);
-       }
+       Optional<IntBoardDto> dto = mypageMapper.selectIntBoardText(intBoardDto.getUserId());
+       if (dto.isEmpty()){
+          mypageMapper.insertIntBoardText(intBoardDto);
+      }else {
+           if (intBoardDto.getIntBoardContent() == null){
+               intBoardDto.setIntBoardContent(" ");
+           }
+          mypageMapper.updateIntBoardText(intBoardDto);
+
+
+      }
 
 
    }
@@ -42,7 +48,7 @@ public class MypageService {
 
     public List<BookContainerDto> findBookContainer(Long userId){
 
-       return mypageBookContainerMapper.selectBookContainer(1L);
+       return mypageBookContainerMapper.selectBookContainer(userId);
     }
 
     public void removeBookContainer(Long bookHasId){

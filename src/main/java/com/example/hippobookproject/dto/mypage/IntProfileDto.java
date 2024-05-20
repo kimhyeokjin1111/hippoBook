@@ -10,6 +10,7 @@ import lombok.ToString;
 public class IntProfileDto {
     private Long userId;
     private String userNickName;
+    private String userEmail;
     private Long followingCnt;
     private Long followerCnt;
     private Long bestBookId;
