@@ -25,16 +25,13 @@ public class MypageService {
    }
 
    public void registerIntBoardText(IntBoardDto intBoardDto){
-       Optional<IntBoardDto> dto = mypageMapper.selectIntBoardText(intBoardDto.getUserId());
-       if (dto.isEmpty()){
+
+       mypageMapper.selectIntBoardText(intBoardDto.getUserId());
+       if (intBoardDto.getUserId()==null){
           mypageMapper.insertIntBoardText(intBoardDto);
+
       }else {
-           if (intBoardDto.getIntBoardContent() == null){
-               intBoardDto.setIntBoardContent(" ");
-           }
           mypageMapper.updateIntBoardText(intBoardDto);
-
-
       }
 
 
