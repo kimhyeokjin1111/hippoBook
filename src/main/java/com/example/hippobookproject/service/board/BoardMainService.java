@@ -32,7 +32,7 @@ public class BoardMainService {
 
     }
 
-    public int selectPostTotal(PostSearchOptDto postSearchOptDto,
+    public int findPostTotal(PostSearchOptDto postSearchOptDto,
                                String postType){
         switch (postType){
             case "deal":
