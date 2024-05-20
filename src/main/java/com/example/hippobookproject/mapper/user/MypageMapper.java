@@ -2,6 +2,7 @@ package com.example.hippobookproject.mapper.user;
 
 import com.example.hippobookproject.dto.mypage.*;
 import com.example.hippobookproject.dto.user.UserJoinDto;
+import com.example.hippobookproject.dto.user.UserProfileDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -38,6 +39,10 @@ public interface MypageMapper {
     void deleteUser(Long userId);
 
     void updateUserNickName(IntProfileDto intProfileDto);
+
+    Optional<UserProfileDto> updateUserProfilePhoto(Long userId);
+    
+
 
 
 }
