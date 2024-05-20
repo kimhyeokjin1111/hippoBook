@@ -38,6 +38,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     // 썸네일
     implementation 'net.coobird:thumbnailator:0.4.20'
+    // 문자 인증번호
+    // https://mvnrepository.com/artifact/net.nurigo/sdk
+    implementation 'net.nurigo:sdk:4.3.0'
 
 
 
