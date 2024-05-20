@@ -21,8 +21,8 @@ public class MyPageController {
     private final MypageService mypageService;
 
     @GetMapping("/int")
-    public String myPageInt(Model model/*@SessionAttribute("userId") Long userId*/) {
-        Long userId = 1L;
+    public String myPageInt(Model model,@SessionAttribute("userId") Long userId) {
+//        Long userId = 1L;
 
         IntProfileDto profilePhoto = mypageService.findProfilePhoto(userId);
         model.addAttribute("profilePhoto", profilePhoto);
@@ -41,17 +41,22 @@ public class MyPageController {
     }
 
     @PostMapping("/int")
-    public String myPageInt(IntBoardDto intBoardDto) {
-        intBoardDto.setUserId(1L);
-        log.info("IntBoardDto = {}", intBoardDto);
+    public String myPageInt(IntBoardDto intBoardDto,
+                            @SessionAttribute(value = "userId") Long userId,
+                            RedirectAttributes redirectAttributes) {
+
+        intBoardDto.setUserId(userId);
+
+
         mypageService.registerIntBoardText(intBoardDto);
+        log.info("IntBoardDto = {}", intBoardDto);
         return "redirect:/mypage/int";
     }
 
 
     @GetMapping("/book/container")
-    public String bookContainer(Model model) {
-        Long userId = 1L;
+    public String bookContainer(Model model,@SessionAttribute("userId") Long userId) {
+//        Long userId = 1L;
 
         IntProfileDto profilePhoto = mypageService.findProfilePhoto(userId);
         model.addAttribute("profilePhoto", profilePhoto);
@@ -69,8 +74,8 @@ public class MyPageController {
 
 
     @GetMapping("/book/write-content")
-    public String bookWriteContent(Model model/*@SessionAttribute("userId") Long userId*/) {
-        Long userId = 1L;
+    public String bookWriteContent(Model model,@SessionAttribute("userId") Long userId) {
+//        Long userId = 1L;
 
         IntProfileDto profileDto = mypageService.findProfile(userId);
         model.addAttribute("profileDto", profileDto);
@@ -95,8 +100,8 @@ public class MyPageController {
     }
 
     @GetMapping("/sticker")
-    public String myPageSticker(Model model/*@SessionAttribute("userId") Long userId*/) {
-        Long userId = 1L;
+    public String myPageSticker(Model model,@SessionAttribute("userId") Long userId) {
+        //Long userId = 1L;
         IntProfileDto profileDto = mypageService.findProfile(userId);
         model.addAttribute("profileDto", profileDto);
         log.info("profileDto={}", profileDto);
@@ -111,9 +116,9 @@ public class MyPageController {
     public String myPageSticker(StickerDto stickerDto,
                                 @SessionAttribute(value = "userId", required = false) Long userId,
                                 RedirectAttributes redirectAttributes) {
-        if (userId == null){
-            userId =1L;
-        }
+//        if (userId == null){
+//            userId =1L;
+//        }
 
         log.info("stickerDto={}", stickerDto);
         mypageService.registerSticker(stickerDto,userId);
@@ -127,13 +132,21 @@ public class MyPageController {
 
 
     @GetMapping("/manage")
-    public String myPageManage() {
+    public String myPageManage(Model model,@SessionAttribute("userId") Long userId) {
+
+        IntProfileDto profileDto = mypageService.findProfile(userId);
+        model.addAttribute("profileDto", profileDto);
+
+        IntProfileDto profilePhoto = mypageService.findProfilePhoto(userId);
+        model.addAttribute("profilePhoto", profilePhoto);
+
+
         return "mypage/myPageInt_manage";
     }
 
     @GetMapping("/modify")
-    public String myPageModify(Model model) {
-        Long userId = 1L;
+    public String myPageModify(Model model,@SessionAttribute("userId") Long userId) {
+        //Long userId = 1L;
         IntProfileDto profileDto = mypageService.findProfile(userId);
         model.addAttribute("profileDto", profileDto);
         log.info("profileDto={}", profileDto);
@@ -145,15 +158,18 @@ public class MyPageController {
     }
 
     @PostMapping("/modify")
-    public String myPageModify(IntBoardDto intBoardDto,
+    public String myPageModify(IntProfileDto intProfileDto,
                                @SessionAttribute(value = "userId", required = false) Long userId,
                                RedirectAttributes redirectAttributes){
 
-        if (userId == null){
-            userId =1L;
+//        if (userId == null){
+//            userId =1L;
+//
+//        }
+        intProfileDto.setUserId(userId);
 
-        }
-        mypageService.modifyNickName(new IntProfileDto());
+        mypageService.modifyNickName(intProfileDto);
+        log.info("intProfileDto = {}", intProfileDto);
 
         return "redirect:/mypage/modify";
     }
@@ -182,6 +198,6 @@ public class MyPageController {
 
         mypageService.removeUser(userId);
         redirectAttributes.addFlashAttribute("userId", userId);
-        return "redirect:/mypage/secession";
+        return "redirect:/";
     }
 }

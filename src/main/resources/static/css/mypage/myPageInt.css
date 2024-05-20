@@ -222,6 +222,9 @@ input [type="file"] {
 
 .introduce-save-btn{
   color: white;
+  background-color: #2bc1bf;
+  border-radius: 10px;
+  border: solid 1px;
   width: 80px;
   opacity: 0.8;
   display: none;
