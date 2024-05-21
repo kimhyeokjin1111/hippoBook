@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>히포북</title>
     <link rel="stylesheet" th:href="@{/css/feed/postwrite.css}" />
-    <script defer th:src="@{/js/feed/category_modal.js}"></script>
+    <script defer th:src="@{/js/feed/postwrite.js}"></script>
   </head>
   <body>
     <header>
@@ -78,7 +78,7 @@
             <div class="post_infoarea">
             <span>히포북 정보</span>
               <div class="post_infoBtn">
-              <button type="button" class="post_bookBtn">검색</button>
+              <button type="button" class="post_bookBtn" onclick="BookPopUp();">검색</button>
               </div>
             </div>
             <span>목차</span>
@@ -150,14 +150,15 @@
     <section class="book_infoarea">
       <div class="book_modal">
         <div class="Xbtn-box">x</div>
-        <div class="book_selectbox">
-          <select name="book_info" id="book_info">
-            <option value="">제목</option>
-            <option value="">저자</option>
-          </select>
-        </div>
+            <div class="book_selectbox">
+            <select name="book_info" id="book_info">
+              <option value="">제목</option>
+              <option value="">저자</option>
+            </select>
+            </div>
         <div class="book_search">
-          검색 : <input type="text">
+          검색 : <input type="text" name="keyword">
+          <button>검색</button>
         </div>
         <div class="book_selectarea">
         <table class="book_select">
@@ -165,33 +166,15 @@
           <th>제목</th>
           <th></th>
         <!-- 첫번째 행-->
-          <tr>
-            <td></td>
-            <td></td>
-            <td class="book_radioBox"><input class="book_radio" type="radio"></td>
-          </tr>
-          <!-- 두번째 행-->
-          <tr>
-            <td></td>
-            <td></td>
-            <td class="book_radioBox"><input class="book_radio" type="radio"></td>
-          </tr>
-          <!-- 세번째 행-->
-          <tr>
-            <td></td>
-            <td></td>
-            <td class="book_radioBox"><input class="book_radio" type="radio"></td>
-          </tr>
-          <!-- 네번째 행-->
-          <tr>
-            <td></td>
-            <td></td>
+          <tr th:each="book : ${postList}" class="book_tr">
+            <td th:text="${book.bookWriter}"></td>
+            <td th:text="${book.bookName}"></td>
             <td class="book_radioBox"><input class="book_radio" type="radio"></td>
           </tr>
         </table>
         </div>
         <div class="book_submitBtn">
-          <button type="submit">선택</button>
+          <button type="button">선택</button>
         </div>
       </div>
     </section>

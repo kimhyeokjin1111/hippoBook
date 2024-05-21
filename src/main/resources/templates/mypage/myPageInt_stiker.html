@@ -10,7 +10,7 @@
     <script defer th:src="@{js/mypage/myPageInt_sticker.js}"></script>
   </head>
   <body>
-    <form action="">
+
       <div>
         <div>
           <header>
@@ -70,32 +70,31 @@
               </div>
             </div>
           </main>
-          <section class="profile">
+          <section class="profile" th:object="${profileDto}">
             <div class="profile-all">
               <div id="profile-photo">
-                <input
-                  type="file"
-                  id="profile-image"
-                  name="profile-photo-file"
-                  accept="image/*"
-                />
-                <img
-                  id="hippo"
-                  th:src="@{/images/mypage/free-icon-hippo-3250992.png}"
-                  alt=""
-                />
+                <img th:if="${profilePhoto.userProfileId == null}"
+                     th:src="@{/imgs/mypage/free-icon-hippo-3250992.png}">
+                <img th:unless="${profilePhoto.userProfileId == null}"
+                     th:src="@{'/upload/' + ${profilePhoto.userProfileUploadPath} + '/' + ${profilePhoto.userProfileUuid} + '_' + ${profilePhoto.userProfileName}}"
+                     alt=""/>
               </div>
+
               <div id="profile-name">
-                <h3>책먹는 하마</h3>
+                <h3 th:text="${profileDto.userNickName}"></h3>
                 <span>님의 서재</span>
               </div>
               <div id="follow">
-                <span>팔로워 <span>0</span></span>
-                <span>팔로잉 <span>0</span></span>
+                <span>팔로워 <span th:text="${profileDto.followerCnt}"></span></span>
+                <span>팔로잉 <span th:text="${profileDto.followingCnt}"></span></span>
               </div>
             </div>
             <div id="my-favorite-book">
-              <img th:src="@{/images/mypage/인생책 이미지.png}" alt="" />
+              <img th:if="*{fileId == null}"
+                   th:src="@{/imgs/mypage/best_book_default.png}">
+              <img th:unless="*{fileId == null}"
+                   th:src="@{'/upload/' + *{fileUploadPath} + '/' + *{fileUuid} + '_' + *{fileName}}"
+                   id="best-book-img" alt=""/>
             </div>
           </section>
         </div>
@@ -109,6 +108,8 @@
           </div>
         </div>
       </div>
+      <form th:action="@{/mypage/sticker}" method="post">
+
       <div class="main__sticker-request-content-container">
         <div class="main__sticker-request-center-box">
           <section>
@@ -123,7 +124,8 @@
             </div>
           </section>
           <section>
-            <button type="button">신청하기</button>
+            <input type="hidden" th:value="${profileDto.userId}"/>
+            <button type="submit" onclick="alert('신청이 완료 되었습니다.')">신청하기</button>
             <!-- 팔로워 수가 부족한 경우 보여주기
               <p>팔로워 수가 200명 부족합니다.</p> -->
           </section>
@@ -131,6 +133,7 @@
             <section><div class="main__sticker-request-complete">신청완료</div></section> -->
         </div>
       </div>
+  </form>
       <footer>
         <div>
           <button id="reading-book-delete-button">삭제하기</button>

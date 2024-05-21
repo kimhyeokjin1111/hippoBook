@@ -1,8 +1,10 @@
 package com.example.hippobookproject.controller.mainpage;
 
+import com.example.hippobookproject.dto.alarm.AlarmDto;
 import com.example.hippobookproject.dto.main.ReadListDto;
 import com.example.hippobookproject.dto.main.DealListDto;
 import com.example.hippobookproject.dto.main.NovelListDto;
+import com.example.hippobookproject.service.alarm.AlarmService;
 import com.example.hippobookproject.service.main.MainService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
@@ -27,6 +30,7 @@ public class MainPageController {
     }
 
     private final MainService mainService;
+
 
     @GetMapping("/")
     public String enterMain(Model model){
@@ -45,6 +49,13 @@ public class MainPageController {
     public RedirectView logout(HttpSession session){
         session.invalidate();
 
-        return new RedirectView("/user/login");
+        return new RedirectView("/");
     }
-}
+
+
+
+    }
+
+
+
+

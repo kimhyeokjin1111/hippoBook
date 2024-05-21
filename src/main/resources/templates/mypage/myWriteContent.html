@@ -18,7 +18,7 @@
                     <a href="">
                         <!--홈페이지 버튼 -->
                         <img
-                                src="../myPageImg/HippoBook_logo.png"
+                                src="/imgs/mypage/HippoBook_logo.png"
                                 alt=""
                                 class="header_logo_images"
                         />
@@ -29,7 +29,7 @@
                 <a href="">
                     <!-- 알람 페이지 이동  -->
                     <img
-                            src="../myPageImg/alarm.png"
+                            src="/imgs/mypage/alarm.png"
                             alt=""
                             class="header_right_alarm"
                     />
@@ -47,7 +47,7 @@
                 <a href="">
                     <!-- 카테고리  -->
                     <img
-                            src="../myPageImg/Category.png"
+                            src="/imgs/mypage/Category.png"
                             alt=""
                             class="main_top_category"
                     />
@@ -71,32 +71,32 @@
             </div>
         </div>
     </main>
-    <section class="profile">
+    <section class="profile" th:object="${profileDto}">
         <div class="profile-all">
             <div id="profile-photo">
-                <input
-                        type="file"
-                        id="profile-image"
-                        name="profile-photo-file"
-                        accept="image/*"
-                />
-                <img
-                        id="hippo"
-                        src="/images/mypage/free-icon-hippo-3250992.png"
-                        alt=""
-                />
+
+                <img th:if="${profilePhoto.userProfileId == null}"
+                     th:src="@{/imgs/mypage/free-icon-hippo-3250992.png}">
+                <img th:unless="${profilePhoto.userProfileId == null}"
+                     th:src="@{'/upload/' + ${profilePhoto.userProfileUploadPath} + '/' + ${profilePhoto.userProfileUuid} + '_' + ${profilePhoto.userProfileName}}"
+                      alt=""/>
+
             </div>
             <div id="profile-name">
-                <h3>책먹는 하마</h3>
+                <h3 th:text="${profileDto.userNickName}"></h3>
                 <span>님의 서재</span>
             </div>
             <div id="follow">
-                <span>팔로워 <span>0</span></span>
-                <span>팔로잉 <span>0</span></span>
+                <span>팔로워 <span th:text="${profileDto.followerCnt}"></span></span>
+                <span>팔로잉 <span th:text="${profileDto.followingCnt}"></span></span>
             </div>
         </div>
         <div id="my-favorite-book">
-            <img src="/images/mypage/인생책 이미지.png" alt=""/>
+            <img th:if="*{fileId == null}"
+                 th:src="@{/imgs/mypage/best_book_default.png}">
+            <img th:unless="*{fileId == null}"
+                 th:src="@{'/upload/' + *{fileUploadPath} + '/' + *{fileUuid} + '_' + *{fileName}}"
+                 id="best-book-img" alt=""/>
         </div>
     </section>
 </div>
@@ -121,11 +121,15 @@
             </div>
         </form>
     </section>
-    <form action="">
+
         <section>
             <div class="write-content-total-setting">
-                <div>
-                    <span>총 2개</span>
+                <div class="review-count">
+                    <span>총 <span th:text="${reviewCount}"></span>개</span>
+                </div>
+
+                <div class="post-count">
+                    <span>총 <span th:text="${postCount}"></span>개</span>
                 </div>
                 <div class="write-content-setting-list">
 
@@ -135,59 +139,69 @@
                 </div>
             </div>
         </section>
-    </form>
+
 
     <section>
-        <form action="">
+
             <div class="review-content-box-wrap">
-                <div class="review-content-box">
-                    <div class="review-content-box-title"><span>피드제목 입니다</span></div>
-                    <div class="review-content-box-date"><span>날짜 입니다</span></div>
+
+
+
+                <div th:each="myContentDto : ${myContentList}"
+                     th:if="${myContentDto.feedType} == 'Review'" class="review-content-box" data-type="review">
+
+
+                    <div class="review-content-box-title">
+                        <span th:text="${myContentDto.feedTitle}"></span>
+                    </div>
+                    <div class="review-content-box-date">
+                        <span th:text="${myContentDto.feedDate}"></span>
+                    </div>
                     <div class="review-content-box-book-info">
-                        <div class="review-content-box-book-info-image">
-                            <img src="/images/mypage/책표지 예제2.jpg" alt="">
+                        <div th:object="${myContentDto}" class="review-content-box-book-info-image">
+                            <img th:if="*{fileId == null}"
+                                 th:src="@{/imgs/mypage/best_book_default.png}">
+                            <img th:unless="*{fileId == null}"
+                                 th:src="@{'/upload/' + *{fileUploadPath} + '/' + *{fileUuid} + '_' + *{fileName}}">
                             <div class="review-content-box-book-info-detail">
-                                <div><span>책제목 입니다</span></div>
-                                <div class="review-content-box-book-info-detail-writer"><span>글쓴이 입니다</span></div>
+                                <div><span th:text="${myContentDto.bookName}"></span></div>
+                                <div class="review-content-box-book-info-detail-writer"><span th:text="${myContentDto.bookWriter}"></span></div>
                             </div>
                         </div>
                     </div>
-                    <div class="review-content-box-hart-count"><span>좋아요 개수</span></div>
-                </div>
-
-
-                <div class="review-content-box">
-                    <div class="review-content-box-title"><span>피드제목 입니다</span></div>
-                    <div class="review-content-box-date"><span>날짜 입니다</span></div>
-                    <div class="review-content-box-book-info">
-                        <div class="review-content-box-book-info-image">
-                            <img src="/images/mypage/책표지 예제3.jpg" alt="">
-                            <div class="review-content-box-book-info-detail">
-                                <div><span>책제목 입니다</span></div>
-                                <div class="review-content-box-book-info-detail-writer"><span>글쓴이 입니다</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="review-content-box-hart-count"><span>좋아요 개수</span></div>
-                </div>
-
-                <div class="review-content-box">
-                    <div class="review-content-box-title"><span>피드제목 입니다</span></div>
-                    <div class="review-content-box-date"><span>날짜 입니다</span></div>
-                    <div class="review-content-box-book-info">
-                        <div class="review-content-box-book-info-image">
-                            <img src="/images/mypage/책표지 예제3.jpg" alt="">
-                            <div class="review-content-box-book-info-detail">
-                                <div><span>책제목 입니다</span></div>
-                                <div class="review-content-box-book-info-detail-writer"><span>글쓴이 입니다</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="review-content-box-hart-count"><span>좋아요 개수</span></div>
+                    <div class="review-content-box-hart-count"><span>좋아요♥ </span><span th:text="${myContentDto.totalLike}"></span></div>
                 </div>
 
             </div>
-        </form>
+
+        <div class="review-content-box-wrap2">
+
+            <div th:each="myContentDto : ${myContentList}"
+                 th:if="${myContentDto.feedType} == 'Post'" class="review-content-box" data-type="post">
+
+                <div class="review-content-box-title">
+                    <span th:text="${myContentDto.feedTitle}"></span>
+                </div>
+                <div class="review-content-box-date">
+                    <span th:text="${myContentDto.feedDate}"></span>
+                </div>
+                <div class="review-content-box-book-info">
+                    <div th:object="${myContentDto}" class="review-content-box-book-info-image">
+                        <img th:if="*{fileId == null}"
+                             th:src="@{/imgs/mypage/best_book_default.png}">
+                        <img th:unless="*{fileId == null}"
+                             th:src="@{'/upload/' + *{fileUploadPath} + '/' + *{fileUuid} + '_' + *{fileName}}">
+                        <div class="review-content-box-book-info-detail">
+                            <div><span th:text="${myContentDto.bookName}"></span></div>
+                            <div class="review-content-box-book-info-detail-writer"><span th:text="${myContentDto.bookWriter}"></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-content-box-hart-count"><span>좋아요♥ </span><span th:text="${myContentDto.totalLike}"></span></div>
+            </div>
+
+        </div>
+
 
     </section>
     <footer></footer>

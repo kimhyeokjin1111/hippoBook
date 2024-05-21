@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.hippobookproject.mapper.user.MypageMapper">
     <select id="selectProfile" resultType="IntProfileDto">
-        SELECT U.USER_NICKNAME,
+        SELECT U.USER_NICKNAME,U.USER_EMAIL,
                (SELECT COUNT(FOLLOW_ID) FROM TBL_FOLLOW WHERE FOLLOW_TO = U.USER_ID) FOLLOWING_CNT,
                (SELECT COUNT(FOLLOW_ID) FROM TBL_FOLLOW WHERE FOLLOW_FROM = U.USER_ID) FOLLOWER_CNT,
                CF.FILE_ID, CF.FILE_UPLOAD_PATH, CF.FILE_UUID, CF.FILE_NAME
@@ -49,22 +49,90 @@
         ]]>
     </select>
 
-    <select id="selectWriteContent">
-        SELECT FEED_ID,
-               FEED_TITLE,
-               FEED_DATE,
-               FEED_LIKE,
-               CF.BOOK_ID,
-               USER_ID,
-               CF.FILE_ID,
-               CF.FILE_NAME,
-               CF.FILE_UPLOAD_PATH,
-               CF.FILE_UUID
-        FROM TBL_FEED FE
-                 JOIN TBL_COVERFILE CF
-                      ON USER_ID = #{userId} AND FE.BOOK_ID = CF.BOOK_ID
+    <select id="selectMyContent">
+        SELECT
+            F.FEED_ID,
+            F.FEED_TITLE,
+            F.FEED_TYPE,
+            F.FEED_DATE,
+            F.USER_ID,
+            CF.BOOK_ID,
+            COALESCE(FL.TOTAL_LIKE, 0) AS TOTAL_LIKE,
+            CF.FILE_ID,
+            CF.FILE_NAME,
+            CF.FILE_UPLOAD_PATH,
+            CF.FILE_UUID,
+            B.BOOK_WRITER,
+            B.BOOK_NAME
+        FROM
+            TBL_FEED F
+                LEFT JOIN
+            (SELECT
+                 FEED_ID,
+                 COUNT(FEED_LIKE_ID) AS TOTAL_LIKE
+             FROM
+                 TBL_FEED_LIKE
+             GROUP BY
+                 FEED_ID) FL
+            ON
+                F.FEED_ID = FL.FEED_ID
+                JOIN
+            TBL_COVERFILE CF
+            ON
+                F.BOOK_ID = CF.BOOK_ID
+                JOIN
+            TBL_BOOK B
+            ON
+                CF.BOOK_ID = B.BOOK_ID
+        WHERE
+            F.USER_ID = #{userId}
     </select>
 
+    <select id="selectReviewCount" resultType="Long">
+        SELECT COUNT(FEED_ID) AS REVIEW_COUNT
+        FROM TBL_FEED
+        WHERE USER_ID = #{userId} AND FEED_TYPE = 'Review'
+    </select>
+
+    <select id="selectPostCount" resultType="Long">
+        SELECT COUNT(FEED_ID) AS POST_COUNT
+        FROM TBL_FEED
+        WHERE USER_ID = #{userId} AND FEED_TYPE = 'Post'
+    </select>
+
+    <select id="selectProfilePhoto" parameterType="IntProfileDto">
+        SELECT USER_PROFILE_ID, USER_PROFILE_UPLOAD_PATH, USER_PROFILE_UUID, USER_PROFILE_NAME, USER_ID
+        FROM TBL_USER_PROFILE
+        WHERE USER_ID= #{userId}
+    </select>
+
+    <insert id="insertSticker" parameterType="StickerDto">
+        INSERT INTO TBL_STICKER (STIKER_ID, USER_ID, STICKER_PERMISSION_CHECK, STICKER_READ)
+        VALUES (SEQ_STICKER.nextval,#{userId},'N','N')
+    </insert>
+
+    <select id="selectSticker" resultType="Long">
+        SELECT COUNT(USER_ID) AS USERID_CNT
+        FROM TBL_STICKER
+        WHERE USER_ID = #{userId}
+    </select>
+
+    <delete id="deleteUser">
+        DELETE FROM TBL_USER
+        WHERE USER_ID = #{userId}
+    </delete>
+
+    <update id="updateUserNickName">
+        UPDATE TBL_USER
+        SET USER_NICKNAME = #{userNickName}
+        WHERE USER_ID = #{userId}
+    </update>
+
+    <update id="updateUserProfilePhoto">
+        UPDATE TBL_USER_PROFILE
+        SET USER_PROFILE_UPLOAD_PATH = #{userProfileUploadPath} AND USER_PROFILE_UUID = #{userProfileUuid} AND USER_PROFILE_NAME =#{userProfileName}
+        WHERE USER_ID = #{userId}
+    </update>
 
 
 </mapper>

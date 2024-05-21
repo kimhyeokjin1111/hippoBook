@@ -40,7 +40,7 @@ ul {
   line-height: 38px;
   border: 1px solid #e3e3e3;
   border-right: 0;
-  min-width: 67px;
+  min-width: 75px;
   position: relative;
 }
 
@@ -58,14 +58,14 @@ ul {
   line-height: 38px;
   border: 1px solid #e3e3e3;
   border-right: 0;
-  min-width: 67px;
+  min-width: 75px;
   cursor: pointer;
 }
 
-.option-span > span::after {
+.option-span::after {
   content: url('/imgs/administrator/fragment/search_down_bg.jpg');
-  position: relative;
-  left: 50px;
+  position: absolute;
+  right: 10px;
   bottom: 2px;
 }
 

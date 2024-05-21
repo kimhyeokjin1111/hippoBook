@@ -10,6 +10,7 @@ import lombok.ToString;
 public class IntProfileDto {
     private Long userId;
     private String userNickName;
+    private String userEmail;
     private Long followingCnt;
     private Long followerCnt;
     private Long bestBookId;
@@ -17,4 +18,10 @@ public class IntProfileDto {
     private String fileUploadPath;
     private String fileUuid;
     private String fileName;
+    private Long userProfileId;
+    private String userProfileUploadPath;
+    private String userProfileUuid;
+    private String userProfileName;
+
+
 }

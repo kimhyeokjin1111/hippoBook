@@ -2,6 +2,7 @@ package com.example.hippobookproject.mapper.administrator;
 
 import com.example.hippobookproject.dto.administrator.ResultStickerDto;
 import com.example.hippobookproject.dto.administrator.SelectStickerDto;
+import com.example.hippobookproject.dto.page.AdminUserCriteria;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +34,15 @@ class AdministratorStickerMapperTest {
 
     @Test
     void selectStickerReqList() {
-        List<ResultStickerDto> resultStickerDtos = administratorStickerMapper.selectStickerReqList(selectStickerDto);
+        List<ResultStickerDto> resultStickerDtos = administratorStickerMapper.selectStickerReqList(selectStickerDto, new AdminUserCriteria());
         assertThat(resultStickerDtos)
                 .extracting("followCnt")
-                .isEqualTo(4);
+                .contains(4);
+    }
+
+    @Test
+    void selectFollowReqTotal(){
+        int i = administratorStickerMapper.selectFollowReqTotal(selectStickerDto);
+        assertThat(i).isEqualTo(1);
     }
 }

@@ -1,8 +1,6 @@
 package com.example.hippobookproject.service.mypage;
 
-import com.example.hippobookproject.dto.mypage.BookContainerDto;
-import com.example.hippobookproject.dto.mypage.IntBoardDto;
-import com.example.hippobookproject.dto.mypage.IntProfileDto;
+import com.example.hippobookproject.dto.mypage.*;
 import com.example.hippobookproject.mapper.user.MypageBookContainerMapper;
 import com.example.hippobookproject.mapper.user.MypageMapper;
 import org.assertj.core.api.Assertions;
@@ -126,8 +124,68 @@ class MypageServiceTest {
     void findRecentBook() {
         doReturn(List.of(new BookContainerDto())).when(mypageMapper).selectRecentBook(any());
 
-        List<BookContainerDto> recentBookList = mypageService.findRecentBook(1L);
+        List<BookContainerDto> recentBookList = mypageService.findRecentBook(any());
 
         assertThat(recentBookList).hasSize(1);
     }
+
+    @Test
+    void findMyContent(){
+        doReturn(List.of(new MyContentDto())).when(mypageMapper).selectMyContent(any());
+
+        List<MyContentDto> myContentList = mypageService.findMyContent(any());
+
+        assertThat(myContentList).hasSize(1);
+
+    }
+
+    @Test
+    void findProfilePhoto() {
+        // given
+        IntProfileDto dto = new IntProfileDto();
+        dto.setUserId(21L);
+        dto.setUserProfileId(1L);
+
+        doReturn(Optional.of(dto)).when(mypageMapper).selectProfilePhoto(any());
+        // when
+        IntProfileDto profileDto = mypageService.findProfilePhoto(21L);
+        // then
+        assertThat(profileDto).extracting("userProfileId").isEqualTo(1L);
+
+    }
+
+    @Test
+    void registerSticker(){
+        Mockito.doNothing().when(mypageMapper).insertSticker(any());
+
+        mypageService.registerSticker(new StickerDto(),1L);
+
+        Mockito.verify(mypageMapper, Mockito.times(1)).insertSticker(any());
+
+
+    }
+
+    @Test
+    void removeUser() {
+        //given
+        doNothing().when(mypageMapper).deleteUser(any());
+        //when
+        mypageService.removeUser(1L);
+        //then
+        verify(mypageMapper, times(1)).deleteUser(any());
+
+    }
+
+    @Test
+    void modifyNickName(){
+        doNothing().when(mypageMapper).updateUserNickName(any());
+
+        mypageService.modifyNickName(new IntProfileDto());
+
+        verify(mypageMapper,times(1)).updateUserNickName(any());
+    }
+
+
+
 }
+

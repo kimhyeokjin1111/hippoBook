@@ -1,11 +1,10 @@
 package com.example.hippobookproject.service.mypage;
 
-import com.example.hippobookproject.dto.mypage.BookContainerDto;
-import com.example.hippobookproject.dto.mypage.IntBoardDto;
-import com.example.hippobookproject.dto.mypage.IntProfileDto;
+import com.example.hippobookproject.dto.mypage.*;
 import com.example.hippobookproject.mapper.user.MypageBookContainerMapper;
 import com.example.hippobookproject.mapper.user.MypageMapper;
 import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,11 +25,14 @@ public class MypageService {
    }
 
    public void registerIntBoardText(IntBoardDto intBoardDto){
-       if (intBoardDto.getUserId() == null){
-           mypageMapper.insertIntBoardText(intBoardDto);
-       }else {
-           mypageMapper.updateIntBoardText(intBoardDto);
-       }
+
+       mypageMapper.selectIntBoardText(intBoardDto.getUserId());
+       if (intBoardDto.getUserId()==null){
+          mypageMapper.insertIntBoardText(intBoardDto);
+
+      }else {
+          mypageMapper.updateIntBoardText(intBoardDto);
+      }
 
 
    }
@@ -38,12 +40,12 @@ public class MypageService {
     public IntBoardDto findIntBoardText(Long userId){
 
        return mypageMapper.selectIntBoardText(userId)
-               .orElseThrow(() -> new IllegalStateException("존재하지 않는 회원 번호"));
+               .orElse(new IntBoardDto());
     }
 
     public List<BookContainerDto> findBookContainer(Long userId){
 
-       return mypageBookContainerMapper.selectBookContainer(1L);
+       return mypageBookContainerMapper.selectBookContainer(userId);
     }
 
     public void removeBookContainer(Long bookHasId){
@@ -68,8 +70,45 @@ public class MypageService {
     }
 
     public List<BookContainerDto> findRecentBook(Long userId){
-       return mypageMapper.selectRecentBook(1L);
+       return mypageMapper.selectRecentBook(userId);
     }
+
+    public List<MyContentDto> findMyContent(Long userId){
+       return mypageMapper.selectMyContent(userId);
+    }
+
+    public Long findReviewCount(Long userId){
+       return mypageMapper.selectReviewCount(userId);
+    }
+
+    public Long findPostCount(Long userId){
+        return mypageMapper.selectPostCount(userId);
+    }
+
+    public IntProfileDto findProfilePhoto(Long userId){
+        return mypageMapper.selectProfilePhoto(userId)
+                .orElse(new IntProfileDto());
+    }
+
+    public void registerSticker(@Param("stickerDto") StickerDto stickerDto,
+                                @Param("userId") Long userId){
+
+        Long stickerCnt = mypageMapper.selectSticker(userId);
+
+        if (stickerCnt == 0){
+            mypageMapper.insertSticker(stickerDto);
+        }
+
+    }
+
+    public void removeUser(Long userId){
+       mypageMapper.deleteUser(userId);
+    }
+
+    public void modifyNickName(IntProfileDto intProfileDto){
+       mypageMapper.updateUserNickName(intProfileDto);
+    }
+
 
 
 

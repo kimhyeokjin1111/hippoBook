@@ -27,7 +27,7 @@ public class bookContainerApi {
     public void modifyBestBook(@SessionAttribute(value = "userId", required = false) Long userId,
                                @PathVariable("bestBookId") Long bestBookId
                                ){
-        userId = 1L;
+       // userId = 1L;
         BookContainerDto bookContainerDto = new BookContainerDto();
         bookContainerDto.setUserId(userId);
         bookContainerDto.setBookHasId(bestBookId);
@@ -40,7 +40,8 @@ public class bookContainerApi {
     public void modifyBookStatus(@SessionAttribute(value = "bookHasId", required = false) Long bookHasId,
                                @PathVariable("bookHasPercent") String bookHasPercent
     ){
-        bookHasId = 42L;
+        //bookHasId = 42L;
+
         BookContainerDto bookContainerDto = new BookContainerDto();
         bookContainerDto.setBookHasId(bookHasId);
         bookContainerDto.setBookHasPercent(bookHasPercent);

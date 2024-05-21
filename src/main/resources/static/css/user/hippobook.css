@@ -519,7 +519,7 @@ i {
   border-radius: 4px;
   height: 56px;
   border: 1px solid;
-  border-color: #242424;
+  border-color: #dfdfdf;
   position: relative;
   -ms-flex: 1;
   flex: 1;
@@ -850,7 +850,7 @@ li {
 .mds-input .inner, .mds-input .mds-icon--searchbar {
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 8px;
+  /*margin-bottom: 8px;*/
   -ms-flex-align: center;
   align-items: center;
   flex-wrap: wrap;
@@ -961,4 +961,13 @@ sup {
   background-color: transparent;
   -webkit-appearance: button;
   outline: 0;
+}
+
+.phone-info-code-button {
+  background-color: #ffeb60;
+  color: #242424;
+  height: 30px;
+  font-size: 13px;
+  padding: 0 24px;
+  border-radius: 4px;
 }
