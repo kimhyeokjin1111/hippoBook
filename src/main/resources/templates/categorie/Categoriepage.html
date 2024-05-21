@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>히포북</title>
     <link rel="stylesheet" th:href="@{/css/categorie/Categoriepage.css}"/>
+    <script th:href="@{/js/categorie/BookCate.js}"></script>
   </head>
   <body>
     <header>
@@ -69,6 +70,8 @@
             <div class="search">
               <input class="rrrr" type="text" placeholder="검색어 입력" />
             </div>
+            </section>
+        </section>
       </div>
       <div>&ensp;</div>
       <div>&ensp;</div>
@@ -78,12 +81,12 @@
         <hr class="toto">
         <div class="tab-wrap">
           <ul class="tab-list">
-            <li id="category" class="search-tab-category">카테고리</li>
-            <li id="keyword" class="search-tab-keyword">작가</li>
-            <li id="editor" class="search-tab-editor">컬렉션</li>
+            <li id="category" class="search-tab-category"><a href="#scroll1" class="category">카테고리</a></li>
+            <li id="keyword" class="search-tab-keyword"><a href="#scroll2" class="keyword">작가</a></li>
+            <li id="editor" class="search-tab-editor"><a href="#scroll3" class="editor">컬렉션</a></li>
           </ul>
         </div>
-        <section class="category-wrap">
+        <section class="category-wrap" id="scroll1">
           <h2 class="title">카테고리</h2>
           <ul class="category-list">
             <li class="category-box" onclick="">
@@ -307,7 +310,7 @@
             </li>
           </ul>
         </section>
-        <section class="title">
+        <section class="title" id="scroll2">
           <h2>작가의 책 모아보기</h2>
           <ul class="category-list">
             <li class="listt">
@@ -412,7 +415,7 @@
             </li>
           </ul>
         </section>
-        <section class="title">
+        <section class="title" id="scroll3">
           <h2>컬렉션</h2>
           <p class="sub-title">밀리가 만드는 다양한 아티클을 확인해보세요!</p>
           <ul class="category-list">
@@ -490,8 +493,8 @@
             </li>
           </ul>
         </section>
-    </section>
-</section>
+<!--    </section>-->
+<!--</section>-->
       </div>
     </main>
   </body>
