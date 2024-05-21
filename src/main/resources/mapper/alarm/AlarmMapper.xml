@@ -1,34 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.hippobookproject.mapper.alarm.AlarmMapper">
-    <select id="selectTime2" resultType="string">
-        SELECT SYSDATE FROM DUAL
+<!--    <select id="selectTime2" resultType="string">-->
+<!--        SELECT SYSDATE FROM DUAL-->
+<!--    </select>-->
+
+<!--    <select id="selectById" parameterType="Long" resultType="alarmDto">-->
+<!--        SELECT ALARM_ID, USER_ID,USER_NICKNAME-->
+<!--        FROM TBL_ALARM A JOIN TBL_USER U-->
+<!--         ON A.ALARM_ID = #{alarmId} AND A.ALARM_TO = U.USER_ID-->
+<!--    </select>-->
+<!--    <select id="findByToUserId" resultType="AlarmDto">-->
+<!--        SELECT ALARM_ID, ALARM_CONTENT, ALARM_DATE, ALARM_CHECK, ALARM_TO, ALARM_FROM-->
+<!--        FROM TBL_ALARM-->
+<!--        WHERE ALARM_TO = #{userId}-->
+<!--    </select>-->
+
+
+    <select id="findByID" resultType="AlarmDto">
+        SELECT ALARM_ID, ALARM_CONTENT, ALARM_DATE, ALARM_CHECK, ALARM_TO, ALARM_FROM
+        FROM TBL_ALARM
+        WHERE ALARM_TO = #{userId}
     </select>
 
-    <select id="selectById" parameterType="Long" resultType="alarmDto">
-        SELECT ALARM_ID, ALARM_CONTENT, ALARM_DATE, ALARM_CHECK, ALARM_TO, ALARM_FROM, USER_ID,USER_NICKNAME
-        FROM TBL_ALARM A JOIN TBL_USER U
-         ON A.ALARM_ID = #{alarmId} AND A.ALARM_TO = U.USER_ID
+    <select id="selectAlarm" resultType="AlarmDto">
+        SELECT A.ALARM_ID, A.ALARM_CONTENT, A.ALARM_DATE, A.ALARM_CHECK, A.ALARM_TO,
+               A.ALARM_FROM, U.USER_NICKNAME
+        FROM TBL_ALARM A JOIN TBL_USER U ON A.ALARM_FROM = U.USER_ID
+        WHERE A.ALARM_TO = #{userId}
+        ORDER BY A.ALARM_ID DESC
     </select>
 
-    <select id="selectAlarm" resultType="alarmDto">
-        SELECT ALARM_ID, ALARM_CONTENT, ALARM_DATE, ALARM_CHECK, ALARM_TO,
-               ALARM_FROM, USER_NICKNAME, USER_ID
-        FROM TBL_ALARM A join TBL_USER U
-            ON A.ALARM_Id = #{alarmId} AND A.ALARM_TO = U.USER_ID
-        ORDER BY ALARM_ID DESC
-    </select>
-
-    <insert id="insertAlarm" parameterType="alarmDto">
+    <insert id="insertAlarm" parameterType="AlarmDto">
         <selectKey keyProperty="alarmId" resultType="Long" order="BEFORE">
             SELECT SEQ_ALARM.nextval FROM DUAL
         </selectKey>
-        INSERT INTO TBL_ALARM (ALARM_ID, ALARM_CONTENT, ALARM_CHECK, ALARM_TO, ALARM_FROM, USER_ID)
-        VALUES (#{alarmId}, #{alarmContent}, #{alarmCheck}, #{alarmTo}, #{alarmfrom}, #{userID})
+        INSERT INTO TBL_ALARM (ALARM_ID, ALARM_CONTENT, ALARM_CHECK, ALARM_TO, ALARM_FROM)
+        VALUES (#{alarmId}, #{alarmContent}, #{alarmCheck}, #{alarmTo}, #{alarmFrom})
     </insert>
-
-
-
 
 
 

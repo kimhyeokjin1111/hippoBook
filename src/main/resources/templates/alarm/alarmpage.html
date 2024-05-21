@@ -17,10 +17,10 @@
             <div  class="cont">
                 <div class="alarm_inner">
                     <div class="alarm_content">
-                        <a th:href="@{/book/info}" class="alarm_book"> <!--북 페이지 이동-->
-                            <div class="alarm_box" >
+                        <a th:href="@{/book/info}" class="alarm_book" th:if= "${hasAlarms}"> <!--북 페이지 이동-->
+                            <div class="alarm_box" th:each="findAlarms:${findAlarms}" th:text="${findAlarms.alarmContent}">
                                 <div class="alarm_box_title">ss</div>
-                                <div class="alarm_content">sldasldsadldsla</div>
+
                             </div>
                         </a>
                     </div>
