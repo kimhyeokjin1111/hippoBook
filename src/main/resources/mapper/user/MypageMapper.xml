@@ -130,7 +130,9 @@
 
     <update id="updateUserProfilePhoto">
         UPDATE TBL_USER_PROFILE
-        SET USER_PROFILE_UPLOAD_PATH = #{userProfileUploadPath} AND USER_PROFILE_UUID = #{userProfileUuid} AND USER_PROFILE_NAME =#{userProfileName}
+        SET USER_PROFILE_UPLOAD_PATH = #{userProfileUploadPath} ,
+            USER_PROFILE_UUID = #{userProfileUuid} ,
+            USER_PROFILE_NAME =#{userProfileName}
         WHERE USER_ID = #{userId}
     </update>
 

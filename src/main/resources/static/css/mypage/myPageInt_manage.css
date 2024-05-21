@@ -1,7 +1,4 @@
-@font-face {
-  font-family: "neon";
-  src: url("../font/SpoqaHanSansNeo_all/SpoqaHanSansNeo_TTF_original/SpoqaHanSansNeo-Bold.ttf");
-}
+
 
 * {
   margin: 0;
@@ -124,7 +121,7 @@ a {
   display: flex;
   padding: 0 160px 0 230px;
   flex-direction: column;
-  background-color: rgba(42, 193, 188, 0.8);
+  background-color: rgba(210, 255, 254, 0.8);
 }
 
 .profile-all {
@@ -172,12 +169,25 @@ a {
   margin-left: 7px;
 }
 
+#best-book-img{
+  width: 129px;
+  height: 120px;
+  border: solid #96eae8;
+}
+
 input[type="file"] {
   position: absolute;
   width: 64px;
   height: 64px;
   opacity: 0;
   cursor: pointer;
+}
+.picture-change-button{
+  cursor: pointer;
+}
+.profile-photo-change-title{
+  display: flex;
+  align-items: center;
 }
 
 #profile-name {

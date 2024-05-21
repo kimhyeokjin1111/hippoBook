@@ -1,6 +1,7 @@
 package com.example.hippobookproject.service.mypage;
 
 import com.example.hippobookproject.dto.mypage.*;
+import com.example.hippobookproject.dto.user.UserProfileDto;
 import com.example.hippobookproject.mapper.user.MypageBookContainerMapper;
 import com.example.hippobookproject.mapper.user.MypageMapper;
 import org.assertj.core.api.Assertions;
@@ -183,6 +184,15 @@ class MypageServiceTest {
         mypageService.modifyNickName(new IntProfileDto());
 
         verify(mypageMapper,times(1)).updateUserNickName(any());
+    }
+
+    @Test
+    void modifyProfilePhoto(){
+        doNothing().when(mypageMapper).updateUserProfilePhoto(any());
+
+//        mypageService.modifyProfilePhoto(new IntProfileDto());
+
+//        verify(mypageMapper,times(1)).updateUserProfilePhoto(any());
     }
 
 
