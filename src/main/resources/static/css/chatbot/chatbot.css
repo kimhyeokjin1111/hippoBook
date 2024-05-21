@@ -23,6 +23,7 @@
     top: -555px;
     background-color: white;
     border-radius: 5px;
+    display: none;
 }
 
 .chatbot-question-box{
@@ -80,6 +81,7 @@
 .user-chat-box,
 .chatbot-chat-box{
     margin-bottom: 20px;
+    display: flex;
 }
 
 .chat-div{
@@ -93,10 +95,13 @@
 }
 
 .chatbot-chat-box{
-    display: flex;
     justify-content: flex-end;
 }
 
 .chatbot-back-color{
     background-color: lightgrey;
+}
+
+.display-chatbot{
+    display : block;
 }

@@ -183,3 +183,12 @@ function postShow(postReqList){
         $pageBox.innerHTML = tags2;
       })
 }
+
+{
+    let $keyPeress = document.querySelector('.search-contnet-input')
+
+    $keyPeress.addEventListener('keyPress' , function (){
+        console.log('keyPress')
+        alert("dddd")
+    })
+}
