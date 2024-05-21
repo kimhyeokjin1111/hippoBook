@@ -13,15 +13,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AlarmService {
     private final AlarmMapper alarmMapper;
+
     public List<AlarmDto> selectAlarm() {
         return alarmMapper.selectAlarm();
     }
 
-    public List<AlarmDto> selectById(Long userId){
-      alarmMapper.selectById(userId);
-        return null;
+    public List<AlarmDto> findById(Long userId) {
+        return alarmMapper.findByID(userId);
     }
-    public void insertAlarm(AlarmDto alarmDto){
+
+    public void insertAlarm(AlarmDto alarmDto) {
         alarmMapper.insertAlarm(alarmDto);
     }
 }
