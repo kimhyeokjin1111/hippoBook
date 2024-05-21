@@ -1,3 +1,5 @@
+let chatMsg = "";
+
 {
     console.log("chatbot jssssssssssssssss");
 
@@ -18,6 +20,54 @@
             `
 
         chatViewBox.insertAdjacentHTML("beforeend", tags);
+
         chatInput.value = '';
+
+        let message = {
+            content : chatValue
+        }
+        sendQuestion(message, appendResp);
+
+
     })
+}
+
+{
+    let $chatbotShowIcon = document.querySelector('.chatbot-icon-box');
+    let $chatbot = document.querySelector('.chatbot-container');
+    $chatbotShowIcon.addEventListener("click", function (e){
+        if(e.target.classList.contains('chatbot-icon-box')){
+            $chatbot.classList.toggle('display-chatbot');
+        }
+    })
+
+    let $chatbotCloseIcon = document.querySelector('.close-Icon');
+
+    $chatbotCloseIcon.addEventListener("click", function (e){
+        $chatbot.classList.toggle('display-chatbot');
+    })
+}
+
+function appendResp(message) {
+    let chatViewBox = document.querySelector('.chatbot-viewer-box');
+
+    let tags =
+        `
+        <div class="chatbot-chat-box"><div class="chat-div chatbot-back-color">${message}</div></div>
+        `
+    chatViewBox.insertAdjacentHTML("beforeend", tags);
+}
+
+function sendQuestion(message, callback) {
+    fetch(`/v1/ai/reply`,
+        {
+            method : "POST",
+            headers : {'Content-Type' : 'application/json'},
+            body : JSON.stringify(message)
+        })
+        .then(resp => resp.json())
+        .then(json => {
+            callback(json.choices[0].message.content)
+            chatMsg = json.choices[0].message.content;
+        });
 }
