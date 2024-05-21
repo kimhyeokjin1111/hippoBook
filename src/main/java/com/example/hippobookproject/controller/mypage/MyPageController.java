@@ -140,9 +140,10 @@ public class MyPageController {
         IntProfileDto profilePhoto = mypageService.findProfilePhoto(userId);
         model.addAttribute("profilePhoto", profilePhoto);
 
-
         return "mypage/myPageInt_manage";
     }
+
+
 
     @GetMapping("/modify")
     public String myPageModify(Model model,@SessionAttribute("userId") Long userId) {

@@ -86,16 +86,20 @@
                         />
                     </div>
                     <div id="profile-name">
-                        <h3>책먹는 하마</h3>
+                        <h3 th:text="${profileDto.userNickName}"></h3>
                         <span>님의 서재</span>
                     </div>
                     <div id="follow">
-                        <span>팔로워 <span>0</span></span>
-                        <span>팔로잉 <span>0</span></span>
+                        <span>팔로워 <span th:text="${profileDto.followerCnt}"></span></span>
+                        <span>팔로잉 <span th:text="${profileDto.followingCnt}"></span></span>
                     </div>
                 </div>
                 <div id="my-favorite-book">
-                    <img th:src="@{/images/mypage/인생책 이미지.png}" alt=""/>
+                    <img th:if="*{fileId == null}"
+                         th:src="@{/imgs/mypage/best_book_default.png}">
+                    <img th:unless="*{fileId == null}"
+                         th:src="@{'/upload/' + *{fileUploadPath} + '/' + *{fileUuid} + '_' + *{fileName}}"
+                         id="best-book-img" alt=""/>
                 </div>
             </section>
         </div>

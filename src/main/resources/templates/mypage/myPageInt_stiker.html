@@ -76,7 +76,7 @@
                 <img th:if="${profilePhoto.userProfileId == null}"
                      th:src="@{/imgs/mypage/free-icon-hippo-3250992.png}">
                 <img th:unless="${profilePhoto.userProfileId == null}"
-                     th:src="@{'/upload/' + ${profilePhoto.userProfileUploadPath} + '/' + ${profilePhoto.userProfileUuid} + '_' + ${profilePhoto.userProfileName}}"
+                     th:src="@{'/profile/' + ${profilePhoto.userProfileUploadPath} + '/' + ${profilePhoto.userProfileUuid} + '_' + ${profilePhoto.userProfileName}}"
                      alt=""/>
               </div>
 

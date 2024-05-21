@@ -40,7 +40,9 @@ public interface MypageMapper {
 
     void updateUserNickName(IntProfileDto intProfileDto);
 
-    Optional<UserProfileDto> updateUserProfilePhoto(Long userId);
+    void updateUserProfilePhoto(IntProfileDto intProfileDto);
+
+
     
 
 
