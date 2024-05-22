@@ -35,16 +35,26 @@ public class MainPageController {
 
 
     @GetMapping("/")
-    public String enterMain(Model model){
+    public String enterMain(Model model, HttpSession session){
+        // 메인 페이지에 필요한 데이터 로드
         List<NovelListDto> novelList = mainService.findAll();
         List<DealListDto> dealList = mainService.selectByTitle();
         List<ReadListDto> readList = mainService.selectByContent();
 
+        // 사용자의 알람 확인 여부 조회
+        Long userId = (Long) session.getAttribute("userId");
+        boolean alarmCheck = false;
+        if (userId != null) {
+            alarmCheck = alarmService.hasUncheckedAlarms(userId);
+        }
+
+        // 모델에 데이터 추가
         model.addAttribute("readList", readList);
         model.addAttribute("dealList", dealList);
         model.addAttribute("novelList", novelList);
-        return "main/mainpage";
+        model.addAttribute("alarmCheck", alarmCheck);
 
+        return "main/mainpage";
     }
 
     @GetMapping("/logout")
@@ -54,26 +64,6 @@ public class MainPageController {
         return new RedirectView("/");
     }
 
-
-    @GetMapping("main/alarm")
-    public String readAlarm(Model model,HttpSession session) {
-        Long userId = (Long) session.getAttribute("userId");
-
-
-        // 사용자의 알람 확인 여부 조회
-        if (userId != null) {
-            Boolean alarmCheck = alarmService.hasUncheckedAlarms(userId);
-            model.addAttribute("alarmCheck", alarmCheck);
-        } else {
-            model.addAttribute("alarmCheck", 'N');
-            // 로그인 안 된 경우 기본값 설정
-            //  이미지 그대로
-
-
-        }
-
-        return "fragment/header";
-    }
     }
 
 
