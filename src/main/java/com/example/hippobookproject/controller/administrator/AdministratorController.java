@@ -69,9 +69,4 @@ public class AdministratorController {
 //        return "administrator/fragment/admin_header";
 //    }
 
-    @GetMapping("/chat")
-    public String chatbotA(){
-        return "chatbot/chatbot";
-    }
-
 }

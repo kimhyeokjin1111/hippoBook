@@ -1,6 +1,11 @@
 let chatMsg = "";
 
 {
+    let userId = document.querySelector('.chatbot-container').dataset.userid;
+    console.log('userId : ', userId);
+}
+
+{
     console.log("chatbot jssssssssssssssss");
 
     let chatInput = document.querySelector("#chat-input");
@@ -28,7 +33,6 @@ let chatMsg = "";
         }
         sendQuestion(message, appendResp);
 
-
     })
 }
 
@@ -45,6 +49,12 @@ let chatMsg = "";
 
     $chatbotCloseIcon.addEventListener("click", function (e){
         $chatbot.classList.toggle('display-chatbot');
+
+        fetch('/v1/ai', {method : "DELETE"})
+            .then();
+
+        let chatViewBox = document.querySelector('.chatbot-viewer-box');
+        chatViewBox.innerHTML = "";
     })
 }
 
