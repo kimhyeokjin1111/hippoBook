@@ -30,6 +30,9 @@ public class alarmController {
             return "redirect:/user/login";
         }
 
+        // 알람 확인 처리
+        alarmService.updateAlarmCheckByUserId(userId);
+
         List<AlarmDto> findAlarms = alarmService.findById(userId);
 
         if (findAlarms.isEmpty()) {

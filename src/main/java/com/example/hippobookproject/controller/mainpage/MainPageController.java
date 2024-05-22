@@ -30,6 +30,8 @@ public class MainPageController {
     }
 
     private final MainService mainService;
+    private final AlarmService alarmService;
+
 
 
     @GetMapping("/")
@@ -53,7 +55,25 @@ public class MainPageController {
     }
 
 
+    @GetMapping("main/alarm")
+    public String readAlarm(Model model,HttpSession session) {
+        Long userId = (Long) session.getAttribute("userId");
 
+
+        // 사용자의 알람 확인 여부 조회
+        if (userId != null) {
+            Boolean alarmCheck = alarmService.hasUncheckedAlarms(userId);
+            model.addAttribute("alarmCheck", alarmCheck);
+        } else {
+            model.addAttribute("alarmCheck", 'N');
+            // 로그인 안 된 경우 기본값 설정
+            //  이미지 그대로
+
+
+        }
+
+        return "fragment/header";
+    }
     }
 
 
