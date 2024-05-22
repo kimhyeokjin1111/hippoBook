@@ -4,11 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" th:href="@{/css/message/get_letter.css}" />
+    <link rel="stylesheet" th:href="@{/css/main/mainpage.css}" />
     <script defer th:src="@{/js/message/get_letter.js}"></script>
     <title>Document</title>
   </head>
   <body>
-    <header></header>
+
+      <header class="header" th:replace="~{/fragment/header :: header}"></header>
+
     <div class="main__post-content-container">
       <form action="">
         <main class="main__post-content-inner-box">
@@ -23,9 +26,9 @@
           <div class="main__post-type-menu-box">
             <ul class="main__post-menu-ul">
               <li class="post-menu-li post-menu-select-li">
-                <a href="">받은쪽지함</a><span class="post-menu-select-span"></span>
+                <a th:href="@{/message/letter/get}">받은쪽지함</a><span class="post-menu-select-span"></span>
               </li>
-              <li class="post-menu-li"><a href="">보낸쪽지함</a><span></span></li>
+              <li class="post-menu-li"><a th:href="@{/message/letter/send}">보낸쪽지함</a><span></span></li>
              
             </ul>
             <div class="main__post-write-btn-box">
@@ -42,158 +45,24 @@
               </ul>
             </div>
           </div>
-          <div class="main__post-search-result-box">
+          <div th:each="messageDto : ${getMessageList}" class="main__post-search-result-box">
             <ul>
               <li class="main__post-result-li">
                 <p class="main__post-titie-info-box">
-                    <input type="checkbox" name="" id="" />
-                  <span>test title</span>
+                    <input type="checkbox" name="" />
+                  <span th:text="${messageDto.messageTitle}"></span>
                   <img src="" alt="" />
                 </p>
                 <div class="main__post-detail-info-box">
-                  <span>보낸 사람</span>
+                  <span th:text="${messageDto.messageFrom}"></span>
                   <ul>
                     
-                    <li>AM 10:55</li>
-                    <li>읽음</li>
+                    <li th:text="${messageDto.messageDate}"></li>
+                    <li th:text="${messageDto.messageCheck}"></li>
                   </ul>
                 </div>
               </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                    <input type="checkbox" name="" id="" />
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>보낸 사람</span>
-                  <ul>
-                    
-                    <li>AM 10:55</li>
-                    <li>안읽음</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                    <input type="checkbox" name="" id="" />
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>보낸 사람</span>
-                  <ul>
-                    
-                    <li>AM 10:55</li>
-                    <li>읽음</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                    <input type="checkbox" name="" id="" />
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>보낸 사람</span>
-                  <ul>
-                    
-                    <li>AM 10:55</li>
-                    <li>안읽음</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                    <input type="checkbox" name="" id="" />
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>보낸 사람</span>
-                  <ul>
-                    
-                    <li>AM 10:55</li>
-                    <li>읽음</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                    <input type="checkbox" name="" id="" />
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>보낸 사람</span>
-                  <ul>
-                    
-                    <li>AM 10:55</li>
-                    <li>안읽음</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                    <input type="checkbox" name="" id="" />
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>보낸 사람</span>
-                  <ul>
-                    
-                    <li>AM 10:55</li>
-                    <li>읽음</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                    <input type="checkbox" name="" id="" />
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>보낸 사람</span>
-                  <ul>
-                    
-                    <li>AM 10:55</li>
-                    <li>안읽음</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                    <input type="checkbox" name="" id="" />
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>보낸 사람</span>
-                  <ul>
-                    
-                    <li>AM 10:55</li>
-                    <li>읽음</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                    <input type="checkbox" name="" id="" />
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>보낸 사람</span>
-                  <ul>
-                    
-                    <li>AM 10:55</li>
-                    <li>안읽음</li>
-                  </ul>
-                </div>
-              </li>
+
 
             </ul>
             

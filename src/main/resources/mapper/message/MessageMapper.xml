@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.hippobookproject.mapper.message.MessageMapper">
-    <insert id="insertMessage">
+    <insert id="insertMessage" parameterType="MessageDto">
         insert into TBL_MESSAGE (MESSAGE_ID, MESSAGE_TITLE, MESSAGE_CONTENT, MESSAGE_CHECK, MESSAGE_TO,
                                  MESSAGE_FROM)
         values (SEQ_MESSAGE.nextval, #{messageTitle},#{messageContent},'N',#{messageTo},#{messageFrom})
     </insert>
+
+    <select id="selectUserNickname" resultType="MessageNicknameDto">
+        SELECT USER_ID, USER_NICKNAME
+        FROM TBL_USER
+        WHERE USER_NICKNAME = #{userNickname}
+    </select>
+
+    <select id="selectGetMessage">
+        SELECT MESSAGE_ID, MESSAGE_TITLE, MESSAGE_CHECK, MESSAGE_DATE, MESSAGE_TO, MESSAGE_FROM
+        FROM TBL_MESSAGE
+        WHERE MESSAGE_TO = #{userId}
+    </select>
+
+    <select id="selectPostMessage">
+        SELECT MESSAGE_ID, MESSAGE_TITLE, MESSAGE_CHECK, MESSAGE_DATE, MESSAGE_TO, MESSAGE_FROM
+        FROM TBL_MESSAGE
+        WHERE MESSAGE_FROM = #{userId}
+    </select>
+
+
 </mapper>
