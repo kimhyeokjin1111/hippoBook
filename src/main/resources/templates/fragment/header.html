@@ -22,7 +22,12 @@
         <div class="header_right_layout">
             <a th:href="@{/alarm}">
                 <!-- 알람 페이지 이동  -->
-                <img th:src="@{/images/book/alarm.png}" alt="" class="header_right_alarm" />
+                <button th:if="${alarmCheck == null}" class="header_alarm_btn" >
+                    <img th:src="@{/images/main/alarm_new.png}" alt="" class="header_right_alarm" />
+                </button>
+                <button th:unless="${alarmCheck == null}" class="header_alarm_btn">
+                    <img th:src="@{/images/main/alarm.png}" alt="" class="header_right_alarm" />
+                </button>
             </a>
             <!-- 로그인 박스 -->
             <ul class="header_right_login">
