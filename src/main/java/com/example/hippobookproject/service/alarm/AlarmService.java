@@ -25,4 +25,15 @@ public class AlarmService {
     public void insertAlarm(AlarmDto alarmDto) {
         alarmMapper.insertAlarm(alarmDto);
     }
+
+    public void updateAlarmCheckByUserId(Long userId) {
+        alarmMapper.updateAlarmCheckByUserId(userId);
+    }
+
+    public boolean hasUncheckedAlarms(Long userId) {
+        return alarmMapper.hasUncheckedAlarms(userId);
+    }
+
+
+
 }

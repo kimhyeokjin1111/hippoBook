@@ -85,14 +85,28 @@ header{
 }
 
 .alarm_box{
-    border-bottom: 1px solid #6f6f6f;
+    border-bottom: 1px solid #8d8d8d;
     margin-top: 10px;
     /*margin-bottom: 10px;*/
     padding-bottom: 20px;
 }
 
 .alarm_box_title{
-    font-size: 30px;
+    font-size: 20px;
+
+}
+
+.alarm_none{
+    font-size: 20px;
+    text-align: center;
+    color: #2BC1BF;
+
+}
+
+.alarm_box_content{
+    font-size: 15px;
+    text-align: center;
+    color: #2BC1BF;
 }
 
 .alarm_book{

@@ -5,21 +5,11 @@
 <!--        SELECT SYSDATE FROM DUAL-->
 <!--    </select>-->
 
-<!--    <select id="selectById" parameterType="Long" resultType="alarmDto">-->
-<!--        SELECT ALARM_ID, USER_ID,USER_NICKNAME-->
-<!--        FROM TBL_ALARM A JOIN TBL_USER U-->
-<!--         ON A.ALARM_ID = #{alarmId} AND A.ALARM_TO = U.USER_ID-->
-<!--    </select>-->
-<!--    <select id="findByToUserId" resultType="AlarmDto">-->
-<!--        SELECT ALARM_ID, ALARM_CONTENT, ALARM_DATE, ALARM_CHECK, ALARM_TO, ALARM_FROM-->
-<!--        FROM TBL_ALARM-->
-<!--        WHERE ALARM_TO = #{userId}-->
-<!--    </select>-->
-
-
     <select id="findByID" resultType="AlarmDto">
-        SELECT ALARM_ID, ALARM_CONTENT, ALARM_DATE, ALARM_CHECK, ALARM_TO, ALARM_FROM
-        FROM TBL_ALARM
+        SELECT ALARM_ID, ALARM_CONTENT, ALARM_DATE, ALARM_CHECK,
+               ALARM_TO, ALARM_FROM, U.USER_ID, U.USER_NICKNAME
+        FROM TBL_ALARM A JOIN TBL_USER U
+        ON A.ALARM_TO = U.USER_ID
         WHERE ALARM_TO = #{userId}
     </select>
 
@@ -38,6 +28,27 @@
         INSERT INTO TBL_ALARM (ALARM_ID, ALARM_CONTENT, ALARM_CHECK, ALARM_TO, ALARM_FROM)
         VALUES (#{alarmId}, #{alarmContent}, #{alarmCheck}, #{alarmTo}, #{alarmFrom})
     </insert>
+
+    <!-- 사용자의 모든 알람 확인 처리 -->
+    <update id="updateAlarmCheckByUserId" parameterType="long">
+        UPDATE TBL_ALARM
+        SET ALARM_CHECK = 'Y'
+        WHERE ALARM_TO = #{userId}
+    </update>
+
+    <!--알람 확인-->
+    <select id="getAlarmCheck" resultType="char">
+        SELECT ALARM_CHECK
+        FROM TBL_ALARM
+        WHERE ALARM_TO = #{userId}
+    </select>
+
+    <!--    하나라도 확인 안 한 알람이 있는지-->
+    <select id="hasUncheckedAlarms" resultType="boolean">
+        SELECT COUNT(1) > 0
+        FROM TBL_ALARM
+        WHERE ALARM_TO = #{userId} AND ALARM_CHECK = 'N'
+    </select>
 
 
 
