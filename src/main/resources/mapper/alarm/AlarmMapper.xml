@@ -45,7 +45,7 @@
 
     <!--    하나라도 확인 안 한 알람이 있는지-->
     <select id="hasUncheckedAlarms" resultType="boolean">
-        SELECT COUNT(1) > 0
+        SELECT CASE WHEN COUNT(1) > 0 THEN 1 ELSE 0 END
         FROM TBL_ALARM
         WHERE ALARM_TO = #{userId} AND ALARM_CHECK = 'N'
     </select>

@@ -31,9 +31,10 @@ public class alarmController {
         }
 
         // 알람 확인 처리
-        alarmService.updateAlarmCheckByUserId(userId);
-
         List<AlarmDto> findAlarms = alarmService.findById(userId);
+        if (!findAlarms.isEmpty()) {
+            alarmService.updateAlarmCheckByUserId(userId);
+        }
 
         if (findAlarms.isEmpty()) {
             model.addAttribute("hasAlarms", false);
