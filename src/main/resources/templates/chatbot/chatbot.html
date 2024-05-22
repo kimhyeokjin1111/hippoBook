@@ -7,8 +7,8 @@
     <title>Title</title>
 </head>
 <body>
-    <div class="chatbot-icon-box">
-        <div class="chatbot-container">
+    <div th:fragment="chatbot-box" class="chatbot-icon-box" th:if="${session.userId != null}">
+        <div class="chatbot-container" th:data-userid="${session.userId}">
             <div class="chatbot-head-box">
                 <h1>상담 챗봇</h1>
                 <img class="close-Icon" th:src="@{/imgs/administrator/fragment/close_btn.png}" alt="">

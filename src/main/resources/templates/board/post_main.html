@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" th:href="@{/css/board/post_main.css}" />
+    <link rel="stylesheet" th:href="@{/css/chatbot/chatbot.css}"/>
     <script defer th:src="@{/js/board/post_main.js}"></script>
+    <script defer th:src="@{/js/chatbot/chatbot.js}"></script>
     <title>Document</title>
   </head>
   <body>
@@ -90,6 +92,8 @@
           </div>
         </main>
       </form>
+    </div>
+    <div th:replace="~{/chatbot/chatbot :: chatbot-box}">
     </div>
     <footer></footer>
   </body>
