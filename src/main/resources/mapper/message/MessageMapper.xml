@@ -33,5 +33,11 @@
         </foreach>
     </delete>
 
+    <select id="selectMessageView">
+        SELECT MESSAGE_ID, MESSAGE_TITLE, MESSAGE_CONTENT, MESSAGE_DATE, MESSAGE_TO, MESSAGE_FROM
+        FROM TBL_MESSAGE
+        WHERE MESSAGE_ID = #{messageId}
+    </select>
+
 
 </mapper>

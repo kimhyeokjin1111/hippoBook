@@ -45,12 +45,15 @@
               </ul>
             </div>
           </div>
+          <form th:action="@{/message/letter/view}">
           <div th:each="messageDto : ${getMessageList}" class="main__post-search-result-box">
             <ul>
               <li class="main__post-result-li" th:data-id="${messageDto.messageId}">
                 <p class="main__post-titie-info-box">
                     <input type="checkbox" class="message-check" name="" th:data-id="${messageDto.messageId}"/>
-                  <span th:text="${messageDto.messageTitle}"></span>
+                  <span th:text="${messageDto.messageTitle}">
+                    <button type="submit"></button>
+                  </span>
                   <img src="" alt="" />
                 </p>
                 <div class="main__post-detail-info-box">
@@ -67,6 +70,7 @@
             </ul>
             
           </div>
+          </form>
           <div class="letter-page-container">
             <ul class="page-box">
               <a href="" class="letter-list-page-a">

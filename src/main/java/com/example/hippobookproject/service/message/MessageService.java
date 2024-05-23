@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -44,4 +45,9 @@ public class MessageService {
         messageMapper.deleteMessage(idList);
 
     }
+
+    public MessageDto findMessageView(Long messageId){
+        return messageMapper.selectMessageView(messageId)
+                .orElseThrow(() -> new IllegalStateException("존재하지 않는 쪽지"));
+    };
 }

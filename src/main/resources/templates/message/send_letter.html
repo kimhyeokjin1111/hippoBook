@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" th:href="@{/css/message/send_letter.css}" />
     <link rel="stylesheet" th:href="@{/css/main/mainpage.css}" />
-    <script defer th:src="@{/js/message/send_letter.js}"></script>
+    <script type="module" defer th:src="@{/js/message/send_letter.js}"></script>
     <title>Document</title>
   </head>
   <body>
@@ -32,7 +32,7 @@
             <div class="main__post-write-btn-box">
               <a th:href="@{/message/letter/write}">쪽지쓰기</a>
               <div class="get-letter-delete-btn">
-                <button type="submit" class="submit-btn">삭제하기</button>
+                <button type="button" class="delete-submit-btn" data-id="">삭제하기</button>
               </div>
             </div>
             
@@ -47,7 +47,7 @@
             <ul>
               <li class="main__post-result-li">
                 <p class="main__post-titie-info-box">
-                    <input type="checkbox" name="" />
+                    <input type="checkbox" class="message-check" name="" th:data-id="${messageDto.messageId}" />
                   <span th:text="${messageDto.messageTitle}"></span>
                   <img src="" alt="" />
                 </p>

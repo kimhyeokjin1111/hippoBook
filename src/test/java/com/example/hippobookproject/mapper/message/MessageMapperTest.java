@@ -80,4 +80,12 @@ class MessageMapperTest {
 //        //then
 //        assertThat(list.size()).isEqualTo(oldSize - 1);
     }
+
+    @Test
+    void selectMessageView(){
+        messageDto = new MessageDto();
+        messageDto.setMessageId(1L);
+        messageMapper.selectMessageView(messageDto.getMessageId());
+    }
+
 }
