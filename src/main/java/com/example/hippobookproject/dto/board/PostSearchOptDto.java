@@ -10,4 +10,5 @@ import lombok.ToString;
 public class PostSearchOptDto {
     private String type;
     private String keyword;
+    private String orderType;
 }

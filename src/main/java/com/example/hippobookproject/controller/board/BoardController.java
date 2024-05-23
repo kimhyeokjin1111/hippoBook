@@ -25,7 +25,8 @@ public class BoardController {
     }
 
     @GetMapping("/post/view")
-    public String postView(){
+    public String postView(Long postId, String postType){
+        log.info("postId = " + postId + ", postType = " + postType);
         return "board/post_view";
     }
 }
