@@ -226,7 +226,7 @@ ul {
 
 
 .main__post-detail-info-box > ul > li:nth-child(2):before {
-  content: url('../img/view.png');
+
   position: relative;
   right: 8px;
   top: 1px;

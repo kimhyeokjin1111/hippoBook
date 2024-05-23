@@ -25,5 +25,13 @@
         WHERE MESSAGE_FROM = #{userId}
     </select>
 
+    <delete id="deleteMessage">
+        DELETE FROM TBL_MESSAGE
+        WHERE MESSAGE_ID IN
+        <foreach collection="idList" separator="," open="(" close=")" item="id">
+            #{id}
+        </foreach>
+    </delete>
+
 
 </mapper>

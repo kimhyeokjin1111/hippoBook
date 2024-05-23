@@ -1,7 +1,10 @@
 package com.example.hippobookproject.service.message;
 
 import com.example.hippobookproject.dto.message.MessageDto;
+import com.example.hippobookproject.dto.message.MessageNicknameDto;
 import com.example.hippobookproject.dto.mypage.BookContainerDto;
+import com.example.hippobookproject.dto.mypage.IntBoardDto;
+import com.example.hippobookproject.dto.mypage.IntProfileDto;
 import com.example.hippobookproject.dto.user.UserJoinDto;
 import com.example.hippobookproject.mapper.message.MessageMapper;
 import org.apache.ibatis.annotations.Many;
@@ -14,6 +17,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,13 +35,25 @@ class MessageServiceTest {
 
     @Test
     void findUserNickname() {
-
+        // given
+        MessageNicknameDto dto = new MessageNicknameDto();
+        dto.setUserNickname("test");
+        doReturn(Optional.of(dto)).when(messageMapper).selectUserNickname(any());
+        // when
+        MessageNicknameDto messageNicknameDto = messageService.findUserNickname(any());
+        // then
+        assertThat(messageNicknameDto).extracting("userNickname").isEqualTo("test");
     }
 
-    @Test
-    void registerMessageWrite() {
-
-    }
+//    @Test
+//    void registerMessageWrite() {
+//        //given
+//        Mockito.doNothing().when(messageMapper).insertMessage(any());
+//        // when
+//        messageService.registerMessageWrite(new MessageDto());
+//        // then
+//        Mockito.verify(messageMapper, Mockito.times(1)).insertMessage(any());
+//    }
 
     @Test
     void findGetMessage(){
@@ -56,4 +72,17 @@ class MessageServiceTest {
         // then
         assertThat(postMessageList).hasSize(1);
     }
+
+//    @Test
+//    void removeMessage() {
+//        //given
+//        doNothing().when(messageMapper).deleteMessage(any());
+//        //when
+//        messageService.removeMessage(2L);
+//        //then
+//        verify(messageMapper, times(1)).deleteMessage(any());
+//
+//    }
+
+
 }
