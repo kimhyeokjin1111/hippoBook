@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.hippobookproject.mapper.board.BoardMapper">
-
+    <select id="selectPostById" parameterType="Long" resultType="PostSearchResultDto">
+    SELECT S.DEAL_ID, DEAL_TITLE , DEAL_CONTENT, S.USER_ID, USER_NICKNAME, NVL(DL.DL_CONNT, 0) LIKE_COUNT, DEAL_DATE, DEAL_VIEW
+    FROM(SELECT DEAL_ID, DEAL_TITLE, DEAL_CONTENT, D.USER_ID, USER_NICKNAME, DEAL_DATE, DEAL_VIEW
+        FROM TBL_DEAL D JOIN TBL_USER U
+        ON
+            DEAL_ID = #{postId}
+            AND D.USER_ID = U.USER_ID
+    ) S LEFT JOIN (SELECT DEAL_ID ,COUNT(DL.USER_ID) DL_CONNT
+    FROM TBL_DEAL_LIKE DL
+    GROUP BY DL.DEAL_ID) DL
+    ON S.DEAL_ID = DL.DEAL_ID
+    </select>
 </mapper>

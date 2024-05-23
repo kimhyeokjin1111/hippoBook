@@ -8,6 +8,16 @@ ul {
   list-style-type: none;
 }
 
+a:link{
+  color: #605b5b;
+  font-weight: bold;
+}
+
+a:visited{
+  color: #605b5b;
+  font-weight: bold;
+}
+
 .main__post-content-container {
   display: flex;
   justify-content: center;
@@ -325,6 +335,9 @@ ul {
   text-align: center;
 }
 
-.post-menu-li > a {
-  pointer-events: none;
-}
+/*.post-menu-li > a {*/
+/*  pointer-events: none;*/
+/*}*/
+
+
+

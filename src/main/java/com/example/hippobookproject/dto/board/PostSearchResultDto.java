@@ -16,6 +16,7 @@ public class PostSearchResultDto {
 //    LIKE_COUNT, DEAL_DATE, DEAL_VIEW
     private Long postId;
     private String postTitle;
+    private String postContent;
     private Long userId;
     private String userNickname;
     private int likeCount;

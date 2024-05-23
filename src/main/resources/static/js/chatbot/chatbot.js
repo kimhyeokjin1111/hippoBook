@@ -1,7 +1,7 @@
 let chatMsg = "";
 
 {
-    let userId = document.querySelector('.chatbot-container').dataset.userid;
+    let userId = document.querySelector('.chatbot-container')?.dataset.userid;
     console.log('userId : ', userId);
 }
 
@@ -15,7 +15,7 @@ let chatMsg = "";
     console.log('chatInput : ', chatInput)
     console.log('chatBtn : ', chatBtn)
     console.log('chatViewBox : ',chatViewBox)
-    chatBtn.addEventListener('click', function (){
+    chatBtn?.addEventListener('click', function (){
         console.log('chat btn click !!')
 
         let chatValue = chatInput.value;
@@ -39,7 +39,7 @@ let chatMsg = "";
 {
     let $chatbotShowIcon = document.querySelector('.chatbot-icon-box');
     let $chatbot = document.querySelector('.chatbot-container');
-    $chatbotShowIcon.addEventListener("click", function (e){
+    $chatbotShowIcon?.addEventListener("click", function (e){
         if(e.target.classList.contains('chatbot-icon-box')){
             $chatbot.classList.toggle('display-chatbot');
         }
@@ -47,14 +47,18 @@ let chatMsg = "";
 
     let $chatbotCloseIcon = document.querySelector('.close-Icon');
 
-    $chatbotCloseIcon.addEventListener("click", function (e){
+    $chatbotCloseIcon?.addEventListener("click", function (e){
         $chatbot.classList.toggle('display-chatbot');
-
-        fetch('/v1/ai', {method : "DELETE"})
-            .then();
-
         let chatViewBox = document.querySelector('.chatbot-viewer-box');
-        chatViewBox.innerHTML = "";
+
+        console.log('chatViewBox.innerHTML.length : ', chatViewBox.innerHTML.length)
+        if(chatViewBox.innerHTML.length !== 14){
+            fetch('/v1/ai', {method : "DELETE"})
+                .then();
+
+            chatViewBox.innerHTML = "";
+        }
+
     })
 }
 
