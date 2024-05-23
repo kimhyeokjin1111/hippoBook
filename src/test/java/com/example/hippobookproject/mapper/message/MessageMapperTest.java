@@ -1,6 +1,8 @@
 package com.example.hippobookproject.mapper.message;
 
 import com.example.hippobookproject.dto.message.MessageDto;
+import com.example.hippobookproject.dto.message.MessageNicknameDto;
+import com.example.hippobookproject.dto.mypage.BookContainerDto;
 import com.example.hippobookproject.dto.user.UserJoinDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
+
 @SpringBootTest
 @Transactional
 class MessageMapperTest {
@@ -19,6 +24,7 @@ class MessageMapperTest {
 
     MessageDto messageDto;
     UserJoinDto userJoinDto;
+    MessageNicknameDto messageNicknameDto;
 
     @BeforeEach
     void setUp() {
@@ -26,35 +32,52 @@ class MessageMapperTest {
         messageDto.setMessageId(1L);
         messageDto.setMessageTitle("test");
         messageDto.setMessageContent("test-content");
-        messageDto.setMessageTo(21L);
-        messageDto.setMessageFrom(2L);
+        messageDto.setMessageTo(2L);
+        messageDto.setMessageFrom(1L);
         messageMapper.insertMessage(messageDto);
         System.out.println("messageDto = " + messageDto);
 
     }
 
-    @Test
-    void insertMessage() {
-        messageMapper.insertMessage(messageDto);
-    }
+
 
     @Test
     void selectUserNickname(){
-        userJoinDto = new UserJoinDto();
-        userJoinDto.setUserId(2L);
-        userJoinDto.setUserNickname("qwer");
-        messageMapper.selectUserNickname("qwer");
+
+        messageNicknameDto = new MessageNicknameDto();
+        messageNicknameDto.setUserNickname("test");
+
+        messageMapper.selectUserNickname("test");
     }
+
 
     @Test
     void selectGetMessage(){
-        List<MessageDto> getMessage = messageMapper.selectGetMessage(2L);
+        List<MessageDto> getMessage = messageMapper.selectGetMessage(1L);
         System.out.println("getMessage = " + getMessage);
     }
 
     @Test
     void selectPostMessage(){
-        List<MessageDto> postMessage = messageMapper.selectPostMessage(21L);
+        List<MessageDto> postMessage = messageMapper.selectPostMessage(1L);
         System.out.println("postMessage = " + postMessage);
+    }
+
+    @Test
+    void deleteMessage(){
+//        //given
+//        List<MessageDto> messageDtoList = messageMapper.selectGetMessage(2L);
+//
+//        //when
+//        int oldSize = messageDtoList.size();
+//        MessageDto messageDto = messageDtoList.get(0);
+//
+//        Long messageId = messageDto.getMessageId();
+////        messageMapper.deleteMessage(messageId);
+//
+//        List<MessageDto> list = messageMapper.selectGetMessage(2L);
+//
+//        //then
+//        assertThat(list.size()).isEqualTo(oldSize - 1);
     }
 }

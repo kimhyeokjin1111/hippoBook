@@ -72,17 +72,11 @@
           <section class="profile" th:object="${profileDto}">
             <div class="profile-all">
               <div id="profile-photo">
-                <input
-                  type="file"
-                  id="profile-image"
-                  name="profile-photo-file"
-                  accept="image/*"
-                />
-                <img
-                  id="hippo"
-                  th:src="@{/images/mypage/free-icon-hippo-3250992.png}"
-                  alt=""
-                />
+                <img th:if="${profilePhoto.userProfileName == null}"
+                     th:src="@{/imgs/mypage/free-icon-hippo-3250992.png}" alt=""/>
+                <img th:unless="${profilePhoto.userProfileName == null}"
+                     th:src="@{'/profile/' + ${profilePhoto.userProfileUploadPath} + '/' + ${profilePhoto.userProfileUuid} + '_' + ${profilePhoto.userProfileName}}"
+                     alt=""/>
               </div>
               <div id="profile-name">
                 <h3>책먹는 하마</h3>

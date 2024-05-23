@@ -5,38 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" th:href="@{/css/message/letterWrite.css}" />
+    <link rel="stylesheet" th:href="@{/css/main/mainpage.css}" />
   </head>
   <body>
     <form action="">
-      <header>
-        <div class="header_layout">
-          <h1 class="header_logo">
-            <div class="header_logo_layout">
-              <a href="">
-                <!--홈페이지 버튼 -->
-                <img
-                  src="/images/message/HippoBook_logo.png"
-                  alt=""
-                  class="header_logo_images"
-                />
-              </a>
-            </div>
-          </h1>
-          <div class="header_right_layout">
-            <a href="">
-              <!-- 알람 페이지 이동  -->
-              <img
-                src="../myPageImg/alarm.png"
-                alt=""
-                class="header_right_alarm"
-              />
-            </a>
-            <ul class="header_right_login">
-              <a href="" class="header_right_login_box">로그인</a>
-            </ul>
-          </div>
-        </div>
-      </header>
+      <header class="header" th:replace="~{/fragment/header :: header}"></header>
 
       <main>
         <div class="main_top">
@@ -44,7 +17,7 @@
             <a href="">
               <!-- 카테고리  -->
               <img
-                src="../myPageImg/Category.png"
+                src="/images/mypage/Category.png"
                 alt=""
                 class="main_top_category"
               />
@@ -83,7 +56,7 @@
         </div>
       </div>
     </form>
-    <form action="">
+    <form th:action="@{/message/letter/write}" method="post">
       <div>
         <div id="letter-warning">
           <span>*표시는 필수적으로 입력해야 하는 항목입니다.</span>
@@ -93,18 +66,28 @@
             <div class="letter-id-box-title">
               <h3>아이디 *</h3>
             </div>
-            <div class="letter-id-box-input">
-              <input type="text" id="letter-id-text" />
-              <input type="button" value="닉네임검색" id="letter-id-button" />
+            <div class="letter-id-box-input" >
+              <input type="text" id="letter-id-text" name="userNickname" />
+              <button type="button" id="letter-id-button">닉네임 검색</button>
             </div>
           </div>
+
+          <div class="letter-id-box">
+            <div class="letter-id-box-title">
+              <h3>제목 *</h3>
+            </div>
+            <div class="letter-id-box-input" >
+              <input type="text" class="message-title" name="messageTitle" />
+            </div>
+          </div>
+
           <div class="letter-content-box-all">
             <div class="letter-content-box-title">
               <h3>내용 *</h3>
             </div>
             <div class="letter-content-box-content">
               <textarea
-                name="letter-content"
+                name="messageContent"
                 id=""
                 cols="100"
                 rows="20"
