@@ -13,21 +13,13 @@
         WHERE ALARM_TO = #{userId}
     </select>
 
-    <select id="selectAlarm" resultType="AlarmDto">
-        SELECT A.ALARM_ID, A.ALARM_CONTENT, A.ALARM_DATE, A.ALARM_CHECK, A.ALARM_TO,
-               A.ALARM_FROM, U.USER_NICKNAME
-        FROM TBL_ALARM A JOIN TBL_USER U ON A.ALARM_FROM = U.USER_ID
-        WHERE A.ALARM_TO = #{userId}
-        ORDER BY A.ALARM_ID DESC
-    </select>
 
-    <insert id="insertAlarm" parameterType="AlarmDto">
-        <selectKey keyProperty="alarmId" resultType="Long" order="BEFORE">
-            SELECT SEQ_ALARM.nextval FROM DUAL
-        </selectKey>
-        INSERT INTO TBL_ALARM (ALARM_ID, ALARM_CONTENT, ALARM_CHECK, ALARM_TO, ALARM_FROM)
-        VALUES (#{alarmId}, #{alarmContent}, #{alarmCheck}, #{alarmTo}, #{alarmFrom})
-    </insert>
+    <!--    하나라도 확인 안 한 알람이 있는지-->
+    <select id="hasUncheckedAlarms" resultType="boolean">
+        SELECT CASE WHEN COUNT(1) > 0 THEN 1 ELSE 0 END
+        FROM TBL_ALARM
+        WHERE ALARM_TO = #{userId} AND ALARM_CHECK = 'N'
+    </select>
 
     <!-- 사용자의 모든 알람 확인 처리 -->
     <update id="updateAlarmCheckByUserId" parameterType="long">
@@ -43,13 +35,25 @@
         WHERE ALARM_TO = #{userId}
     </select>
 
-    <!--    하나라도 확인 안 한 알람이 있는지-->
-    <select id="hasUncheckedAlarms" resultType="boolean">
-        SELECT CASE WHEN COUNT(1) > 0 THEN 1 ELSE 0 END
-        FROM TBL_ALARM
-        WHERE ALARM_TO = #{userId} AND ALARM_CHECK = 'N'
+    <insert id="insertAlarm" parameterType="AlarmDto">
+        <selectKey keyProperty="alarmId" resultType="Long" order="BEFORE">
+            SELECT SEQ_ALARM.nextval FROM DUAL
+        </selectKey>
+        INSERT INTO TBL_ALARM (ALARM_ID, ALARM_CONTENT, ALARM_CHECK, ALARM_TO, ALARM_FROM)
+        VALUES (#{alarmId}, #{alarmContent}, #{alarmCheck}, #{alarmTo}, #{alarmFrom})
+    </insert>
+
+
+    <select id="selectMessageAlarm" resultType="MessageDto">
+        SELECT MESSAGE_ID, MESSAGE_TITLE, MESSAGE_CONTENT, MESSAGE_CHECK, MESSAGE_DATE, MESSAGE_TO, MESSAGE_FROM
+        FROM TBL_MESSAGE
+        WHERE MESSAGE_TO = #{userId}
     </select>
 
-
+    <select id="selectFollowAlarm" resultType="FollowDto">
+        SELECT FOLLOW_ID, FOLLOW_DATE, FOLLOW_TO, FOLLOW_FROM
+        FROM TBL_FOLLOW
+        WHERE FOLLOW_TO = #{userId}
+    </select>
 
 </mapper>

@@ -1,6 +1,8 @@
 package com.example.hippobookproject.controller.alarm;
 
 import com.example.hippobookproject.dto.alarm.AlarmDto;
+import com.example.hippobookproject.dto.feed.FollowDto;
+import com.example.hippobookproject.dto.message.MessageDto;
 import com.example.hippobookproject.service.alarm.AlarmService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -25,10 +27,14 @@ public class alarmController {
     public String alarmPage(Model model, HttpSession session) {
         Long userId = (Long) session.getAttribute("userId");
 
+
+
         // 로그인 안 하고 알람 페이지 진입시 로그인 페이지로 이동
         if (userId == null) {
             return "redirect:/user/login";
         }
+
+
 
         // 알람 확인 처리
         List<AlarmDto> findAlarms = alarmService.findById(userId);
@@ -36,12 +42,9 @@ public class alarmController {
             alarmService.updateAlarmCheckByUserId(userId);
         }
 
-        if (findAlarms.isEmpty()) {
-            model.addAttribute("hasAlarms", false);
-        } else {
-            model.addAttribute("hasAlarms", true);
-            model.addAttribute("findAlarms", findAlarms);
-        }
+        model.addAttribute("findAlarms", findAlarms);
         return "alarm/alarmpage";
+
+
     }
 }

@@ -17,6 +17,5 @@ public class AlarmDto {
     private Long alarmFrom;
     private String userNickName;
 
-
 //   ALARM_ID, ALARM_CONTENT, ALARM_DATE, ALARM_CHECK, ALARM_TO, ALARM_FROM
 }
