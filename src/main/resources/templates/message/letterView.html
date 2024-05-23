@@ -18,7 +18,7 @@
             <a href="">
               <!-- 카테고리  -->
               <img
-                src="../myPageImg/Category.png"
+                src="/images/mypage/Category.png"
                 alt=""
                 class="main_top_category"
               />
@@ -55,13 +55,13 @@
     <div class="letter-wrap-all">
       <div class="letter-wrap">
         <div class="letter-header">
-          <h2 class="letter-title">제목</h2>
+          <h2 th:text="${messageViewDto.messageTitle}" class="letter-title"></h2>
           <p class="letter-info">
-            작성자: <span>홍길동</span> | 보낸날짜: <span>2014.03.26</span>
+            작성자: <span th:text="${messageViewDto.messageFrom}"></span> | 보낸날짜: <span th:text="${messageViewDto.messageDate}"></span>
           </p>
         </div>
       </div>
-      <div class="letter-content"><span>내용</span></div>
+      <div class="letter-content"><span th:text="${messageViewDto.messageContent}"></span></div>
     </div>
 
     <div class="letter-reply-box">

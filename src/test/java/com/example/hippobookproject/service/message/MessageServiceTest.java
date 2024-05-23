@@ -84,5 +84,15 @@ class MessageServiceTest {
 //
 //    }
 
+    @Test
+    void findMessageView(){
+        MessageDto dto = new MessageDto();
+        dto.setMessageId(2L);
+        doReturn(Optional.of(dto)).when(messageMapper).selectMessageView(any());
+        // when
+        MessageDto messageView = messageService.findMessageView(any());
+        // then
+        assertThat(messageView).extracting("messageId").isEqualTo(2L);
+    }
 
 }

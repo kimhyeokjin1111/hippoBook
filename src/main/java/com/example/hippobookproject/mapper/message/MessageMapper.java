@@ -20,4 +20,6 @@ public interface MessageMapper {
     List<MessageDto> selectPostMessage(Long userId);
 
     void deleteMessage(@Param("idList") List<Long> idList);
+
+    Optional<MessageDto> selectMessageView(Long messageId);
 }

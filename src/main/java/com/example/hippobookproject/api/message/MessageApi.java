@@ -4,10 +4,7 @@ import com.example.hippobookproject.service.message.MessageService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +21,18 @@ public class MessageApi {
         log.info("messageId = {}",idList);
 
         messageService.removeMessage(idList);
+    }
+
+    @DeleteMapping("/v2/messages")
+    public void sendLetter(@RequestParam("id") List<Long> idList,
+                          HttpSession session){
+        log.info("messageId = {}",idList);
+
+        messageService.removeMessage(idList);
+    }
+
+    @PatchMapping("/v1/nickname")
+    public void letterWrite(){
+
     }
 }

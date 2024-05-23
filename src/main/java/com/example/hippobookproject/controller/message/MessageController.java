@@ -55,7 +55,12 @@ public class MessageController {
     }
 
     @GetMapping("/letter/view")
-    public String letterView(){
+    public String letterView(Model model,@SessionAttribute("messageId") Long messageId){
+        MessageDto messageViewDto = messageService.findMessageView(messageId);
+        model.addAttribute("messageViewDto",messageViewDto);
+        log.info("messageViewDto={}", messageViewDto);
+
+
         return "message/letterView";
     }
 
@@ -69,6 +74,18 @@ public class MessageController {
 
 
         return "message/get_letter";
+    }
+
+    @PostMapping("/letter/get")
+    public String getLetter(@SessionAttribute("messageId") Long messageId,
+                            Model model){
+        MessageDto msgDto = new MessageDto();
+        msgDto.setMessageId(messageId);
+
+        model.addAttribute("msgDto",msgDto);
+        log.info("msgDto={}",msgDto);
+
+        return "/letter/view";
     }
 
     @GetMapping("/letter/send")
