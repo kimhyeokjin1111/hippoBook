@@ -29,8 +29,13 @@ public class AlarmService {
         alarmMapper.updateAlarmCheckByUserId(userId);
     }
 
+
     public boolean hasUncheckedAlarms(Long userId) {
         return alarmMapper.hasUncheckedAlarms(userId);
+    }
+
+    public boolean messageCheckedAlarms(Long userId) {
+        return alarmMapper.messageCheckedAlarms(userId);
     }
 
 //    메시지 알림 조회하기
