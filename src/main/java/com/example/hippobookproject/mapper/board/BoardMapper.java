@@ -7,5 +7,8 @@ import java.util.Optional;
 
 @Mapper
 public interface BoardMapper {
-    PostSearchResultDto selectPostById(Long postId);
+    PostSearchResultDto selectDeclById(Long postId);
+    PostSearchResultDto selectBoardById(Long postId);
+    PostSearchResultDto selectNovelById(Long postId);
+    PostSearchResultDto selectClaimById(Long postId);
 }
