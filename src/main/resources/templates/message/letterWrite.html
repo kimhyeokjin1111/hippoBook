@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" th:href="@{/css/message/letterWrite.css}" />
     <link rel="stylesheet" th:href="@{/css/main/mainpage.css}" />
+    <script type="module" defer th:src="@{/js/message/letter_write.js}"></script>
   </head>
   <body>
     <form action="">
@@ -66,10 +67,12 @@
             <div class="letter-id-box-title">
               <h3>아이디 *</h3>
             </div>
+            <th:block>
             <div class="letter-id-box-input" >
               <input type="text" id="letter-id-text" name="userNickname" />
-              <button type="button" id="letter-id-button" onclick="alert('신청이 완료 되었습니다.')">닉네임 검색</button>
+              <button type="button" id="letter-id-button">닉네임 검색</button>
             </div>
+            </th:block>
           </div>
 
           <div class="letter-id-box">

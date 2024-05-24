@@ -24,7 +24,7 @@ public class MessageController {
 
     @GetMapping("/letter/write")
     public String letterWrite(@SessionAttribute("userId") Long userId
-                              ){
+                              ,Model model){
 
 
         return "message/letterWrite";
@@ -55,7 +55,7 @@ public class MessageController {
     }
 
     @GetMapping("/letter/view")
-    public String letterView(Model model,@SessionAttribute("messageId") Long messageId){
+    public String letterView(Model model, Long messageId){
         MessageDto messageViewDto = messageService.findMessageView(messageId);
         model.addAttribute("messageViewDto",messageViewDto);
         log.info("messageViewDto={}", messageViewDto);
