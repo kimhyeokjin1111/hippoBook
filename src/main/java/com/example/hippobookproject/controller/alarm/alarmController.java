@@ -3,7 +3,9 @@ package com.example.hippobookproject.controller.alarm;
 import com.example.hippobookproject.dto.alarm.AlarmDto;
 import com.example.hippobookproject.dto.feed.FollowDto;
 import com.example.hippobookproject.dto.message.MessageDto;
+import com.example.hippobookproject.mapper.message.MessageMapper;
 import com.example.hippobookproject.service.alarm.AlarmService;
+import com.example.hippobookproject.service.message.MessageService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +24,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class alarmController {
     private final AlarmService alarmService;
+    private final MessageService messageService;
 
     @GetMapping("/alarm")
     public String alarmPage(Model model, HttpSession session) {
@@ -30,9 +33,9 @@ public class alarmController {
 
 
         // 로그인 안 하고 알람 페이지 진입시 로그인 페이지로 이동
-        if (userId == null) {
-            return "redirect:/user/login";
-        }
+//        if (userId == null) {
+//            return "redirect:/user/login";
+//        }
 
 
 
@@ -41,6 +44,11 @@ public class alarmController {
         if (!findAlarms.isEmpty()) {
             alarmService.updateAlarmCheckByUserId(userId);
         }
+
+
+
+
+
 
         model.addAttribute("findAlarms", findAlarms);
         return "alarm/alarmpage";

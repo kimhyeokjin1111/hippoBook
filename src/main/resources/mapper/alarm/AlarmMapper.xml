@@ -13,20 +13,23 @@
         WHERE ALARM_TO = #{userId}
     </select>
 
-
-    <!--    하나라도 확인 안 한 알람이 있는지-->
-    <select id="hasUncheckedAlarms" resultType="boolean">
-        SELECT CASE WHEN COUNT(1) > 0 THEN 1 ELSE 0 END
-        FROM TBL_ALARM
-        WHERE ALARM_TO = #{userId} AND ALARM_CHECK = 'N'
-    </select>
-
     <!-- 사용자의 모든 알람 확인 처리 -->
     <update id="updateAlarmCheckByUserId" parameterType="long">
         UPDATE TBL_ALARM
         SET ALARM_CHECK = 'Y'
         WHERE ALARM_TO = #{userId}
     </update>
+
+    <!--    하나라도 확인 안 한 알람이 있는지-->
+    <select id="hasUncheckedAlarms" resultType="boolean">
+        SELECT CASE WHEN COUNT(1) > 0 THEN 1 ELSE 0 END
+        FROM TBL_ALARM
+        WHERE ALARM_TO = #{userId} AND ALARM_CHECK IS NULL
+    </select>
+
+
+
+
 
     <!--알람 확인-->
     <select id="getAlarmCheck" resultType="char">
@@ -55,5 +58,14 @@
         FROM TBL_FOLLOW
         WHERE FOLLOW_TO = #{userId}
     </select>
+
+<!--    메시지 사용자 알림 확인 여부 조회-->
+
+    <select id="messageCheckedAlarms" resultType="boolean">
+        SELECT CASE WHEN COUNT(1) > 0 THEN 1 ELSE 0 END
+        FROM TBL_MESSAGE
+        WHERE MESSAGE_TO = #{userId} AND MESSAGE_CHECK = 'N'
+    </select>
+
 
 </mapper>

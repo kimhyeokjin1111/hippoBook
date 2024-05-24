@@ -20,4 +20,7 @@ import java.util.List;
 
     List<FollowDto> selectFollowAlarm();
 
-    }
+    boolean messageCheckedAlarms(Long userId);
+
+    List<AlarmDto> findByMessage(Long userId);
+}
