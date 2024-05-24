@@ -3,7 +3,9 @@ package com.example.hippobookproject.mapper.message;
 import com.example.hippobookproject.dto.message.MessageDto;
 import com.example.hippobookproject.dto.message.MessageNicknameDto;
 import com.example.hippobookproject.dto.mypage.BookContainerDto;
+import com.example.hippobookproject.dto.page.MessageCriteria;
 import com.example.hippobookproject.dto.user.UserJoinDto;
+import com.jayway.jsonpath.Criteria;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,14 +55,24 @@ class MessageMapperTest {
 
     @Test
     void selectGetMessage(){
-        List<MessageDto> getMessage = messageMapper.selectGetMessage(1L);
+        MessageCriteria messageCriteria = new MessageCriteria();
+        messageCriteria.setPage(1);
+        messageCriteria.setAmount(10);
+
+        List<MessageDto> getMessage = messageMapper.selectGetMessage(1L,messageCriteria);
         System.out.println("getMessage = " + getMessage);
+        assertThat(getMessage).hasSize(10);
     }
 
     @Test
     void selectPostMessage(){
-        List<MessageDto> postMessage = messageMapper.selectPostMessage(1L);
+        MessageCriteria messageCriteria = new MessageCriteria();
+        messageCriteria.setPage(1);
+        messageCriteria.setAmount(10);
+
+        List<MessageDto> postMessage = messageMapper.selectPostMessage(1L,messageCriteria);
         System.out.println("postMessage = " + postMessage);
+        assertThat(postMessage).hasSize(10);
     }
 
     @Test
@@ -86,6 +98,11 @@ class MessageMapperTest {
         messageDto = new MessageDto();
         messageDto.setMessageId(1L);
         messageMapper.selectMessageView(messageDto.getMessageId());
+    }
+
+    @Test
+    void selectTotalGetMessage(){
+        messageMapper.selectTotalGetMessage(1L);
     }
 
 }

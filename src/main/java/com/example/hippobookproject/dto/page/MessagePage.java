@@ -21,24 +21,24 @@ public class MessagePage {
 //    전체 게시글 수
     private int total;
 //    화면에서 전달받은 page, amount를 저장하는 객체
-    private MessageCriteria criteria;
+    private MessageCriteria messageCriteria;
 
-    public MessagePage(MessageCriteria criteria, int total){
-        this(criteria, total, 5);
+    public MessagePage(MessageCriteria messageCriteria, int total){
+        this(messageCriteria, total, 5);
     }
 
-    public MessagePage(MessageCriteria criteria, int total, int pageCount){
-        this.criteria = criteria;
+    public MessagePage(MessageCriteria messageCriteria, int total, int pageCount){
+        this.messageCriteria = messageCriteria;
         this.total = total;
         this.pageCount = pageCount;
 
 //        현재 페이지를 기준으로 세트의 마지막 번호, 시작 번호를 구한다.
 //        ceil() : 올림 처리
-        this.endPage = (int)(Math.ceil(criteria.getPage() / (double)pageCount)) * pageCount;
+        this.endPage = (int)(Math.ceil(messageCriteria.getPage() / (double)pageCount)) * pageCount;
         this.startPage = endPage - pageCount + 1;
 
 //        게시글 전체 수로 실제 마지막 페이지를 구한다.
-        this.realEnd = (int)Math.ceil((double) total / criteria.getAmount());
+        this.realEnd = (int)Math.ceil((double) total / messageCriteria.getAmount());
 
 //        세트의 마지막 번호보다 실제 마지막 페이지가 작다면?
         if (realEnd < endPage) {

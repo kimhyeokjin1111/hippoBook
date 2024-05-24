@@ -11,6 +11,7 @@ public class MessageCriteria {
     private  int amount; // 한 페이지 당 게시물 수
 
     public MessageCriteria() {
+
 //        this.page = 1;
 //        this.amount = 9;
         this(1,9);

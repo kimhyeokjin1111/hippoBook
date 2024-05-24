@@ -43,6 +43,27 @@
               </ul>
             </div>
           </div>
+
+          <div class="main__post-search-result-box">
+            <ul>
+              <li class="main__post-result-li">
+                <p class="main__post-titie-info-box">
+
+
+                    <span>제목</span>
+
+                  <img src="" alt="" />
+                </p>
+                <div class="main__post-detail-info-box">
+                  <span>받은 사람</span>
+                  <ul>
+                    <li> 날짜</li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+
           <div th:each="messageDto : ${postMessageList}" class="main__post-search-result-box">
             <ul>
               <li class="main__post-result-li">
@@ -69,31 +90,22 @@
           </div>
           <div class="letter-page-container">
             <ul class="page-box">
-              <a href="" class="letter-list-page-a">
+              <a th:href="@{/message/letter/send(page=${page.startPage - 1})}" class="page-a" th:if="${page.prev}">
                 <li class="page-num prev">&lt</li>
               </a>
-    
-              <a href="" class="letter-list-page-a">
-                <li class="page-num">1</li>
-              </a>
-              <a href="" class="letter-list-page-a">
-                <li class="page-num">2</li>
-              </a>
-              <a href="" class="letter-list-page-a">
-                <li class="page-num">3</li>
-              </a>
-              <a href="" class="letter-list-page-a">
-                <li class="page-num">4</li>
-              </a>
-              <a href="" class="letter-list-page-a">
-                <li class="page-num">5</li>
-              </a>
-    
-              <a href="" class="letter-list-page-a">
+
+              <th:block th:each="i : ${#numbers.sequence(page.startPage, page.endPage)}">
+                <a th:href="@{/message/letter/send(page=${i})}" class="page-a" >
+                  <li class="page-num" th:classappend="${i == page.messageCriteria.page ? 'active' : ''}" th:text="${i}"></li>
+                </a>
+              </th:block>
+
+              <a th:href="@{/message/letter/send(page=${page.endPage + 1})}" class="page-a" th:if="${page.next}">
                 <li class="page-num next">&gt</li>
               </a>
             </ul>
           </div>
+
         </main>
       </form>
     </div>

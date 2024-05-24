@@ -3,6 +3,8 @@ package com.example.hippobookproject.controller.message;
 import com.example.hippobookproject.dto.alarm.AlarmDto;
 import com.example.hippobookproject.dto.message.MessageDto;
 import com.example.hippobookproject.dto.message.MessageNicknameDto;
+import com.example.hippobookproject.dto.page.MessageCriteria;
+import com.example.hippobookproject.dto.page.MessagePage;
 import com.example.hippobookproject.service.message.MessageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -65,9 +67,13 @@ public class MessageController {
     }
 
     @GetMapping("/letter/get")
-    public String getLetter(Model model, @SessionAttribute("userId") Long userId){
-        List<MessageDto> getMessageList = messageService.findGetMessage(userId);
+    public String getLetter(MessageCriteria messageCriteria, Model model, @SessionAttribute("userId") Long userId){
+        List<MessageDto> getMessageList = messageService.findGetMessage(userId,messageCriteria);
+        int total = messageService.findTotalGetMessage(userId);
+        MessagePage page = new MessagePage(messageCriteria, total);
+
         model.addAttribute("getMessageList",getMessageList);
+        model.addAttribute("page", page);
 
         log.info("getMessageList={}", getMessageList);
 
@@ -89,10 +95,15 @@ public class MessageController {
     }
 
     @GetMapping("/letter/send")
-    public String sendLetter(Model model, @SessionAttribute("userId") Long userId){
+    public String sendLetter(MessageCriteria messageCriteria, Model model, @SessionAttribute("userId") Long userId){
 
-        List<MessageDto> postMessageList = messageService.findPostMessage(userId);
+        List<MessageDto> postMessageList = messageService.findPostMessage(userId,messageCriteria);
+        int total = messageService.findTotalPostMessage(userId);
+        MessagePage page = new MessagePage(messageCriteria, total);
+
         model.addAttribute("postMessageList",postMessageList);
+        model.addAttribute("page", page);
+
 
         log.info("postMessageList={}", postMessageList);
         return "message/send_letter";

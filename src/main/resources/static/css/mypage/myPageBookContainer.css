@@ -1,7 +1,3 @@
-@font-face {
-  font-family: "neon";
-
-}
 
 * {
   margin: 0;
@@ -125,6 +121,7 @@ a {
   padding: 0 160px 0 230px;
   flex-direction: column;
   background-color: rgba(42, 193, 188, 0.8);
+  box-shadow: 0 5px 5px -2px gray;
 }
 
 .profile-all {
@@ -328,7 +325,14 @@ footer {
   margin-top: 10px;
 }
 
-button {
+.book-container-modal-list-btn button {
+  background-color: #2bc1bf;
+  height: 30px;
+  width: 50%;
+  border-radius: 20px;
+}
+
+.book-container-modal-list-btn2 button {
   background-color: #2bc1bf;
   height: 30px;
   width: 50%;

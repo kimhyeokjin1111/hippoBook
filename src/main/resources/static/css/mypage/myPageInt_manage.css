@@ -121,7 +121,8 @@ a {
   display: flex;
   padding: 0 160px 0 230px;
   flex-direction: column;
-  background-color: rgba(210, 255, 254, 0.8);
+  background-color: rgba(42, 193, 188, 0.8);
+  box-shadow: 0 5px 5px -2px gray;
 }
 
 .profile-all {
@@ -204,9 +205,10 @@ input[type="file"] {
 
 .mypage-cate {
   display: flex;
-  padding: 0 160px 0 160px;
+  padding: -1px 160px 0 160px;
   margin: 0 230px;
   width: 1440px;
+  border-bottom: 1px solid #2bc1bf;
 }
 
 .mypage-cate a {
