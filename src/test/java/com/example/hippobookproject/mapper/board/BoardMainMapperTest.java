@@ -47,4 +47,5 @@ class BoardMainMapperTest {
         int i = boardMainMapper.selectBoardPostTotal(postSearchOptDto);
         assertThat(i).isEqualTo(4);
     }
+
 }
