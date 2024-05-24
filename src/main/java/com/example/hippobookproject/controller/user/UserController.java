@@ -6,13 +6,11 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Random;
 
 @Slf4j
 @Controller
@@ -28,11 +26,11 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String postLoginPage(String userLoginId, String userPassword, HttpSession session){
+    public String postLoginPage(String userLoginId, String userPassword, HttpSession session) {
         try {
             Long userId = userService.findUserId(userLoginId, userPassword);
             session.setAttribute("userId", userId);
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
             return "user/login";
         }
