@@ -48,7 +48,9 @@
               <li class="main__post-result-li">
                 <p class="main__post-titie-info-box">
                     <input type="checkbox" class="message-check" name="" th:data-id="${messageDto.messageId}" />
+                  <a th:href="@{/message/letter/view(messageId=${messageDto.messageId})}">
                   <span th:text="${messageDto.messageTitle}"></span>
+                  </a>
                   <img src="" alt="" />
                 </p>
                 <div class="main__post-detail-info-box">

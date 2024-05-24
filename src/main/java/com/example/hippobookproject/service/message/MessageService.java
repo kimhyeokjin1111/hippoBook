@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 @Service
 @Transactional
@@ -23,7 +24,11 @@ public class MessageService {
     public MessageNicknameDto findUserNickname(String userNickname){
         return messageMapper.selectUserNickname(userNickname)
                 .orElseThrow(() -> new IllegalStateException("존재하지 않는 닉네임"));
-    };
+    }
+
+    public boolean isNicknameDuplicated(String userNickname){
+        return messageMapper.selectUserNickname(userNickname).isPresent();
+    }
 
     public void registerMessageWrite(MessageDto messageDto,AlarmDto alarmDto){
         messageMapper.insertMessage(messageDto);

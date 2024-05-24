@@ -1,5 +1,6 @@
 package com.example.hippobookproject.api.message;
 
+import com.example.hippobookproject.dto.message.MessageNicknameDto;
 import com.example.hippobookproject.service.message.MessageService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -31,8 +32,10 @@ public class MessageApi {
         messageService.removeMessage(idList);
     }
 
-    @PatchMapping("/v1/nickname")
-    public void letterWrite(){
+    @GetMapping("/v1/nickname/{userNickname}")
+    public boolean letterWrite(@PathVariable("userNickname") String userNickname){
+        log.info("userNickname = " + userNickname);
 
+        return messageService.isNicknameDuplicated(userNickname);
     }
 }
