@@ -57,18 +57,18 @@ class MessageServiceTest {
 
     @Test
     void findGetMessage(){
-        doReturn(List.of(new MessageDto())).when(messageMapper).selectGetMessage(any());
+        doReturn(List.of(new MessageDto())).when(messageMapper).selectGetMessage(any(),any());
         // when
-        List<MessageDto> getMessageList = messageService.findGetMessage(any());
+        List<MessageDto> getMessageList = messageService.findGetMessage(any(),any());
         // then
         assertThat(getMessageList).hasSize(1);
     }
 
     @Test
     void findPostMessage(){
-        doReturn(List.of(new MessageDto())).when(messageMapper).selectPostMessage(any());
+        doReturn(List.of(new MessageDto())).when(messageMapper).selectPostMessage(any(),any());
         // when
-        List<MessageDto> postMessageList = messageService.findPostMessage(any());
+        List<MessageDto> postMessageList = messageService.findPostMessage(any(),any());
         // then
         assertThat(postMessageList).hasSize(1);
     }

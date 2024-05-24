@@ -4,9 +4,11 @@ import com.example.hippobookproject.dto.alarm.AlarmDto;
 import com.example.hippobookproject.dto.message.MessageDto;
 import com.example.hippobookproject.dto.message.MessageNicknameDto;
 import com.example.hippobookproject.dto.mypage.BookContainerDto;
+import com.example.hippobookproject.dto.page.MessageCriteria;
 import com.example.hippobookproject.mapper.alarm.AlarmMapper;
 import com.example.hippobookproject.mapper.message.MessageMapper;
 import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,14 +37,16 @@ public class MessageService {
         alarmMapper.insertAlarm(alarmDto);
     }
 
-    public List<MessageDto> findGetMessage(Long userId) {
+    public List<MessageDto> findGetMessage(@Param("userId") Long userId,
+                                           @Param("messageCriteria") MessageCriteria messageCriteria) {
 
-        return messageMapper.selectGetMessage(userId);
+        return messageMapper.selectGetMessage(userId,messageCriteria);
     }
 
-    public List<MessageDto> findPostMessage(Long userId) {
+    public List<MessageDto> findPostMessage(@Param("userId") Long userId,
+                                            @Param("messageCriteria") MessageCriteria messageCriteria) {
 
-        return messageMapper.selectPostMessage(userId);
+        return messageMapper.selectPostMessage(userId,messageCriteria);
     }
 
     public void removeMessage(List<Long> idList) {
@@ -55,4 +59,13 @@ public class MessageService {
         return messageMapper.selectMessageView(messageId)
                 .orElseThrow(() -> new IllegalStateException("존재하지 않는 쪽지"));
     };
+
+    public int findTotalGetMessage(Long userId){
+        return messageMapper.selectTotalGetMessage(userId);
+    }
+
+    public int findTotalPostMessage(Long userId){
+        return messageMapper.selectTotalGetMessage(userId);
+    }
+
 }
