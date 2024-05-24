@@ -48,6 +48,8 @@ public class MainPageController {
             alarmCheck = alarmService.hasUncheckedAlarms(userId);
         }
 
+
+
         // 모델에 데이터 추가
         model.addAttribute("readList", readList);
         model.addAttribute("dealList", dealList);
