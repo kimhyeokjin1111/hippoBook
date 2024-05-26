@@ -35,10 +35,12 @@ public class BookContainerApi {
 
 
     @PatchMapping("/v2/containers/book/{bookHasPercent}")
-    public void modifyBookStatus(@SessionAttribute(value = "bookHasId", required = false) Long bookHasId,
+    public void modifyBookStatus(@SessionAttribute("bookHasId") Long bookHasId,
                                @PathVariable("bookHasPercent") String bookHasPercent
     ){
-        //bookHasId = 42L;
+
+
+        //bookHasId = 43L;
 
         BookContainerDto bookContainerDto = new BookContainerDto();
         bookContainerDto.setBookHasId(bookHasId);

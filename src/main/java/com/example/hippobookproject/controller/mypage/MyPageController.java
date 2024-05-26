@@ -46,6 +46,7 @@ public class MyPageController {
                             RedirectAttributes redirectAttributes) {
 
         intBoardDto.setUserId(userId);
+        intBoardDto.setIntBoardId(intBoardDto.getIntBoardId());
 
 
         mypageService.registerIntBoardText(intBoardDto);

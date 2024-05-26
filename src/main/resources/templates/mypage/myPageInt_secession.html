@@ -5,65 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" th:href="@{/css/mypage/myPageInt_secession.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main/mainpage.css}" />
     <script defer th:src="@{js/mypage/readingBook.js}"></script>
     <script defer th:src="@{js/mypage/readingBookDeleteButton.js}"></script>
   </head>
   <body>
+  <header class="header" th:replace="~{/fragment/header :: header}"></header>
 
       <div>
         <div>
-          <header>
-            <div class="header_layout">
-              <h1 class="header_logo">
-                <div class="header_logo_layout">
-                  <a href="">
-                    <!--홈페이지 버튼 -->
-                    <img th:src="@{/images/mypage/HippoBook_logo.png}"
-                      alt=""
-                      class="header_logo_images"
-                    />
-                  </a>
-                </div>
-              </h1>
-              <div class="header_right_layout">
-                <a href="">
-                  <!-- 알람 페이지 이동  -->
-                  <img th:src="@{/images/mypage/alarm.png}"
-                    alt=""
-                    class="header_right_alarm"
-                  />
-                </a>
-                <ul class="header_right_login">
-                  <a href="" class="header_right_login_box">로그인</a>
-                </ul>
-              </div>
-            </div>
-          </header>
 
           <main>
+            <!-- 메인 상단 -->
             <div class="main_top">
               <div class="main_top_layout">
-                <a href="">
-                  <!-- 카테고리  -->
-                  <img th:src="@{/images/mypage/Category.png}"
-                    alt=""
-                    class="main_top_category"
+                <button type="button" class="category_openBtn" id="OpenBtn">
+                  <!-- 모달창 띄우는 버튼  -->
+                  <img
+                          th:src="@{/images/book/category.png}"
+                          alt=""
+                          class="main_top_category"
                   />
-                </a>
+                </button>
                 <div class="main_top_category_tap">
                   <ul class="main_top_category_list">
-                    <li>
-                      <a href="">내 서재</a>
+                    <li class="main_top_category_list2">
+                      <a th:href="@{/mypage/int}" class="main_top_category_list_title">내 서재</a>
                       <!-- 내 서재 이동 -->
                     </li>
-                    <li>
-                      <a href="">쪽지</a>
+                    <li class="main_top_category_list2">
+                      <a th:href="@{/message/letter/get}" class="main_top_category_list_title">쪽지</a>
                       <!-- 쪽지 이동 -->
                     </li>
-                    <li>
-                      <a href="">검색</a>
-                      <!-- 검색 이동 -->
+                    <li class="main_top_category_list2">
+                      <a th:href="@{/search}" class="main_top_category_list_title">검색</a>
+
+                    <li class="main_top_category_list2">
+                      <a href="" class="main_top_category_list_title">이벤트</a>
+                      <!-- 이벤트 이동 -->
                     </li>
+
+                    <li class="main_top_category_list2">
+                      <a th:href="@{/categorie/Categoriepage}" class="main_top_category_list_title">카테고리</a>
+                    </li>
+
                   </ul>
                 </div>
               </div>
@@ -80,7 +65,7 @@
               </div>
               <div id="profile-name">
                 <h3>책먹는 하마</h3>
-                <span>님의 서재</span>
+                <span class="profile-name-option">님의 서재</span>
               </div>
               <div id="follow">
                 <span>팔로워 <span>0</span></span>
