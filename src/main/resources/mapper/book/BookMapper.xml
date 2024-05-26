@@ -21,4 +21,10 @@
     <delete id="deleteBookById" parameterType="java.lang.Long">
         DELETE FROM TBL_BOOK WHERE BOOK_ID = #{bookId}
     </delete>
+
+
+    <insert id="insertAllBook" parameterType="AladinItemDto">
+        INSERT INTO TBL_BOOK(BOOK_ID, BOOK_NAME, BOOK_WRITER, BOOK_DATE, LINK, DESCRIPTION, COVER)
+        VALUES (SEQ_BOOK.nextval, #{title}, #{author},#{pubDate},#{link},#{description},#{cover})
+    </insert>
 </mapper>
