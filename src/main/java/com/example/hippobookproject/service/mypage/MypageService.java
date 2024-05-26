@@ -37,12 +37,20 @@ public class MypageService {
 
     public void registerIntBoardText(IntBoardDto intBoardDto) {
 
-        mypageMapper.selectIntBoardText(intBoardDto.getUserId());
-        if (intBoardDto.getUserId() == null) {
-            mypageMapper.insertIntBoardText(intBoardDto);
+
+        Optional<IntBoardDto> intBoard = mypageMapper.selectIntBoardText(intBoardDto.getUserId());
+
+        if (intBoard.isPresent()) {
+            IntBoardDto oldBoard = intBoard.get();
+            if (intBoardDto.getIntBoardContent() == null){
+                intBoardDto.setIntBoardId(oldBoard.getIntBoardId());
+                mypageMapper.updateIntBoardText(intBoardDto);
+            }else{
+                mypageMapper.updateIntBoardText(intBoardDto);
+            }
 
         } else {
-            mypageMapper.updateIntBoardText(intBoardDto);
+            mypageMapper.insertIntBoardText(intBoardDto);
         }
 
 

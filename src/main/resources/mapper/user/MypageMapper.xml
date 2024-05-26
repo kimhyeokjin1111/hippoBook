@@ -20,7 +20,7 @@
     </insert>
 
     <select id="selectIntBoardText" resultType="IntBoardDto">
-        SELECT INT_BOARD_CONTENT
+        SELECT INT_BOARD_ID,INT_BOARD_CONTENT
             FROM TBL_INT_BOARD
         WHERE USER_ID = #{userId}
     </select>

@@ -1,9 +1,7 @@
-
-
 * {
   margin: 0;
   padding: 0;
-  font-family: neon;
+
 }
 header {
   top: 0;
@@ -72,14 +70,7 @@ main {
   padding: 0;
 }
 
-.main_top {
-  position: sticky;
-  top: 65px;
-  z-index: 50;
-  width: 100%;
-  height: 44px;
-  border-bottom: 1px solid gray;
-}
+
 
 .main_top_layout {
   display: flex;
@@ -98,7 +89,7 @@ main {
   margin-right: 12px;
 }
 .main_top_category_tap {
-  position: "relative";
+  position: relative;
   left: 0;
   top: 0;
 }
@@ -119,17 +110,27 @@ a {
 
 .profile {
   display: flex;
-  padding: 0 160px 0 230px;
+  margin: 0 auto;
   flex-direction: column;
   background-color: rgba(42, 193, 188, 0.8);
   box-shadow: 0 5px 5px -2px gray;
+  width: 1440px;
 }
 
 .profile-all {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 27px;
   width: 1440px;
+
+}
+
+.profile-name-option{
+  margin-top: 6px;
+}
+
+#my-favorite-book{
+  padding-left: 27px;
 }
 
 #profile-photo {
@@ -421,12 +422,6 @@ h1 {
   height: 240px;
 }
 
-button {
-  background-color: #2bc1bf;
-  height: 30px;
-  width: 50%;
-  border-radius: 20px;
-}
 
 #reading-book-delete-button {
   display: flex;
