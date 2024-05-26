@@ -185,16 +185,20 @@ let $otherReason = document.querySelector('.decl-other-content-box > input');
 }
 
 /*----------------------------------------------------------------*/
+
+let nowPage = 1;
 //코멘트 이벤트 부분
 let $postHidden = document.querySelector('.post-hidden')
 let commentFindInst = {
   postType : $postHidden.dataset.type,
-  postId : $postHidden.dataset.id
+  postId : $postHidden.dataset.id,
 }
+
 {
   // 초기 페이지 진입 시 코멘트 출력 이벤트
 
   console.log('commentFindInst : ', commentFindInst);
+  showPostLike();
   findComment(commentFindInst, showComment)
 }
 
@@ -213,6 +217,7 @@ let commentFindInst = {
     }
 
     console.log('putCommentInfo : ', putCommentInfo)
+    nowPage = 1;
     addComment(putCommentInfo, $postHidden.dataset.type, () => {
       findComment(commentFindInst, showComment)
     })
@@ -222,15 +227,16 @@ let commentFindInst = {
 }
 
 function showComment(commentList){
-  // console.log(commentList)
+  nowPage = 1;
+  console.log(commentList)
   let tags = '';
 
   let $commentBox = document.querySelector('.main__post-comment-result-box')
 
-  for (let i = 0; i < commentList.length; i++) {
-    let commentWriter = commentList[i].userNickname
-    let commentDate = commentList[i].commentDate
-    let commmentContent = commentList[i].commentContent
+  for (let i = 0; i < commentList.contentList.length; i++) {
+    let commentWriter = commentList.contentList[i].userNickname
+    let commentDate = commentList.contentList[i].commentDate
+    let commmentContent = commentList.contentList[i].commentContent
 
     tags += `
                  <li>
@@ -247,13 +253,68 @@ function showComment(commentList){
                 </li>
     `
 
-    $commentBox.innerHTML = tags;
+
     // $commentBox.insertAdjacentHTML("beforeend", tags)
+  }
+  let pageBtn = document.querySelector('.main__post-comment-page-box');
+
+  $commentBox.innerHTML = tags;
+  if(commentList.hasNext){
+    nowPage += 1;
+    pageBtn.style.display = 'flex';
+  }else{
+    pageBtn.style.display = 'none';
   }
 }
 
+function showComment2(commentList){
+  console.log(commentList)
+  let tags = '';
+
+  let $commentBox = document.querySelector('.main__post-comment-result-box')
+
+  for (let i = 0; i < commentList.contentList.length; i++) {
+    let commentWriter = commentList.contentList[i].userNickname
+    let commentDate = commentList.contentList[i].commentDate
+    let commmentContent = commentList.contentList[i].commentContent
+
+    tags += `
+                 <li>
+                    <div>
+                        <p>
+                  <span>
+                    <a href="#">${commentWriter}</a>
+                    <span>${commentDate}</span>
+                  </span>
+                            <img class="comment-decl-btn" src="/imgs/administrator/fragment/decl.png" alt="">
+                        </p>
+                        <div>${commmentContent}</div>
+                    </div>
+                </li>
+    `
+
+
+  }
+  $commentBox.insertAdjacentHTML("beforeend", tags)
+  if(commentList.hasNext) {
+    nowPage += 1;
+  }else{
+    let pageBtn = document.querySelector('.main__post-comment-page-box');
+    pageBtn.style.display = 'none';
+  }
+}
+
+{
+  let pageBtn = document.querySelector('.main__post-comment-page-box');
+
+  pageBtn.addEventListener('click', function (){
+    console.log('pageBtn : ', pageBtn);
+    findComment(commentFindInst, showComment2);
+  })
+}
+
 function findComment(commentFindInst, callBack){
- fetch(`/v1/${commentFindInst.postType}/post/comments?postId=${commentFindInst.postId}`, {method : "GET"})
+ fetch(`/v1/${commentFindInst.postType}/post/comments?postId=${commentFindInst.postId}&amount=5&page=${nowPage}`, {method : "GET"})
      .then(dto => dto.json())
      .then(json => callBack(json))
 }
@@ -266,4 +327,41 @@ function addComment(putCommentInfo, postType, callBack){
     headers : {'Content-Type' : 'application/json;'},
     body : JSON.stringify(putCommentInfo)
   }).then(() => callBack());
+}
+
+{
+  let $likeBtn = document.querySelector('.main__post-like-btn-box > span');
+  let $postHidden = document.querySelector('.post-hidden')
+  $likeBtn.addEventListener('click', function (){
+    console.log('$postHidden : ', $postHidden)
+    console.log('$postHidden.dataset.postId : ', $postHidden.dataset.postId);
+    console.log('$postHidden.dataset.postType : ', $postHidden.dataset.postType)
+
+    let likeInfo = {
+      postId : $postHidden.dataset.id,
+      userId : 2 // $postHidden.dataset.id 로 교체 해야함
+    }
+
+    fetch(`/v1/${$postHidden.dataset.type}/post/like`,
+        {
+          method : "POST",
+          headers : {'Content-Type' : 'application/json'},
+          body : JSON.stringify(likeInfo)
+        })
+        .then(() => showPostLike())
+  })
+}
+
+function showPostLike(){
+  let $postHidden = document.querySelector('.post-hidden');
+  let $likeCount = document.querySelector('.main__post-like-btn-box > div > span')
+
+  fetch(`/v1/${$postHidden.dataset.type}/post/like?postId=${$postHidden.dataset.id}`,
+      {method : "GET"})
+      .then(resp =>
+        resp.text()
+      ).then(text => {
+    console.log(text)
+    $likeCount.innerText = text;
+  });
 }
