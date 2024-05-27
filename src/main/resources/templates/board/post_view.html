@@ -17,8 +17,8 @@
             <h1 th:if="${postType == 'novel'}">소설게시글</h1>
             <h1 th:if="${postType == 'claim'}">사용자문의게시글</h1>
             <div>
-                <span><a href="">수정</a></span>
-                <span><a href="">목록</a></span>
+                <span><button type="button">수정</button></span>
+                <span><button type="button">목록</button></span>
             </div>
         </div>
         <div class="main__post-title-box">
@@ -29,7 +29,7 @@
             <div>
                 <p th:text="${postDto.postView}"></p>
                 <p th:text="${postDto.postDate}">2024.04.22</p>
-                <span><img th:src="@{/imgs/administrator/fragment/decl.png}" alt=""/></span>
+                <span><img data-type="post" th:src="@{/imgs/administrator/fragment/decl.png}" alt=""/></span>
             </div>
         </div>
         <div class="main__post-content-box" th:utext="${postDto.postContent}">

@@ -45,7 +45,7 @@
   console.log($postMenu);
 
   let postReqList = {
-    postType : $postMenu[0].querySelector('a').dataset.type,
+    postType : $postMenu[0].querySelector('div').dataset.type,
     type : null,
     keyword : null,
     orderType : 'recent',
@@ -64,7 +64,7 @@
       console.log(clickedPost);
 
       let postReqList = {
-        postType : this.querySelector('a').dataset.type,
+        postType : this.querySelector('div').dataset.type,
           type : null,
           keyword : null,
           orderType : 'recent',
@@ -87,7 +87,7 @@
           .classList.add('post-menu-select-span');
 
         $postTitle.innerText =
-          $postMenu[clickedPost - 1].querySelector('a').innerText + '게시판';
+          $postMenu[clickedPost - 1].querySelector('div').innerText + '게시판';
 
       }
     });

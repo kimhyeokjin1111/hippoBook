@@ -234,3 +234,9 @@ let $otherReason = document.querySelector('.decl-other-content-box > input');
     $declRadios[4].value = this.value;
   });
 }
+
+// 책 정보 불러오는 이벤트
+
+{
+
+}

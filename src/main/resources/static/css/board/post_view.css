@@ -48,7 +48,7 @@ ul {
   padding: 0;
 }
 
-.main__post-type-modify-back-btn-box > div > span > a {
+.main__post-type-modify-back-btn-box > div > span > button {
   display: inline-block;
   font-size: 13px;
   color: #666;
@@ -60,7 +60,7 @@ ul {
   margin-left: 15px;
 }
 
-.main__post-type-modify-back-btn-box > div > span > a:hover {
+.main__post-type-modify-back-btn-box > div > span > button:hover {
   border: 1px solid #d3c6c6;
 }
 
