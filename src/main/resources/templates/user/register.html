@@ -8,6 +8,7 @@
     <!--    <link rel="stylesheet" th:href="@{/css/user/joinAuth.css}">-->
     <script defer th:src="@{/js/user/register.js}"></script>
     <script defer th:src="@{/js/user/sms_code_timer.js}"></script>
+    <script defer th:src="@{/js/user/sms_click_event.js}"></script>
 </head>
 <body data-theme="light">
 <div data-a-1120 id="wrap" class="web-mount">
@@ -104,7 +105,7 @@
                                            placeholder="01012345678"
                                            class="mds-input-field" name="userPhonenumber">
                                 </div>
-                                <button type="button" class="phone-info-code-button" onclick="takeTarget()" name="">
+                                <button type="button" class="phone-info-code-button" onclick="takeTarget()" id="sendSMSButton" name="TestUserSMSController">
                                     <span>인증번호 발송</span>
                                 </button>
                             </div>
