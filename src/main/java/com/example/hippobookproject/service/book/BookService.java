@@ -3,8 +3,8 @@ package com.example.hippobookproject.service.book;
 import com.example.hippobookproject.dto.book.AladinApiDto;
 import com.example.hippobookproject.mapper.book.*;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -15,16 +15,17 @@ import org.springframework.web.reactive.function.client.WebClient;
 @RequiredArgsConstructor
 public class BookService {
 
-    //@Value("${api.key.aladin}")
+    @Value("${api.key.aladin}")
     private String apiKey;
 
-    public AladinApiDto findAllBook(){
+    public AladinApiDto findAllBook(int start){
         String baseUrl = "http://www.aladin.co.kr/ttb/api/ItemList.aspx";
-        String queryType = "Bestseller";
+        String queryType = "ItemNewAll";
         String searchTarget = "Book";
         String output = "js";
         String version = "20131101";
-        int start = 1;
+//        int searchCategoryId =
+//        int start = 1;
         int maxResults = 50;
 
         String url = baseUrl + "?ttbkey=" + apiKey +
@@ -44,7 +45,7 @@ public class BookService {
                 .bodyToMono(AladinApiDto.class)
                 .block();
 
-        System.out.println("result = " + result);
+//        System.out.println("result = " + result);
         return result;
     }
 
