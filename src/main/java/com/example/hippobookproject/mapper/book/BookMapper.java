@@ -2,6 +2,9 @@ package com.example.hippobookproject.mapper.book;
 import com.example.hippobookproject.dto.Categorie.BookDto;
 import com.example.hippobookproject.dto.book.AladinItemDto;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.Set;
+
 @Mapper
 public interface BookMapper {
     void insertBook(BookDto book);
@@ -10,4 +13,6 @@ public interface BookMapper {
     void deleteBook(BookDto book);
 
     void insertAllBook(AladinItemDto aladinItemDto);
+
+    Set<String> selectIsbn();
 }
