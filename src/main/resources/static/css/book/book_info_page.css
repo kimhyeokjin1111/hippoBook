@@ -100,13 +100,13 @@ ul {
   left: 0;
   bottom: 6px;
   font-size: 50px;
-  background: var(--ui-06);
+  background-color: rgb(241, 241, 241);
   color: rgb(219, 213, 213);
 }
 
 .main__book-detail-info-box {
   padding: 24px;
-  padding-bottom: 0;
+  padding-bottom: 32px;
   border-bottom: 12px solid rgb(241, 241, 241);
 }
 
@@ -146,7 +146,6 @@ ul {
   cursor: pointer;
   border: 0;
   background-color: transparent;
-  -webkit-appearance: button;
   outline: 0;
   color: #3a9b99;
   font-weight: bold;
@@ -178,7 +177,7 @@ ul {
   left: 0;
   bottom: 16px;
   font-size: 50px;
-  background: var(--ui-06);
+  background: rgb(241, 241, 241);
   color: rgb(219, 213, 213);
 }
 
@@ -209,7 +208,6 @@ ul {
   cursor: pointer;
   border: 0;
   background-color: transparent;
-  -webkit-appearance: button;
   outline: 0;
   font-weight: 700;
   font-size: 16px;
@@ -233,8 +231,15 @@ ul {
   padding: 24px 200px;
 }
 
+.main__book-comment-content-box > ul{
+  border-top: 1px solid #bdb6b6;
+  border-bottom: 1px solid #bdb6b6;
+}
+
 .main__book-comment-content-box > ul > li {
   margin-bottom: 15px;
+  border-bottom: 1px solid #bdb6b6;
+  padding: 5px 0;
 }
 
 .main__book-comment-content-box > h3 {
@@ -249,15 +254,14 @@ ul {
   width: 100%;
 }
 
-/*.main__book-comment-content-box > h3 > img {*/
-/*  content: url('/imgs/administrator/fragment/right-shi.png');*/
-/*  position: absolute;*/
-/*  display: inline-block;*/
-/*  width: 15px;*/
-/*  height: 15px;*/
-/*  right: 7px;*/
-/*  bottom: 2px;*/
-/*}*/
+.main__book-comment-content-box > h3 > img {
+  position: absolute;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  right: 7px;
+  bottom: 2px;
+}
 
 .main__book-comment-content-box > h3 > a > span {
   color: black;

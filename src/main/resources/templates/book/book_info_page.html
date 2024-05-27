@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" th:href="@{/css/book/book_info_page.css}" />
     <link rel="stylesheet" th:href="@{/css/main/mainpage.css}" />
-    <script defer th:href="@{/js/book/book_info_page.js}"></script>
+    <script defer th:src="@{/js/book/book_info_page.js}"></script>
     <title>Document</title>
   </head>
   <body>
   <header class="header" th:replace="~{/fragment/header :: header}"></header>
+    <input type="hidden" class="book-info-hidden" th:data-bookid="${bookId}">
     <div class="main__outer_container">
       <main class="main__inner_container">
         <section class="main__book-preview-info-box">
@@ -31,7 +32,7 @@
                 <strong>6개</strong>
               </div>
               <div>
-                <p>피드 작성</p>
+                <p>책 담기</p>
               </div>
             </div>
           </div>
@@ -72,48 +73,48 @@
             <div class="main__book-detail-content-box">
               <ul>
                 <li><span>카테고리</span><strong>추리</strong></li>
-                <li><span>페이지</span><strong>400p</strong></li>
+<!--                <li><span>페이지</span><strong>400p</strong></li>-->
                 <li><span>출판사</span><strong>모모</strong></li>
                 <li><span>출간일</span><strong>2024.04.24</strong></li>
               </ul>
             </div>
-            <div class="main__book-other-descri-box">
-              <ul>
-                <li>
-                  <button class="book-detail-btn book-list-btn">
-                    목차 <img src="../img/down_sh.png" alt="" />
-                  </button>
-                  <p class="book-detail-content book-list-target">
-                    1. test <br />
-                    2. test <br />
-                    3. test <br />
-                    4. test
-                  </p>
-                </li>
-                <li>
-                  <button class="book-detail-btn book-author-btn">
-                    저자 소개 <img src="../img/down_sh.png" alt="" />
-                  </button>
-                  <p class="book-detail-content book-author-target">
-                    test author intro
-                  </p>
-                </li>
-                <li>
-                  <button class="book-detail-btn book-publi-btn">
-                    출판사 서평 <img src="../img/down_sh.png" alt="" />
-                  </button>
-                  <p class="book-detail-content book-publi-target">
-                    test publi-review
-                  </p>
-                </li>
-              </ul>
-            </div>
+<!--            <div class="main__book-other-descri-box">-->
+<!--              <ul>-->
+<!--                <li>-->
+<!--                  <button class="book-detail-btn book-list-btn">-->
+<!--                    목차 <img src="../img/down_sh.png" alt="" />-->
+<!--                  </button>-->
+<!--                  <p class="book-detail-content book-list-target">-->
+<!--                    1. test <br />-->
+<!--                    2. test <br />-->
+<!--                    3. test <br />-->
+<!--                    4. test-->
+<!--                  </p>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                  <button class="book-detail-btn book-author-btn">-->
+<!--                    저자 소개 <img src="../img/down_sh.png" alt="" />-->
+<!--                  </button>-->
+<!--                  <p class="book-detail-content book-author-target">-->
+<!--                    test author intro-->
+<!--                  </p>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                  <button class="book-detail-btn book-publi-btn">-->
+<!--                    출판사 서평 <img src="../img/down_sh.png" alt="" />-->
+<!--                  </button>-->
+<!--                  <p class="book-detail-content book-publi-target">-->
+<!--                    test publi-review-->
+<!--                  </p>-->
+<!--                </li>-->
+<!--              </ul>-->
+<!--            </div>-->
           </div>
         </section>
         <section class="main__book-comment-content-box">
           <h3>
-            <a href="">한 줄 리뷰<span>1</span></a>
-            <img th:src="@{/imgs/administrator/fragment/right-shi.png}" alt="" />
+            <span>한 줄 리뷰<span>1</span></span>
+<!--            <img th:src="@{/imgs/administrator/fragment/right-shi.png}" alt="" />-->
           </h3>
           <ul>
             <li>
@@ -123,12 +124,12 @@
               </div>
               <span>2024.04.24</span>
               <p class="book-comment-content">test comment content</p>
-              <div class="book-comment-like-box">
-                <span>리뷰가 마음에 드시나요?</span
-                ><button>
-                  <img src="/imgs/administrator/fragment/heart_empty.png" alt="" /><span>0</span>
-                </button>
-              </div>
+<!--              <div class="book-comment-like-box">-->
+<!--                <span>리뷰가 마음에 드시나요?</span-->
+<!--                ><button>-->
+<!--                  <img src="/imgs/administrator/fragment/heart_empty.png" alt="" /><span>0</span>-->
+<!--                </button>-->
+<!--              </div>-->
             </li>
           </ul>
           <div class="main__book-comment-write-container">
