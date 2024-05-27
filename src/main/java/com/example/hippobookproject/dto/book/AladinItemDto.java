@@ -19,4 +19,6 @@ public class AladinItemDto {
     private String description;
     private String cover;
     private String isbn;
+    private String categoryName;
+    private String publisher;
 }

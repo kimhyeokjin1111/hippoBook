@@ -24,7 +24,12 @@
 
 
     <insert id="insertAllBook" parameterType="AladinItemDto">
-        INSERT INTO TBL_BOOK(BOOK_ID, BOOK_NAME, BOOK_WRITER, BOOK_DATE, LINK, DESCRIPTION, COVER)
-        VALUES (SEQ_BOOK.nextval, #{title}, #{author},#{pubDate},#{link},#{description},#{cover})
+        INSERT INTO TBL_BOOK(BOOK_ID, BOOK_NAME, BOOK_WRITER, BOOK_DATE, LINK, DESCRIPTION, COVER,ISBN,PUBLISHER_ID,CATEGORY)
+        VALUES (SEQ_BOOK.nextval, #{title}, #{author},#{pubDate},#{link},#{description},#{cover},#{isbn},#{publisher},#{categoryName})
     </insert>
+
+    <select id="selectIsbn" resultType="String">
+        SELECT ISBN
+        FROM TBL_BOOK
+    </select>
 </mapper>

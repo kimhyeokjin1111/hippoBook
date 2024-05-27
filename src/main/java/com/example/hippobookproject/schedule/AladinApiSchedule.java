@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 public class AladinApiSchedule {
     private final JobLauncher jobLauncher;
     private final BookRegisterJobConfig bookRegisterJobConfig;
-    @Scheduled(cron = "* * 3 * * ?")
+    @Scheduled(cron = "0/20 * * * * ?")
     public void bookRegister(){
         JobParameters jobParameters = new JobParametersBuilder()
                 .addLong("time",System.currentTimeMillis())
