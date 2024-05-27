@@ -32,4 +32,6 @@
         SELECT ISBN
         FROM TBL_BOOK
     </select>
+
+
 </mapper>

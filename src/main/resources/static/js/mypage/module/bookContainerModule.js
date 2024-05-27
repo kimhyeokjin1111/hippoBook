@@ -20,9 +20,10 @@ export function modify(bestBookId,callback){
     });
 }
 
-export function modify2(bookHasPercent,callback){
-    fetch(`/v2/containers/book/${bookHasPercent}`, {
-        method: 'PATCH'
+export function modify2(bookHasId, bookHasPercent,callback){
+    fetch(`/v2/containers/book/${bookHasId}`, {
+        method: 'PATCH',
+        body : bookHasPercent
     }).then(resp => {
         if(resp.status === 200){
             callback();

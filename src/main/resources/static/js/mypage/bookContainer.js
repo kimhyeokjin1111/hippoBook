@@ -25,7 +25,10 @@ import * as module from '../mypage/module/bookContainerModule.js'
             $modalBox.style.display = "flex";
               let id = this.dataset.id;
             $modalBox.querySelector('.book-list-delete').dataset.id = id;
-              $modalBox.querySelector('.best-book').dataset.id = id;
+            $modalBox.querySelector('.best-book').dataset.id = id;
+              $readingFinishBtn.dataset.id = id;
+              $readingBtn.dataset.id=id;
+              $noReadingBtn.dataset.id=id;
           });
         });
       }
@@ -75,7 +78,7 @@ import * as module from '../mypage/module/bookContainerModule.js'
     // 책상태 선택 모달창 버튼
     $readingFinishBtn.addEventListener("click", function(){
         console.log(this.dataset.status)
-        module.modify2(this.dataset.status, function (){
+        module.modify2(this.dataset.id, this.dataset.status, function (){
 
             location.reload();
         });
@@ -85,7 +88,7 @@ import * as module from '../mypage/module/bookContainerModule.js'
 
     $readingBtn.addEventListener("click", function(){
         console.log(this.dataset.status)
-        module.modify2(this.dataset.status, function (){
+        module.modify2(this.dataset.id, this.dataset.status, function (){
 
             location.reload();
         });
@@ -94,7 +97,7 @@ import * as module from '../mypage/module/bookContainerModule.js'
 
     $noReadingBtn.addEventListener("click", function(){
         console.log(this.dataset.status)
-        module.modify2(this.dataset.status, function (){
+        module.modify2(this.dataset.id, this.dataset.status, function (){
 
             location.reload();
         });
