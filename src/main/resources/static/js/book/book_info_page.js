@@ -238,5 +238,7 @@ let $otherReason = document.querySelector('.decl-other-content-box > input');
 // 책 정보 불러오는 이벤트
 
 {
+  let $bookInfoHidden = document.querySelector('.book-info-hidden');
 
+  console.log($bookInfoHidden.dataset.bookid);
 }
