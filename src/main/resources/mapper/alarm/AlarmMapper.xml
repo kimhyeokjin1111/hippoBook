@@ -4,4 +4,32 @@
     <select id="selectTime2" resultType="string">
         SELECT SYSDATE FROM DUAL
     </select>
+
+    <select id="selectById" parameterType="Long" resultType="alarmDto">
+        SELECT ALARM_ID, ALARM_CONTENT, ALARM_DATE, ALARM_CHECK, ALARM_TO, ALARM_FROM, USER_ID,USER_NICKNAME
+        FROM TBL_ALARM A JOIN TBL_USER U
+         ON A.ALARM_ID = #{alarmId} AND A.ALARM_TO = U.USER_ID
+    </select>
+
+    <select id="selectAlarm" resultType="alarmDto">
+        SELECT ALARM_ID, ALARM_CONTENT, ALARM_DATE, ALARM_CHECK, ALARM_TO,
+               ALARM_FROM, USER_NICKNAME, USER_ID
+        FROM TBL_ALARM A join TBL_USER U
+            ON A.ALARM_Id = #{alarmId} AND A.ALARM_TO = U.USER_ID
+        ORDER BY ALARM_ID DESC
+    </select>
+
+    <insert id="insertAlarm" parameterType="alarmDto">
+        <selectKey keyProperty="alarmId" resultType="Long" order="BEFORE">
+            SELECT SEQ_ALARM.nextval FROM DUAL
+        </selectKey>
+        INSERT INTO TBL_ALARM (ALARM_ID, ALARM_CONTENT, ALARM_CHECK, ALARM_TO, ALARM_FROM, USER_ID)
+        VALUES (#{alarmId}, #{alarmContent}, #{alarmCheck}, #{alarmTo}, #{alarmfrom}, #{userID})
+    </insert>
+
+
+
+
+
+
 </mapper>

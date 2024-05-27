@@ -14,16 +14,16 @@
         <main class="main__post-content-inner-box">
           <div class="main__post-title-search-box">
             <h1 class="main__title-box">
-              중고게시판
+              <span>중고게시판</span>
               <div class="main__search-option-box">
-                <span class="option-span" data-search_type="post">
+                <span class="option-span" data-type="deal" data-search_type="post">
                   <!-- <a href="">중고</a> -->
                   <span>중고</span>
                   <ul class="search-option-ul post">
-                    <li>중고</li>
-                    <li>자유</li>
-                    <li>소설</li>
-                    <li>사용자문의</li>
+                    <li data-type="deal">중고</li>
+                    <li data-type="board">자유</li>
+                    <li data-type="novel">소설</li>
+                    <li data-type="claim">사용자문의</li>
                   </ul>
                   <select class="main__search-option-post-type" name="" id="">
                     <option value="">중고</option>
@@ -32,12 +32,12 @@
                     <option value="">사용자문의</option>
                   </select></span
                 >
-                <span class="option-span" data-search_type="etc">
+                <span class="option-span" data-etc="title" data-search_type="etc">
                   <!-- <a href="">제목</a> -->
                   <span>제목</span>
                   <ul class="search-option-ul etc">
-                    <li>제목</li>
-                    <li>작성자</li>
+                    <li data-etc="title">제목</li>
+                    <li data-etc="writer">작성자</li>
                   </ul>
                   <select class="main__search-option-etc" name="" id="">
                     <option value="">제목</option>
@@ -58,16 +58,16 @@
                 data-postnow="1"
               />
               <li class="post-menu-li post-menu-select-li" data-postnow="1">
-                <a href="">중고</a><span class="post-menu-select-span"></span>
+                <a href="" data-type="deal">중고</a><span class="post-menu-select-span"></span>
               </li>
               <li class="post-menu-li" data-postnow="2">
-                <a href="">자유</a><span></span>
+                <a href="" data-type="board">자유</a><span></span>
               </li>
               <li class="post-menu-li" data-postnow="3">
-                <a href="">소설</a><span></span>
+                <a href="" data-type="novel">소설</a><span></span>
               </li>
               <li class="post-menu-li" data-postnow="4">
-                <a href="">사용자문의</a><span></span>
+                <a href="" data-type="claim">사용자문의</a><span></span>
               </li>
             </ul>
             <div class="main__post-order-type-box">
@@ -79,174 +79,14 @@
           </div>
           <div class="main__post-search-result-box">
             <ul>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>작성자</span>
-                  <ul>
-                    <li>0</li>
-                    <li>AM 10:55</li>
-                    <li>2</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>작성자</span>
-                  <ul>
-                    <li>0</li>
-                    <li>AM 10:55</li>
-                    <li>2</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>작성자</span>
-                  <ul>
-                    <li>0</li>
-                    <li>AM 10:55</li>
-                    <li>2</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>작성자</span>
-                  <ul>
-                    <li>0</li>
-                    <li>AM 10:55</li>
-                    <li>2</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>작성자</span>
-                  <ul>
-                    <li>0</li>
-                    <li>AM 10:55</li>
-                    <li>2</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>작성자</span>
-                  <ul>
-                    <li>0</li>
-                    <li>AM 10:55</li>
-                    <li>2</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>작성자</span>
-                  <ul>
-                    <li>0</li>
-                    <li>AM 10:55</li>
-                    <li>2</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>작성자</span>
-                  <ul>
-                    <li>0</li>
-                    <li>AM 10:55</li>
-                    <li>2</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>작성자</span>
-                  <ul>
-                    <li>0</li>
-                    <li>AM 10:55</li>
-                    <li>2</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>작성자</span>
-                  <ul>
-                    <li>0</li>
-                    <li>AM 10:55</li>
-                    <li>2</li>
-                  </ul>
-                </div>
-              </li>
+
             </ul>
             <div class="main__post-write-btn-box">
               <a href="">글작성</a>
             </div>
           </div>
           <div class="main__post-page-btn-box">
-            <span
-              ><a href=""><img th:src="@{/imgs/administrator/fragment/double_left-sh.png}" alt="" /></a
-            ></span>
-            <span
-              ><a href=""><img th:src="@{/imgs/administrator/fragment/left_sh.png}" alt="" /></a
-            ></span>
-            <a href="">1</a>
-            <a href="">2</a>
-            <a href="">3</a>
-            <a href="">4</a>
-            <a href="">5</a>
-            <a href="">6</a>
-            <a href="">7</a>
-            <a href="">8</a>
-            <a href="">9</a>
-            <a href="">10</a>
-            <span
-              ><a href=""><img th:src="@{/imgs/administrator/fragment/right-sh.png}" alt="" /></a
-            ></span>
-            <span
-              ><a href=""><img th:src="@{/imgs/administrator/fragment/double-right-sh.png}" alt="" /></a
-            ></span>
+
           </div>
         </main>
       </form>

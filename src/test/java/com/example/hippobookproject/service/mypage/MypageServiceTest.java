@@ -158,10 +158,33 @@ class MypageServiceTest {
     void registerSticker(){
         Mockito.doNothing().when(mypageMapper).insertSticker(any());
 
-        mypageService.registerSticker(new StickerDto());
+        mypageService.registerSticker(new StickerDto(),1L);
 
         Mockito.verify(mypageMapper, Mockito.times(1)).insertSticker(any());
+
+
     }
+
+    @Test
+    void removeUser() {
+        //given
+        doNothing().when(mypageMapper).deleteUser(any());
+        //when
+        mypageService.removeUser(1L);
+        //then
+        verify(mypageMapper, times(1)).deleteUser(any());
+
+    }
+
+    @Test
+    void modifyNickName(){
+        doNothing().when(mypageMapper).updateUserNickName(any());
+
+        mypageService.modifyNickName(new IntProfileDto());
+
+        verify(mypageMapper,times(1)).updateUserNickName(any());
+    }
+
 
 
 }

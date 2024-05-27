@@ -1,7 +1,10 @@
 package com.example.hippobookproject.mapper.user;
 
 import com.example.hippobookproject.dto.mypage.*;
+import com.example.hippobookproject.dto.user.UserJoinDto;
+import com.example.hippobookproject.dto.user.UserProfileDto;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.awt.print.Book;
 import java.util.List;
@@ -30,5 +33,16 @@ public interface MypageMapper {
     Optional<IntProfileDto> selectProfilePhoto(Long userId);
 
     void insertSticker(StickerDto stickerDto);
+
+    Long selectSticker(Long userId);
+
+    void deleteUser(Long userId);
+
+    void updateUserNickName(IntProfileDto intProfileDto);
+
+    Optional<UserProfileDto> updateUserProfilePhoto(Long userId);
+    
+
+
 
 }
