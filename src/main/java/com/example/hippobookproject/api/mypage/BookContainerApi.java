@@ -34,9 +34,9 @@ public class BookContainerApi {
     }
 
 
-    @PatchMapping("/v2/containers/book/{bookHasPercent}")
-    public void modifyBookStatus(@SessionAttribute("bookHasId") Long bookHasId,
-                               @PathVariable("bookHasPercent") String bookHasPercent
+    @PatchMapping("/v2/containers/book/{bookHasId}")
+    public void modifyBookStatus(@PathVariable("bookHasId") Long bookHasId,
+                               @RequestBody String bookHasPercent
     ){
 
 
