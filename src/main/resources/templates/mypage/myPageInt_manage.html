@@ -1,151 +1,144 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" th:href="@{/css/mypage/myPageInt_manage.css}" />
-    <script defer th:src="@{js/mypage/readingBook.js}"></script>
-    <script defer th:src="@{js/mypage/readingBookDeleteButton.js}"></script>
-    <script defer th:src="@{js/mypage/myPageInt_manage.js}"></script>
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>히포북</title>
+    <link rel="stylesheet" th:href="@{/css/mypage/myPageInt_manage.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main/mainpage.css}" />
+    <script type="module" defer th:src="@{/js/mypage/myPageInt_manage.js}"></script>
+</head>
+<body>
+<header class="header" th:replace="~{/fragment/header :: header}"></header>
+<main>
+    <!-- 메인 상단 -->
+    <div class="main_top">
+        <div class="main_top_layout">
+            <button type="button" class="category_openBtn" id="OpenBtn">
+                <!-- 모달창 띄우는 버튼  -->
+                <img
+                        th:src="@{/images/book/category.png}"
+                        alt=""
+                        class="main_top_category"
+                />
+            </button>
+            <div class="main_top_category_tap">
+                <ul class="main_top_category_list">
+                    <li class="main_top_category_list2">
+                        <a th:href="@{/mypage/int}" class="main_top_category_list_title">내 서재</a>
+                        <!-- 내 서재 이동 -->
+                    </li>
+                    <li class="main_top_category_list2">
+                        <a th:href="@{/message/letter/get}" class="main_top_category_list_title">쪽지</a>
+                        <!-- 쪽지 이동 -->
+                    </li>
+                    <li class="main_top_category_list2">
+                        <a th:href="@{/search}" class="main_top_category_list_title">검색</a>
 
-      <div>
-        <div>
-          <header>
-            <div class="header_layout">
-              <h1 class="header_logo">
-                <div class="header_logo_layout">
-                  <a href="">
-                    <!--홈페이지 버튼 -->
-                    <img
-                      th:src="@{/images/mypage/HippoBook_logo.png}"
-                      alt=""
-                      class="header_logo_images"
-                    />
-                  </a>
-                </div>
-              </h1>
-              <div class="header_right_layout">
-                <a href="">
-                  <!-- 알람 페이지 이동  -->
-                  <img th:src="@{/images/mypage/alarm.png}"
-                    alt=""
-                    class="header_right_alarm"
-                  />
-                </a>
-                <ul class="header_right_login">
-                  <a href="" class="header_right_login_box">로그인</a>
+                    <li class="main_top_category_list2">
+                        <a href="" class="main_top_category_list_title">이벤트</a>
+                        <!-- 이벤트 이동 -->
+                    </li>
+
+                    <li class="main_top_category_list2">
+                        <a th:href="@{/categorie/Categoriepage}" class="main_top_category_list_title">카테고리</a>
+                    </li>
+
                 </ul>
-              </div>
             </div>
-          </header>
+        </div>
+    </div>
+</main>
+<div>
+    <div>
 
-          <main>
-            <div class="main_top">
-              <div class="main_top_layout">
-                <a href="">
-                  <!-- 카테고리  -->
-                  <img th:src="@{/images/mypage/Category.png}"
-                    alt=""
-                    class="main_top_category"
-                  />
-                </a>
-                <div class="main_top_category_tap">
-                  <ul class="main_top_category_list">
-                    <li>
-                      <a href="">내 서재</a>
-                      <!-- 내 서재 이동 -->
-                    </li>
-                    <li>
-                      <a href="">쪽지</a>
-                      <!-- 쪽지 이동 -->
-                    </li>
-                    <li>
-                      <a href="">검색</a>
-                      <!-- 검색 이동 -->
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </main>
-          <section class="profile" th:object="${profileDto}">
+
+
+        <section class="profile" th:object="${profileDto}">
             <div class="profile-all">
-              <div id="profile-photo">
-                <img th:if="${profilePhoto.userProfileId == null}"
-                     th:src="@{/imgs/mypage/free-icon-hippo-3250992.png}">
-                <img th:unless="${profilePhoto.userProfileId == null}"
-                     th:src="@{'/upload/' + ${profilePhoto.userProfileUploadPath} + '/' + ${profilePhoto.userProfileUuid} + '_' + ${profilePhoto.userProfileName}}"
-                     alt=""/>
-              </div>
-              <div id="profile-name">
-                <h3 th:text="${profileDto.userNickName}"></h3>
-                <span>님의 서재</span>
-              </div>
-              <div id="follow">
-                <span>팔로워 <span th:text="${profileDto.followerCnt}"></span></span>
-                <span>팔로잉 <span th:text="${profileDto.followingCnt}"></span></span>
-              </div>
+                <div id="profile-photo">
+                    <img th:if="${profilePhoto.userProfileName == null}"
+                         th:src="@{/imgs/mypage/free-icon-hippo-3250992.png}" alt=""/>
+                    <img th:unless="${profilePhoto.userProfileName == null}"
+                         th:src="@{'/profile/' + ${profilePhoto.userProfileUploadPath} + '/' + ${profilePhoto.userProfileUuid} + '_' + ${profilePhoto.userProfileName}}"
+                         alt=""/>
+                </div>
+                <div id="profile-name">
+                    <h3 th:text="${profileDto.userNickName}"></h3>
+                    <span class="profile-name-option">님의 서재</span>
+                </div>
+                <div id="follow">
+                    <span>팔로워 <span th:text="${profileDto.followerCnt}"></span></span>
+                    <span>팔로잉 <span th:text="${profileDto.followingCnt}"></span></span>
+                </div>
             </div>
             <div id="my-favorite-book">
-              <img th:src="@{/images/mypage/인생책 이미지.png}" alt="" />
+                <img th:if="*{fileId == null}"
+                     th:src="@{/imgs/mypage/best_book_default.png}">
+                <img th:unless="*{fileId == null}"
+                     th:src="@{'/upload/' + *{fileUploadPath} + '/' + *{fileUuid} + '_' + *{fileName}}"
+                     id="best-book-img" alt=""/>
             </div>
-          </section>
-        </div>
-        <div>
-          <div class="mypage-cate">
+        </section>
+    </div>
+    <div>
+        <div class="mypage-cate">
             <div><a th:href="@{/mypage/int}">소개</a></div>
             <div><a th:href="@{/mypage/book/container}">책장</a></div>
             <div><a th:href="@{/mypage/book/write-content}">내 게시물</a></div>
             <div><a th:href="@{/mypage/sticker}">스티커 신청</a></div>
             <div><a th:href="@{/mypage/manage}">관리</a></div>
-          </div>
         </div>
-      </div>
-      <div class="main__manage-content-container">
-        <div class="main__manage-center-content-box">
-          <div class="main__my-etc-info">
+    </div>
+</div>
+<div class="main__manage-content-container">
+    <div class="main__manage-center-content-box">
+        <div class="main__my-etc-info">
             <div class="manage-profile-photo">
-              <img th:if="${profilePhoto.userProfileId == null}"
-                   th:src="@{/imgs/mypage/free-icon-hippo-3250992.png}" alt=""/>
-              <img th:unless="${profilePhoto.userProfileId == null}"
-                   th:src="@{'/upload/' + ${profilePhoto.userProfileUploadPath} + '/' + ${profilePhoto.userProfileUuid} + '_' + ${profilePhoto.userProfileName}}"
-                   alt=""/>
+                <img th:if="${profilePhoto.userProfileName == null}"
+                     th:src="@{/imgs/mypage/free-icon-hippo-3250992.png}" alt=""/>
+                <img th:unless="${profilePhoto.userProfileName == null}"
+                     th:src="@{'/profile/' + ${profilePhoto.userProfileUploadPath} + '/' + ${profilePhoto.userProfileUuid} + '_' + ${profilePhoto.userProfileName}}"
+                     alt=""/>
             </div>
 
             <h2 th:text="${profileDto.userNickName}"></h2>
-            <p th:text="${profileDto.userEmail}"> </p>
+            <p th:text="${profileDto.userEmail}"></p>
 
-          </div>
-          <div class="main__func-contnet-box">
+        </div>
+
+        <div class="main__func-contnet-box">
             <table class="main__func-content-table">
-              <tr>
-                <th>내 정보 관리</th>
-                <td><a href="">프로필 사진 변경</a></td>
-                <td><a th:href="@{/mypage/modify}">닉네임 수정</a></td>
-                <td><a th:href="@{/mypage/secession}">회원 탈퇴</a></td>
-              </tr>
-              <tr>
-                <th>정보 수신 동의</th>
-                <td class="main__func-content-sms">
-                  <div >
-                    <p>이벤트 이메일, SMS 받기</p>
-                    <p>할인 및 이벤트에 대한 정보를 이메일 문자로 받아보세요</p>
-                  </div>
-                  <input type="checkbox" id="sms-toggle" /><label class="switch-toggle" for="sms-toggle"></label>
-                </td>
-                
-              </tr>
+                <tr>
+                    <th>내 정보 관리</th>
+                    <td class="profile-photo-change-title">
+                        <label class="picture-change-button" for="file-input">
+                            프로필 사진 변경
+                        </label>
+                        <input type="file" id="file-input" accept=".jpg, .jpeg, .png, .gif, .heic" name="profile">
+                    </td>
+                    <td><a th:href="@{/mypage/modify}">닉네임 수정</a></td>
+                    <td><a th:href="@{/mypage/secession}">회원 탈퇴</a></td>
+                </tr>
+                <tr>
+                    <th>정보 수신 동의</th>
+                    <td class="main__func-content-sms">
+                        <div>
+                            <p>이벤트 이메일, SMS 받기</p>
+                            <p>할인 및 이벤트에 대한 정보를 이메일 문자로 받아보세요</p>
+                        </div>
+                        <input type="checkbox" id="sms-toggle"/><label class="switch-toggle" for="sms-toggle"></label>
+                    </td>
+
+                </tr>
             </table>
-          </div>
         </div>
-      </div>
-      <footer>
-        <div>
-          <button id="reading-book-delete-button">삭제하기</button>
-        </div>
-      </footer>
-  </body>
+    </div>
+</div>
+<footer>
+    <div>
+        <button id="reading-book-delete-button">삭제하기</button>
+    </div>
+</footer>
+</body>
 </html>

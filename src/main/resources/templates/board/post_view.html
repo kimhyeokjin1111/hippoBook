@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -12,35 +12,39 @@
 <div class="main__post-content-container">
     <main class="main__post-content-inner-box">
         <div class="main__post-type-modify-back-btn-box">
-            <h1>자유게시판</h1>
+            <h1 th:if="${postType == 'deal'}">중고게시글</h1>
+            <h1 th:if="${postType == 'board'}">자유게시글</h1>
+            <h1 th:if="${postType == 'novel'}">소설게시글</h1>
+            <h1 th:if="${postType == 'claim'}">사용자문의게시글</h1>
             <div>
                 <span><a href="">수정</a></span>
                 <span><a href="">목록</a></span>
             </div>
         </div>
         <div class="main__post-title-box">
-            <span>test title</span>
+            <span th:text="${postDto.postTitle}"></span>
         </div>
         <div class="main__post-info-decl-box">
-            <span><a href="">writer</a></span>
+            <span><a href="" th:text="${postDto.userNickname}"></a></span>
             <div>
-                <p>68</p>
-                <p>2024.04.22</p>
+                <p th:text="${postDto.postView}"></p>
+                <p th:text="${postDto.postDate}">2024.04.22</p>
                 <span><img th:src="@{/imgs/administrator/fragment/decl.png}" alt=""/></span>
             </div>
         </div>
-        <div class="main__post-content-box">
-            test contentbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+        <div class="main__post-content-box" th:utext="${postDto.postContent}">
+
         </div>
         <div class="main__post-like-btn-box">
-            <a href=""><img th:src="@{/imgs/administrator/fragment/like.png}" alt=""/><span>좋아요</span></a>
-            <div>0명</div>
+            <span><img th:src="@{/imgs/administrator/fragment/like.png}" alt=""/><span>좋아요</span></span>
+            <div><span th:text="${postDto.likeCount}">0</span>명</div>
         </div>
         <div class="main__post-comment-search-list-box">
             <section class="main__post-comment-count-box">
                 <h2>댓글</h2>
                 <span>1</span>
             </section>
+            <input class="post-hidden" type="hidden" th:data-type="${postType}" th:data-id="${postDto.postId}" th:data_user="${session.userId}">
             <ul class="main__post-comment-result-box">
                 <li>
                     <div>
@@ -56,25 +60,15 @@
                 </li>
             </ul>
             <section class="main__post-comment-page-box">
-            <span
-            ><a href=""><img th:src="@{/imgs/administrator/fragment/left_sh.png}" alt=""/></a
-            ></span>
-                <a href="">1</a>
-                <a href="">2</a>
-                <a href="">3</a>
-                <a href="">4</a>
-                <a href="">5</a>
-                <span
-                ><a href=""><img th:src="@{/imgs/administrator/fragment/right-sh.png}" alt=""/></a
-                ></span>
+                <span>더보기</span>
             </section>
         </div>
         <div class="main__post-comment-write-box">
             <form action="" method="post">
                 <textarea name="" id="" cols="30" rows="10"></textarea>
-                <div>
+                <div class="main__post_comment-btn-box">
                     <span>(<strong>0</strong>/200)</span>
-                    <button>등록</button>
+                    <button type="button">등록</button>
                 </div>
             </form>
         </div>

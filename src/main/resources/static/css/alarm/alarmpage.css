@@ -14,10 +14,11 @@
 
 header{
     height: 60px;
-    /*position: relative;*/
+
 }
 .alarm_title{
-    font-size: 18px;
+    margin-top: 10px;
+    font-size: 22px;
     color: #2BC1BF;
     padding: 0 45px;
     text-align: center;
@@ -69,7 +70,7 @@ header{
 
 /*}*/
 .alarm_inner{
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .tab_menu .list .cont{
@@ -85,14 +86,23 @@ header{
 }
 
 .alarm_box{
-    border-bottom: 1px solid #6f6f6f;
+    border-bottom: 1px solid #e7e7e7;
     margin-top: 10px;
     /*margin-bottom: 10px;*/
     padding-bottom: 20px;
 }
 
 .alarm_box_title{
-    font-size: 30px;
+    font-size: 20px;
+
+}
+
+.alarm_box_content{
+    font-size: 20px;
+    margin-left: 100px;
+    color: #2BC1BF;
+
+
 }
 
 .alarm_book{
@@ -105,5 +115,10 @@ header{
 }
 
 .list{
-    border-bottom: 1px solid #6f6f6f;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.alarm_none{
+    border-bottom: 1px solid #e7e7e7;
+    padding-bottom: 30px;
 }

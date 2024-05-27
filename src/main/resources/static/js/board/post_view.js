@@ -77,6 +77,12 @@ let $otherReason = document.querySelector('.decl-other-content-box > input');
   });
 
   function declModalExit() {
+    // console.log('$declReason.dataset : ', $declReason.dataset)
+    // console.log('$declRadios[$declReason.dataset.reasonnow - 1] : ', $declRadios[$declReason.dataset.reasonnow - 1] )
+
+    if($declReason.dataset.reasonnow === "-1"){
+      return;
+    }
     $declRadios[$declReason.dataset.reasonnow - 1]
       .closest('label')
       .querySelector('.modal-decl-reason-box > p').style.color = '#8b8b8b';
@@ -175,5 +181,187 @@ let $otherReason = document.querySelector('.decl-other-content-box > input');
   $otherReason.addEventListener('change', function () {
     console.log($otherReason.value);
     $declRadios[4].value = this.value;
+  });
+}
+
+/*----------------------------------------------------------------*/
+
+let nowPage = 1;
+//코멘트 이벤트 부분
+let $postHidden = document.querySelector('.post-hidden')
+let commentFindInst = {
+  postType : $postHidden.dataset.type,
+  postId : $postHidden.dataset.id,
+}
+
+{
+  // 초기 페이지 진입 시 코멘트 출력 이벤트
+
+  console.log('commentFindInst : ', commentFindInst);
+  showPostLike();
+  findComment(commentFindInst, showComment)
+}
+
+{
+  // 코멘트 작성 및 갱신 이벤트
+  let $commentWriteBtn = document.querySelector('.main__post_comment-btn-box > button')
+
+  $commentWriteBtn.addEventListener('click', function (){
+    // console.log('this.closest(\'.main__post-comment-write-box\') : ', this.closest('.main__post-comment-write-box'))
+    let $commentTextarea = this.closest('.main__post-comment-write-box').querySelector('textarea')
+    // console.log($commentTextarea)
+    let putCommentInfo = {
+      commentContent : $commentTextarea.value,
+      postId : $postHidden.dataset.id,
+      userId : 1
+    }
+
+    console.log('putCommentInfo : ', putCommentInfo)
+    nowPage = 1;
+    addComment(putCommentInfo, $postHidden.dataset.type, () => {
+      findComment(commentFindInst, showComment)
+    })
+    $commentTextarea.value = '';
+
+  })
+}
+
+function showComment(commentList){
+  nowPage = 1;
+  console.log(commentList)
+  let tags = '';
+
+  let $commentBox = document.querySelector('.main__post-comment-result-box')
+
+  for (let i = 0; i < commentList.contentList.length; i++) {
+    let commentWriter = commentList.contentList[i].userNickname
+    let commentDate = commentList.contentList[i].commentDate
+    let commmentContent = commentList.contentList[i].commentContent
+
+    tags += `
+                 <li>
+                    <div>
+                        <p>
+                  <span>
+                    <a href="#">${commentWriter}</a>
+                    <span>${commentDate}</span>
+                  </span>
+                            <img class="comment-decl-btn" src="/imgs/administrator/fragment/decl.png" alt="">
+                        </p>
+                        <div>${commmentContent}</div>
+                    </div>
+                </li>
+    `
+
+
+    // $commentBox.insertAdjacentHTML("beforeend", tags)
+  }
+  let pageBtn = document.querySelector('.main__post-comment-page-box');
+
+  $commentBox.innerHTML = tags;
+  if(commentList.hasNext){
+    nowPage += 1;
+    pageBtn.style.display = 'flex';
+  }else{
+    pageBtn.style.display = 'none';
+  }
+}
+
+function showComment2(commentList){
+  console.log(commentList)
+  let tags = '';
+
+  let $commentBox = document.querySelector('.main__post-comment-result-box')
+
+  for (let i = 0; i < commentList.contentList.length; i++) {
+    let commentWriter = commentList.contentList[i].userNickname
+    let commentDate = commentList.contentList[i].commentDate
+    let commmentContent = commentList.contentList[i].commentContent
+
+    tags += `
+                 <li>
+                    <div>
+                        <p>
+                  <span>
+                    <a href="#">${commentWriter}</a>
+                    <span>${commentDate}</span>
+                  </span>
+                            <img class="comment-decl-btn" src="/imgs/administrator/fragment/decl.png" alt="">
+                        </p>
+                        <div>${commmentContent}</div>
+                    </div>
+                </li>
+    `
+
+
+  }
+  $commentBox.insertAdjacentHTML("beforeend", tags)
+  if(commentList.hasNext) {
+    nowPage += 1;
+  }else{
+    let pageBtn = document.querySelector('.main__post-comment-page-box');
+    pageBtn.style.display = 'none';
+  }
+}
+
+{
+  let pageBtn = document.querySelector('.main__post-comment-page-box');
+
+  pageBtn.addEventListener('click', function (){
+    console.log('pageBtn : ', pageBtn);
+    findComment(commentFindInst, showComment2);
+  })
+}
+
+function findComment(commentFindInst, callBack){
+ fetch(`/v1/${commentFindInst.postType}/post/comments?postId=${commentFindInst.postId}&amount=5&page=${nowPage}`, {method : "GET"})
+     .then(dto => dto.json())
+     .then(json => callBack(json))
+}
+
+function addComment(putCommentInfo, postType, callBack){
+  // console.log('putCommentInfo : ', putCommentInfo)
+  // console.log('postType : ', postType)
+  fetch(`/v1/${postType}/post`, {
+    method : "POST",
+    headers : {'Content-Type' : 'application/json;'},
+    body : JSON.stringify(putCommentInfo)
+  }).then(() => callBack());
+}
+
+{
+  let $likeBtn = document.querySelector('.main__post-like-btn-box > span');
+  let $postHidden = document.querySelector('.post-hidden')
+  $likeBtn.addEventListener('click', function (){
+    console.log('$postHidden : ', $postHidden)
+    console.log('$postHidden.dataset.postId : ', $postHidden.dataset.postId);
+    console.log('$postHidden.dataset.postType : ', $postHidden.dataset.postType)
+
+    let likeInfo = {
+      postId : $postHidden.dataset.id,
+      userId : 2 // $postHidden.dataset.id 로 교체 해야함
+    }
+
+    fetch(`/v1/${$postHidden.dataset.type}/post/like`,
+        {
+          method : "POST",
+          headers : {'Content-Type' : 'application/json'},
+          body : JSON.stringify(likeInfo)
+        })
+        .then(() => showPostLike())
+  })
+}
+
+function showPostLike(){
+  let $postHidden = document.querySelector('.post-hidden');
+  let $likeCount = document.querySelector('.main__post-like-btn-box > div > span')
+
+  fetch(`/v1/${$postHidden.dataset.type}/post/like?postId=${$postHidden.dataset.id}`,
+      {method : "GET"})
+      .then(resp =>
+        resp.text()
+      ).then(text => {
+    console.log(text)
+    $likeCount.innerText = text;
   });
 }

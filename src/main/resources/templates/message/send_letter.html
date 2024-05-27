@@ -4,11 +4,52 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" th:href="@{/css/message/send_letter.css}" />
-    <script defer th:src="@{/js/message/send_letter.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/main/mainpage.css}" />
+    <script type="module" defer th:src="@{/js/message/send_letter.js}"></script>
     <title>Document</title>
   </head>
   <body>
-    <header></header>
+  <header class="header" th:replace="~{/fragment/header :: header}"></header>
+  <main>
+    <!-- 메인 상단 -->
+    <div class="main_top">
+      <div class="main_top_layout">
+        <button type="button" class="category_openBtn" id="OpenBtn">
+          <!-- 모달창 띄우는 버튼  -->
+          <img
+                  th:src="@{/images/book/category.png}"
+                  alt=""
+                  class="main_top_category"
+          />
+        </button>
+        <div class="main_top_category_tap">
+          <ul class="main_top_category_list">
+            <li class="main_top_category_list2">
+              <a th:href="@{/mypage/int}" class="main_top_category_list_title">내 서재</a>
+              <!-- 내 서재 이동 -->
+            </li>
+            <li class="main_top_category_list2">
+              <a th:href="@{/message/letter/get}" class="main_top_category_list_title">쪽지</a>
+              <!-- 쪽지 이동 -->
+            </li>
+            <li class="main_top_category_list2">
+              <a th:href="@{/search}" class="main_top_category_list_title">검색</a>
+
+            <li class="main_top_category_list2">
+              <a href="" class="main_top_category_list_title">이벤트</a>
+              <!-- 이벤트 이동 -->
+            </li>
+
+            <li class="main_top_category_list2">
+              <a th:href="@{/categorie/Categoriepage}" class="main_top_category_list_title">카테고리</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </main>
     <div class="main__post-content-container">
       <form action="">
         <main class="main__post-content-inner-box">
@@ -23,15 +64,15 @@
           <div class="main__post-type-menu-box">
             <ul class="main__post-menu-ul">
               <li class="post-menu-li post-menu-select-li">
-                <a href="">받은쪽지함</a><span></span>
+                <a th:href="@{/message/letter/get}">받은쪽지함</a><span></span>
               </li>
-              <li class="post-menu-li"><a href="">보낸쪽지함</a><span class="post-menu-select-span"></span></li>
+              <li class="post-menu-li"><a th:href="@{/message/letter/send}">보낸쪽지함</a><span class="post-menu-select-span"></span></li>
              
             </ul>
             <div class="main__post-write-btn-box">
-              <a href="">쪽지쓰기</a>
+              <a th:href="@{/message/letter/write}">쪽지쓰기</a>
               <div class="get-letter-delete-btn">
-                <button type="submit" class="submit-btn">삭제하기</button>
+                <button type="button" class="delete-submit-btn" data-id="">삭제하기</button>
               </div>
             </div>
             
@@ -42,189 +83,69 @@
               </ul>
             </div>
           </div>
+
           <div class="main__post-search-result-box">
             <ul>
               <li class="main__post-result-li">
                 <p class="main__post-titie-info-box">
-                    <input type="checkbox" name="" id="" />
-                  <span>test title</span>
+
+
+                    <span>제목</span>
+
                   <img src="" alt="" />
                 </p>
                 <div class="main__post-detail-info-box">
                   <span>받은 사람</span>
                   <ul>
-                    
-                    <li>AM 10:55</li>
-                    
+                    <li> 날짜</li>
                   </ul>
                 </div>
               </li>
+            </ul>
+          </div>
+
+          <div th:each="messageDto : ${postMessageList}" class="main__post-search-result-box">
+            <ul>
               <li class="main__post-result-li">
                 <p class="main__post-titie-info-box">
-                    <input type="checkbox" name="" id="" />
-                  <span>test title</span>
+                    <input type="checkbox" class="message-check" name="" th:data-id="${messageDto.messageId}" />
+                  <a th:href="@{/message/letter/view(messageId=${messageDto.messageId})}">
+                  <span th:text="${messageDto.messageTitle}"></span>
+                  </a>
                   <img src="" alt="" />
                 </p>
                 <div class="main__post-detail-info-box">
-                  <span>받은 사람</span>
+                  <span th:text="${messageDto.messageTo}"></span>
                   <ul>
                     
-                    <li>AM 10:55</li>
+                    <li th:text="${messageDto.messageDate}"></li>
                     
                   </ul>
                 </div>
               </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                    <input type="checkbox" name="" id="" />
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>받은 사람</span>
-                  <ul>
-                    
-                    <li>AM 10:55</li>
-                    
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                    <input type="checkbox" name="" id="" />
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>받은 사람</span>
-                  <ul>
-                    
-                    <li>AM 10:55</li>
-                    
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                    <input type="checkbox" name="" id="" />
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>받은 사람</span>
-                  <ul>
-                    
-                    <li>AM 10:55</li>
-                    
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                    <input type="checkbox" name="" id="" />
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>받은 사람</span>
-                  <ul>
-                    
-                    <li>AM 10:55</li>
-                    
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                    <input type="checkbox" name="" id="" />
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>받은 사람</span>
-                  <ul>
-                    
-                    <li>AM 10:55</li>
-                    
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                    <input type="checkbox" name="" id="" />
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>받은 사람</span>
-                  <ul>
-                    
-                    <li>AM 10:55</li>
-                    
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                    <input type="checkbox" name="" id="" />
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>받은 사람</span>
-                  <ul>
-                    
-                    <li>AM 10:55</li>
-                    
-                  </ul>
-                </div>
-              </li>
-              <li class="main__post-result-li">
-                <p class="main__post-titie-info-box">
-                    <input type="checkbox" name="" id="" />
-                  <span>test title</span>
-                  <img src="" alt="" />
-                </p>
-                <div class="main__post-detail-info-box">
-                  <span>받은 사람</span>
-                  <ul>
-                    
-                    <li>AM 10:55</li>
-                    
-                  </ul>
-                </div>
-              </li>
+
 
             </ul>
             
           </div>
           <div class="letter-page-container">
             <ul class="page-box">
-              <a href="" class="letter-list-page-a">
+              <a th:href="@{/message/letter/send(page=${page.startPage - 1})}" class="page-a" th:if="${page.prev}">
                 <li class="page-num prev">&lt</li>
               </a>
-    
-              <a href="" class="letter-list-page-a">
-                <li class="page-num">1</li>
-              </a>
-              <a href="" class="letter-list-page-a">
-                <li class="page-num">2</li>
-              </a>
-              <a href="" class="letter-list-page-a">
-                <li class="page-num">3</li>
-              </a>
-              <a href="" class="letter-list-page-a">
-                <li class="page-num">4</li>
-              </a>
-              <a href="" class="letter-list-page-a">
-                <li class="page-num">5</li>
-              </a>
-    
-              <a href="" class="letter-list-page-a">
+
+              <th:block th:each="i : ${#numbers.sequence(page.startPage, page.endPage)}">
+                <a th:href="@{/message/letter/send(page=${i})}" class="page-a" >
+                  <li class="page-num" th:classappend="${i == page.messageCriteria.page ? 'active' : ''}" th:text="${i}"></li>
+                </a>
+              </th:block>
+
+              <a th:href="@{/message/letter/send(page=${page.endPage + 1})}" class="page-a" th:if="${page.next}">
                 <li class="page-num next">&gt</li>
               </a>
             </ul>
           </div>
+
         </main>
       </form>
     </div>

@@ -3,66 +3,66 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Document</title>
+    <title>히포북</title>
     <link rel="stylesheet" th:href="@{/css/mypage/myPageInt.css}"/>
     <link rel="stylesheet" th:href="@{/css/main/mainpage.css}" />
-
-
     <script defer th:src="@{/js/mypage/myPageInt.js}"></script>
-
 
 </head>
 <body>
 <header class="header" th:replace="~{/fragment/header :: header}"></header>
+<main>
+    <!-- 메인 상단 -->
+    <div class="main_top">
+        <div class="main_top_layout">
+            <button type="button" class="category_openBtn" id="OpenBtn">
+                <!-- 모달창 띄우는 버튼  -->
+                <img
+                        th:src="@{/images/book/category.png}"
+                        alt=""
+                        class="main_top_category"
+                />
+            </button>
+            <div class="main_top_category_tap">
+                <ul class="main_top_category_list">
+                    <li class="main_top_category_list2">
+                        <a th:href="@{/mypage/int}" class="main_top_category_list_title">내 서재</a>
+                        <!-- 내 서재 이동 -->
+                    </li>
+                    <li class="main_top_category_list2">
+                        <a th:href="@{/message/letter/get}" class="main_top_category_list_title">쪽지</a>
+                        <!-- 쪽지 이동 -->
+                    </li>
+                    <li class="main_top_category_list2">
+                        <a th:href="@{/search}" class="main_top_category_list_title">검색</a>
+
+                    <li class="main_top_category_list2">
+                        <a href="" class="main_top_category_list_title">이벤트</a>
+                        <!-- 이벤트 이동 -->
+                    </li>
+
+                    <li class="main_top_category_list2">
+                        <a th:href="@{/categorie/Categoriepage}" class="main_top_category_list_title">카테고리</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</main>
+
 <div>
     <div>
-        <main>
-            <!-- 메인 상단 -->
-            <div class="main_top">
-                <div class="main_top_layout">
-                    <button type="button" class="category_openBtn" id="OpenBtn">
-                        <!-- 모달창 띄우는 버튼  -->
-                        <img
-                                th:src="@{/images/book/category.png}"
-                                alt=""
-                                class="main_top_category"
-                        />
-                    </button>
-                    <div class="main_top_category_tap">
-                        <ul class="main_top_category_list">
-                            <li class="main_top_category_list2">
-                                <a th:href="@{/mypage/int}" class="main_top_category_list_title">내 서재</a>
-                                <!-- 내 서재 이동 -->
-                            </li>
-                            <li class="main_top_category_list2">
-                                <a th:href="@{/message/letter/get}" class="main_top_category_list_title">쪽지</a>
-                                <!-- 쪽지 이동 -->
-                            </li>
-                            <li class="main_top_category_list2">
-                                <a th:href="@{/search}" class="main_top_category_list_title">검색</a>
 
-                            <li class="main_top_category_list2">
-                                <a href="" class="main_top_category_list_title">이벤트</a>
-                                <!-- 이벤트 이동 -->
-                            </li>
-
-                            <li class="main_top_category_list2">
-                                <a th:href="@{/categorie/Categoriepage}" class="main_top_category_list_title">카테고리</a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </main>
         <section class="profile" th:object="${profileDto}">
             <div class="profile-all">
                 <div id="profile-photo">
 
-                    <img th:if="${profilePhoto.userProfileId == null}"
-                         th:src="@{/imgs/mypage/free-icon-hippo-3250992.png}">
-                    <img th:unless="${profilePhoto.userProfileId == null}"
-                         th:src="@{'/upload/' + ${profilePhoto.userProfileUploadPath} + '/' + ${profilePhoto.userProfileUuid} + '_' + ${profilePhoto.userProfileName}}"
+                    <img th:if="${profilePhoto.userProfileName == null}"
+                         th:src="@{/imgs/mypage/free-icon-hippo-3250992.png}" alt=""/>
+                    <img th:unless="${profilePhoto.userProfileName == null}"
+                         th:src="@{'/profile/' + ${profilePhoto.userProfileUploadPath} + '/' + ${profilePhoto.userProfileUuid} + '_' + ${profilePhoto.userProfileName}}"
                          alt=""/>
                 </div>
                 <div id="profile-name">
@@ -82,7 +82,7 @@
                      id="best-book-img" alt=""/>
             </div>
         </section>
-    </div>
+
     <div>
         <div class="mypage-cate">
             <div><a th:href="@{/mypage/int}">소개</a></div>
@@ -171,6 +171,7 @@
         <!--        </th:block>-->
 
     </div>
+</div>
 </div>
 <footer>
     <div>

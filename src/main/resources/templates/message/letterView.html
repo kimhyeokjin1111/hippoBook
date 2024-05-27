@@ -5,39 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" th:href="@{/css/message/letterView.css}" />
+    <link rel="stylesheet" th:href="@{/css/main/mainpage.css}" />
     <script defer th:src="@{/js/message/letterView.js}"></script>
   </head>
   <body>
     <form action="">
-      <header>
-        <div class="header_layout">
-          <h1 class="header_logo">
-            <div class="header_logo_layout">
-              <a href="">
-                <!--홈페이지 버튼 -->
-                <img
-                  src="../myPageImg/HippoBook_logo.png"
-                  alt=""
-                  class="header_logo_images"
-                />
-              </a>
-            </div>
-          </h1>
-          <div class="header_right_layout">
-            <a href="">
-              <!-- 알람 페이지 이동  -->
-              <img
-                src="../myPageImg/alarm.png"
-                alt=""
-                class="header_right_alarm"
-              />
-            </a>
-            <ul class="header_right_login">
-              <a href="" class="header_right_login_box">로그인</a>
-            </ul>
-          </div>
-        </div>
-      </header>
+      <header class="header" th:replace="~{/fragment/header :: header}"></header>
 
       <main>
         <div class="main_top">
@@ -45,7 +18,7 @@
             <a href="">
               <!-- 카테고리  -->
               <img
-                src="../myPageImg/Category.png"
+                src="/images/mypage/Category.png"
                 alt=""
                 class="main_top_category"
               />
@@ -82,13 +55,13 @@
     <div class="letter-wrap-all">
       <div class="letter-wrap">
         <div class="letter-header">
-          <h2 class="letter-title">제목</h2>
+          <h2 th:text="${messageViewDto.messageTitle}" class="letter-title"></h2>
           <p class="letter-info">
-            작성자: <span>홍길동</span> | 보낸날짜: <span>2014.03.26</span>
+            작성자: <span th:text="${messageViewDto.messageFrom}"></span> | 보낸날짜: <span th:text="${messageViewDto.messageDate}"></span>
           </p>
         </div>
       </div>
-      <div class="letter-content"><span>내용</span></div>
+      <div class="letter-content"><span th:text="${messageViewDto.messageContent}"></span></div>
     </div>
 
     <div class="letter-reply-box">

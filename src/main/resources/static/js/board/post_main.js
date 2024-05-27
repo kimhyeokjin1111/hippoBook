@@ -15,16 +15,26 @@
           $postUl.classList.remove('search-option-ul-block');
           return;
         }
+          console.log('post 클릭', this)
         $postUl.classList.add('search-option-ul-block');
+          $etcUl.classList.remove('search-option-ul-block');
       } else {
         if ($etcUl.classList.contains('search-option-ul-block')) {
           $etcUl.classList.remove('search-option-ul-block');
           return;
         }
         $etcUl.classList.add('search-option-ul-block');
+          $postUl.classList.remove('search-option-ul-block');
       }
     });
   });
+
+    let $postSearchBtn = document.querySelector('.search-contnet-input');
+
+    $postSearchBtn.addEventListener('click', function (){
+        $postUl.classList.remove('search-option-ul-block');
+        $etcUl.classList.remove('search-option-ul-block');
+    })
 }
 
 {
@@ -38,8 +48,8 @@
     postType : $postMenu[0].querySelector('a').dataset.type,
     type : null,
     keyword : null,
+    orderType : 'recent',
     page : 1,
-    amount : 10
   }
 
   postShow(postReqList);
@@ -55,10 +65,10 @@
 
       let postReqList = {
         postType : this.querySelector('a').dataset.type,
-        type : null,
-        keyword : null,
-        page : 1,
-        amount : 10
+          type : null,
+          keyword : null,
+          orderType : 'recent',
+          page : 1,
       }
 
       postShow(postReqList);
@@ -113,7 +123,7 @@
 }
 
 function postShow(postReqList){
-  fetch(`/v1/board/${postReqList.postType}/posts?type=${postReqList.type}&keyword=${postReqList.keyword}&page=${postReqList.page}&amount=${postReqList.amount}`,
+  fetch(`/v1/board/${postReqList.postType}/posts?type=${postReqList.type}&keyword=${postReqList.keyword}&page=${postReqList.page}&orderType=${postReqList.orderType}`,
       {method : "GET"})
       .then(resp => resp.json())
       .then(post => {
@@ -122,6 +132,7 @@ function postShow(postReqList){
         let tags = ``;
 
         for (let i = 0; i < post.post.length; i++) {
+          let postId = post.post[0].postId;
           let postTitle = post.post[0].postTitle;
           let userNickname = post.post[0].userNickname;
           let likeCount = post.post[0].likeCount;
@@ -131,7 +142,7 @@ function postShow(postReqList){
           tags += `
                <li class="main__post-result-li">
                   <p class="main__post-titie-info-box">
-                    <span>${postTitle}</span>
+                    <a class="post-area" href="/board/post/view?postId=${postId}&postType=${postReqList.postType}">${postTitle}</a>
                     <img src="" alt="" />
                   </p>
                   <div class="main__post-detail-info-box">
@@ -158,7 +169,7 @@ function postShow(postReqList){
         if(post.postPage.prev){
           tags2 += `
             <span
-              ><a href="/v1/board/${postReqList.postType}/posts?type=${postReqList.type}&keyword=${postReqList.keyword}&amount=${postReqList.amount}" data-page="${post.postPage.startPage -1}"><img src="/imgs/administrator/fragment/left_sh.png" alt="" /></a
+              ><a class="page-btn" href="" data-posttype="${postReqList.postType}" data-type="${postReqList.type}" data-keyword="${postReqList.keyword}" data-page="${post.postPage.startPage -1}" data-order="recent"><img src="/imgs/administrator/fragment/left_sh.png" alt="" /></a
             ></span>`
         }
 
@@ -167,19 +178,125 @@ function postShow(postReqList){
 
           tags2 +=
               `
-            <a href="/v1/board/${postReqList.postType}/posts?type=${postReqList.type}&keyword=${postReqList.keyword}&amount=${postReqList.amount}" data-page="${i}">${i}</a>
+            <a class="page-btn" href="" data-posttype="${postReqList.postType}" data-type="${postReqList.type}" data-keyword="${postReqList.keyword}" data-page="${i}" data-order="recent">${i}</a>
               `
         }
         if(post.postPage.next) {
           tags2 += `
             <span
-              ><a href="/v1/board/${postReqList.postType}/posts?type=${postReqList.type}&keyword=${postReqList.keyword}&amount=${postReqList.amount}" data-page="${post.postPage.endPage + 1}"><img src="/imgs/administrator/fragment/right-sh.png" alt="" /></a
+              ><a class="page-btn" href="" data-posttype="${postReqList.postType}" data-type="${postReqList.type}" data-keyword="${postReqList.keyword}" data-page="${post.postPage.endPage + 1}" data-order="recent"><img src="/imgs/administrator/fragment/right-sh.png" alt="" /></a
             ></span>
             `
         }
+
+
         let $pageBox = document.querySelector('.main__post-page-btn-box')
         console.log('pageBox : ', $pageBox)
         console.log('tags2 : ', tags2)
         $pageBox.innerHTML = tags2;
+
+        let $orderBtnBox = document.querySelector('.main__post-order-type-box')
+        let tags3 = '';
+
+        tags3 += `
+              <ul>
+                <li class="resent-order"><a href="" class="order-btn" data-posttype="${postReqList.postType}" data-type="${postReqList.type}" data-keyword="${postReqList.keyword}" data-order="recent">최신순</a></li>
+                <li class="resent-order"><a href="" class="order-btn" data-posttype="${postReqList.postType}" data-type="${postReqList.type}" data-keyword="${postReqList.keyword}" data-order="like">좋아요순</a></li>
+              </ul>
+        `
+
+        $orderBtnBox.innerHTML = tags3;
+
+          let $resentOrder = document.querySelectorAll('.resent-order');
+          $resentOrder.forEach(ele => {
+              ele.addEventListener('click', (e) => {
+                  e.preventDefault();
+              })})
+
+        let $pageBtn = document.querySelectorAll('.page-btn');
+          $pageBtn.forEach(ele => {
+            ele.addEventListener('click', (e) => {
+            e.preventDefault();
+        })})
+
       })
+}
+
+{
+    let $postSearchBtn = document.querySelector('.search-contnet-input');
+    let $typeRealBox = document.querySelector('.option-span');
+    let $etcRealBox = document.querySelector('.option-span:nth-child(2)');
+    console.log('$typeRealBox : ', $typeRealBox)
+    console.log('$etcRealBox : ', $etcRealBox)
+
+    $postSearchBtn.addEventListener("keyup", function (e){
+        // console.log('e.keyCode : ', e.keyCode)
+        if(e.keyCode === 13){
+            let postReqList = {
+                postType : $typeRealBox.dataset.type,
+                type : $etcRealBox.dataset.etc,
+                keyword : $postSearchBtn.value,
+                orderType : 'recent',
+                page : 1,
+            }
+
+            // console.log(postReqList)
+            postShow(postReqList);
+            // $postSearchBtn.value = '';
+            $postSearchBtn.blur()
+        }
+    })
+}
+
+{
+    let $orderBtnBox = document.querySelector('.main__post-order-type-box')
+
+    $orderBtnBox.addEventListener('click' , function (e){
+        console.log('e.target : ', e.target)
+        if(e.target.classList.contains('order-btn')) {
+            let postReqList = {
+                postType: e.target.dataset.posttype,
+                type: e.target.dataset.type,
+                keyword: e.target.dataset.keyword,
+                orderType: e.target.dataset.order,
+                page: 1,
+            }
+
+            postShow(postReqList);
+        }
+    })
+}
+
+{
+    let $pageBtnBox = document.querySelector('.main__post-page-btn-box');
+
+    $pageBtnBox.addEventListener('click', function (e) {
+
+        if(e.target.classList.contains('page-btn')){
+            console.log(e.target)
+
+            let postReqList = {
+                postType: e.target.dataset.posttype,
+                type: e.target.dataset.type,
+                keyword: e.target.dataset.keyword,
+                orderType: e.target.dataset.order,
+                page: e.target.dataset.page,
+            }
+
+            postShow(postReqList);
+        }
+    })
+}
+
+{
+    //게시글 뷰 진입 이벤트
+    let $postBox = document.querySelector('.main__post-search-result-box > ul');
+
+    $postBox.addEventListener('click', function (e){
+        if(e.target.classList.contains('post-area')){
+            console.log('e.target : ', e.target)
+
+            window.location = "/board/post/view";
+        }
+    })
 }

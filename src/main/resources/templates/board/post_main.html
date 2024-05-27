@@ -4,13 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" th:href="@{/css/board/post_main.css}" />
+    <link rel="stylesheet" th:href="@{/css/chatbot/chatbot.css}"/>
     <script defer th:src="@{/js/board/post_main.js}"></script>
+    <script defer th:src="@{/js/chatbot/chatbot.js}"></script>
     <title>Document</title>
   </head>
   <body>
     <header></header>
     <div class="main__post-content-container">
-      <form action="">
+<!--      <form action="">-->
         <main class="main__post-content-inner-box">
           <div class="main__post-title-search-box">
             <h1 class="main__title-box">
@@ -89,7 +91,9 @@
 
           </div>
         </main>
-      </form>
+<!--      </form>-->
+    </div>
+    <div th:replace="~{/chatbot/chatbot :: chatbot-box}">
     </div>
     <footer></footer>
   </body>

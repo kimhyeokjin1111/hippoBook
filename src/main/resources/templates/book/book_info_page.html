@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" th:href="@{/css/book/book_info_page.css}" />
+    <link rel="stylesheet" th:href="@{/css/main/mainpage.css}" />
     <script defer th:href="@{/js/book/book_info_page.js}"></script>
     <title>Document</title>
   </head>
   <body>
-    <header></header>
+  <header class="header" th:replace="~{/fragment/header :: header}"></header>
     <div class="main__outer_container">
       <main class="main__inner_container">
         <section class="main__book-preview-info-box">

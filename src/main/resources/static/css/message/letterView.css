@@ -1,12 +1,9 @@
-@font-face {
-  font-family: "neon";
-  src: url("../font/SpoqaHanSansNeo_all/SpoqaHanSansNeo_TTF_original/SpoqaHanSansNeo-Bold.ttf");
-}
+
 
 * {
   margin: 0;
   padding: 0;
-  font-family: neon;
+
 }
 header {
   top: 0;
@@ -101,7 +98,7 @@ main {
   margin-right: 12px;
 }
 .main_top_category_tap {
-  position: "relative";
+
   left: 0;
   top: 0;
 }

@@ -169,7 +169,8 @@ ul {
   align-items: center;
 }
 
-.main__post-like-btn-box > a {
+.main__post-like-btn-box > span {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -182,11 +183,11 @@ ul {
   margin-right: 15px;
 }
 
-.main__post-like-btn-box > a:hover {
+.main__post-like-btn-box > span:hover {
   background-color: #56bdbb;
 }
 
-.main__post-like-btn-box > a > img {
+.main__post-like-btn-box > span > img {
   width: 15px;
   height: 15px;
   margin-right: 10px;
@@ -273,7 +274,8 @@ ul {
   display: flex;
   justify-content: center;
   padding: 13px 0;
-  border-bottom: 1px solid #e3e3e3;
+  /*border-bottom: 1px solid #e3e3e3;*/
+  cursor: pointer;
 }
 
 .main__post-comment-page-box > a {

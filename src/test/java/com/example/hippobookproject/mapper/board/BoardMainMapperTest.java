@@ -25,8 +25,8 @@ class BoardMainMapperTest {
     @BeforeEach
     void setUp() {
         postSearchOptDto = new PostSearchOptDto();
-        postSearchOptDto.setType("writer");
-        postSearchOptDto.setKeyword("Nickname");
+//        postSearchOptDto.setType("writer");
+//        postSearchOptDto.setKeyword("Nickname");
 
         criteria = new AdminUserCriteria();
         criteria.setAmount(10);
@@ -47,4 +47,5 @@ class BoardMainMapperTest {
         int i = boardMainMapper.selectBoardPostTotal(postSearchOptDto);
         assertThat(i).isEqualTo(4);
     }
+
 }

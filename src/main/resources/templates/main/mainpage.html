@@ -33,11 +33,12 @@
               </li>
               <li class="main_top_category_list2">
                 <a th:href="@{/search}" class="main_top_category_list_title">검색</a>
-
+                <!-- 검색 이동 -->
+              </li>
               <li class="main_top_category_list2">
                 <a th:href="@{/categorie/Categoriepage}" class="main_top_category_list_title">카테고리</a>
+                <!-- 카테고리 이동 -->
               </li>
-
             </ul>
           </div>
         </div>
@@ -252,28 +253,43 @@
               <a th:href="@{/board/post/main}">
               <span class="category_popup_title">게시판</span>
               </a>
-              <span class="category_popup_content">소설 쓰기</span>
-              <span class="category_popup_content">중고 거래</span>
-              <span class="category_popup_content">사용자 문의</span>
-              <span class="category_popup_content">자유</span>
-              <span class="category_popup_title2">쪽지</span>
+
+              <div class="category_popup_content_box">
+              <span class="category_popup_content">소설 게시판</span>
+              <span class="category_popup_content">중고 게시판</span>
+              <span class="category_popup_content">자유 게시판</span>
+              </div>
+
+              <span class="category_popup_title">쪽지</span>
+              <div class="category_popup_content_box">
               <a th:href="@{/message/letter/get}">
               <span class="category_popup_content">받은 쪽지함</span>
               </a>
               <a th:href="@{/message/letter/send}">
-              <span class="category_popup_content" style="margin-bottom: 40px">보낸 쪽지함</span>
+              <span class="category_popup_content">보낸 쪽지함</span>
               </a>
-              <a th:href="@{/mypage/int}">
-              <span class="category_popup_title3">내 서재</span>
+              </div>
+
+
+              <a th:href="@{/feed}">
+                <span class="category_popup_title">피드</span>
               </a>
-              <a href="">
-              <span class="category_popup_title3">이벤트</span>
+
+              <div class="category_popup_content_box">
+              <a th:href="@{/feed}">
+              <span class="category_popup_content">포스트</span>
               </a>
-              <a th:href="@{/search}">
-              <span class="category_popup_title3">검색</span>
+              <a th:href="@{/feed/oneline}">
+              <span class="category_popup_content">한 줄 리뷰</span>
               </a>
-              <a th:href="@{/categorie/Categoriepage}">
-                <span class="category_popup_title3">카테고리</span>
+              <a th:href="@{/feed/read}">
+              <span class="category_popup_content">독후감</span>
+              </a>
+              </div>
+
+              <span class="category_popup_title">이벤트</span>
+              <a th:href="@{/mypage/sticker}">
+                <span class="category_popup_content">스티커 신청하기</span>
               </a>
             </section>
           </section>
