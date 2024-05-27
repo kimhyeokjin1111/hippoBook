@@ -1,7 +1,4 @@
-{
-  let $bookLikeBtn = document.querySelector('.book-comment-like-box> button');
-}
-
+let $postHidden = document.querySelector('.post-hidden')
 let $declRadios = document.querySelectorAll(
   '.modal-decl-opt-content-box > label > input'
 );
@@ -26,10 +23,12 @@ let $otherReason = document.querySelector('.decl-other-content-box > input');
 
   $declIcons.forEach((declI) => {
     declI.addEventListener('click', function () {
-      console.log('hi');
+      console.log('this : ', this);
       console.log($declModal.style.display);
       if ($declModal.style.display == '') {
         $declModal.style.display = 'flex';
+        $declProcess.dataset.type = this.dataset.type;
+        $declProcess.dataset.targetid = $postHidden.dataset.id;
       }
     });
   });
@@ -39,12 +38,14 @@ let $otherReason = document.querySelector('.decl-other-content-box > input');
   );
 
   $declIcons2.addEventListener('click', function (e) {
-      console.log('hi');
-      console.log(e.target.style.display);
+      console.log('e.target : ', e.target);
+      // console.log(e.target.style.display);
 
       if(e.target.classList.contains('comment-decl-btn')){
         if ($declModal.style.display == '') {
           $declModal.style.display = 'flex';
+          $declProcess.dataset.type = e.target.dataset.type;
+          $declProcess.dataset.targetid = e.target.dataset.rid;
         }
       }
   });
@@ -77,10 +78,12 @@ let $otherReason = document.querySelector('.decl-other-content-box > input');
   });
 
   function declModalExit() {
+
     // console.log('$declReason.dataset : ', $declReason.dataset)
     // console.log('$declRadios[$declReason.dataset.reasonnow - 1] : ', $declRadios[$declReason.dataset.reasonnow - 1] )
 
     if($declReason.dataset.reasonnow === "-1"){
+      $alertReason.style.display = '';
       return;
     }
     $declRadios[$declReason.dataset.reasonnow - 1]
@@ -93,6 +96,7 @@ let $otherReason = document.querySelector('.decl-other-content-box > input');
       '2px solid rgb(233, 229, 229)';
 
     $alertReason.style.display = '';
+    console.log("나기기 함수 돌기 !!!!!!!!!!!!!!!!!!!!!!")
 
     console.log(
       $declRadios[$declReason.dataset.reasonnow - 1].dataset.reasonnow
@@ -104,15 +108,60 @@ let $otherReason = document.querySelector('.decl-other-content-box > input');
       $declOther.style.display = 'none';
     }
 
-    $declReason.dataset.reasonnow = -1;
-    $otherReason.value = '';
+    // $declReason.dataset.reasonnow = -1;
+    // $otherReason.value = '';
   }
+}
+
+{
+  // 복사할 신고 코드
+  //신고처리 이벤트
+  let $declProcess = document.querySelector('.decl-process-btn');
+  let $declReason = document.querySelector(
+      '.modal-decl-opt-content-box > input'
+  );
+
+  $declProcess.addEventListener('click', function (){
+    if($declReason.dataset.reasonnow == 5){
+      $declProcess.dataset.value = $declRadios[4].value;
+    }
+    console.log('$declProcess.dataset.value : ', $declProcess.dataset.value)
+
+    console.log($declProcess.dataset.value);
+    if($declProcess.dataset.value){
+      console.log('신고 사유가 존재함~!!')
+      let declInfo = {
+        // private String declContent;
+        // private String declCate;
+        // private Long targetId;
+        // private Long userId;
+        declContent : $declProcess.dataset.value,
+        declCate : $postHidden.dataset.type,
+        targetId : $declProcess.dataset.targetid,
+        userId : 1
+      }
+
+      fetch(`/v1/${$declProcess.dataset.type}/decl`,
+          {
+            method : "POST",
+            headers : {'Content-Type' : 'application/json'},
+            body : JSON.stringify(declInfo)
+          }).then();
+      $declReason.dataset.reasonnow = -1;
+      $otherReason.value = '';
+      $declProcess.dataset.value = ''
+      $declRadios[4].value = '';
+    }
+  })
+
+
 }
 
 {
   // 신고 모달 라디오 선택 이벤트
 
   console.log($declRadios);
+  let $declProcess = document.querySelector('.decl-process-btn');
 
   $declRadios.forEach((rad) => {
     rad.addEventListener('click', function () {
@@ -155,6 +204,12 @@ let $otherReason = document.querySelector('.decl-other-content-box > input');
         $reason.style.color = '#3a3636';
         $declSpan.style.border = '7px solid rgb(119, 111, 111)';
         $declReason.dataset.reasonnow = this.dataset.reasonnow;
+        console.log('this.value : ', this.value)
+        if(this.dataset.reasonnow == 5){ // 복사할 신고 코드
+          $declProcess.dataset.value = '';
+        }else{
+          $declProcess.dataset.value = this.value
+        }
         console.log($declReason.dataset.reasonnow);
 
         if (this.dataset.reasonnow == 5) {
@@ -188,7 +243,7 @@ let $otherReason = document.querySelector('.decl-other-content-box > input');
 
 let nowPage = 1;
 //코멘트 이벤트 부분
-let $postHidden = document.querySelector('.post-hidden')
+
 let commentFindInst = {
   postType : $postHidden.dataset.type,
   postId : $postHidden.dataset.id,
@@ -246,7 +301,7 @@ function showComment(commentList){
                     <a href="#">${commentWriter}</a>
                     <span>${commentDate}</span>
                   </span>
-                            <img class="comment-decl-btn" src="/imgs/administrator/fragment/decl.png" alt="">
+                            <img data-rid="${commentList.contentList[i].commentId}" data-type="comment" class="comment-decl-btn" src="/imgs/administrator/fragment/decl.png" alt="">
                         </p>
                         <div>${commmentContent}</div>
                     </div>
@@ -339,7 +394,7 @@ function addComment(putCommentInfo, postType, callBack){
 
     let likeInfo = {
       postId : $postHidden.dataset.id,
-      userId : 2 // $postHidden.dataset.id 로 교체 해야함
+      userId : 1 // $postHidden.dataset.id 로 교체 해야함
     }
 
     fetch(`/v1/${$postHidden.dataset.type}/post/like`,
@@ -364,4 +419,17 @@ function showPostLike(){
     console.log(text)
     $likeCount.innerText = text;
   });
+}
+
+{
+  //이전 페이지 정보 저장 및 목록 이벤트
+  let before = document.referrer;
+  console.log('before : ', before)
+
+  let $listBtn = document.querySelector('.main__post-type-modify-back-btn-box > div > span:nth-child(2) > button ')
+  console.log('$listBtn : ', $listBtn)
+
+  $listBtn.addEventListener('click', function (){
+    window.location = before;
+  })
 }
