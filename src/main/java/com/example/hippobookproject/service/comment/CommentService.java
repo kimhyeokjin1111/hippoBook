@@ -38,17 +38,21 @@ public class CommentService {
     }
 
     public MessageSlice<CommentReadDto> findComment(String commentType, Long postId, AdminUserCriteria criteria){
-        List<CommentReadDto> commentReadDtos = null;
+        List<CommentReadDto> commentReadDtos;
 
         switch (commentType){
             case "deal":
                 commentReadDtos = commentMapper.selectDealComment(criteria, postId);
+                break;
             case "board":
                 commentReadDtos = commentMapper.selectBoardComment(criteria, postId);
+                break;
             case "novel":
                 commentReadDtos = commentMapper.selectNovelComment(criteria, postId);
+                break;
             case "claim":
                 commentReadDtos = commentMapper.selectClaimComment(criteria, postId);
+                break;
             default:
                 commentReadDtos = commentMapper.selectBookComment(criteria, postId);
         }
