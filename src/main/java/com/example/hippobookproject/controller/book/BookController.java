@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Slf4j
@@ -22,8 +21,10 @@ public class BookController {
         return "book/book_info_page";
     }
 
-//    SELECT BOOK_ID, BOOK_NAME, BOOK_WRITER, BOOK_DATE, LINK, DESCRIPTION, COVER, PUBLISHER_ID PUB_NAME, ISBN, CATEGORY
-//    FROM TBL_BOOK
-//    WHERE BOOK_ID = 1
+//    SELECT B.BOOK_ID, BOOK_NAME, BOOK_WRITER, BOOK_DATE, LINK, DESCRIPTION, COVER, PUBLISHER_ID PUB_NAME, ISBN, CATEGORY, BOOK_HAS_CNT
+//    FROM TBL_BOOK B JOIN (SELECT BOOK_ID, COUNT(USER_ID) BOOK_HAS_CNT
+//    FROM TBL_BOOK_HAS
+//    GROUP BY BOOK_ID) BH
+//    ON B.BOOK_ID = 1 AND B.BOOK_ID = BH.BOOK_ID
 }
 
