@@ -9,6 +9,7 @@ import org.springframework.batch.item.NonTransientResourceException;
 import org.springframework.batch.item.ParseException;
 import org.springframework.batch.item.UnexpectedInputException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -17,24 +18,30 @@ public class ApiItemReader implements ItemReader<AladinItemDto> {
 
     private int nextIdx = 0;
     private List<AladinItemDto> items;
+
     @Override
     public AladinItemDto read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
 
-        if(items == null){
-            AladinApiDto allBook = bookService.findAllBook();
-            items = allBook.getItem();
+
+        if (items == null) {
+            items = new ArrayList<>();
+            for (int i = 1; i < 20; i++) {
+                AladinApiDto allBook = bookService.findAllBook(i);
+                items.addAll(allBook.getItem());
+            }
         }
 
         AladinItemDto nextItemDto = null;
 
-        if (nextIdx < items.size()){
+        if (nextIdx < items.size()) {
             nextItemDto = items.get(nextIdx);
             nextIdx++;
-        }else {
+        } else {
             items = null;
             nextIdx = 0;
         }
 
         return nextItemDto;
+
     }
 }

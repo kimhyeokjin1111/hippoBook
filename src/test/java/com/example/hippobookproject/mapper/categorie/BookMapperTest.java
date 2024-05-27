@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest
@@ -55,5 +59,17 @@ class BookMapperTest {
         assertEquals(deleteBook.getBookWriter(), Book.getBookWriter());
         assertEquals(deleteBook.getBookDate(), Book.getBookDate());
         assertEquals(deleteBook.getPublisherId(), Book.getPublisherId());
+    }
+
+    @Test
+    void selectIsbn(){
+        Set<String> strings = bookMapper.selectIsbn();
+        System.out.println("strings = " + strings);
+
+        List<Integer> integers = List.of(1, 2, 3, 4, 5);
+        System.out.println(integers.contains(1));
+
+        System.out.println(strings.contains("K832930683"));
+
     }
 }

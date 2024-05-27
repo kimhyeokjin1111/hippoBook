@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class AladinApi {
     private final BookService bookService;
 
-    @GetMapping("/api")
-    public void apiTest(){
-        bookService.findAllBook();
-    }
+//    @GetMapping("/api")
+//    public void apiTest(){
+//        bookService.findAllBook();
+//    }
 }

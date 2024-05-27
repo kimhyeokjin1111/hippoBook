@@ -1,5 +1,6 @@
 package com.example.hippobookproject.batch;
 
+import com.example.hippobookproject.dto.Categorie.BookDto;
 import com.example.hippobookproject.dto.book.AladinItemDto;
 import com.example.hippobookproject.mapper.book.BookMapper;
 import com.example.hippobookproject.service.book.BookService;
@@ -17,6 +18,8 @@ import org.springframework.batch.item.ItemWriter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
+
+import java.util.Set;
 
 @Slf4j
 @Configuration
@@ -40,9 +43,16 @@ public class BookRegisterJobConfig {
 
     @Bean
     public ItemProcessor<AladinItemDto,AladinItemDto> apiItemProcessor(){
-        return item -> item; //중복아이템인지 확인하고 그게아니면 처리하게 처리
-                             //맵퍼나 서비스 주입을 받아서 selectAll을 해서 반환하면 리스트가 나옴
-                             // ex List<Integer> list = List.of(1,2,3,4,5); 이걸활용
+        Set<String> isbnSet = bookMapper.selectIsbn();
+
+
+        return item -> {
+            if(isbnSet.contains(item.getIsbn())) { return null; }
+            isbnSet.add(item.getIsbn());
+            return item;
+        };
+
+
     }
 
     @Bean
