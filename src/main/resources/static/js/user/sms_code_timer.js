@@ -13,7 +13,7 @@ const takeTarget = () => {
             remainingMin.innerText = min;
             remainingSec.innerText = sec;
         } else {
-            completeBtn.disabled = true;
+            // completeBtn.disabled = true;
         }
     }, 1000);
 }
