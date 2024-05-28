@@ -93,6 +93,10 @@ ul {
   position: relative;
 }
 
+.book-reference-data-box > div:last-child > p{
+  cursor: pointer;
+}
+
 .book-reference-data-box > div:not(:first-child):before {
   content: '|';
   display: block;
@@ -125,6 +129,7 @@ ul {
   -webkit-box-orient: vertical;
   word-wrap: break-word;
   line-height: 1.8;
+  padding-bottom: 20px;
 }
 
 .book-detail-flex {
@@ -165,6 +170,7 @@ ul {
   position: relative;
   height: 100%;
   padding: 20px 16px;
+  text-align:  center;
 }
 
 .main__book-short-content-box
@@ -233,11 +239,11 @@ ul {
 
 .main__book-comment-content-box > ul{
   border-top: 1px solid #bdb6b6;
-  border-bottom: 1px solid #bdb6b6;
+  /*border-bottom: 1px solid #bdb6b6;*/
 }
 
 .main__book-comment-content-box > ul > li {
-  margin-bottom: 15px;
+  /*margin-bottom: 15px;*/
   border-bottom: 1px solid #bdb6b6;
   padding: 5px 0;
 }
@@ -335,6 +341,7 @@ ul {
 }
 
 .main__book-comment-write-container {
+  margin-top: 10px;
   display: flex;
   max-height: 200px;
   min-height: 76px;
@@ -400,6 +407,7 @@ ul {
 }
 
 .modal-decl-req-back {
+  z-index: 1000;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -562,4 +570,25 @@ ul {
 
 .decl-reason-other-box-outer {
   display: none;
+}
+
+.main__book-cover-box{
+  display: flex;
+  align-items: center;
+}
+
+.main__book-cover-box > img {
+  width: 100px;
+}
+
+.more-comment-btn{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.more-comment-btn > span{
+  color: #888888;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 9px 0;
 }
