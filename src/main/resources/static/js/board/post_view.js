@@ -82,7 +82,7 @@ let $otherReason = document.querySelector('.decl-other-content-box > input');
     // console.log('$declReason.dataset : ', $declReason.dataset)
     // console.log('$declRadios[$declReason.dataset.reasonnow - 1] : ', $declRadios[$declReason.dataset.reasonnow - 1] )
 
-    if($declReason.dataset.reasonnow === "-1"){
+    if($declReason.dataset.reasonnow === "-1"){ //복사할 코드
       $alertReason.style.display = '';
       return;
     }
@@ -131,10 +131,6 @@ let $otherReason = document.querySelector('.decl-other-content-box > input');
     if($declProcess.dataset.value){
       console.log('신고 사유가 존재함~!!')
       let declInfo = {
-        // private String declContent;
-        // private String declCate;
-        // private Long targetId;
-        // private Long userId;
         declContent : $declProcess.dataset.value,
         declCate : $postHidden.dataset.type,
         targetId : $declProcess.dataset.targetid,
