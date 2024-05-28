@@ -1,10 +1,13 @@
 package com.example.hippobookproject.controller.user;
 
+import com.example.hippobookproject.dto.user.UserIdDuplicationDto;
 import com.example.hippobookproject.dto.user.UserJoinDto;
+import com.example.hippobookproject.service.user.UserCheckIdService;
 import com.example.hippobookproject.service.user.UserService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,6 +21,9 @@ import java.util.Random;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
+
+    @Autowired
+    private UserCheckIdService userCheckIdService;
 
     @GetMapping("/login")
     public String loginPage() {
@@ -43,7 +49,7 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String register() {
+    public String register(){
         return "user/register";
     }
 
