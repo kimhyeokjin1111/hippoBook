@@ -8,7 +8,7 @@
   console.log($bookShort);
   console.log($shortMore);
 
-  $shortMore.addEventListener('click', function () {
+  $shortMore?.addEventListener('click', function () {
     if ($shortMore.textContent == '펼치기') {
       $bookShort.style.display = 'block';
       $shortMore.textContent = '접기';
@@ -27,7 +27,7 @@
   let $authorTarget = document.querySelector('.book-author-target');
   let $publiTarget = document.querySelector('.book-publi-target');
 
-  $listBtn.addEventListener('click', function () {
+  $listBtn?.addEventListener('click', function () {
     console.log($listTarget);
     if ($listTarget.style.display == 'none') {
       $listTarget.style.display = 'block';
@@ -44,7 +44,7 @@
     }
   });
 
-  $publiBtn.addEventListener('click', function () {
+  $publiBtn?.addEventListener('click', function () {
     if ($publiTarget.style.display == 'none') {
       $publiTarget.style.display = 'block';
       let $publiShift = $publiBtn.closest('li').querySelector('button > img');
@@ -58,7 +58,7 @@
     }
   });
 
-  $authorBtn.addEventListener('click', function () {
+  $authorBtn?.addEventListener('click', function () {
     console.log($authorTarget.style.display);
     if ($authorTarget.style.display == 'none') {
       $authorTarget.style.display = 'block';
@@ -75,9 +75,9 @@
   });
 }
 
-{
-  let $bookLikeBtn = document.querySelector('.book-comment-like-box> button');
-}
+// {
+//   let $bookLikeBtn = document.querySelector('.book-comment-like-box> button');
+// }
 
 let $declRadios = document.querySelectorAll(
   '.modal-decl-opt-content-box > label > input'
@@ -88,24 +88,21 @@ let $declOther = document.querySelector('.decl-reason-other-box-outer');
 let $otherReason = document.querySelector('.decl-other-content-box > input');
 {
   // 신고하기 모달 박스 이벤트(열기, 닫기)
-
-  let $declIcons = document.querySelectorAll('.book__decl-box > img');
   let $declModal = document.querySelector('.modal-decl-req-back');
   let $declClose = document.querySelector('.decl-close-btn');
   let $declProcess = document.querySelector('.decl-process-btn');
-
-  console.log($declIcons);
-  console.log($declModal);
-
-  $declIcons.forEach((declI) => {
-    declI.addEventListener('click', function () {
-      console.log('hi');
+  let $bookCommentBox = document.querySelector('.main__book-comment-content-box > ul')
+  $bookCommentBox.addEventListener('click', function (e){
+    if(e.target.classList.contains('decl-btn')){
+      console.log('e.target : ', e.target)
       console.log($declModal.style.display);
       if ($declModal.style.display == '') {
         $declModal.style.display = 'flex';
+        console.log('this.dataset.cid : ', e.target.dataset.cid)
+        $declProcess.dataset.targetid = e.target.dataset.cid;
       }
-    });
-  });
+    }
+  })
 
   let $declReason = document.querySelector(
     '.modal-decl-opt-content-box > input'
@@ -134,6 +131,11 @@ let $otherReason = document.querySelector('.decl-other-content-box > input');
   });
 
   function declModalExit() {
+
+    if($declReason.dataset.reasonnow === "-1"){
+      $alertReason.style.display = '';
+      return;
+    }
     $declRadios[$declReason.dataset.reasonnow - 1]
       .closest('label')
       .querySelector('.modal-decl-reason-box > p').style.color = '#8b8b8b';
@@ -154,16 +156,64 @@ let $otherReason = document.querySelector('.decl-other-content-box > input');
     if ($declRadios[$declReason.dataset.reasonnow - 1].dataset.reasonnow == 5) {
       $declOther.style.display = 'none';
     }
-
-    $declReason.dataset.reasonnow = -1;
-    $otherReason.value = '';
+    // 지울 코드
+    // $declReason.dataset.reasonnow = -1;
+    // $otherReason.value = '';
   }
+}
+
+{
+  // 복사할 신고 코드
+  //신고처리 이벤트
+  let $declProcess = document.querySelector('.decl-process-btn');
+  let $bookInfoHidden = document.querySelector('.book-info-hidden');
+  let $declReason = document.querySelector(
+      '.modal-decl-opt-content-box > input'
+  );
+
+  $declProcess.addEventListener('click', function (){
+    console.log('$declReason.dataset.reasonnow : ', $declReason.dataset.reasonnow)
+    if($declReason.dataset.reasonnow == 5){
+      console.log('$declRadios[4].value 확인ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ : ', $declRadios[4].value)
+      $declProcess.dataset.value = $declRadios[4].value;
+    }
+    console.log('$declProcess.dataset.value : ', $declProcess.dataset.value)
+
+    console.log($declProcess.dataset.value);
+    if($declProcess.dataset.value){
+      console.log('신고 사유가 존재함~!!')
+      let declInfo = {
+        // private String declContent;
+        // private String declCate;
+        // private Long targetId;
+        // private Long userId;
+        declContent : $declProcess.dataset.value,
+        declCate : 'book',
+        targetId : $declProcess.dataset.targetid,
+        userId : $bookInfoHidden.dataset.uid
+      }
+
+      console.log('declInfo : ',declInfo)
+
+      fetch(`/v1/comment/decl`,
+          {
+            method : "POST",
+            headers : {'Content-Type' : 'application/json'},
+            body : JSON.stringify(declInfo)
+          }).then();
+      $declReason.dataset.reasonnow = -1;
+      $otherReason.value = '';
+      $declProcess.dataset.value = ''
+      $declRadios[4].value = '';
+    }
+  })
 }
 
 {
   // 신고 모달 라디오 선택 이벤트
 
   console.log($declRadios);
+  let $declProcess = document.querySelector('.decl-process-btn');
 
   $declRadios.forEach((rad) => {
     rad.addEventListener('click', function () {
@@ -207,6 +257,12 @@ let $otherReason = document.querySelector('.decl-other-content-box > input');
         $declSpan.style.border = '7px solid rgb(119, 111, 111)';
         $declReason.dataset.reasonnow = this.dataset.reasonnow;
         console.log($declReason.dataset.reasonnow);
+        if(this.dataset.reasonnow == 5){ // 복사할 신고 코드
+          $declProcess.dataset.value = '';
+        }else{
+          $declProcess.dataset.value = this.value
+        }
+        console.log($declReason.dataset.reasonnow);
 
         if (this.dataset.reasonnow == 5) {
           $declOther.style.display = 'block';
@@ -235,10 +291,141 @@ let $otherReason = document.querySelector('.decl-other-content-box > input');
   });
 }
 
-// 책 정보 불러오는 이벤트
+{
+  // 책장에 책 담기 이벤트
+
+  let $addBookBtn = document.querySelector('.book-reference-data-box > div:last-child > p')
+  let $bookInfoHidden = document.querySelector('.book-info-hidden');
+  console.log($bookInfoHidden.dataset.bookid);
+  console.log('$addBookBtn : ', $addBookBtn)
+
+  $addBookBtn.addEventListener('click', function (){
+    let bookHasInfo = {
+      bookcaseId : 1, //변경할 내용
+      bookId : $bookInfoHidden.dataset.bookid,
+      userId : $bookInfoHidden.dataset.uid
+    }
+
+    console.log('bookHasInfo : ', bookHasInfo)
+
+    fetch(`v1/book/info`, {
+      method : "POST",
+      headers : {"Content-Type" : "application/json"},
+      body : JSON.stringify(bookHasInfo)
+    }).then(() => {
+      this.closest('div').style.display = 'none'
+    });
+  })
+}
+
+let page = 1;
 
 {
+// 책 한줄 리뷰 불러오는 이벤트
   let $bookInfoHidden = document.querySelector('.book-info-hidden');
 
   console.log($bookInfoHidden.dataset.bookid);
+  bookCommentReq($bookInfoHidden.dataset.bookid, showBookComment)
+}
+
+{
+  // 책 한줄 리뷰 쓰기 이벤트
+  let $commentInput = document.querySelector('#book-comment-input');
+  let $commentBtn = document.querySelector('#book-comment-btn');
+  let $bookInfoHidden = document.querySelector('.book-info-hidden');
+  // console.log('$commentInput : ', $commentInput)
+  // console.log('$commentBtn : ', $commentBtn)
+
+  $commentBtn.addEventListener('click', function (){
+    let bookCommentInfo = {
+      bookCommentContent : $commentInput.value,
+      bookId : $bookInfoHidden.dataset.bookid,
+      userId : $bookInfoHidden.dataset.uid
+    }
+
+    console.log('bookCommentInfo : ', bookCommentInfo)
+
+    fetch(`/v1/book/info/comment`, {
+      method : "POST",
+      headers : {"Content-Type" : "application/json"},
+      body : JSON.stringify(bookCommentInfo)
+    }).then(() => {
+      $commentInput.value = '';
+      bookCommentReq($bookInfoHidden.dataset.bookid, showBookComment);
+    });
+  })
+}
+
+function bookCommentReq(bookId, callback){
+  fetch(`/v1/book/post/comments?postId=${bookId}&page=${page}&amount=5`, {method : "GET"})
+      .then(resp => resp.json())
+      .then(json => callback(json))
+}
+
+function showBookComment(commentList){
+  let $moreBtn = document.querySelector('.more-comment-btn');
+  console.log('commentList : ', commentList)
+
+  let $bookCommentBox = document.querySelector('.main__book-comment-content-box > ul')
+  let tags = '';
+
+  for (let i = 0; i < commentList.contentList.length; i++) {
+    tags += `
+            <li>
+              <div class="book__decl-box">
+                <p>${commentList.contentList[i].userNickname}</p>
+                <img class="decl-btn" data-cid="${commentList.contentList[i].commentId}" src="/imgs/administrator/fragment/decl.png" alt="" />
+              </div>
+              <span>${commentList.contentList[i].commentDate}</span>
+              <p class="book-comment-content">${commentList.contentList[i].commentContent}</p>        
+            </li>
+    `
+  }
+
+  $bookCommentBox.innerHTML = tags;
+  console.log(commentList.hasNext)
+  if(commentList.hasNext){
+    page += 1
+    $moreBtn.style.display = 'flex'
+  }else{
+    page = 1;
+    $moreBtn.style.display = 'none'
+  }
+}
+
+function showBookComment2(commentList){
+  let $moreBtn = document.querySelector('.more-comment-btn');
+  console.log('commentList : ', commentList)
+
+  let $bookCommentBox = document.querySelector('.main__book-comment-content-box > ul')
+  let tags = '';
+
+  for (let i = 0; i < commentList.contentList.length; i++) {
+    tags += `
+            <li>
+              <div class="book__decl-box">
+                <p>${commentList.contentList[i].userNickname}</p>
+                <img class="decl-btn" data-bid="${commentList.contentList[i].commentId}" src="/imgs/administrator/fragment/decl.png" alt="" />
+              </div>
+              <span>${commentList.contentList[i].commentDate}</span>
+              <p class="book-comment-content">${commentList.contentList[i].commentContent}</p>        
+            </li>
+    `
+  }
+  $bookCommentBox.insertAdjacentHTML('beforeend', tags);
+  if(commentList.hasNext){
+    page += 1
+  }else{
+    page = 1;
+    $moreBtn.style.display = 'none'
+  }
+}
+
+{
+  //한 줄 리뷰 더보기 이벤트
+  let $moreBtn = document.querySelector('.more-comment-btn > span');
+  let $bookInfoHidden = document.querySelector('.book-info-hidden');
+  $moreBtn.addEventListener('click', function (){
+    bookCommentReq($bookInfoHidden.dataset.bookid, showBookComment2)
+  })
 }

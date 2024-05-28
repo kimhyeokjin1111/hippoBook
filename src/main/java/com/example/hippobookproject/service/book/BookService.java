@@ -1,6 +1,9 @@
 package com.example.hippobookproject.service.book;
 
 import com.example.hippobookproject.dto.book.AladinApiDto;
+import com.example.hippobookproject.dto.book.BookCommentWriteDto;
+import com.example.hippobookproject.dto.book.BookHasWriteDto;
+import com.example.hippobookproject.dto.book.BookInfoDto;
 import com.example.hippobookproject.mapper.book.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +17,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Transactional
 @RequiredArgsConstructor
 public class BookService {
+    private final BookMapper bookMapper;
 
     @Value("${api.key.aladin}")
     private String apiKey;
@@ -47,6 +51,22 @@ public class BookService {
 
 //        System.out.println("result = " + result);
         return result;
+    }
+
+    public BookInfoDto findBookInfo(Long bookId){
+        return bookMapper.selectBookInfo(bookId).orElseThrow(() -> new IllegalStateException("해당 책 정보가 존재하지 않습니다."));
+    }
+
+    public void registerBookHas(BookHasWriteDto bookHasWriteDto){
+        bookMapper.insertBookHas(bookHasWriteDto);
+    }
+
+    public int findBookHas(Long bookId , Long userId){
+        return bookMapper.selectBookHas(bookId, userId);
+    }
+
+    public void registerBookComment(BookCommentWriteDto bookCommentWriteDto){
+        bookMapper.insertBookComment(bookCommentWriteDto);
     }
 
 }
