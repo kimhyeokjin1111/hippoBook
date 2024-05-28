@@ -19,4 +19,10 @@
         INSERT INTO TBL_USER_PROFILE (USER_PROFILE_ID, USER_PROFILE_UPLOAD_PATH, USER_PROFILE_UUID, USER_PROFILE_NAME, USER_ID)
         VALUES (SEQ_USER_PROFILE.nextval, #{userProfileUploadPath}, #{userProfileUuid}, #{userProfileName}, #{userId})
     </insert>
+
+    <select id="checkUserId" resultType="int" parameterType="string">
+        SELECT COUNT(*)
+        FROM HR.TBL_USER
+        WHERE USER_LOGIN_ID = #{userLoginId}
+    </select>
 </mapper>

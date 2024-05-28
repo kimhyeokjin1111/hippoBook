@@ -15,4 +15,6 @@ public interface UserMapper {
                             @Param("userPassword") String userPassword);
 
     void insertUserProfile(UserProfileDto userProfileDto);
+
+    int checkUserId(String userLoginId);
 }

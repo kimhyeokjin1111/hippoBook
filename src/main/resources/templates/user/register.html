@@ -9,6 +9,7 @@
     <script defer th:src="@{/js/user/register.js}"></script>
     <script defer th:src="@{/js/user/sms_code_timer.js}"></script>
     <script defer th:src="@{/js/user/sms_click_event.js}"></script>
+    <script defer th:src="@{/js/user/id_duplication.js}"></script>
 </head>
 <body data-theme="light">
 <div data-a-1120 id="wrap" class="web-mount">
@@ -105,7 +106,7 @@
                                            placeholder="01012345678"
                                            class="mds-input-field" name="userPhonenumber">
                                 </div>
-                                <button type="button" class="phone-info-code-button" onclick="takeTarget()" id="sendSMSButton" name="TestUserSMSController">
+                                <button type="button" class="phone-info-code-button" onclick="takeTarget()" id="sendSMSButton" name="PhoneNumber">
                                     <span>인증번호 발송</span>
                                 </button>
                             </div>
@@ -149,11 +150,14 @@
                                             아이디
                                             <sup>*</sup>
                                         </span>
-                                    <input autocomplete="off" id="input-237" aria-labelledby="input-237-label"
+                                    <form th:action="@{/user/register}" method="post" onsubmit="return valid()">
+                                    <input autocomplete="off" id="userLoginId" aria-labelledby="input-237-label"
                                            aria-errormessage="input-237-messeage" type="text"
                                            placeholder="아이디 입력" class="mds-input-field"
                                            name="userLoginId"
                                     >
+                                        <button type="button" onclick="checkUserId()">ID 중복체크</button><br>
+                                    </form>
                                 </div>
                                 <button type="button" aria-label="내용 삭제" class="mds-icon--input-delete clear-button"
                                         style="display: none;"></button>
