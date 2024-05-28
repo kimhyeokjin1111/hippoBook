@@ -65,7 +65,11 @@
         WHERE MESSAGE_FROM =#{userId}
     </select>
 
-
+    <update id="updateReadingCheck">
+        UPDATE TBL_MESSAGE
+        SET MESSAGE_CHECK = 'Y'
+        WHERE MESSAGE_ID = #{messageId}
+    </update>
 
 
 

@@ -7,6 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/mypage/myPageInt.css}"/>
     <link rel="stylesheet" th:href="@{/css/main/mainpage.css}" />
     <script defer th:src="@{/js/mypage/myPageInt.js}"></script>
+    <script defer th:src="@{/js/main/mainpage.js}"></script>
 
 </head>
 <body>
@@ -66,7 +67,13 @@
                          alt=""/>
                 </div>
                 <div id="profile-name">
-                    <h3 th:text="${profileDto.userNickName}"></h3>
+                    <span>
+                  <th:block>
+                  <img class="hippo-celeb" th:if="${checkSticker == 'Y'}"
+                       th:src="@{/images/mypage/hippo.png}" alt=""/>
+                  </th:block>
+                </span>
+                    <h3 class="mypage-user-nickname" th:text="${profileDto.userNickName}"></h3>
                     <span class="profile-name-option">님의 서재</span>
                 </div>
                 <div id="follow">
@@ -117,13 +124,6 @@
         </div>
     </div>
     <div class="mybook-collection">
-        <!--            <div class="mybook-second">-->
-        <!--                <h5>최근 담은 책</h5>-->
-
-        <!--                <div>-->
-        <!--                    <span>책장에 책을 담아주세요</span>-->
-        <!--                </div>-->
-        <!--            </div>-->
         <div th:each="i : ${#numbers.sequence(0, 1)}" class="mybook-second">
 
             <h5>최근 담은 책</h5>
@@ -135,11 +135,11 @@
                 </div>
                 <div class="reading-book-infor">
                     <div id="reading-book-title">
-                        <span th:text="${bookContainerDto.bookName}">제목</span>
+                        <p class="intpage-book-info">책 제목</p>  <span th:text="${bookContainerDto.bookName}"></span>
                     </div>
                     <div id="reading-book-date">
-                        <p>저자 : <span th:text="${bookContainerDto.bookWriter}"></span></p>
-                        <p>담은 날짜: <span th:text="${bookContainerDto.bookHasRecentDate}"></span></p>
+                        <p class="intpage-book-info">저자 </p> <span th:text="${bookContainerDto.bookWriter}"></span>
+                        <p class="intpage-book-info">담은 날짜 </p><span th:text="${bookContainerDto.bookHasRecentDate}"></span>
                     </div>
                 </div>
             </div>
@@ -173,6 +173,57 @@
     </div>
 </div>
 </div>
+<!--카테고리 모달창-->
+<div class="category_popup" id="category_wrap">
+    <div class="category_popup_inner">
+        <section class="category_popup_inner_layout">
+            <section class="category_popup_content_layout">
+                <a th:href="@{/board/post/main}">
+                    <span class="category_popup_title">게시판</span>
+                </a>
+
+                <div class="category_popup_content_box">
+                    <span class="category_popup_content">소설 게시판</span>
+                    <span class="category_popup_content">중고 게시판</span>
+                    <span class="category_popup_content">자유 게시판</span>
+                </div>
+
+                <span class="category_popup_title">쪽지</span>
+                <div class="category_popup_content_box">
+                    <a th:href="@{/message/letter/get}">
+                        <span class="category_popup_content">받은 쪽지함</span>
+                    </a>
+                    <a th:href="@{/message/letter/send}">
+                        <span class="category_popup_content">보낸 쪽지함</span>
+                    </a>
+                </div>
+
+
+                <a th:href="@{/feed}">
+                    <span class="category_popup_title">피드</span>
+                </a>
+
+                <div class="category_popup_content_box">
+                    <a th:href="@{/feed}">
+                        <span class="category_popup_content">포스트</span>
+                    </a>
+                    <a th:href="@{/feed/oneline}">
+                        <span class="category_popup_content">한 줄 리뷰</span>
+                    </a>
+                    <a th:href="@{/feed/read}">
+                        <span class="category_popup_content">독후감</span>
+                    </a>
+                </div>
+
+                <span class="category_popup_title">이벤트</span>
+                <a th:href="@{/mypage/sticker}">
+                    <span class="category_popup_content">스티커 신청하기</span>
+                </a>
+            </section>
+        </section>
+    </div>
+</div>
+
 <footer>
     <div>
 

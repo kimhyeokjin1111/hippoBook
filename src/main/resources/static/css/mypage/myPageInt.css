@@ -102,6 +102,10 @@ a {
 
 }
 
+.mypage-user-nickname{
+  margin-top: 4px;
+}
+
 #my-favorite-book{
   padding-left: 27px;
 }
@@ -343,71 +347,47 @@ h1 {
   text-align: center;
 }
 
-.reading-book-plus-form {
-  padding: 40px 50px;
+#reading-book-title{
+  margin: auto;
+  width: 200px;
+  text-overflow: ellipsis;
 }
 
-.reading-book-plus-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
+.intpage-book-info{
+  font-weight: bolder;
 }
 
-.reading-book-plus-modal-book-img {
-  width: 300px;
-  display: block;
-  justify-content: center;
-  align-items: center;
-  height: 30vh;
-  overflow-y: auto;
+
+#reading-book-title span{
+  display: inline-block;
+  width: 200px;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.reading-book-plus-modal-book-img::-webkit-scrollbar {
-  width: 10px;
+
+#reading-book-date{
+  margin: auto;
+  width: 200px;
+  text-overflow: ellipsis;
 }
 
-.reading-book-plus-modal-book-img::-webkit-scrollbar-thumb {
-  background-color: #2bc1bf;
+#reading-book-date span{
+  display: inline-block;
+  width: 200px;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.reading-book-plus-modal-book-img::-webkit-scrollbar-track {
-  background-color: lightgray;
-}
 
-.reading-book-plus-modal-book-img div {
-  width: 220px;
-  height: 240px;
-  border: solid gray;
-  margin: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.reading-book-plus-modal-book-img div{
-  border: solid lightgrey;
-}
 
-.reading-book-plus-modal-book-img div img {
-  width: 220px;
-  height: 240px;
-}
 
-/*button {*/
-/*  background-color: #2bc1bf;*/
-/*  height: 30px;*/
-/*  width: 50%;*/
-/*  border-radius: 20px;*/
-/*}*/
 
-#reading-book-delete-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  display: none;
-}
 
 footer {
   display: flex;
@@ -423,4 +403,68 @@ footer div {
   justify-content: center;
   width: 200px;
   height: 100px;
+}
+
+.hippo-celeb{
+  margin-top: 5px;
+  width: 28px;
+  height: 20px;
+}
+
+/* 카테고리 모달 창 */
+
+.category_popup {
+  position: fixed;
+  display: none;
+  left: 0;
+  right: 0;
+  top: 109px;
+  bottom: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.3);
+}
+.category_popup_inner {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.category_popup_inner_layout {
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  max-width: 350px;
+  min-height: 500px;
+  max-height: 600px;
+  background-color: #fdffff;
+  border-radius: 20px 20px 20px 20px;
+  border: 2px solid #29a7a4;
+}
+
+.category_popup_content_layout {
+  right: 0;
+  left: 0;
+  position: sticky;
+  padding: 24px 24px 32px;
+  margin: 15px 25px;
+}
+
+.category_popup_title {
+  display: flex;
+  /*padding: 5px 0 15px;*/
+  font-weight: 700;
+  font-size: 15px;
+  color: #2bc1bf;
+}
+.category_popup_content {
+  display: flex;
+  margin: 10px 20px;
+  cursor: pointer;
+}
+
+.category_popup_content_box{
+  margin-bottom: 25px;
+}
+
+.main_content {
+  height: auto;
 }

@@ -65,7 +65,7 @@ public class MessageService {
     }
 
     public int findTotalPostMessage(Long userId){
-        return messageMapper.selectTotalGetMessage(userId);
+        return messageMapper.selectTotalPostMessage(userId);
     }
 
 }

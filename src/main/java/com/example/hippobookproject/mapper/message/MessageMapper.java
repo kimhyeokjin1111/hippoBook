@@ -30,4 +30,8 @@ public interface MessageMapper {
     int selectTotalGetMessage(Long userId);
 
     int selectTotalPostMessage(Long userId);
+
+    void updateReadingCheck(Long messageId);
+
+
 }
