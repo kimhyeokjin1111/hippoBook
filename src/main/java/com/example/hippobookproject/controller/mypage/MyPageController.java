@@ -3,6 +3,7 @@ package com.example.hippobookproject.controller.mypage;
 import com.example.hippobookproject.dto.mypage.*;
 import com.example.hippobookproject.service.mypage.MypageService;
 import com.example.hippobookproject.service.user.UserService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,7 @@ public class MyPageController {
 
     @GetMapping("/int")
     public String myPageInt(Model model,@SessionAttribute("userId") Long userId) {
-//        Long userId = 1L;
+
 
         IntProfileDto profilePhoto = mypageService.findProfilePhoto(userId);
         model.addAttribute("profilePhoto", profilePhoto);
@@ -33,6 +34,9 @@ public class MyPageController {
 
         IntBoardDto intBoardDto = mypageService.findIntBoardText(userId);
         model.addAttribute("intBoardDto", intBoardDto);
+
+        String checkSticker = mypageService.findCheckSticker(userId);
+        model.addAttribute("checkSticker",checkSticker);
 
 
         List<BookContainerDto> bookContainerList = mypageService.findRecentBook(userId);
@@ -57,7 +61,7 @@ public class MyPageController {
 
     @GetMapping("/book/container")
     public String bookContainer(Model model,@SessionAttribute("userId") Long userId) {
-//        Long userId = 1L;
+
 
         IntProfileDto profilePhoto = mypageService.findProfilePhoto(userId);
         model.addAttribute("profilePhoto", profilePhoto);
@@ -68,6 +72,9 @@ public class MyPageController {
         IntProfileDto profileDto = mypageService.findProfile(userId);
         model.addAttribute("profileDto", profileDto);
 
+        String checkSticker = mypageService.findCheckSticker(userId);
+        model.addAttribute("checkSticker",checkSticker);
+
 
         log.info("bookContainerList={}", bookContainerList);
         return "mypage/myPageBookContainer";
@@ -76,7 +83,7 @@ public class MyPageController {
 
     @GetMapping("/book/write-content")
     public String bookWriteContent(Model model,@SessionAttribute("userId") Long userId) {
-//        Long userId = 1L;
+
 
         IntProfileDto profileDto = mypageService.findProfile(userId);
         model.addAttribute("profileDto", profileDto);
@@ -96,6 +103,9 @@ public class MyPageController {
         IntProfileDto profilePhoto = mypageService.findProfilePhoto(userId);
         model.addAttribute("profilePhoto", profilePhoto);
 
+        String checkSticker = mypageService.findCheckSticker(userId);
+        model.addAttribute("checkSticker",checkSticker);
+
 
         return "mypage/myWriteContent";
     }
@@ -110,26 +120,25 @@ public class MyPageController {
         IntProfileDto profilePhoto = mypageService.findProfilePhoto(userId);
         model.addAttribute("profilePhoto", profilePhoto);
 
+        String checkSticker = mypageService.findCheckSticker(userId);
+        model.addAttribute("checkSticker",checkSticker);
+
         return "mypage/myPageInt_stiker";
     }
 
     @PostMapping("/sticker")
     public String myPageSticker(StickerDto stickerDto,
-                                @SessionAttribute(value = "userId", required = false) Long userId,
+                                @SessionAttribute(value = "userId") Long userId,
                                 RedirectAttributes redirectAttributes) {
-//        if (userId == null){
-//            userId =1L;
-//        }
+
+        stickerDto.setUserId(userId);
 
         log.info("stickerDto={}", stickerDto);
         mypageService.registerSticker(stickerDto,userId);
         redirectAttributes.addFlashAttribute("stickerId", stickerDto.getStikerId());
         return "redirect:/mypage/sticker";
     }
-//            intBoardDto.setUserId(1L);
-//        log.info("IntBoardDto = {}", intBoardDto);
-//        mypageService.registerIntBoardText(intBoardDto);
-//        return "redirect:/mypage/int";
+
 
 
     @GetMapping("/manage")
@@ -140,6 +149,9 @@ public class MyPageController {
 
         IntProfileDto profilePhoto = mypageService.findProfilePhoto(userId);
         model.addAttribute("profilePhoto", profilePhoto);
+
+        String checkSticker = mypageService.findCheckSticker(userId);
+        model.addAttribute("checkSticker",checkSticker);
 
         return "mypage/myPageInt_manage";
     }
@@ -156,33 +168,36 @@ public class MyPageController {
         IntProfileDto profilePhoto = mypageService.findProfilePhoto(userId);
         model.addAttribute("profilePhoto", profilePhoto);
 
+        String checkSticker = mypageService.findCheckSticker(userId);
+        model.addAttribute("checkSticker",checkSticker);
+
         return "mypage/myPageInt_modify";
     }
 
     @PostMapping("/modify")
     public String myPageModify(IntProfileDto intProfileDto,
                                @SessionAttribute(value = "userId", required = false) Long userId,
-                               RedirectAttributes redirectAttributes){
+                               HttpSession session){
 
-//        if (userId == null){
-//            userId =1L;
-//
-//        }
+
         intProfileDto.setUserId(userId);
 
         mypageService.modifyNickName(intProfileDto);
         log.info("intProfileDto = {}", intProfileDto);
-
-        return "redirect:/mypage/modify";
+        session.invalidate();
+        return "redirect:/";
     }
 
     @GetMapping("/secession")
-    public String myPageSecession(Model model) {
+    public String myPageSecession(@SessionAttribute(value = "userId", required = false) Long userId,Model model) {
 
-        Long userId = 1L;
+
         IntProfileDto profileDto = mypageService.findProfile(userId);
         model.addAttribute("profileDto", profileDto);
         log.info("profileDto={}", profileDto);
+
+        String checkSticker = mypageService.findCheckSticker(userId);
+        model.addAttribute("checkSticker",checkSticker);
 
         IntProfileDto profilePhoto = mypageService.findProfilePhoto(userId);
         model.addAttribute("profilePhoto", profilePhoto);
@@ -193,10 +208,7 @@ public class MyPageController {
     public String myPageSecession(@SessionAttribute(value = "userId", required = false) Long userId,
                                   RedirectAttributes redirectAttributes){
 
-        if (userId == null){
-            userId =1L;
 
-        }
 
         mypageService.removeUser(userId);
         redirectAttributes.addFlashAttribute("userId", userId);

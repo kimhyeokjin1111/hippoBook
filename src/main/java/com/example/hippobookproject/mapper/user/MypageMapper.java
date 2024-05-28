@@ -36,9 +36,13 @@ public interface MypageMapper {
 
     Long selectSticker(Long userId);
 
+    String selectCheckSticker(Long userId);
+
     void deleteUser(Long userId);
 
     void updateUserNickName(IntProfileDto intProfileDto);
+
+    int selectNickName(String userNickName);
 
     void updateUserProfilePhoto(IntProfileDto intProfileDto);
 

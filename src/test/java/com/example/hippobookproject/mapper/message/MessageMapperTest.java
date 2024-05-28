@@ -34,6 +34,7 @@ class MessageMapperTest {
         messageDto.setMessageId(1L);
         messageDto.setMessageTitle("test");
         messageDto.setMessageContent("test-content");
+        messageDto.setMessageCheck("N");
         messageDto.setMessageTo(2L);
         messageDto.setMessageFrom(1L);
         messageMapper.insertMessage(messageDto);
@@ -42,9 +43,8 @@ class MessageMapperTest {
     }
 
 
-
     @Test
-    void selectUserNickname(){
+    void selectUserNickname() {
 
         messageNicknameDto = new MessageNicknameDto();
         messageNicknameDto.setUserNickname("test");
@@ -54,29 +54,29 @@ class MessageMapperTest {
 
 
     @Test
-    void selectGetMessage(){
+    void selectGetMessage() {
         MessageCriteria messageCriteria = new MessageCriteria();
         messageCriteria.setPage(1);
         messageCriteria.setAmount(10);
 
-        List<MessageDto> getMessage = messageMapper.selectGetMessage(1L,messageCriteria);
+        List<MessageDto> getMessage = messageMapper.selectGetMessage(1L, messageCriteria);
         System.out.println("getMessage = " + getMessage);
         assertThat(getMessage).hasSize(10);
     }
 
     @Test
-    void selectPostMessage(){
+    void selectPostMessage() {
         MessageCriteria messageCriteria = new MessageCriteria();
         messageCriteria.setPage(1);
         messageCriteria.setAmount(10);
 
-        List<MessageDto> postMessage = messageMapper.selectPostMessage(1L,messageCriteria);
+        List<MessageDto> postMessage = messageMapper.selectPostMessage(1L, messageCriteria);
         System.out.println("postMessage = " + postMessage);
         assertThat(postMessage).hasSize(10);
     }
 
     @Test
-    void deleteMessage(){
+    void deleteMessage() {
 //        //given
 //        List<MessageDto> messageDtoList = messageMapper.selectGetMessage(2L);
 //
@@ -94,15 +94,24 @@ class MessageMapperTest {
     }
 
     @Test
-    void selectMessageView(){
+    void selectMessageView() {
         messageDto = new MessageDto();
         messageDto.setMessageId(1L);
         messageMapper.selectMessageView(messageDto.getMessageId());
     }
 
     @Test
-    void selectTotalGetMessage(){
+    void selectTotalGetMessage() {
         messageMapper.selectTotalGetMessage(1L);
+    }
+
+
+    @Test
+    void updateReadingCheck() {
+
+        messageMapper.updateReadingCheck(45L);
+
+
     }
 
 }

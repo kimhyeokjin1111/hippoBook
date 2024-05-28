@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" th:href="@{/css/message/letterWrite.css}" />
     <link rel="stylesheet" th:href="@{/css/main/mainpage.css}" />
+    <script defer th:src="@{/js/main/mainpage.js}"></script>
     <script type="module" defer th:src="@{/js/message/letter_write.js}"></script>
   </head>
   <body>
@@ -113,6 +114,57 @@
         </div>
       </div>
     </form>
+    <!--카테고리 모달창-->
+    <div class="category_popup" id="category_wrap">
+      <div class="category_popup_inner">
+        <section class="category_popup_inner_layout">
+          <section class="category_popup_content_layout">
+            <a th:href="@{/board/post/main}">
+              <span class="category_popup_title">게시판</span>
+            </a>
+
+            <div class="category_popup_content_box">
+              <span class="category_popup_content">소설 게시판</span>
+              <span class="category_popup_content">중고 게시판</span>
+              <span class="category_popup_content">자유 게시판</span>
+            </div>
+
+            <span class="category_popup_title">쪽지</span>
+            <div class="category_popup_content_box">
+              <a th:href="@{/message/letter/get}">
+                <span class="category_popup_content">받은 쪽지함</span>
+              </a>
+              <a th:href="@{/message/letter/send}">
+                <span class="category_popup_content">보낸 쪽지함</span>
+              </a>
+            </div>
+
+
+            <a th:href="@{/feed}">
+              <span class="category_popup_title">피드</span>
+            </a>
+
+            <div class="category_popup_content_box">
+              <a th:href="@{/feed}">
+                <span class="category_popup_content">포스트</span>
+              </a>
+              <a th:href="@{/feed/oneline}">
+                <span class="category_popup_content">한 줄 리뷰</span>
+              </a>
+              <a th:href="@{/feed/read}">
+                <span class="category_popup_content">독후감</span>
+              </a>
+            </div>
+
+            <span class="category_popup_title">이벤트</span>
+            <a th:href="@{/mypage/sticker}">
+              <span class="category_popup_content">스티커 신청하기</span>
+            </a>
+          </section>
+        </section>
+      </div>
+    </div>
+
     <footer>
       <div></div>
     </footer>

@@ -120,12 +120,18 @@ public class MypageService {
 
     }
 
+    public String findCheckSticker(Long userId){
+
+        return mypageMapper.selectCheckSticker(userId);
+    }
+
     public void removeUser(Long userId) {
         mypageMapper.deleteUser(userId);
     }
 
     public void modifyNickName(IntProfileDto intProfileDto) {
         mypageMapper.updateUserNickName(intProfileDto);
+
     }
 
     /**
@@ -167,6 +173,8 @@ public class MypageService {
 
         mypageMapper.updateUserProfilePhoto(intProfileDto);
     }
+
+
 
 
 }

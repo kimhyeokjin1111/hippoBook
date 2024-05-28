@@ -145,4 +145,10 @@ class MypageMapperTest {
                 .isEqualTo(intProfileDto.getUserId());
 
     }
+
+    @Test
+    void selectCheckSticker(){
+        String read = mypageMapper.selectCheckSticker(1L);
+        System.out.println("read = " + read);
+    }
 }

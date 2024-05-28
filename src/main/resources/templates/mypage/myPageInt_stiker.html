@@ -6,7 +6,8 @@
     <title>Document</title>
     <link rel="stylesheet" th:href="@{/css/mypage/myPageInt_sticker.css}"/>
     <link rel="stylesheet" th:href="@{/css/main/mainpage.css}" />
-    <script defer th:src="@{js/mypage/myPageInt_sticker.js}"></script>
+    <script defer th:src="@{/js/main/mainpage.js}"></script>
+
   </head>
   <body>
   <header class="header" th:replace="~{/fragment/header :: header}"></header>
@@ -63,7 +64,13 @@
               </div>
 
               <div id="profile-name">
-                <h3 th:text="${profileDto.userNickName}"></h3>
+                <span>
+                  <th:block>
+                  <img class="hippo-celeb" th:if="${checkSticker == 'Y'}"
+                       th:src="@{/images/mypage/hippo.png}" alt=""/>
+                  </th:block>
+                </span>
+                <h3 class="mypage-user-nickname" th:text="${profileDto.userNickName}"></h3>
                 <span class="profile-name-option">님의 서재</span>
               </div>
               <div id="follow">
@@ -98,7 +105,7 @@
             <h1>히포 마크 신청하기</h1>
           </section>
           <section>
-            <span class="sticker-image"><img th:src="@{/imgs/board/hippo.png}" alt=""></span>
+            <span class="sticker-image"><img th:src="@{/images/mypage/hippo.png}" alt=""></span>
             <div>
               <p><strong>팔로우 1000명이상 신청가능</strong></p>
               <p>히포 마크를 통해 히포북의 셀럽을 증명하세요!</p>
@@ -116,7 +123,58 @@
         </div>
       </div>
   </form>
-      <footer>
+  <!--카테고리 모달창-->
+  <div class="category_popup" id="category_wrap">
+    <div class="category_popup_inner">
+      <section class="category_popup_inner_layout">
+        <section class="category_popup_content_layout">
+          <a th:href="@{/board/post/main}">
+            <span class="category_popup_title">게시판</span>
+          </a>
+
+          <div class="category_popup_content_box">
+            <span class="category_popup_content">소설 게시판</span>
+            <span class="category_popup_content">중고 게시판</span>
+            <span class="category_popup_content">자유 게시판</span>
+          </div>
+
+          <span class="category_popup_title">쪽지</span>
+          <div class="category_popup_content_box">
+            <a th:href="@{/message/letter/get}">
+              <span class="category_popup_content">받은 쪽지함</span>
+            </a>
+            <a th:href="@{/message/letter/send}">
+              <span class="category_popup_content">보낸 쪽지함</span>
+            </a>
+          </div>
+
+
+          <a th:href="@{/feed}">
+            <span class="category_popup_title">피드</span>
+          </a>
+
+          <div class="category_popup_content_box">
+            <a th:href="@{/feed}">
+              <span class="category_popup_content">포스트</span>
+            </a>
+            <a th:href="@{/feed/oneline}">
+              <span class="category_popup_content">한 줄 리뷰</span>
+            </a>
+            <a th:href="@{/feed/read}">
+              <span class="category_popup_content">독후감</span>
+            </a>
+          </div>
+
+          <span class="category_popup_title">이벤트</span>
+          <a th:href="@{/mypage/sticker}">
+            <span class="category_popup_content">스티커 신청하기</span>
+          </a>
+        </section>
+      </section>
+    </div>
+  </div>
+
+  <footer>
         <div>
 
         </div>

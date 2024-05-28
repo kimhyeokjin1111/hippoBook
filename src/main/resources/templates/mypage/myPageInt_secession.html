@@ -8,6 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/main/mainpage.css}" />
     <script defer th:src="@{js/mypage/readingBook.js}"></script>
     <script defer th:src="@{js/mypage/readingBookDeleteButton.js}"></script>
+    <script defer th:src="@{/js/main/mainpage.js}"></script>
   </head>
   <body>
   <header class="header" th:replace="~{/fragment/header :: header}"></header>
@@ -64,16 +65,26 @@
                      alt=""/>
               </div>
               <div id="profile-name">
-                <h3>책먹는 하마</h3>
+                <span>
+                  <th:block>
+                  <img class="hippo-celeb" th:if="${checkSticker == 'Y'}"
+                       th:src="@{/images/mypage/hippo.png}" alt=""/>
+                  </th:block>
+                </span>
+                <h3 class="mypage-user-nickname" th:text="${profileDto.userNickName}"></h3>
                 <span class="profile-name-option">님의 서재</span>
               </div>
               <div id="follow">
-                <span>팔로워 <span>0</span></span>
-                <span>팔로잉 <span>0</span></span>
+                <span>팔로워 <span th:text="${profileDto.followerCnt}"></span></span>
+                <span>팔로잉 <span th:text="${profileDto.followingCnt}"></span></span>
               </div>
             </div>
             <div id="my-favorite-book">
-              <img th:src="@{/images/mypage/인생책 이미지.png}" alt="" />
+              <img th:if="*{fileId == null}"
+                   th:src="@{/imgs/mypage/best_book_default.png}">
+              <img th:unless="*{fileId == null}"
+                   th:src="@{'/upload/' + *{fileUploadPath} + '/' + *{fileUuid} + '_' + *{fileName}}"
+                   id="best-book-img" alt=""/>
             </div>
           </section>
         </div>
@@ -114,7 +125,58 @@
         </div>
 
       </div>
-      <footer>
+  <!--카테고리 모달창-->
+  <div class="category_popup" id="category_wrap">
+    <div class="category_popup_inner">
+      <section class="category_popup_inner_layout">
+        <section class="category_popup_content_layout">
+          <a th:href="@{/board/post/main}">
+            <span class="category_popup_title">게시판</span>
+          </a>
+
+          <div class="category_popup_content_box">
+            <span class="category_popup_content">소설 게시판</span>
+            <span class="category_popup_content">중고 게시판</span>
+            <span class="category_popup_content">자유 게시판</span>
+          </div>
+
+          <span class="category_popup_title">쪽지</span>
+          <div class="category_popup_content_box">
+            <a th:href="@{/message/letter/get}">
+              <span class="category_popup_content">받은 쪽지함</span>
+            </a>
+            <a th:href="@{/message/letter/send}">
+              <span class="category_popup_content">보낸 쪽지함</span>
+            </a>
+          </div>
+
+
+          <a th:href="@{/feed}">
+            <span class="category_popup_title">피드</span>
+          </a>
+
+          <div class="category_popup_content_box">
+            <a th:href="@{/feed}">
+              <span class="category_popup_content">포스트</span>
+            </a>
+            <a th:href="@{/feed/oneline}">
+              <span class="category_popup_content">한 줄 리뷰</span>
+            </a>
+            <a th:href="@{/feed/read}">
+              <span class="category_popup_content">독후감</span>
+            </a>
+          </div>
+
+          <span class="category_popup_title">이벤트</span>
+          <a th:href="@{/mypage/sticker}">
+            <span class="category_popup_content">스티커 신청하기</span>
+          </a>
+        </section>
+      </section>
+    </div>
+  </div>
+
+  <footer>
         <div>
           <button id="reading-book-delete-button">삭제하기</button>
         </div>

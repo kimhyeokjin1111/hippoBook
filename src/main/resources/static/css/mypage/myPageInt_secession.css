@@ -125,6 +125,10 @@ a {
 
 }
 
+.mypage-user-nickname{
+  margin-top: 4px;
+}
+
 .profile-name-option{
   margin-top: 6px;
 }
@@ -528,9 +532,73 @@ footer div {
   height: 40px;
   margin-left: 15px;
   font-weight: bold;
-  color: white;
+  color: #29a7a4;
 }
 
 .main__secession-description-content-box > div > button:first-child {
   background-color: gray;
+}
+
+.hippo-celeb{
+  margin-top: 5px;
+  width: 28px;
+  height: 20px;
+}
+
+/* 카테고리 모달 창 */
+
+.category_popup {
+  position: fixed;
+  display: none;
+  left: 0;
+  right: 0;
+  top: 109px;
+  bottom: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.3);
+}
+.category_popup_inner {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.category_popup_inner_layout {
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  max-width: 350px;
+  min-height: 500px;
+  max-height: 600px;
+  background-color: #fdffff;
+  border-radius: 20px 20px 20px 20px;
+  border: 2px solid #29a7a4;
+}
+
+.category_popup_content_layout {
+  right: 0;
+  left: 0;
+  position: sticky;
+  padding: 24px 24px 32px;
+  margin: 15px 25px;
+}
+
+.category_popup_title {
+  display: flex;
+  /*padding: 5px 0 15px;*/
+  font-weight: 700;
+  font-size: 15px;
+  color: #2bc1bf;
+}
+.category_popup_content {
+  display: flex;
+  margin: 10px 20px;
+  cursor: pointer;
+}
+
+.category_popup_content_box{
+  margin-bottom: 25px;
+}
+
+.main_content {
+  height: auto;
 }
