@@ -6,6 +6,7 @@
     <title>히포북</title>
     <link rel="stylesheet" th:href="@{/css/main/searchpage.css}">
     <script defer th:src="@{/js/feed/category_modal.js}"></script>
+    <script defer th:src="@{/js/main/searchpage.js}"></script>
 </head>
 <body>
     <header>
@@ -60,7 +61,7 @@
                 <label>
                     <div class="search_inner">
                         <div class="search_input">
-                            <input type="text" id="input" placeholder="검색어를 입력하세요.">
+                            <input type="text" id="input" placeholder="검색어를 입력하세요." autofocus data-focus="F">
                             <button></button>
                         </div>
                     </div>
@@ -68,9 +69,166 @@
             </div>
         </div>
 
-        <div class="search_text">
-            <p>도서를 검색해보세요</p>
+        <div class="main__content-container"><div class="main__week-recommend-word-container">
+            <h1>
+                히포북 주간 추천 검색어
+            </h1>
+            <ul class="main__search-recommend-box">
+                <li>
+                    <span>추리</span>
+                </li>
+                <li>
+                    <span>어린 왕자</span>
+                </li>
+                <li>
+                    <span>로맨스</span>
+                </li>
+            </ul>
         </div>
+            <div class="main__book-search-word-container ">
+<!--                <h1>검색된 결과</h1>-->
+                <ul class="main__search-box">
+                    <li>
+                <span class="search-content-title">
+                    어린 왕자1
+                </span>
+                    </li>
+                    <li>
+                <span class="search-content-title">
+                    어린 왕자2
+                </span>
+                    </li>
+                    <li>
+                <span class="search-content-title">
+                    어린 왕자3
+                </span>
+                    </li>
+                    <li>
+                <span class="search-content-title">
+                    어린 왕자4
+                </span>
+                    </li>
+                    <li>
+                <span class="search-content-title">
+                    어린 왕자5
+                </span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="main__book-search-result-container">
+                <div class="main__book-result-center-box">
+                    <ul class="main__book-result-link-content-box">
+                        <li>
+                            <a href="">
+                                <img class="book-result-thumbnail" src="	https://cover.millie.co.kr/service/cover/179527015/4045c63613dd4b2c82da41c82a1db5e3.jpg" alt="">
+                                <div class="book-result-title-writer-box">
+                                    <p class="book-result-title">오늘 밤, 세계에서 이 사랑이 사라진다 해도</p>
+                                    <p class="book-result-writer">이치조 미사키 지음 / 권영주 옮김</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img class="book-result-thumbnail" src="	https://cover.millie.co.kr/service/cover/179527015/4045c63613dd4b2c82da41c82a1db5e3.jpg" alt="">
+                                <div class="book-result-title-writer-box">
+                                    <p class="book-result-title">오늘 밤, 세계에서 이 사랑이 사라진다 해도</p>
+                                    <p class="book-result-writer">이치조 미사키 지음 / 권영주 옮김</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img class="book-result-thumbnail" src="	https://cover.millie.co.kr/service/cover/179527015/4045c63613dd4b2c82da41c82a1db5e3.jpg" alt="">
+                                <div class="book-result-title-writer-box">
+                                    <p class="book-result-title">오늘 밤, 세계에서 이 사랑이 사라진다 해도</p>
+                                    <p class="book-result-writer">이치조 미사키 지음 / 권영주 옮김</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img class="book-result-thumbnail" src="	https://cover.millie.co.kr/service/cover/179527015/4045c63613dd4b2c82da41c82a1db5e3.jpg" alt="">
+                                <div class="book-result-title-writer-box">
+                                    <p class="book-result-title">오늘 밤, 세계에서 이 사랑이 사라진다 해도</p>
+                                    <p class="book-result-writer">이치조 미사키 지음 / 권영주 옮김</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img class="book-result-thumbnail" src="	https://cover.millie.co.kr/service/cover/179527015/4045c63613dd4b2c82da41c82a1db5e3.jpg" alt="">
+                                <div class="book-result-title-writer-box">
+                                    <p class="book-result-title">오늘 밤, 세계에서 이 사랑이 사라진다 해도</p>
+                                    <p class="book-result-writer">이치조 미사키 지음 / 권영주 옮김</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="book-result-thumbnail-box">
+                                    <img class="book-result-thumbnail" src="	https://cover.millie.co.kr/service/cover/179527015/4045c63613dd4b2c82da41c82a1db5e3.jpg" alt="">
+                                </div>
+                                <div class="book-result-title-writer-box">
+                                    <p class="book-result-title">오늘 밤, 세계에서 이 사랑이 사라진다 해도</p>
+                                    <p class="book-result-writer">이치조 미사키 지음 / 권영주 옮김</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img class="book-result-thumbnail" src="	https://cover.millie.co.kr/service/cover/179527015/4045c63613dd4b2c82da41c82a1db5e3.jpg" alt="">
+                                <div class="book-result-title-writer-box">
+                                    <p class="book-result-title">오늘 밤, 세계에서 이 사랑이 사라진다 해도</p>
+                                    <p class="book-result-writer">이치조 미사키 지음 / 권영주 옮김</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img class="book-result-thumbnail" src="	https://cover.millie.co.kr/service/cover/179527015/4045c63613dd4b2c82da41c82a1db5e3.jpg" alt="">
+                                <div class="book-result-title-writer-box">
+                                    <p class="book-result-title">오늘 밤, 세계에서 이 사랑이 사라진다 해도</p>
+                                    <p class="book-result-writer">이치조 미사키 지음 / 권영주 옮김</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img class="book-result-thumbnail" src="	https://cover.millie.co.kr/service/cover/179527015/4045c63613dd4b2c82da41c82a1db5e3.jpg" alt="">
+                                <div class="book-result-title-writer-box">
+                                    <p class="book-result-title">오늘 밤, 세계에서 이 사랑이 사라진다 해도</p>
+                                    <p class="book-result-writer">이치조 미사키 지음 / 권영주 옮김</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img class="book-result-thumbnail" src="	https://cover.millie.co.kr/service/cover/179527015/4045c63613dd4b2c82da41c82a1db5e3.jpg" alt="">
+                                <div class="book-result-title-writer-box">
+                                    <p class="book-result-title">오늘 밤, 세계에서 이 사랑이 사라진다 해도</p>
+                                    <p class="book-result-writer">이치조 미사키 지음 / 권영주 옮김</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img class="book-result-thumbnail" src="	https://cover.millie.co.kr/service/cover/179527015/4045c63613dd4b2c82da41c82a1db5e3.jpg" alt="">
+                                <div class="book-result-title-writer-box">
+                                    <p class="book-result-title">오늘 밤, 세계에서 이 사랑이 사라진다 해도</p>
+                                    <p class="book-result-writer">이치조 미사키 지음 / 권영주 옮김</p>
+                                </div>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+            <div class="search_text">
+                <p>도서를 검색해보세요</p>
+            </div></div>
+
 
         <div class="category_popup" id="category_wrap">
             <div class="category_popup_inner">

@@ -165,6 +165,7 @@ label{
     letter-spacing: -.6px;
     width: 1400px;
     border: none;
+    outline: none;
 }
 
 .search_input > button{
@@ -249,3 +250,137 @@ label{
     font-weight: 700;
     cursor: pointer;
   }
+
+.main__content-container{
+    position: relative;
+}
+
+.main__book-search-result-container{
+    display: none;
+    justify-content: center;
+}
+
+.main__book-result-center-box{
+    width: 1440px;
+    padding: 0 150px;
+}
+
+.main__book-result-link-content-box{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+}
+
+.main__book-result-link-content-box > li{
+    width: 18.4%;
+    margin: 0 0 4% 2%;
+}
+
+.main__book-result-link-content-box > li:nth-child(5n+1){
+    margin-left: 0;
+}
+
+.main__book-result-link-content-box > li > a{
+    display: flex;
+    flex-direction: column;
+    /*align-items: flex-start;*/
+}
+
+.book-result-thumbnail-box{
+    display: flex;
+    justify-content: center;
+    max-height: 240px;
+}
+
+.book-result-thumbnail{
+    width: 100%;
+    /*height: 100%;*/
+}
+
+.book-result-title-writer-box{
+    min-width: 125px;;
+}
+
+.book-result-title{
+    color : #312e2e;
+    font-size: 16px;
+    font-weight: 700;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    webkit-box-orient:vertical;
+    -webkit-line-clamp:3
+}
+
+.book-result-writer{
+    color : #888888;
+    font-size: 14px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    webkit-box-orient:vertical;
+    -webkit-line-clamp:3
+}
+
+.main__week-recommend-word-container,
+.main__book-search-word-container{
+    padding: 14px 24px;
+}
+.main__book-search-word-container{
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+.active-search-focus-block{
+    display: block;
+}
+
+.active-search-enter-block{
+    display: flex;
+}
+
+.main__week-recommend-word-container > h1{
+    font-size: 20px;
+    font-weight: 700;
+}
+.main__book-search-word-container > h1{
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.main__search-recommend-box{
+    display: flex;
+}
+
+.main__search-recommend-box > li {
+    margin-top: 14px;
+    padding: 8px 12px;
+    border-radius: 36px;
+    font-weight: 400;
+    font-size: 16px;
+    border: 2px solid #888888;
+    margin-right: 20px;
+}
+.main__search-recommend-box > li > span{
+    font-weight: 400;
+    font-size: 16px;
+    color: #736c6c;
+}
+
+.search-content-title{
+    font-size: 16px;
+    font-weight: 700;
+    color: #736c6c;
+}
+
+.main__search-box > li:hover{
+    background-color: #e7e4e4;
+}
+
+.main__search-box > li:last-child{
+    margin-bottom: 10px;
+}
+
+.main__search-box{
+    border-bottom: 1px solid #888888;
+}
