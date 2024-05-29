@@ -12,12 +12,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.List;
+
 @Slf4j
 @Service
 @Transactional
 @RequiredArgsConstructor
 public class BookService {
     private final BookMapper bookMapper;
+    private final BookSearchMapper bookSearchMapper;
 
     @Value("${api.key.aladin}")
     private String apiKey;
@@ -67,6 +70,10 @@ public class BookService {
 
     public void registerBookComment(BookCommentWriteDto bookCommentWriteDto){
         bookMapper.insertBookComment(bookCommentWriteDto);
+    }
+
+    public List<BookInfoDto> findBookByKeyword(String keyword){
+        return bookSearchMapper.selectBookByKeyword(keyword);
     }
 
 }
