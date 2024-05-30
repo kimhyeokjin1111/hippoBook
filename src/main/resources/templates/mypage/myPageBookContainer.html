@@ -80,10 +80,10 @@
         </div>
 
         <div id="my-favorite-book">
-            <img th:if="*{fileId == null}"
-                    th:src="@{/imgs/mypage/best_book_default.png}">
-            <img th:unless="*{fileId == null}"
-                    th:src="@{'/upload/' + *{fileUploadPath} + '/' + *{fileUuid} + '_' + *{fileName}}"
+            <img th:if="*{cover == null}"
+                    th:src="@{/imgs/mypage/best_book_default.png}" alt=""/>
+            <img th:unless="*{cover == null}"
+                    th:src="${profileDto.cover}"
                  id="best-book-img" alt=""/>
         </div>
     </section>
@@ -117,8 +117,8 @@
 <section class="my-book-get-list-section">
     <div class="my-book-get-list">
         <div th:each="bookContainerDto : ${bookContainerList}">
-            <div class="my-book-get-list-image" th:data-id="${bookContainerDto.bookHasId}" th:data-status="${bookContainerDto.bookHasPercent}">
-                <img th:src="@{'/upload/' + ${bookContainerDto.fileUploadPath} + '/' + ${bookContainerDto.fileUuid} + '_' + ${bookContainerDto.fileName}}"
+            <div class="my-book-get-list-image" th:data-bookid="${bookContainerDto.bookId}" th:data-id="${bookContainerDto.bookHasId}" th:data-status="${bookContainerDto.bookHasPercent}">
+                <img th:src="${bookContainerDto.cover}"
                      alt="">
             </div>
             <div class="my-book-get-list-detail">
@@ -146,9 +146,7 @@
                 <input type="button" value="인생책 설정" class="best-book" data-id="">
             </div>
             <div class="book-container-modal-list-btn">
-                <th:block th:href="@{/book/book_info_page.html}">
-                    <input type="button" value="책정보 보기" class="book-info-detail">
-                </th:block>
+                    <input type="button" value="책정보 보기" class="book-info-detail" data-bookid="">
             </div>
             <div class="book-container-modal-list-btn">
                 <input type="button" value="목록에서 삭제" class="book-list-delete" data-id="">

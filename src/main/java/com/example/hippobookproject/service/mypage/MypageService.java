@@ -174,6 +174,14 @@ public class MypageService {
         mypageMapper.updateUserProfilePhoto(intProfileDto);
     }
 
+    public List<IntProfileDto> findProfilePhotoList(Long userId){
+        return  mypageMapper.selectProfilePhotoList(userId);
+    }
+
+    public List<IntProfileDto> findOldProfilePhoto(){
+        return  mypageMapper.selectOldProfilePhoto();
+    }
+
 
 
 

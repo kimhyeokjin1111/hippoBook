@@ -46,8 +46,7 @@ public class MyPageController {
 
     @PostMapping("/int")
     public String myPageInt(IntBoardDto intBoardDto,
-                            @SessionAttribute(value = "userId") Long userId,
-                            RedirectAttributes redirectAttributes) {
+                            @SessionAttribute(value = "userId") Long userId) {
 
         intBoardDto.setUserId(userId);
         intBoardDto.setIntBoardId(intBoardDto.getIntBoardId());
@@ -160,7 +159,7 @@ public class MyPageController {
 
     @GetMapping("/modify")
     public String myPageModify(Model model,@SessionAttribute("userId") Long userId) {
-        //Long userId = 1L;
+
         IntProfileDto profileDto = mypageService.findProfile(userId);
         model.addAttribute("profileDto", profileDto);
         log.info("profileDto={}", profileDto);

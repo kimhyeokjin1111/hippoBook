@@ -79,10 +79,10 @@
               </div>
             </div>
             <div id="my-favorite-book">
-              <img th:if="*{fileId == null}"
-                   th:src="@{/imgs/mypage/best_book_default.png}">
-              <img th:unless="*{fileId == null}"
-                   th:src="@{'/upload/' + *{fileUploadPath} + '/' + *{fileUuid} + '_' + *{fileName}}"
+              <img th:if="*{cover == null}"
+                   th:src="@{/imgs/mypage/best_book_default.png}" alt=""/>
+              <img th:unless="*{cover == null}"
+                   th:src="${profileDto.cover}"
                    id="best-book-img" alt=""/>
             </div>
           </section>
@@ -107,16 +107,16 @@
           <section>
             <span class="sticker-image"><img th:src="@{/images/mypage/hippo.png}" alt=""></span>
             <div>
-              <p><strong>팔로우 1000명이상 신청가능</strong></p>
+              <p><strong>팔로워 1000명이상 신청가능</strong></p>
               <p>히포 마크를 통해 히포북의 셀럽을 증명하세요!</p>
               <p>신청이 완료되면 아이디 옆에 히포마크가 나타납니다!</p>
+              <p class="sticker-info">(팔로워 수가 1000명 이상 되면 신청버튼이 나타납니다.)</p>
             </div>
           </section>
           <section>
             <input type="hidden" th:value="${profileDto.userId}"/>
-            <button type="submit" onclick="alert('신청이 완료 되었습니다.')">신청하기</button>
-            <!-- 팔로워 수가 부족한 경우 보여주기
-              <p>팔로워 수가 200명 부족합니다.</p> -->
+            <button th:if="${profileDto.followerCnt >= 1000}" type="submit" onclick="alert('신청이 완료 되었습니다.')">신청하기</button>
+
           </section>
           <!-- 신청완료 되면 버튼 대체
             <section><div class="main__sticker-request-complete">신청완료</div></section> -->

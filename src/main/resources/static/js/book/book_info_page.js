@@ -299,7 +299,7 @@ let $otherReason = document.querySelector('.decl-other-content-box > input');
   console.log($bookInfoHidden.dataset.bookid);
   console.log('$addBookBtn : ', $addBookBtn)
 
-  $addBookBtn.addEventListener('click', function (){
+  $addBookBtn?.addEventListener('click', function (){
     let bookHasInfo = {
       bookcaseId : 1, //변경할 내용
       bookId : $bookInfoHidden.dataset.bookid,

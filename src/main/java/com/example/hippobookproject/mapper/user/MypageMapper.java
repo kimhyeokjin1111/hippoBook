@@ -46,6 +46,10 @@ public interface MypageMapper {
 
     void updateUserProfilePhoto(IntProfileDto intProfileDto);
 
+    List<IntProfileDto> selectProfilePhotoList(Long boardId);
+
+    List<IntProfileDto> selectOldProfilePhoto();
+
 
     
 
