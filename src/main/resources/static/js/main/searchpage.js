@@ -2,43 +2,83 @@
 let $bookSearchInput = document.querySelector('.search_input > input');
 
 let inter = null;
-$bookSearchInput.addEventListener('keyup', function () {
-    console.log('keyup stop')
-    clearInterval(inter);
-    inter = setTimeout(showTitle,2000);
-})
 
 {
-    let $bookSearchWordBox = document.querySelector('.main__book-search-word-container');
-    $bookSearchInput.addEventListener('focus', function (){
+    recommendReq(showRecommend);
 
-        if($bookSearchInput.dataset.focus === 'F') {
-            $bookSearchInput.dataset.focus = 'T'
-            let inter = null;
-            console.log('$bookSearchInput.value : ', $bookSearchInput.value)
-            showTitle()
-            $bookSearchWordBox.classList.remove('active-search-focus-block');
+    $bookSearchInput.addEventListener('keyup', function (e) {
+        if(e.keyCode === 8){
+            console.log('백스페이스 눌림')
+            return;
         }
-    })
+        console.log('keyup stop')
+        clearTimeout(inter);
+        inter = setTimeout(function () {
+            reqApi($bookSearchInput.value, 'input', showSearchTitle);
+        }, 2000);
+    });
 
     $bookSearchInput.addEventListener("keyup", function (e){
         // console.log('e.keyCode : ', e.keyCode)
         if(e.keyCode === 13){
-            clearInterval(inter);
-            // let postReqList = {
-            //     postType : $typeRealBox.dataset.type,
-            //     type : $etcRealBox.dataset.etc,
-            //     keyword : $postSearchBtn.value,
-            //     orderType : 'recent',
-            //     page : 1,
-            // }
-            //
-            // postShow(postReqList);
-            console.log('e.keyCode : ', e.keyCode)
-            // showTitle($bookSearchInput.value);
-            showTitle2($bookSearchInput.value, showBookReq);
+            clearTimeout(inter);
+            console.log('e.keyCode : ', e.keyCode);
+            reqApi($bookSearchInput.value, 'result', showBookReq)
+        }
+    });
+
+    $bookSearchInput.addEventListener('focus', function (){
+        clearTimeout(inter);
+        reqApi($bookSearchInput.value, 'input', showSearchTitle);
+    });
+}
+
+// {
+//     //책 누를시 책 정보 페이지 이동 이벤트
+//     let $bookResultBox = document.querySelector('.main__book-result-link-content-box');
+//     $bookResultBox.addEventListener('click', function (e) {
+//         console.log(`e.target : ${e.target}`)
+//
+//     })
+//
+// }
+
+{
+    //추천 키워드 클릭시 검색 이벤트
+    let $recommendBox = document.querySelector('.main__search-recommend-box');
+    $recommendBox.addEventListener('click', function (e) {
+        if(e.target.classList.contains('recommend-word')){
+            console.log(`e.target : ${e.target}`)
+            $bookSearchInput.value = e.target.innerText;
+            $bookSearchInput.dispatchEvent(new KeyboardEvent('keyup', {keyCode: 13}));
         }
     })
+
+}
+
+function recommendReq(callback){
+    fetch("/v1/search/recommends", {method : "GET"})
+        .then(resp => resp.json())
+        .then(json => {
+            console.log(`recommendReq : ${json}`)
+            callback(json)
+        })
+}
+
+function showRecommend(jsonList){
+    console.log(`showRecommend ${jsonList}`)
+    let tags = '';
+    let $recommendBox = document.querySelector('.main__search-recommend-box');
+
+    for (let i = 0; i < jsonList.length; i++) {
+        tags += `
+                <li class="recommend-word">
+                    <span class="recommend-word">${jsonList[i].keyword}</span>
+                </li>
+        `
+    }
+
+    $recommendBox.innerHTML = tags;
 }
 
 function showBookReq(jsonList){
@@ -66,57 +106,52 @@ function showBookReq(jsonList){
     $bookSearchWordBox.classList.remove('active-search-focus-block');
     $bookSearchResultContainer.classList.add('active-search-enter-block')
     $bookSearchInput.blur()
-    $bookSearchInput.dataset.focus = 'F'
 }
 
 
-function showTitle(){
-    //검색 키워드에 맞는 책제목 표시
-    fetch(`/v1/search/book/${$bookSearchInput.value}`,
+
+function showSearchTitle(jsonList){
+    console.log(`showSearchTitle() : ${jsonList}`)
+    let $bookSearchWordBox = document.querySelector('.main__book-search-word-container');
+    let $searchBox = $bookSearchWordBox.querySelector('ul');
+    let tags = '';
+    let endIdx = jsonList.length < 10 ? jsonList.length : 10;
+
+    for (let i = 0; i < endIdx; i++) {
+        tags += `<li>
+                    <span class="search-content-title">
+                        ${jsonList[i].bookName}
+                    </span>
+                </li>`
+    }
+
+    $searchBox.innerHTML = tags;
+    $bookSearchWordBox.classList.add('active-search-focus-block');
+}
+
+function reqApi(keyword, reqType, callback){
+    console.log(`reqApi() : ${keyword}`);
+
+    let encKeyword = encodeURIComponent(keyword)
+
+    fetch(`/v1/search/book?keyword=${encKeyword}&reqtype=${reqType}`,
         {method : "GET"})
         .then(resp => resp.json())
         .then(json => {
             console.log('json', json)
-            let $bookSearchWordBox = document.querySelector('.main__book-search-word-container');
-            let $searchBox = $bookSearchWordBox.querySelector('ul');
-            let tags = '';
-
-            for (let i = 0; i < 10; i++) {
-                tags += `<li>
-                    <span class="search-content-title">
-                        ${json[i].bookName}
-                    </span>
-                </li>`
-            }
-
-            $searchBox.innerHTML = tags;
-            $bookSearchWordBox.classList.add('active-search-focus-block');
-
+            if(callback) { callback(json); }
         });
 }
 
-function showTitle2(keyword, callback){
-    console.log('keyword : ', keyword)
 
-    //검색 키워드에 맞는 책제목 표시
-    fetch(`/v1/search/book/${keyword}`,
-        {method : "GET"})
-        .then(resp => resp.json())
-        .then(json => {
-            callback(json);
-        });
-}
-
-{
+{   // 디스플레이된 타이틀 클릭시 발생되는 이벤트
     let $searchBox = document.querySelector('.main__book-search-word-container > ul');
     $searchBox.addEventListener('click', function (e){
         console.log(e.target)
         if(e.target.classList.contains('search-content-title')){
             console.log('e.target : ', e.target)
-            showTitle2(e.target.innerText, showBookReq)
             $bookSearchInput.value = e.target.innerText;
-            $bookSearchInput.blur();
-            $bookSearchInput.dataset.focus = 'F'
+            $bookSearchInput.dispatchEvent(new KeyboardEvent('keyup', {keyCode: 13}));
         }
     })
 }
