@@ -24,8 +24,10 @@ import * as module from '../mypage/module/bookContainerModule.js'
           bookImage.addEventListener("click", function () {
             $modalBox.style.display = "flex";
               let id = this.dataset.id;
+              let bookId = this.dataset.bookid;
             $modalBox.querySelector('.book-list-delete').dataset.id = id;
             $modalBox.querySelector('.best-book').dataset.id = id;
+            $modalBox.querySelector('.book-info-detail').dataset.bookid = bookId;
               $readingFinishBtn.dataset.id = id;
               $readingBtn.dataset.id=id;
               $noReadingBtn.dataset.id=id;
@@ -57,6 +59,8 @@ import * as module from '../mypage/module/bookContainerModule.js'
   
     $bookInfoDetail.addEventListener("click", function(){
 
+        console.log(this.dataset.bookid)
+        window.location = "/book/info?bookId="+(this.dataset.bookid);
         $modalBox.style.display = "none";
     });
 

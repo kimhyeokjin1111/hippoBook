@@ -79,10 +79,10 @@
             </div>
         </div>
         <div id="my-favorite-book">
-            <img th:if="*{fileId == null}"
-                 th:src="@{/imgs/mypage/best_book_default.png}">
-            <img th:unless="*{fileId == null}"
-                 th:src="@{'/upload/' + *{fileUploadPath} + '/' + *{fileUuid} + '_' + *{fileName}}"
+            <img th:if="*{cover == null}"
+                 th:src="@{/imgs/mypage/best_book_default.png}" alt=""/>
+            <img th:unless="*{cover == null}"
+                 th:src="${profileDto.cover}"
                  id="best-book-img" alt=""/>
         </div>
     </section>
@@ -146,10 +146,10 @@
                     </div>
                     <div class="review-content-box-book-info">
                         <div th:object="${myContentDto}" class="review-content-box-book-info-image">
-                            <img th:if="*{fileId == null}"
+                            <img th:if="*{cover == null}"
                                  th:src="@{/imgs/mypage/best_book_default.png}">
-                            <img th:unless="*{fileId == null}"
-                                 th:src="@{'/upload/' + *{fileUploadPath} + '/' + *{fileUuid} + '_' + *{fileName}}">
+                            <img th:unless="*{cover == null}"
+                                 th:src="${myContentDto.cover}">
                             <div class="review-content-box-book-info-detail">
                                 <div><span th:text="${myContentDto.bookName}"></span></div>
                                 <div class="review-content-box-book-info-detail-writer"><span th:text="${myContentDto.bookWriter}"></span></div>
@@ -174,10 +174,10 @@
                 </div>
                 <div class="review-content-box-book-info">
                     <div th:object="${myContentDto}" class="review-content-box-book-info-image">
-                        <img th:if="*{fileId == null}"
+                        <img th:if="*{cover == null}"
                              th:src="@{/imgs/mypage/best_book_default.png}">
-                        <img th:unless="*{fileId == null}"
-                             th:src="@{'/upload/' + *{fileUploadPath} + '/' + *{fileUuid} + '_' + *{fileName}}">
+                        <img th:unless="*{cover == null}"
+                             th:src="${myContentDto.cover}">
                         <div class="review-content-box-book-info-detail">
                             <div><span th:text="${myContentDto.bookName}"></span></div>
                             <div class="review-content-box-book-info-detail-writer"><span th:text="${myContentDto.bookWriter}"></span></div>

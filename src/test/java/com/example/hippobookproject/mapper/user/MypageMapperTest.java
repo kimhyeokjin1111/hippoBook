@@ -127,7 +127,7 @@ class MypageMapperTest {
 
     }
 
-    ;
+
 
     @Test
     void updateProfilePhoto() {
@@ -150,5 +150,11 @@ class MypageMapperTest {
     void selectCheckSticker(){
         String read = mypageMapper.selectCheckSticker(1L);
         System.out.println("read = " + read);
+    }
+
+    @Test
+    void selectOldProfilePhoto(){
+        List<IntProfileDto> intProfileDto = mypageMapper.selectOldProfilePhoto();
+        System.out.println("intProfileDto = " + intProfileDto);
     }
 }

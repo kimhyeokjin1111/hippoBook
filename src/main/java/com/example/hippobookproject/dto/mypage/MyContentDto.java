@@ -18,6 +18,7 @@ public class MyContentDto {
         private Long bookId;
         private String bookName;
         private String bookWriter;
+        private String cover;
         private Long totalLike;
         private Long fileId;
         private String fileName;

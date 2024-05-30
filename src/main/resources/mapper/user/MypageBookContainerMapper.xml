@@ -3,7 +3,7 @@
 <mapper namespace="com.example.hippobookproject.mapper.user.MypageBookContainerMapper">
     <select id="selectBookContainer" resultType="BookContainerDto">
         SELECT BOOK_HAS_ID, BOOK_HAS_PERCENT, T.BOOKCASE_ID, T.BOOK_ID, T.USER_ID, BOOKCASE_CREATE, B.BOOK_NAME, B.BOOK_WRITER,
-               CF.FILE_NAME, CF.FILE_UPLOAD_PATH, CF.FILE_UUID, CF.FILE_ID
+               B.COVER
         FROM TBL_USER U
                  JOIN (SELECT BOOK_HAS_ID, BOOK_HAS_PERCENT, H.BOOKCASE_ID, BOOK_ID, C.USER_ID, BOOKCASE_CREATE,BOOKCASE_NAME
                        FROM TBL_BOOK_HAS H
@@ -12,7 +12,7 @@
                       ON T.USER_ID = #{userId} AND U.USER_ID = T.USER_ID
                  JOIN TBL_BOOK B
                       ON T.BOOK_ID = B.BOOK_ID
-                 LEFT JOIN TBL_COVERFILE CF ON T.BOOK_ID = CF.BOOK_ID
+
     </select>
 
     <delete id="deleteBookHas" parameterType="Long">

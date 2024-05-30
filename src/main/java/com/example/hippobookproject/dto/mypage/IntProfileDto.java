@@ -14,6 +14,7 @@ public class IntProfileDto {
     private Long followingCnt;
     private Long followerCnt;
     private Long bestBookId;
+    private String cover;
     private Long fileId;
     private String fileUploadPath;
     private String fileUuid;

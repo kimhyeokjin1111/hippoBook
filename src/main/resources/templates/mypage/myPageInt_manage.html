@@ -80,10 +80,10 @@
                 </div>
             </div>
             <div id="my-favorite-book">
-                <img th:if="*{fileId == null}"
-                     th:src="@{/imgs/mypage/best_book_default.png}">
-                <img th:unless="*{fileId == null}"
-                     th:src="@{'/upload/' + *{fileUploadPath} + '/' + *{fileUuid} + '_' + *{fileName}}"
+                <img th:if="*{cover == null}"
+                     th:src="@{/imgs/mypage/best_book_default.png}" alt=""/>
+                <img th:unless="*{cover == null}"
+                     th:src="${profileDto.cover}"
                      id="best-book-img" alt=""/>
             </div>
         </section>
