@@ -4,6 +4,7 @@ import com.example.hippobookproject.dto.book.AladinApiDto;
 import com.example.hippobookproject.dto.book.BookCommentWriteDto;
 import com.example.hippobookproject.dto.book.BookHasWriteDto;
 import com.example.hippobookproject.dto.book.BookInfoDto;
+import com.example.hippobookproject.dto.recommend.RecommendDto;
 import com.example.hippobookproject.mapper.book.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -74,6 +75,18 @@ public class BookService {
 
     public List<BookInfoDto> findBookByKeyword(String keyword){
         return bookSearchMapper.selectBookByKeyword(keyword);
+    }
+
+    public void registerRecommend(String keyword){
+        bookSearchMapper.insertRecommend(keyword);
+    }
+
+    public List<RecommendDto> findRecommend(){
+        return bookSearchMapper.selectRecommend();
+    }
+
+    public int findBookCommentAll(Long bookId){
+        return bookMapper.selectBookCommentAll(bookId);
     }
 
 }

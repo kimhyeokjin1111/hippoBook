@@ -269,9 +269,9 @@ ul {
   bottom: 2px;
 }
 
-.main__book-comment-content-box > h3 > a > span {
+.main__book-comment-content-box > h3 > span > span {
   color: black;
-  padding-left: 2px;
+  padding-left: 5px;
 }
 
 .book__decl-box {

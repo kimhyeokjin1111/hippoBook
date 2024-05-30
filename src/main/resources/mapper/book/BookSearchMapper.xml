@@ -7,4 +7,22 @@
         WHERE BOOK_NAME LIKE '%' || #{keyword} || '%'
         ORDER BY BOOK_ID DESC
     </select>
+
+    <insert id="insertRecommend">
+        INSERT INTO TBL_RECOMMEND (RECOMMEND_ID, RECOMMEND_DATA)
+        VALUES (SEQ_RECOMMEND.nextval, #{keyword})
+    </insert>
+
+    <select id="selectRecommend">
+        SELECT RECOMMEND_DATA keyword, COUNT
+            FROM (SELECT RECOMMEND_DATA,
+                         DENSE_RANK() over (ORDER BY COUNT(RECOMMEND_DATA) DESC ) AS COUNT
+                  FROM TBL_RECOMMEND
+                  WHERE RECOMMEND_DATE BETWEEN SYSDATE-7 AND SYSDATE
+                  GROUP BY RECOMMEND_DATA
+                  ORDER BY COUNT)
+            <![CDATA[
+        WHERE COUNT <= 10
+        ]]>
+    </select>
 </mapper>

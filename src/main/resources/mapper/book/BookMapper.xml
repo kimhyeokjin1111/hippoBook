@@ -59,4 +59,10 @@
         VALUES (SEQ_BOOK_COMMENT.nextval, #{bookCommentContent}, #{userId}, #{bookId})
     </insert>
 
+    <select id="selectBookCommentAll">
+        SELECT COUNT(BOOK_COMMENT_ID)
+            FROM TBL_BOOK_COMMENT
+        WHERE BOOK_ID = #{bookId}
+    </select>
+
 </mapper>

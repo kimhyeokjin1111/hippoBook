@@ -27,4 +27,6 @@ public interface BookMapper {
                       Long userId);
 
     void insertBookComment(BookCommentWriteDto bookCommentWriteDto);
+
+    int selectBookCommentAll(Long bookId);
 }
