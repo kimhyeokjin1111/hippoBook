@@ -106,7 +106,7 @@
                                            placeholder="01012345678"
                                            class="mds-input-field" name="userPhonenumber">
                                 </div>
-                                <button type="button" class="phone-info-code-button" onclick="takeTarget()" id="sendSMSButton" name="PhoneNumber">
+                                <button type="button" class="phone-info-code-button" onclick="takeTarget()" id="sendSMSButton" name="phoneNumber">
                                     <span>인증번호 발송</span>
                                 </button>
                             </div>
@@ -126,8 +126,9 @@
                                                placeholder="인증번호 6자리 입력"
                                                class="mds-input-field">
                                     </div>
-                                    <button type="button" aria-label="내용 삭제" class="mds-icon--input-delete clear-button"
-                                            style="display: none;"></button>
+                                    <button type="button" class="phone-code-check-button">
+                                    <span>인증번호 확인</span>
+                                    </button>
                                     <span class="sms_code_timer">
                                         <span id="remaining__min">3</span> :
                                         <span id="remaining__sec">00</span>
@@ -151,7 +152,7 @@
                                             <sup>*</sup>
                                         </span>
                                     <form th:action="@{/user/register}" method="post" onsubmit="return valid()">
-                                    <input autocomplete="off" id="userLoginId" aria-labelledby="input-237-label"
+                                    <input autocomplete="off" th:id="userLoginId" aria-labelledby="input-237-label"
                                            aria-errormessage="input-237-messeage" type="text"
                                            placeholder="아이디 입력" class="mds-input-field"
                                            name="userLoginId"

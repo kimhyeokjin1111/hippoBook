@@ -5,23 +5,22 @@ import net.nurigo.sdk.message.model.Message;
 import net.nurigo.sdk.message.request.SingleMessageSendingRequest;
 import net.nurigo.sdk.message.response.SingleMessageSentResponse;
 import net.nurigo.sdk.message.service.DefaultMessageService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Random;
 
 @RestController
-public class TestUserSMSController {
+public class UserSMSController {
 
     private final DefaultMessageService messageService;
 
-    public TestUserSMSController(){
+    public UserSMSController(){
         this.messageService = NurigoApp.INSTANCE.initialize("NCSY9XIYBUMND1DU", "EALLGJXCESAO60SMBUXZMTNITX0QKCCB", "https://api.coolsms.co.kr");
     }
 
-    @PostMapping("/register")
+    @RequestMapping(value = "registerPhoneCode" , method = RequestMethod.POST)
     public SingleMessageSentResponse sendOne() {
         Message message = new Message();
         // 발신번호 및 수신번호는 반드시 01012345678 형태로 입력되어야 합니다.

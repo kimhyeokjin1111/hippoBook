@@ -971,3 +971,13 @@ sup {
   padding: 0 24px;
   border-radius: 4px;
 }
+
+.phone-code-check-button{
+  background-color: #ffeb60;
+  color: #242424;
+  height: 30px;
+  font-size: 13px;
+  padding: 0 24px;
+  border-radius: 4px;
+}
+
