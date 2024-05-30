@@ -3,6 +3,7 @@ package com.example.hippobookproject.api.book;
 import com.example.hippobookproject.dto.book.BookCommentWriteDto;
 import com.example.hippobookproject.dto.book.BookHasWriteDto;
 import com.example.hippobookproject.dto.book.BookInfoDto;
+import com.example.hippobookproject.dto.recommend.RecommendDto;
 import com.example.hippobookproject.service.book.BookService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,8 +29,24 @@ public class BookApi {
         bookService.registerBookComment(bookCommentWriteDto);
     }
 
-    @GetMapping("/v1/search/book/{keyword}")
-    public List<BookInfoDto> searchBookByKeyword(@PathVariable("keyword") String keyword){
+    @GetMapping("/v1/search/book")
+    public List<BookInfoDto> searchBookByKeyword(String keyword, String reqtype){
+        log.info("keyword = " + keyword + ", reqtype = " + reqtype);
+        if(reqtype.equals("result")){
+            bookService.registerRecommend(keyword);
+        }
+
+        log.info("keyword = {}", keyword);
         return bookService.findBookByKeyword(keyword);
+    }
+
+    @GetMapping("/v1/search/recommends")
+    public List<RecommendDto> findRecommend(){
+        return bookService.findRecommend();
+    }
+
+    @GetMapping("/v1/book/info/comment/count")
+    public int findBookCommentAll(Long bookId) {
+        return bookService.findBookCommentAll(bookId);
     }
 }

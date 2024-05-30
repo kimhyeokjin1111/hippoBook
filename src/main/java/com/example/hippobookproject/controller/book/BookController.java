@@ -4,6 +4,7 @@ import com.example.hippobookproject.dto.book.BookInfoDto;
 import com.example.hippobookproject.service.book.BookService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,10 +20,14 @@ public class BookController {
     private final BookService bookService;
 
     @GetMapping("/info")
-    public String bookInfo(Model model, Long bookId,@SessionAttribute Long userId){
+    public String bookInfo(Model model, Long bookId,@SessionAttribute(value = "userId", required = false) Long userId){
+        log.info("bookId = " + bookId);
         BookInfoDto bookInfo = bookService.findBookInfo(bookId);
+        int bookHas = 0;
+        if(userId != null){
+            bookHas = bookService.findBookHas(bookId, userId);
+        }
 
-        int bookHas = bookService.findBookHas(bookId, userId);
         model.addAttribute("bookInfo", bookInfo);
         model.addAttribute("bookHas", bookHas);
         return "book/book_info_page";

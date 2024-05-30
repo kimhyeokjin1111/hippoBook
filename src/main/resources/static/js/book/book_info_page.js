@@ -363,6 +363,7 @@ function bookCommentReq(bookId, callback){
 }
 
 function showBookComment(commentList){
+  let $bookInfoHidden = document.querySelector('.book-info-hidden');
   let $moreBtn = document.querySelector('.more-comment-btn');
   console.log('commentList : ', commentList)
 
@@ -387,9 +388,36 @@ function showBookComment(commentList){
   if(commentList.hasNext){
     page += 1
     $moreBtn.style.display = 'flex'
-  }else{
+  }else {
     page = 1;
     $moreBtn.style.display = 'none'
+  }
+
+  bookCommentTotal($bookInfoHidden.dataset.bookid);
+}
+
+function bookCommentTotal(bookId){
+  fetch(`/v1/book/info/comment/count?bookId=${bookId}`, {method : "GET"})
+      .then(resp => resp.text())
+      .then(text => {
+        console.log(`bookCommentTotal() : ${text}`)
+        let $bookCommentCnt = document.querySelector('.book-reference-data-box > div:nth-child(2) > strong > span')
+        let $bookCommentCnt2 = document.querySelector('.main__book-comment-content-box > h3 > span > span');
+        $bookCommentCnt.innerText = text;
+        $bookCommentCnt2.innerText = text
+      })
+}
+
+{
+  //세션에 userId가 없으면 책 담기 버튼 안보이게 하는 이벤트
+  let userId  = sessionStorage.getItem('userId');
+  let $addBookBtn = document.querySelector('.book-reference-data-box > div:last-child > p')
+  let $addCommentBox = document.querySelector('.main__book-comment-write-container');
+  console.log('userId : ', userId)
+
+  if(userId == null){
+    $addBookBtn.closest('div').style.display = 'none'
+    $addCommentBox.style.display = 'none';
   }
 }
 
