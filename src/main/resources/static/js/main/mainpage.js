@@ -138,7 +138,7 @@
 
       for(let j=0; j<3; j++){
         tags += `
-        <a href="">
+        <a href="/categorie/Categoriepage">
         <div class="ranking_content">
             <div class="rank_num${idx + 1}"></div>
             <div class="thumbnail">
