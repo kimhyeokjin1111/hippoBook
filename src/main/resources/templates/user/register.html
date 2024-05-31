@@ -126,7 +126,7 @@
                                                placeholder="인증번호 6자리 입력"
                                                class="mds-input-field">
                                     </div>
-                                    <button type="button" class="phone-code-check-button">
+                                    <button type="button" id="phone-code-check-button">
                                     <span>인증번호 확인</span>
                                     </button>
                                     <span class="sms_code_timer">
@@ -151,14 +151,13 @@
                                             아이디
                                             <sup>*</sup>
                                         </span>
-                                    <form th:action="@{/user/register}" method="post" onsubmit="return valid()">
-                                    <input autocomplete="off" th:id="userLoginId" aria-labelledby="input-237-label"
+                                    <input autocomplete="off" id="checkLoginId" aria-labelledby="input-237-label"
                                            aria-errormessage="input-237-messeage" type="text"
                                            placeholder="아이디 입력" class="mds-input-field"
                                            name="userLoginId"
                                     >
-                                        <button type="button" onclick="checkUserId()">ID 중복체크</button><br>
-                                    </form>
+                                        <button type="button" id="checkDuplicateBtn" name="checkDuplicateId">ID 중복체크</button><br>
+                                    <div id="result"></div>
                                 </div>
                                 <button type="button" aria-label="내용 삭제" class="mds-icon--input-delete clear-button"
                                         style="display: none;"></button>

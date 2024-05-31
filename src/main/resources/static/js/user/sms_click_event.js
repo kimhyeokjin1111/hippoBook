@@ -27,3 +27,31 @@ document.getElementById("sendSMSButton").addEventListener("click", function(even
             console.error('인증번호가 발송되지 않았습니다.:', error);
         });
 });
+
+function verifySms(phoneNumber, code) {
+    fetch('/registerPhoneCodeSend=' + phoneNumber + '&code=' + code), {
+        method: 'POST'
+    }
+        .then(response => {
+            if (!response.ok){
+                throw new error('ERROR');
+            }
+            return response.text();
+        })
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('인증번호가 일치하지 않습니다.', error);
+        });
+}
+
+document.getElementById('phone-code-check-button').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const phoneNumber = document.getElementById('phoneNumber').value;
+    const code = document.getElementById('phone-code-check-button').value;
+
+    phoneNumber(phoneNumber);
+    verifySms(phoneNumber, code);
+})
