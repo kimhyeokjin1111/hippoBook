@@ -30,6 +30,7 @@ public class BookController {
 
         model.addAttribute("bookInfo", bookInfo);
         model.addAttribute("bookHas", bookHas);
+        model.addAttribute("userId", userId);
         return "book/book_info_page";
     }
 

@@ -32,7 +32,7 @@
                 <p>한 줄 리뷰</p>
                 <strong><span>6</span>개</strong>
               </div>
-              <div th:if="${bookHas == 0}">
+              <div th:if="${userId != null} and ${bookHas == 0}">
                 <p>책 담기</p>
               </div>
             </div>
@@ -137,7 +137,7 @@
           <div class="more-comment-btn">
             <span>더보기</span>
           </div>
-          <div class="main__book-comment-write-container">
+          <div th:if="${userId != null}" class="main__book-comment-write-container">
             <form action="" class="book-comment-form">
               <div class="main__book-comment-write-area">
                 <label>

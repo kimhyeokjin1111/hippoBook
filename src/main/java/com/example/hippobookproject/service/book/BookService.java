@@ -58,7 +58,9 @@ public class BookService {
     }
 
     public BookInfoDto findBookInfo(Long bookId){
-        return bookMapper.selectBookInfo(bookId).orElseThrow(() -> new IllegalStateException("해당 책 정보가 존재하지 않습니다."));
+        BookInfoDto bookInfoDto = bookMapper.selectBookInfo(bookId).orElseThrow(() -> new IllegalStateException("해당 책 정보가 존재하지 않습니다."));
+        bookInfoDto.setCover(bookInfoDto.getCover().replace("sum", ""));
+        return bookInfoDto;
     }
 
     public void registerBookHas(BookHasWriteDto bookHasWriteDto){
