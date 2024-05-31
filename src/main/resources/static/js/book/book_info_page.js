@@ -408,18 +408,18 @@ function bookCommentTotal(bookId){
       })
 }
 
-{
-  //세션에 userId가 없으면 책 담기 버튼 안보이게 하는 이벤트
-  let userId  = sessionStorage.getItem('userId');
-  let $addBookBtn = document.querySelector('.book-reference-data-box > div:last-child > p')
-  let $addCommentBox = document.querySelector('.main__book-comment-write-container');
-  console.log('userId : ', userId)
-
-  if(userId == null){
-    $addBookBtn.closest('div').style.display = 'none'
-    $addCommentBox.style.display = 'none';
-  }
-}
+// {
+//   //세션에 userId가 없으면 책 담기 버튼 안보이게 하는 이벤트
+//   let userId  = window.sessionStorage.getItem('userId');
+//   let $addBookBtn = document.querySelector('.book-reference-data-box > div:last-child > p')
+//   let $addCommentBox = document.querySelector('.main__book-comment-write-container');
+//   console.log('userId : ', userId)
+//
+//   if(userId == null){
+//     $addBookBtn.closest('div').style.display = 'none'
+//     $addCommentBox.style.display = 'none';
+//   }
+// }
 
 function showBookComment2(commentList){
   let $moreBtn = document.querySelector('.more-comment-btn');
