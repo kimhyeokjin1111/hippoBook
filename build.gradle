@@ -43,9 +43,6 @@ dependencies {
     // 문자 인증번호
     // https://mvnrepository.com/artifact/net.nurigo/sdk
     implementation 'net.nurigo:sdk:4.3.0'
-
-
-
 }
 
 
