@@ -88,7 +88,14 @@ function showBookReq(jsonList){
     let $bookSearchWordBox = document.querySelector('.main__book-search-word-container');
     let tags = ''
 
+
+
     for (let i = 0; i < jsonList.length; i++) {
+        let beforeCover =  jsonList[i].cover
+        console.log(`beforeCover : ${beforeCover}`)
+        let afterCover = jsonList[i].cover.replace("sum", "")
+        console.log(`afterCover : ${afterCover}`)
+
         tags += `
                         <li>
                             <a href="/book/info?bookId=${jsonList[i].bookId}">
