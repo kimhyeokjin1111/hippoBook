@@ -161,7 +161,7 @@ input [type="file"] {
 .mypage-cate {
   display: flex;
   padding: -1px 160px 0 160px;
-  margin: 0 230px;
+  margin: 0 auto;
   width: 1440px;
   border-bottom: 1px solid #2bc1bf;
 }
