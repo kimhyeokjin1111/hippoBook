@@ -12,46 +12,7 @@
   <body>
 
       <header class="header" th:replace="~{/fragment/header :: header}"></header>
-      <main>
-        <!-- 메인 상단 -->
-        <div class="main_top">
-          <div class="main_top_layout">
-            <button type="button" class="category_openBtn" id="OpenBtn">
-              <!-- 모달창 띄우는 버튼  -->
-              <img
-                      th:src="@{/images/book/category.png}"
-                      alt=""
-                      class="main_top_category"
-              />
-            </button>
-            <div class="main_top_category_tap">
-              <ul class="main_top_category_list">
-                <li class="main_top_category_list2">
-                  <a th:href="@{/mypage/int}" class="main_top_category_list_title">내 서재</a>
-                  <!-- 내 서재 이동 -->
-                </li>
-                <li class="main_top_category_list2">
-                  <a th:href="@{/message/letter/get}" class="main_top_category_list_title">쪽지</a>
-                  <!-- 쪽지 이동 -->
-                </li>
-                <li class="main_top_category_list2">
-                  <a th:href="@{/search}" class="main_top_category_list_title">검색</a>
 
-                <li class="main_top_category_list2">
-                  <a href="" class="main_top_category_list_title">이벤트</a>
-                  <!-- 이벤트 이동 -->
-                </li>
-
-                <li class="main_top_category_list2">
-                  <a th:href="@{/categorie/Categoriepage}" class="main_top_category_list_title">카테고리</a>
-                </li>
-
-              </ul>
-            </div>
-          </div>
-        </div>
-
-      </main>
 
     <div class="main__post-content-container">
       <form action="">
