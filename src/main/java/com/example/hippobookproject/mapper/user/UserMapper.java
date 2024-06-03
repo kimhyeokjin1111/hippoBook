@@ -16,5 +16,4 @@ public interface UserMapper {
 
     void insertUserProfile(UserProfileDto userProfileDto);
 
-    int checkUserId(String userLoginId);
 }

@@ -5,8 +5,6 @@ import com.example.hippobookproject.dto.user.UserProfileDto;
 import com.example.hippobookproject.mapper.user.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,7 +24,7 @@ public class UserService {
 
     private final UserMapper userMapper;
 
-    public void joinUser(UserJoinDto userJoinDto, MultipartFile multipartFile) throws IOException{
+    public void joinUser(UserJoinDto userJoinDto, MultipartFile multipartFile) throws IOException {
 
         String yymmdd = userJoinDto.getYymmdd();
         String genderNum = userJoinDto.getGenderNum();
@@ -40,15 +38,14 @@ public class UserService {
 
         String gender = null;
 
-        if(genderNum.equals("1") || genderNum.equals("3")){
+        if (genderNum.equals("1") || genderNum.equals("3")) {
             gender = "M";
-        }else {
+        } else {
             gender = "F";
         }
 
         userJoinDto.setUserGender(gender);
         userJoinDto.setUserAge(age);
-
 
 
         userMapper.insertUser(userJoinDto);
@@ -72,7 +69,7 @@ public class UserService {
      * 파일 저장처리 DB에 저장할 UserProfileDto를 반환함
      *
      * @param multipartFile 저장할 파일
-     * @param userId 프로필의 주인 사용자 시퀀스
+     * @param userId        프로필의 주인 사용자 시퀀스
      * @return UserProfileDto를 반환함
      * @throws IOException
      */
@@ -84,7 +81,7 @@ public class UserService {
 //        C:/hippo_profile/2024/05/14
         File dirPath = new File(profileDir, uploadPath);
 
-        if(!dirPath.exists()){
+        if (!dirPath.exists()) {
             dirPath.mkdirs();
         }
 
