@@ -198,6 +198,15 @@ public class MyPageController {
         String checkSticker = mypageService.findCheckSticker(userId);
         model.addAttribute("checkSticker",checkSticker);
 
+        Long reviewCount = mypageService.findReviewCount(userId);
+        model.addAttribute("reviewCount", reviewCount);
+
+        Long postCount = mypageService.findPostCount(userId);
+        model.addAttribute("postCount", postCount);
+
+        List<BookContainerDto> bookContainerList = mypageService.findBookContainer(userId);
+        model.addAttribute("bookContainerList", bookContainerList);
+
         IntProfileDto profilePhoto = mypageService.findProfilePhoto(userId);
         model.addAttribute("profilePhoto", profilePhoto);
         return "mypage/myPageInt_secession";
