@@ -130,6 +130,7 @@ public class MypageService {
     }
 
     public void modifyNickName(IntProfileDto intProfileDto) {
+
         mypageMapper.updateUserNickName(intProfileDto);
 
     }
