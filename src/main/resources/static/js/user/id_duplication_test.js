@@ -1,60 +1,24 @@
-// function checkDuplicateId(userLoginId) {
-//     fetch('/checkId=' + userLoginId, {
-//         method: 'POST'
-//     })
-//         .then(response => {
-//             if (!response.ok) {
-//                 throw new Error('ERROR');
-//             }
-//             return response.json();
-//         })
-//         .then(data => {
-//             if(data){
-//                 console.log('중복된 아이디입니다.')
-//             } else {
-//                 console.log('사용 가능한 아이디입니다.');
-//             }
-//         })
-//         .catch(error => {
-//             console.error('ERROR2', error);
-//         });
-// }
-//
-// document.getElementById('checkUserId').addEventListener('input', function (){
-//     const userLoginId = this.value;
-//
-//     checkDuplicateId(userLoginId);
-// })
-
-// id="checkUserId" name="checkDuplicateId"
-
 {
-    function checkDuplicateLoginId(userLoginId){
-
-        fetch('user/register' + userLoginId, {
-            method: 'POST'
-        })
-            .then(response => {
-                if(!response.ok){
-                    throw new Error('ERROR_ID');
+    function checkLoginId() {
+        const id = $('#userLoginId').val();
+        $.ajax({
+            url: '/user/register',
+            type: 'POST',
+            data: {userLoginId: id},
+            function (cnt) {
+                if (cnt === 0) {
+                    $('.id_ok').css("display", "inline-block");
+                    $('.id_already').css("display", "none");
+                } else {
+                    $('.id_already').css("display", "inline-block");
+                    $('.id_ok').css("display", "none");
+                    alert("아이디를 다시 입력해주세요");
+                    $('#id').val('');
                 }
-                return response.json();
-            })
-            .then(data => {
-                if(data.userLoginId){
-                    document.getElementById('result').innerText = '중복된 아이디 입니다.';
-                }else {
-                    document.getElementById('result').innerText = '사용 가능한 아이디입니다.';
-                }
-            })
-            .catch(error => {
-                console.error('확인하는 중에 오류가 발생했습니다.', error);
-            });
+            },
+            error: function () {
+                alert("에러입니다");
+            }
+        });
     }
-
-    document.getElementById('checkDuplicateBtn').addEventListener("click", function(){
-        const checkLoginId = document.getElementById('checkLoginId').value;
-
-        checkDuplicateLoginId(checkLoginId);
-    })
 }
