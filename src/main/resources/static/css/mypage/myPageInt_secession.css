@@ -153,6 +153,12 @@ a {
   border-radius: 50px;
 }
 
+#best-book-img{
+  width: 129px;
+  height: 120px;
+  border: solid #96eae8;
+}
+
 #hippo {
   width: 48px;
   height: 48px;
