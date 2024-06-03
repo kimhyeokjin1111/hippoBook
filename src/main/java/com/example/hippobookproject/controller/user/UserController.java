@@ -6,6 +6,8 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,6 +17,7 @@ import java.io.IOException;
 @Controller
 @RequestMapping("/user")
 @RequiredArgsConstructor
+@Validated
 public class UserController {
     private final UserService userService;
 
@@ -45,12 +48,6 @@ public class UserController {
     public String register(){
         return "user/register";
     }
-
-//    @PostMapping("/register")
-//    public ResponseEntity<?> checkUserLoginId(@RequestParam("userLoginId") String userLoginId){
-//        boolean isAvailable = userCheckIdService.isCheckUserId(userLoginId);
-//        return ResponseEntity.ok().body(isAvailable);
-//    }
 
     @PostMapping("/register")
     public String postRegister(UserJoinDto userJoinDto, @RequestParam("profile") MultipartFile multipartFile){

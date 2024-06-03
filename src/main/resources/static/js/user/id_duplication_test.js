@@ -31,8 +31,8 @@
 {
     function checkDuplicateLoginId(userLoginId){
 
-        fetch('user/register ' + userLoginId, {
-            method: 'GET'
+        fetch('user/register' + userLoginId, {
+            method: 'POST'
         })
             .then(response => {
                 if(!response.ok){
