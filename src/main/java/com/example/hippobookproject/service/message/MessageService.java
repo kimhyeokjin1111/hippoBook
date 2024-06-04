@@ -68,4 +68,8 @@ public class MessageService {
         return messageMapper.selectTotalPostMessage(userId);
     }
 
+    public String findGetUserNickName(Long messageFrom){
+        return messageMapper.selectGetUserNickName(messageFrom);
+    };
+
 }

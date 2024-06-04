@@ -114,4 +114,10 @@ class MessageMapperTest {
 
     }
 
+    @Test
+    void selectGetUserNickName(){
+        String nickName = messageMapper.selectGetUserNickName(21L);
+        System.out.println("nickName = " + nickName);
+    }
+
 }

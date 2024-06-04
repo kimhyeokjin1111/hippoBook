@@ -38,4 +38,5 @@ public class MessageApi {
 
         return messageService.isNicknameDuplicated(userNickname);
     }
+
 }
