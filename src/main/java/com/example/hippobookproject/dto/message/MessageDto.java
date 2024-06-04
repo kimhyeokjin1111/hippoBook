@@ -17,4 +17,5 @@ public class MessageDto {
        private LocalDate messageDate;
        private Long messageTo;
        private Long messageFrom;
+       private String userNickname;
 }
