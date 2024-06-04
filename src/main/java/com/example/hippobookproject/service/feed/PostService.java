@@ -20,7 +20,7 @@ public class PostService {
         return postMapper.selectAll();
     }
 
-    public List<PostBookDto> selecyByKeyword(PostSearchDto postSearchDto){
+    public List<PostBookDto> selectByKeyword(PostSearchDto postSearchDto){
         return postMapper.selectByKeyword(postSearchDto);
     }
 }

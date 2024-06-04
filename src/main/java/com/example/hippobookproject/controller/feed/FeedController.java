@@ -57,7 +57,7 @@ public class FeedController {
     }
     @GetMapping("/postwrite")
     public String postwrite(PostSearchDto postSearchDto, Model model){
-        List<PostBookDto> postList = postService.selecyByKeyword(postSearchDto);
+        List<PostBookDto> postList = postService.selectByKeyword(postSearchDto);
         model.addAttribute("postList", postList);
 
         return "feed/postwrite";
