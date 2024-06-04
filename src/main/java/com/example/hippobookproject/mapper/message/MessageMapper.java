@@ -33,5 +33,7 @@ public interface MessageMapper {
 
     void updateReadingCheck(Long messageId);
 
+    String selectGetUserNickName(Long messageFrom);
+
 
 }

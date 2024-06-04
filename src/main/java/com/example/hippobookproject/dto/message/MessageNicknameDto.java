@@ -12,5 +12,7 @@ import lombok.ToString;
 public class MessageNicknameDto {
     private Long userId;
     private String userNickname;
+    private Long messageFrom;
+    private Long messageTo;
 
 }
