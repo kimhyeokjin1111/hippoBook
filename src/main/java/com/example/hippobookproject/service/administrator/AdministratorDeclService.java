@@ -81,7 +81,7 @@ public class AdministratorDeclService {
 
     public ResultPostInfoDto findFeedDecl(Long feedId){
         Optional<ResultPostInfoDto> resultFeedInfoDto = administratorDeclMapper.selectFeedDecl(feedId);
-        return resultFeedInfoDto.orElseThrow(() -> new IllegalStateException("해당 코멘트가 존재하지 않음"));
+        return resultFeedInfoDto.orElseThrow(() -> new IllegalStateException("해당 피드가 존재하지 않음"));
     }
 
     public void removeDecl(Long declId) {

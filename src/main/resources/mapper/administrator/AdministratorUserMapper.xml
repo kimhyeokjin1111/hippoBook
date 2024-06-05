@@ -35,6 +35,7 @@
                                 AND TO_CHAR(A.MAXD, 'YYYY-MM-DD') BETWEEN #{selectUser.startVisitDate} AND #{selectUser.endVisitDate}
                             </if>
                     </trim>
+                    AND USER_LOCK = 'N'
                         ORDER BY USER_ID)
             <![CDATA[
             WHERE ROWNUM <= #{criteria.page} * #{criteria.amount})
@@ -71,12 +72,13 @@
                 AND TO_CHAR(A.MAXD, 'YYYY-MM-DD') BETWEEN #{selectUser.startVisitDate} AND #{selectUser.endVisitDate}
             </if>
         </trim>
+        AND USER_LOCK = 'N'
         ORDER BY USER_ID)
     </select>
 
     <delete id="deleteUserAdminById" parameterType="List">
-        DELETE
-        FROM TBL_USER
+        UPDATE TBL_USER
+        SET USER_LOCK = 'Y'
         WHERE USER_ID IN
         <foreach collection="userIdList" item="list" index="index"
                                   separator="," open="(" close=")">
