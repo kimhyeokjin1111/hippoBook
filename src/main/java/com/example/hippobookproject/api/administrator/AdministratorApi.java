@@ -28,8 +28,9 @@ public class AdministratorApi {
     public void removeUserByIdList(@RequestParam(value="userIdList" , required = false)
                                    List<Integer> userIdList){
         log.info("userIdList = " + userIdList);
-        administratorUserService.removeUserAdminById(userIdList);
-
+        if(userIdList != null){
+            administratorUserService.removeUserAdminById(userIdList);
+        }
     }
 
     @GetMapping("/v1/chart/attendances/{term}")

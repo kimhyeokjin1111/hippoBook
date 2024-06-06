@@ -13,13 +13,17 @@ public class AdminFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpSession session = req.getSession();
         Long userId = (Long) session.getAttribute("userId");
-
+        System.out.println("userId = " + userId);
         if(userId == null){
             HttpServletResponse resp = (HttpServletResponse) servletResponse;
             resp.sendRedirect("/user/login");
+            return;
         }else if(userId != 1){
             HttpServletResponse resp = (HttpServletResponse) servletResponse;
             resp.sendRedirect("/");
+            return;
         }
+
+        filterChain.doFilter(servletRequest,servletResponse);
     }
 }

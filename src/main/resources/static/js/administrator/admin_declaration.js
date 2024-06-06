@@ -254,14 +254,14 @@ function declReq(searchDeclInfo, amount, page, type){
 
           declListTags += `
                     <ul data-declId=${declId} data-declDate=${declarationDate}
-                    data-content="${declarationContent}" data-loginid="${userId}">
+                    data-content="${declarationContent}" data-loginid="${list.declList[i].nickname}">
                       <li>${declarationDate}</li>
                       <li class="decl-content-box" data-typeid="${typeId}" data-cate="${cate}">
                         <div class="declaration-content-text">
                           ${declarationContent}
                         </div>
                       </li>
-                      <li>${userId}</li>
+                      <li>${list.declList[i].nickname}</li>
                       <li>${declProcessDate}</li>
                       <li>${declarationCheck}</li>
                     </ul>

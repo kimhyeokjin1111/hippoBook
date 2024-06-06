@@ -3,10 +3,12 @@
 <mapper namespace="com.example.hippobookproject.mapper.administrator.AdministratorDeclMapper">
     <select id="selectDeclList" resultType="ResultDeclAdminDto">
         SELECT POST_DECLARATION_ID DECLARATION_ID, POST_DECLARATION_DATE DECLARATION_DATE, POST_DECLARATION_CONTENT DECLARATION_CONTENT,
-            USER_ID, POST_DECLARATION_CHECK DECLARATION_CHECK, POST_ID type_id, POST_CATE CATE, POST_PROCESS_DATE DECL_PROCESS_DATE
+            USER_ID,NICKNAME, POST_DECLARATION_CHECK DECLARATION_CHECK, POST_ID type_id, POST_CATE CATE, POST_PROCESS_DATE DECL_PROCESS_DATE
             FROM (SELECT ROWNUM AS RNUM, POST_DECLARATION_ID, POST_DECLARATION_DATE, POST_DECLARATION_CONTENT,
-                    USER_ID, POST_DECLARATION_CHECK, POST_ID, POST_CATE,  POST_PROCESS_DATE
+                    USER_ID,NICKNAME, POST_DECLARATION_CHECK, POST_ID, POST_CATE,  POST_PROCESS_DATE
                     FROM (SELECT POST_DECLARATION_ID, POST_DECLARATION_DATE, POST_DECLARATION_CONTENT,
+        S.USER_ID, USER_NICKNAME NICKNAME, POST_DECLARATION_CHECK, POST_ID, POST_CATE,  POST_PROCESS_DATE
+        FROM (SELECT POST_DECLARATION_ID, POST_DECLARATION_DATE, POST_DECLARATION_CONTENT,
                             USER_ID, POST_DECLARATION_CHECK, POST_ID, POST_CATE,  POST_PROCESS_DATE
                             FROM TBL_POST_DECLARATION
                             <trim prefix="WHERE" prefixOverrides="AND">
@@ -27,7 +29,8 @@
                                 <if test="selectDecl.processType != null and selectDecl.processType.length() == 1">
                                     AND POST_DECLARATION_CHECK = #{selectDecl.processType}
                                 </if>
-                            </trim>
+                            </trim>) S JOIN TBL_USER U
+        ON S.USER_ID = U.USER_ID
                         ORDER BY POST_DECLARATION_ID)
         <![CDATA[
                 WHERE ROWNUM <= #{criteria.page} * #{criteria.amount})
@@ -37,21 +40,23 @@
 
     <select id="selectCommentDecl" resultType="ResultDeclAdminDto">
         SELECT COMMENT_DECLARATION_ID DECLARATION_ID, COMMENT_DECLARATION_DATE DECLARATION_DATE, COMMENT_DECLARATION_CONTENT DECLARATION_CONTENT,
-        USER_ID, COMMENT_DECLARATION_CHECK DECLARATION_CHECK, COMMENT_ID type_id, COMMENT_CATE CATE, COMMENT_PROCESS_DATE DECL_PROCESS_DATE
+        USER_ID, nickname, COMMENT_DECLARATION_CHECK DECLARATION_CHECK, COMMENT_ID type_id, COMMENT_CATE CATE, COMMENT_PROCESS_DATE DECL_PROCESS_DATE
         FROM (SELECT ROWNUM AS RNUM, COMMENT_DECLARATION_ID, COMMENT_DECLARATION_DATE, COMMENT_DECLARATION_CONTENT,
-        USER_ID, COMMENT_DECLARATION_CHECK, COMMENT_ID, COMMENT_CATE,  COMMENT_PROCESS_DATE
+        USER_ID, NICKNAME,COMMENT_DECLARATION_CHECK, COMMENT_ID, COMMENT_CATE,  COMMENT_PROCESS_DATE
         FROM (SELECT COMMENT_DECLARATION_ID, COMMENT_DECLARATION_DATE, COMMENT_DECLARATION_CONTENT,
-        USER_ID, COMMENT_DECLARATION_CHECK, COMMENT_ID, COMMENT_CATE,  COMMENT_PROCESS_DATE
+        S.USER_ID, USER_NICKNAME NICKNAME, COMMENT_DECLARATION_CHECK, COMMENT_ID, COMMENT_CATE,  COMMENT_PROCESS_DATE
+        FROM(SELECT COMMENT_DECLARATION_ID, COMMENT_DECLARATION_DATE, COMMENT_DECLARATION_CONTENT,
+        USER_ID, COMMENT_DECLARATION_CHECK, COMMENT_ID, COMMENT_CATE, COMMENT_PROCESS_DATE
         FROM TBL_COMMENT_DECLARATION
         <trim prefix="WHERE" prefixOverrides="AND">
             <if test="selectDecl.declarationContent != null">
                 COMMENT_DECLARATION_CONTENT LIKE '%' || #{selectDecl.declarationContent} || '%'
             </if>
-            <if test="selectDecl.startDeclarationDate != null and selectDecl.endDeclarationDate != null" >
+            <if test="selectDecl.startDeclarationDate != null and selectDecl.endDeclarationDate != null">
                 AND TO_CHAR(COMMENT_DECLARATION_DATE, 'YYYY-MM-DD') BETWEEN
                 #{selectDecl.startDeclarationDate} AND #{selectDecl.endDeclarationDate}
             </if>
-            <if test="selectDecl.startPocecssDate != null and selectDecl.endPocecssDate != null" >
+            <if test="selectDecl.startPocecssDate != null and selectDecl.endPocecssDate != null">
                 AND TO_CHAR(COMMENT_PROCESS_DATE, 'YYYY-MM-DD') BETWEEN
                 #{selectDecl.startPocecssDate} AND #{selectDecl.endPocecssDate}
             </if>
@@ -61,7 +66,8 @@
             <if test="selectDecl.processType != null and selectDecl.processType.length() == 1">
                 AND COMMENT_DECLARATION_CHECK = #{selectDecl.processType}
             </if>
-        </trim>
+        </trim>) S JOIN TBL_USER U
+        ON S.USER_ID = U.USER_ID
         ORDER BY COMMENT_DECLARATION_ID)
         <![CDATA[
                 WHERE ROWNUM <= #{criteria.page} * #{criteria.amount})
@@ -170,7 +176,7 @@
     </select>
 
     <select id="selectDealDecl" parameterType="Long" resultType="ResultPostInfoDto">
-        SELECT DEAL_ID post_id, DEAL_TITLE post_title, DEAL_CONTENT post_content, DEAL_DATE, U.USER_NICKNAME
+        SELECT DEAL_ID post_id, DEAL_TITLE post_title, DEAL_CONTENT post_content, DEAL_DATE post_date, U.USER_NICKNAME nickname
             FROM TBL_DEAL D JOIN TBL_USER U
                             ON D.USER_ID = U.USER_ID
         WHERE DEAL_ID = #{postId}
@@ -191,7 +197,7 @@
     </select>
 
     <select id="selectClaimDecl" parameterType="Long" resultType="ResultPostInfoDto">
-        SELECT CLAIM_ID post_id, CLAIM_TITLE post_title, CLAIM_CONTENT post_content, CLAIM_DATE post_date, U.USER_NICKNAME
+        SELECT CLAIM_ID post_id, CLAIM_TITLE post_title, CLAIM_CONTENT post_content, CLAIM_DATE post_date, U.USER_NICKNAME nickname
         FROM TBL_CLAIM C JOIN TBL_USER U
                             ON C.USER_ID = U.USER_ID
         WHERE CLAIM_ID = #{postId}
@@ -201,28 +207,28 @@
         SELECT DEAL_COMMENT_ID post_id, DEAL_COMMENT_CONTENT post_content, DEAL_COMMENT_CREATE post_date, U.USER_NICKNAME nickname
         FROM TBL_DEAL_COMMENT D JOIN TBL_USER U
                              ON D.USER_ID = U.USER_ID
-        WHERE DEAL_ID = #{postId}
+        WHERE DEAL_COMMENT_ID = #{postId}
     </select>
 
     <select id="selectBoardCMDecl" parameterType="Long" resultType="ResultPostInfoDto">
         SELECT BOARD_COMMENT_ID post_id, BOARD_COMMENT_CONTENT post_content, BOARD_COMMENT_CREATE post_date, U.USER_NICKNAME nickname
         FROM TBL_BOARD_COMMENT B JOIN TBL_USER U
                               ON B.USER_ID = U.USER_ID
-        WHERE BOARD_ID = #{postId}
+        WHERE BOARD_COMMENT_ID = #{postId}
     </select>
 
     <select id="selectNovelCMDecl" parameterType="Long" resultType="ResultPostInfoDto">
         SELECT NOVEL_COMMENT_ID post_id, NOVEL_COMMENT_CONTENT post_content, NOVEL_COMMENT_CREATE post_date, U.USER_NICKNAME nickname
         FROM TBL_NOVEL_COMMENT N JOIN TBL_USER U
                               ON N.USER_ID = U.USER_ID
-        WHERE NOVEL_ID = #{postId}
+        WHERE NOVEL_COMMENT_ID = #{postId}
     </select>
 
     <select id="selectClaimCMDecl" parameterType="Long" resultType="ResultPostInfoDto">
         SELECT CLAIM_COMMENT_ID post_id, CLAIM_COMMENT_CONTENT post_content, CLAIM_COMMENT_CREATE post_date, U.USER_NICKNAME nickname
         FROM TBL_CLAIM_COMMENT C JOIN TBL_USER U
                               ON C.USER_ID = U.USER_ID
-        WHERE CLAIM_ID = #{postId}
+        WHERE CLAIM_COMMENT_ID = #{postId}
     </select>
 
     <select id="selectBookCMDecl" parameterType="Long" resultType="ResultPostInfoDto">

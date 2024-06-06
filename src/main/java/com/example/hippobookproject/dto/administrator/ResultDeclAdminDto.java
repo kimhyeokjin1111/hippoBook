@@ -16,6 +16,7 @@ public class ResultDeclAdminDto {
     LocalDate DeclarationDate;
     String DeclarationContent;
     Long userId;
+    String nickname;
     String DeclarationCheck;
     Long typeId;
     String cate;
