@@ -269,27 +269,53 @@
 <!--        WHERE COMMENT_DECLARATION_ID = #{declId}-->
 <!--    </delete>-->
 
-<!--    <delete id="deleteDealDecl" parameterType="Long">-->
-<!--        DELETE-->
-<!--            FROM TBL_DEAL-->
-<!--        WHERE DEAL_ID = #{postId}-->
-<!--    </delete>-->
+    <delete id="deleteDealDecl" parameterType="Long">
+        DELETE
+            FROM TBL_DEAL
+        WHERE DEAL_ID = #{postId}
+    </delete>
 
-<!--    <delete id="deleteBoardDecl" parameterType="Long">-->
-<!--        DELETE-->
-<!--        FROM TBL_BOARD-->
-<!--        WHERE BOARD_ID = #{postId}-->
-<!--    </delete>-->
+    <delete id="deleteBoardDecl" parameterType="Long">
+        DELETE
+        FROM TBL_BOARD
+        WHERE BOARD_ID = #{postId}
+    </delete>
 
-<!--    <delete id="deleteNovelDecl" parameterType="Long">-->
-<!--        DELETE-->
-<!--        FROM TBL_NOVEL-->
-<!--        WHERE NOVEL_ID = #{postId}-->
-<!--    </delete>-->
+    <delete id="deleteNovelDecl" parameterType="Long">
+        DELETE
+        FROM TBL_NOVEL
+        WHERE NOVEL_ID = #{postId}
+    </delete>
 
-<!--    <delete id="deleteClaimDecl" parameterType="Long">-->
-<!--        DELETE-->
-<!--        FROM TBL_CLAIM-->
-<!--        WHERE CLAIM_ID = #{postId}-->
-<!--    </delete>-->
+    <delete id="deleteClaimDecl" parameterType="Long">
+        DELETE
+        FROM TBL_CLAIM
+        WHERE CLAIM_ID = #{postId}
+    </delete>
+
+    <delete id="deleteDealCMDecl" parameterType="Long">
+        DELETE
+        FROM TBL_DEAL_COMMENT
+        WHERE DEAL_COMMENT_ID = #{commentId}
+    </delete>
+    <delete id="deleteBoardCMDecl" parameterType="Long">
+        DELETE
+        FROM TBL_BOARD_COMMENT
+        WHERE BOARD_COMMENT_ID = #{commentId}
+    </delete>
+    <delete id="deleteNovelCMDecl" parameterType="Long">
+        DELETE
+        FROM TBL_NOVEL_COMMENT
+        WHERE NOVEL_COMMENT_ID = #{commentId}
+    </delete>
+    <delete id="deleteClaimCMDecl" parameterType="Long">
+        DELETE
+        FROM TBL_CLAIM_COMMENT
+        WHERE CLAIM_COMMENT_ID = #{commentId}
+    </delete>
+    <delete id="deleteBookCMDecl" parameterType="Long">
+        DELETE
+        FROM TBL_BOOK_COMMENT
+        WHERE BOOK_COMMENT_ID = #{commentId}
+    </delete>
 </mapper>

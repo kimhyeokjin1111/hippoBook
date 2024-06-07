@@ -138,17 +138,17 @@
 
   $searchBtn.addEventListener('click', function (){
     let followStikerInfo = {
-      followUserName : $followUserName.value,
-      fStartDate : $fStartDate.value,
-      fEndDate : $fEndDate.value,
-      followCheck : $followCheck.dataset.check || ""
+        userName : $followUserName.value,
+        startFollowDate : $fStartDate.value,
+        endFollowDate : $fEndDate.value,
+        fPermission : $followCheck.dataset.check || ""
     }
 
     let params = new URLSearchParams(followStikerInfo);
     let rowValue = document.querySelector('.main__rownum-select').value;
     console.log(rowValue)
     console.log(params.toString())
-    fetch(`/v1/admin/follow?${params.toString()}&amount=${rowValue}`)
+    fetch(`/v1/admin/follow?${params.toString()}&amount=${rowValue}`, {method : "GET"})
         .then(list => list.json())
         .then(l => {
           let tags = '';

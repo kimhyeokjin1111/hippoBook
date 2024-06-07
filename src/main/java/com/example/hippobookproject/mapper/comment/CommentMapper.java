@@ -26,4 +26,10 @@ public interface CommentMapper {
                                            Long postId);
     List<CommentReadDto> selectBookComment(@Param("criteria") AdminUserCriteria criteria,
                                            Long postId);
+
+    int selectDealCommentTotal(Long postId);
+    int selectBoardCommentTotal(Long postId);
+    int selectNovelCommentTotal(Long postId);
+    int selectClaimCommentTotal(Long postId);
+    int selectBookCommentTotal(Long postId);
 }
