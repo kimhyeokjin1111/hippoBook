@@ -30,4 +30,10 @@ public class CommentApi {
         log.info("commentType = " + commentType + ", postId = " + postId);
         return commentService.findComment(commentType, postId, criteria);
     }
+
+    @GetMapping("/v1/{type}/post/comment/count")
+    public int searchComment(@PathVariable("type") String postType,
+                                                      Long postId){
+        return commentService.findCommentTotal(postType, postId);
+    }
 }

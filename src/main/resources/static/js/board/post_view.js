@@ -310,6 +310,7 @@ function showComment(commentList){
   let pageBtn = document.querySelector('.main__post-comment-page-box');
 
   $commentBox.innerHTML = tags;
+  commentTotalReq();
   if(commentList.hasNext){
     nowPage += 1;
     pageBtn.style.display = 'flex';
@@ -347,6 +348,7 @@ function showComment2(commentList){
 
   }
   $commentBox.insertAdjacentHTML("beforeend", tags)
+  commentTotalReq();
   if(commentList.hasNext) {
     nowPage += 1;
   }else{
@@ -428,4 +430,13 @@ function showPostLike(){
   $listBtn.addEventListener('click', function (){
     window.location = before;
   })
+}
+
+function commentTotalReq(){
+  fetch(`/v1/${commentFindInst.postType}/post/comment/count?postId=${commentFindInst.postId}`, {method : "GET"})
+      .then(dto => dto.text())
+      .then(text => {
+        let $commentCnt = document.querySelector('.main__post-comment-count-box > span')
+        $commentCnt.innerText = text}
+      )
 }

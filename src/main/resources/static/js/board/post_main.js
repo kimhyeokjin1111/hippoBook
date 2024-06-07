@@ -132,12 +132,12 @@ function postShow(postReqList){
         let tags = ``;
 
         for (let i = 0; i < post.post.length; i++) {
-          let postId = post.post[0].postId;
-          let postTitle = post.post[0].postTitle;
-          let userNickname = post.post[0].userNickname;
-          let likeCount = post.post[0].likeCount;
-          let postDate = post.post[0].postDate;
-          let postView = post.post[0].postView;
+          let postId = post.post[i].postId;
+          let postTitle = post.post[i].postTitle;
+          let userNickname = post.post[i].userNickname;
+          let likeCount = post.post[i].likeCount;
+          let postDate = post.post[i].postDate;
+          let postView = post.post[i].postView;
 
           tags += `
                <li class="main__post-result-li">
