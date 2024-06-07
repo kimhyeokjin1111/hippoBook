@@ -43,5 +43,24 @@
 
 }
 
+{
+    let $bookBtn = document.querySelector(".book_btn");
+    $bookBtn.forEach(ele =>{
+        ele.addEventListener("click", function (){
+
+            let userdata = this.dataset.keyword;
+
+            fetch('/v1/search',
+                {
+                    method: "POST",
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON,
+                }).then(() => {
+
+            });
+        });
+    });
+}
+
 
 
