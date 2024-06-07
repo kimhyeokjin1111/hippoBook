@@ -1,6 +1,7 @@
 package com.example.hippobookproject.api.feed;
 
 import com.example.hippobookproject.dto.feed.FollowDto;
+import com.example.hippobookproject.dto.feed.PostSearchDto;
 import com.example.hippobookproject.service.feed.FeedService;
 import com.example.hippobookproject.service.feed.PostService;
 import com.example.hippobookproject.service.feed.ReadService;
@@ -16,7 +17,8 @@ public class FeedApi {
     private final PostService postService;
 
     @PostMapping("/v1/search")
-    public void search(){
-
+    public void search(@RequestBody PostSearchDto postSearchDto, HttpSession session){
+        log.info("postSearchDto = " + postSearchDto);
+        postService.selectByKeyword(postSearchDto);
     }
 }
