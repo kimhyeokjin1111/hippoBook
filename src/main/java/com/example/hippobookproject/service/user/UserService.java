@@ -2,10 +2,8 @@ package com.example.hippobookproject.service.user;
 
 import com.example.hippobookproject.dto.user.UserJoinDto;
 import com.example.hippobookproject.dto.user.UserProfileDto;
-import com.example.hippobookproject.mapper.user.UserIdDuplicateMapper;
 import com.example.hippobookproject.mapper.user.UserMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -103,5 +101,4 @@ public class UserService {
     }
 
 //    아이디 중복 검사
-
 }

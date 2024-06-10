@@ -1,24 +1,21 @@
 package com.example.hippobookproject.controller.user;
 
-import com.example.hippobookproject.service.user.UserIdDuplicateService;
-import com.example.hippobookproject.service.user.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.hippobookproject.dto.user.UserResponseDto;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller("/user")
 public class UserIdDuplicateController {
 
-    @Autowired
-    private UserIdDuplicateService userIdDuplicateService;
-
-    @PostMapping("/register")
-    @ResponseBody
-    public int idCheck(@RequestParam("userLoginId") String userLoginId) {
-
-        return userIdDuplicateService.idCheck(userLoginId);
+    @GetMapping("/register")
+    public @ResponseBody UserResponseDto<?> idCheck(String userLoginId) {
+        if(userLoginId == null || userLoginId.isEmpty()){
+            return new UserResponseDto<>(-1,"아이디를 입력해주세요", null);
+        }
+        if(userLoginId.equals("test")){
+            return new UserResponseDto<>(1,"동일한 아이디가 존재합니다", false);
+        }else{
+            return new UserResponseDto<>(1, "해당 아이디로 회원가입 가능합니다.", true);
+        }
     }
 }
