@@ -6,12 +6,14 @@
     <link rel="stylesheet" th:href="@{/css/user/login.css}">
     <link rel="stylesheet" th:href="@{/css/user/hippobook.css}">
     <!--    <link rel="stylesheet" th:href="@{/css/user/joinAuth.css}">-->
+    <script defer th:src="@{/js/user/sms_code_timer.js}"></script>
+    <script defer th:src="@{/js/user/sms_find_account_click_event.js}"></script>
 </head>
 <body data-theme="light">
 <div data-a-1120 id="wrap" class="web-mount">
     <section data-a-1120 class="content">
         <div data-g-1180 data-a-1120 class="login-container">
-            <form class="login-content" th:action="@{/user/find_account}" method="post">
+            <form class="login-content" th:action="@{/user/find_account}" method="post" enctype="multipart/form-data">
                 <img class="logo-picture" th:src="@{/images/user/Logo.png}">
                 <h3 class="title">계정 정보 찾기</h3>
                 <p class="sub-title">나만의 작은 도서관 히포북</p>
@@ -69,7 +71,7 @@
                                     <input  id="input-157" placeholder="01012345678"
                                            class="mds-input-field" name="userPhonenumber">
                                 </div>
-                                <button type="submit" class="phone-info-code-button">
+                                <button type="button" class="phone-info-code-button" onclick="takeTarget()" id="sendSMSButton" name="phoneNumber">
                                     <span>인증번호 발송</span>
                                 </button>
                             </div>
@@ -89,9 +91,13 @@
                                                placeholder="인증번호 6자리 입력"
                                                class="mds-input-field">
                                     </div>
-                                    <button type="button" aria-label="내용 삭제" class="mds-icon--input-delete clear-button"
-                                            style="display: none;"></button>
-                                    <span class="time">0:00</span>
+                                    <button type="button" id="phone-code-check-button">
+                                    <span>인증번호 확인</span>
+                                    </button>
+                                    <span class="sms_code_timer">
+                                        <span id="remaining__min">3</span> :
+                                        <span id="remaining__sec">00</span>
+                                    </span>
                                 </div>
                             </label>
                         </div>
