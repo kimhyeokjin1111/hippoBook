@@ -15,29 +15,35 @@
 <script defer th:src="@{http://code.jquery.com/jquery-latest.js}"></script>
 <script>
     {
-        function checkLoginId() {
-            const id = $('#userLoginId').val();
-            $.ajax({
-                url: '/register',
-                type: 'post',
-                // contentType: 'application/json',
-                data: id,
-                success:function (cnt) {
-                    if (cnt === 0) {
-                        $('.id_ok').css("display", "inline-block");
-                        $('.id_already').css("display", "none");
-                    } else {
-                        $('.id_already').css("display", "inline-block");
-                        $('.id_ok').css("display", "none");
-                        alert("아이디를 다시 입력해주세요");
-                        $('#id').val('');
-                    }
-                },
-                error: function () {
-                    alert("에러입니다");
-                }
-            });
+        let submitCheck = false;
+
+        function valid(){
+            if(submitCheck){
+                return true;
+            }else {
+                alert('아이디 중복체크를 먼저 하세요');
+
+                return false;
+            }
         }
+        function checkLoginId() {
+            const userLoginId = $('#userLoginId').val();
+            $.ajax({
+                url: '/register?userLoginId=' + userLoginId,
+                type: 'get',
+                // contentType: 'application/json',
+            }).done((res) => {
+                if(res.data == true){
+                alert(res.msg);
+                    submitCheck = true;
+                } else {
+                    alert(res.msg);
+                    submitCheck = false;
+                }
+            }).fail((err) => {
+                console.log("???")
+            })
+            }
     }
     </script>
 <div data-a-1120 id="wrap" class="web-mount">
@@ -180,10 +186,10 @@
                                             아이디
                                             <sup>*</sup>
                                         </span>
-                                        <input type="text" name="userLoginId" id="id" placeholder="아이디를 입력해주세요" oninput="checkLoginId()">
+                                        <input type="text" name="userLoginId" id="userLoginId" placeholder="아이디를 입력해주세요">
                                     <span class="id_ok">사용 가능한 아이디입니다.</span>
                                     <span class="id_already">중복된 아이디입니다.</span>
-<!--                                        <button type="button" id="checkDuplicateBtn" name="checkDuplicateId">ID 중복체크</button><br>-->
+                                        <button type="button" onclick="checkLoginId()">ID 중복체크</button><br>
                                     <div id="result"></div>
                                 </div>
                                 <button type="button" aria-label="내용 삭제" class="mds-icon--input-delete clear-button"
