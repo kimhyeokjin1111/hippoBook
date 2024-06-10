@@ -64,4 +64,19 @@ public class CommentService {
 
         return new MessageSlice<>(hasNext, commentReadDtos);
     }
+
+    public int findCommentTotal(String postType, Long postId){
+        switch (postType){
+            case "deal":
+                return commentMapper.selectDealCommentTotal(postId);
+            case "board":
+                return commentMapper.selectBoardCommentTotal(postId);
+            case "novel":
+                return commentMapper.selectNovelCommentTotal(postId);
+            case "claim":
+                return commentMapper.selectClaimCommentTotal(postId);
+            default:
+                return commentMapper.selectBookCommentTotal(postId);
+        }
+    }
 }

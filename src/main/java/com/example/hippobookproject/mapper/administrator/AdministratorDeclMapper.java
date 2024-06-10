@@ -42,4 +42,15 @@ public interface AdministratorDeclMapper {
 
     void deleteCMDeclaration(Long declId);
     void deleteFDeclaration(Long declId);
+
+    void deleteDealDecl(Long postId);
+    void deleteBoardDecl(Long postId);
+    void deleteNovelDecl(Long postId);
+    void deleteClaimDecl(Long postId);
+
+    void deleteDealCMDecl(Long commentId);
+    void deleteBoardCMDecl(Long commentId);
+    void deleteNovelCMDecl(Long commentId);
+    void deleteClaimCMDecl(Long commentId);
+    void deleteBookCMDecl(Long commentId);
 }

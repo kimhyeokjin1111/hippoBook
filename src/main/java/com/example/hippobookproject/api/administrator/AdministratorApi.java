@@ -202,4 +202,15 @@ public class AdministratorApi {
 
         administratorFollowService.modifyUserStickerCheck(idList);
     }
+
+    @DeleteMapping("/v1/admin/post")
+    public void deletePostDecl(String postType, Long postId){
+        log.info("postType = " + postType + ", postId = " + postId);
+        administratorDeclService.deletePostDecl(postId, postType);
+    }
+    @DeleteMapping("/v1/admin/comment")
+    public void deleteCommentDecl(String commentType, Long commentId){
+        log.info("commentType = " + commentType + ", commentId = " + commentId);
+        administratorDeclService.deleteCommentDecl(commentId, commentType);
+    }
 }

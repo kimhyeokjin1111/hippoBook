@@ -106,6 +106,11 @@
 
             $declTargetTab.innerHTML = tags;
 
+              let $processBtn = document.querySelector('#declaration-to-content-delete-btn')
+
+              $processBtn.dataset.target = b.postId;
+              $processBtn.dataset.cate = b.cate;
+
           });
     }
 
@@ -449,4 +454,39 @@ function removeDeclaration(){
   })
 
 }
+
+{
+    // 포스트 신고 대상 삭제
+
+    let $processBtn = document.querySelector('#declaration-to-content-delete-btn')
+    let $declarationBox = document.querySelector(
+    ".main__declaration-content-view-box");
+    console.log('$declarationBox : ', $declarationBox)
+
+    $processBtn.addEventListener('click', function (){
+        let nowDeclType = document.querySelector('.main__declaration-select').value;
+        console.log('nowDeclType : ', nowDeclType)
+        if(nowDeclType === 'post'){
+            postDeleteReq(this.dataset.target, this.dataset.cate);
+        }else if(nowDeclType === 'comment'){
+            commentDeleteReq(this.dataset.target, this.dataset.cate);
+        }
+
+        $declarationBox.classList.remove("declaration-view-flex");
+    })
+
+}
+
+function postDeleteReq(postId, postType){
+    fetch(`/v1/admin/post?postId=${postId}&postType=${postType}`, {
+        method : "DELETE"
+    }).then()
+}
+
+function commentDeleteReq(commentId, commentType){
+    fetch(`/v1/admin/comment?commentId=${commentId}&commentType=${commentType}`, {
+        method : "DELETE"
+    }).then()
+}
+
 

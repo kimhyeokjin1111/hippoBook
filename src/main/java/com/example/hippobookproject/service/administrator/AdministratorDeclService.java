@@ -94,4 +94,30 @@ public class AdministratorDeclService {
     public void removeFDeclaration(Long declId){
         administratorDeclMapper.deleteFDeclaration(declId);
     };
+
+    public void deletePostDecl(Long postId, String postType){
+        if("deal".equals(postType)){
+            administratorDeclMapper.deleteDealDecl(postId);
+        }else if("board".equals(postType)){
+            administratorDeclMapper.deleteBoardDecl(postId);
+        }else if("novel".equals(postType)){
+            administratorDeclMapper.deleteNovelDecl(postId);
+        }else if("claim".equals(postType)){
+            administratorDeclMapper.deleteClaimDecl(postId);
+        }
+    }
+
+    public void deleteCommentDecl(Long commentId, String commentType){
+        if("deal".equals(commentType)){
+            administratorDeclMapper.deleteDealCMDecl(commentId);
+        }else if("board".equals(commentType)){
+            administratorDeclMapper.deleteBoardCMDecl(commentId);
+        }else if("novel".equals(commentType)){
+            administratorDeclMapper.deleteNovelCMDecl(commentId);
+        }else if("claim".equals(commentType)){
+            administratorDeclMapper.deleteClaimCMDecl(commentId);
+        }else if("book".equals(commentType)){
+            administratorDeclMapper.deleteBookCMDecl(commentId);
+        }
+    }
 }

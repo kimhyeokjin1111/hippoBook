@@ -17,10 +17,10 @@
                                       ON
                                     <trim prefixOverrides="AND" >
                                         <if test="selectSticker.startFollowDate != null and selectSticker.endFollowDate != null">
-                                          TO_CHAR(S.STIKER_DATE, 'YYYY-MM-DD') BETWEEN '2024-05-14' AND '2024-05-14'
+                                          TO_CHAR(S.STIKER_DATE, 'YYYY-MM-DD') BETWEEN #{selectSticker.startFollowDate} AND #{selectSticker.endFollowDate}
                                         </if>
                                         <if test="selectSticker.userName != null">
-                                          AND USER_NAME LIKE '%test%'
+                                          AND USER_NICKNAME LIKE '%'|| #{selectSticker.userName} ||'%'
                                         </if>
                                         <if test="selectSticker.fPermission != null and selectSticker.fPermission.length() == 1">
                                           AND STICKER_PERMISSION_CHECK = 'N'
@@ -47,10 +47,10 @@
         ON
         <trim prefixOverrides="AND" >
             <if test="selectSticker.startFollowDate != null and selectSticker.endFollowDate != null">
-                TO_CHAR(S.STIKER_DATE, 'YYYY-MM-DD') BETWEEN '2024-05-14' AND '2024-05-14'
+                TO_CHAR(S.STIKER_DATE, 'YYYY-MM-DD') BETWEEN #{selectSticker.startFollowDate} AND #{selectSticker.endFollowDate}
             </if>
             <if test="selectSticker.userName != null">
-                AND USER_NAME LIKE '%test%'
+                AND USER_NAME LIKE '%'|| #{selectSticker.userName} ||'%'
             </if>
             <if test="selectSticker.fPermission != null and selectSticker.fPermission.length() == 1">
                 AND STICKER_PERMISSION_CHECK = 'N'
