@@ -3,7 +3,7 @@ package com.example.hippobookproject.dto.user;
 import lombok.*;
 
 @Getter @Setter @ToString
-@NoArgsConstructor
+@AllArgsConstructor
 public class UserJoinDto {
     private Long userId;
     private String userNickname;
