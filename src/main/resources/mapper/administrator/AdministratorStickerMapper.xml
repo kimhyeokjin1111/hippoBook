@@ -23,7 +23,7 @@
                                           AND USER_NICKNAME LIKE '%'|| #{selectSticker.userName} ||'%'
                                         </if>
                                         <if test="selectSticker.fPermission != null and selectSticker.fPermission.length() == 1">
-                                          AND STICKER_PERMISSION_CHECK = 'N'
+                                          AND USER_STIKER_CHECK = #{selectSticker.fPermission}
                                         </if>
                                           AND S.USER_ID = U.USER_ID) R
                                     </trim>
@@ -53,7 +53,7 @@
                 AND USER_NAME LIKE '%'|| #{selectSticker.userName} ||'%'
             </if>
             <if test="selectSticker.fPermission != null and selectSticker.fPermission.length() == 1">
-                AND STICKER_PERMISSION_CHECK = 'N'
+                AND USER_STIKER_CHECK = #{selectSticker.fPermission}
             </if>
             AND S.USER_ID = U.USER_ID) R
         </trim>

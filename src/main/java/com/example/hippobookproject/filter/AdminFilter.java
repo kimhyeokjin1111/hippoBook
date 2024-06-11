@@ -18,10 +18,10 @@ public class AdminFilter implements Filter {
             HttpServletResponse resp = (HttpServletResponse) servletResponse;
             resp.sendRedirect("/user/login");
             return;
-        }else if(userId != 1){
-            HttpServletResponse resp = (HttpServletResponse) servletResponse;
-            resp.sendRedirect("/");
-            return;
+//        }else if(userId != 1){
+//            HttpServletResponse resp = (HttpServletResponse) servletResponse;
+//            resp.sendRedirect("/");
+//            return;
         }
 
         filterChain.doFilter(servletRequest,servletResponse);
