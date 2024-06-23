@@ -32,11 +32,11 @@
     let $book_XBtn = document.querySelector(".Xbtn-box");
 
 
-    $book_OpenBtn.addEventListener("click", function (){
+    $book_OpenBtn?.addEventListener("click", function (){
         $book_getModal.style.display = "block";
     });
 
-    $book_XBtn.addEventListener("click", function (){
+    $book_XBtn?.addEventListener("click", function (){
         $book_getModal.style.display = "none";
     });
 
